@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introducción",
+    "section": "",
+    "text": "Comenzaremos con una introducción a la ciencia de datos. Definiremos la ciencia de datos, discutiremos su papel en una multitud de dominios y el tipo de habilidades que los científicos de datos necesitan.\nDespués del módulo introductorio, el resto de este curso proporcionará la base estadística que sustenta el análisis de datos. La estadística juega un papel central en el enfoque de la ciencia de datos, en casi todas las soluciones basadas en datos, los científicos de datos ejercen el pensamiento estadístico al diseñar estrategias de recopilación de datos, obtener información de los métodos de visualización, obtener evidencia para la toma de decisiones y construir modelos para predecir tendencias futuras.\nEl módulo final presentará la filosofía de la inferencia bayesiana y las técnicas de modelado bayesiano utilizando estudios de casos ilustrativos."
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "2  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever."
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "intro.html#por-qué-es-importante-la-ciencia-de-datos-y-cómo-impulsa-el-valor-empresarial",
+    "href": "intro.html#por-qué-es-importante-la-ciencia-de-datos-y-cómo-impulsa-el-valor-empresarial",
+    "title": "1  Introducción",
+    "section": "1.1 ¿Por qué es importante la ciencia de datos y cómo impulsa el valor empresarial?",
+    "text": "1.1 ¿Por qué es importante la ciencia de datos y cómo impulsa el valor empresarial?\nLa ciencia de datos puede agregar valor a cualquier empresa de cualquier sector que pueda usar bien sus datos. Desde estadísticas e información sobre los flujos de trabajo y la contratación de nuevos candidatos, hasta ayudar al personal superior a tomar decisiones mejor informadas."
+  },
+  {
+    "objectID": "intro.html#qué-hace-un-científico-de-datos",
+    "href": "intro.html#qué-hace-un-científico-de-datos",
+    "title": "1  Introducción",
+    "section": "1.2 ¿Qué hace un científico de datos?",
+    "text": "1.2 ¿Qué hace un científico de datos?\nUn científico de datos analiza y comunica el valor de los datos de la institución para facilitar la mejora de los procesos de toma de decisiones.\nDesde Google Analytics hasta las encuestas de clientes, la mayoría de las empresas tendrán al menos una fuente de datos de clientes que se está recopilando. Pero si no se usan bien, los datos no son útiles. La importancia de la ciencia de datos se basa en la capacidad de usar los datos para generar conocimientos útiles para una empresa.\n\nEl término “Ciencia de datos” surgió recientemente, pero dar sentido a los datos tiene una larga historia y ha sido discutido por científicos, estadísticos, bibliotecarios, informáticos y otros durante años.\nLa ciencia de datos antes se llamaba análisis de datos.\nLa estadística es parte de la ciencia de datos.\n\nEl análisis de los datos puede empezar desde una simple búsqueda en internet, sin embargo, contestar una pregunta específica con los datos es mucho más fácil que generar la inspiración acerca de qué preguntas hacer en primer lugar. Los científicos de datos necesitan saber estadística y saber programar, pero también necesitan capacidad para comunicar sus resultados, curiosidad, persistencia y un agudo sentido de lo que sus líderes encontrarán significante.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  }
+]
