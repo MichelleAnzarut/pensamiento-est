@@ -1,0 +1,2 @@
+# pensamiento-est
+ curso
