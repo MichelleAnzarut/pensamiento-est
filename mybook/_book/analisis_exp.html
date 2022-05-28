@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Felipe González y Michelle Anzarut">
-<meta name="dcterms.date" content="2022-05-03">
 
-<title>Pensamiento estadístico</title>
+<title>Pensamiento estadístico - 2&nbsp; Análisis exploratorio y visualización de datos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -26,7 +24,8 @@ ul.task-list{list-style: none;}
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
-<link href="./est_cd.html" rel="next">
+<link href="./referencias.html" rel="next">
+<link href="./est_cd.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -65,7 +64,7 @@ ul.task-list{list-style: none;}
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Pensamiento estadístico</h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Análisis exploratorio y visualización de datos</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -90,7 +89,7 @@ ul.task-list{list-style: none;}
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">Introducción</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Introducción</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -100,7 +99,7 @@ ul.task-list{list-style: none;}
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./analisis_exp.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Análisis exploratorio y visualización de datos</span></a>
+  <a href="./analisis_exp.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Análisis exploratorio y visualización de datos</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -117,9 +116,11 @@ ul.task-list{list-style: none;}
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a>
+  <li><a href="#formulación-de-preguntas" id="toc-formulación-de-preguntas" class="nav-link active" data-scroll-target="#formulación-de-preguntas"> <span class="header-section-number">2.1</span> Formulación de preguntas</a></li>
+  <li><a href="#tipos-de-datos-y-sus-resúmenes" id="toc-tipos-de-datos-y-sus-resúmenes" class="nav-link" data-scroll-target="#tipos-de-datos-y-sus-resúmenes"> <span class="header-section-number">2.2</span> Tipos de datos y sus resúmenes</a></li>
+  <li><a href="#principios-y-técnicas-de-visualización-de-datos" id="toc-principios-y-técnicas-de-visualización-de-datos" class="nav-link" data-scroll-target="#principios-y-técnicas-de-visualización-de-datos"> <span class="header-section-number">2.3</span> Principios y técnicas de visualización de datos</a>
   <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#referencias-y-fuentes-adicionales" id="toc-referencias-y-fuentes-adicionales" class="nav-link" data-scroll-target="#referencias-y-fuentes-adicionales"> <span class="header-section-number">2.3.1</span> Referencias y fuentes adicionales</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -129,7 +130,7 @@ ul.task-list{list-style: none;}
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Pensamiento estadístico</h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Análisis exploratorio y visualización de datos</span></h1>
 </div>
 
 
@@ -138,40 +139,44 @@ ul.task-list{list-style: none;}
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Felipe González y Michelle Anzarut </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">May 3, 2022</p>
-    </div>
-  </div>
     
   </div>
   
 
 </header>
 
-<section id="introducción" class="level1 unnumbered">
-<h1 class="unnumbered">Introducción</h1>
-<p>Comenzaremos con una introducción a la ciencia de datos. Definiremos la ciencia de datos, discutiremos su papel en una multitud de dominios y el tipo de habilidades que los científicos de datos necesitan.</p>
-<p>Después del módulo introductorio, el resto de este curso proporcionará la base estadística que sustenta el análisis de datos. La estadística juega un papel central en el enfoque de la ciencia de datos, en casi todas las soluciones basadas en datos, los científicos de datos ejercen el pensamiento estadístico al diseñar estrategias de recopilación de datos, obtener información de los métodos de visualización, obtener evidencia para la toma de decisiones y construir modelos para predecir tendencias futuras.</p>
-<p>El módulo final presentará la filosofía de la inferencia bayesiana y las técnicas de modelado bayesiano utilizando estudios de casos ilustrativos.</p>
-<section id="section" class="level3">
-<h3 class="anchored" data-anchor-id="section"></h3>
-<div id="fig-anonymous-1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><a href="http://creativecommons.org/licenses/by/4.0/"><img src="https://files.cdn.thinkific.com/file_uploads/416308/images/ed2/9ce/c19/1623612457643.jpg" class="img-fluid figure-img" alt="Licencia Creative Commons"></a></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Licencia Creative Commons</figcaption><p></p>
-</figure>
-</div>
-<p>Este trabajo está bajo una licencia: <a href="https://creativecommons.org/licenses/by-nc/4.0/">Attribution-NonCommercial 4.0 International</a></p>
-<p>Eres libre de adaptarlo para propósitos no comerciales otorgando el crédito correspondiente.</p>
+<p>El análisis exploratorio de datos es un proceso de investigación con el objetivo de descubrir patrones o relaciones, detectar anomalías, probar hipótesis y verificar suposiciones.</p>
+<p>Puede hacerse visualmente, con estadísticas resumidas en tablas o gráficas, pero también puede incluir técnicas avanzadas de procesamiento de datos.</p>
+<section id="formulación-de-preguntas" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="formulación-de-preguntas"><span class="header-section-number">2.1</span> Formulación de preguntas</h2>
+<p>El análisis exploratorio es fundamentalmente un proceso creativo, lo que lo convierte en difícil de enseñar en las clases de ciencias de datos. Como la mayoría de los procesos creativos, la clave es desarrollar conocimiento detallado del dominio para hacer preguntas de calidad. Es difícil hacer preguntas reveladoras al comienzo del análisis porque no sabe qué conocimientos están contenidos en el conjunto de datos, pero cada nueva pregunta expone aspectos de los datos y aumenta las posibilidades de hacer un descubrimiento. Muchos de los descubrimientos ocurren en el análisis exploratorio, por lo que no debe pasarse por alto, es esencial para descubrir información que se puede utilizar para responder a la pregunta de investigación planteada.</p>
+<p>A veces, al final de un análisis de datos exploratorio, la conclusión es que el conjunto de datos no es realmente apropiado para esta pregunta. En otros casos, no está claro que la pregunta que intentamos responder tenga relevancia inmediata. Uno de los objetivos del análisis exploratorio de datos es hacer que pensemos en estas posibilidades, en este punto, podemos refinar nuestra pregunta o recopilar nuevos datos, todo en un proceso iterativo para llegar al mejor resultado.</p>
+</section>
+<section id="tipos-de-datos-y-sus-resúmenes" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="tipos-de-datos-y-sus-resúmenes"><span class="header-section-number">2.2</span> Tipos de datos y sus resúmenes</h2>
+<p>Texto</p>
+</section>
+<section id="principios-y-técnicas-de-visualización-de-datos" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="principios-y-técnicas-de-visualización-de-datos"><span class="header-section-number">2.3</span> Principios y técnicas de visualización de datos</h2>
+<p>Uno de esos campos que ha tenido que crecer junto con la ciencia de datos es la visualización de datos.</p>
+<p>Edward Tufte describe en su libro Beautiful Evidence algunos principios para construir gráficas con datos:</p>
+<ol type="1">
+<li><p><strong>Muestra comparaciones</strong>: la evidencia siempre es relativa, si está comparando la Hipótesis A, tiene que haber alguna hipótesis alternativa con la que la va a comparar</p></li>
+<li><p><strong>Muestra causalidad</strong>: el uso de la palabra causalidad aquí no es formal, la idea es solo mostrar lo que creemos. Para confirmar realmente la causalidad tendríamos que hacer más investigación, pero las gráficas pueden sugerir posibles explicaciones.</p></li>
+<li><p><strong>Datos multivariados, muestra la mayor cantidad de datos posible en una sola gráfica:</strong> El mundo es intrínsecamente multivariado, hay muchas cosas que suceden todo el tiempo y si solo graficamos 2 o 3 variables no tendremos la imagen real de lo que está sucediendo.</p></li>
+<li><p><strong>Integrar la evidencia que tienes:</strong> Mostrar tanta evidencia como sea posible, usar tablas, diagramas y textos todos juntos, no dejar que las herramientas que utilizamos conduzcan la historia. Esa es una de las ventajas de utilizar lenguajes especializados en el análisis de datos, son muy flexibles.&nbsp;</p></li>
+<li><p><strong>Documentar la evidencia que presentamos</strong>: Ser claro en las gráficas, usando etiquetas y fuentes, también es importante preservar el código de computadora que hizo las gráficas.&nbsp;</p></li>
+<li><p><strong>El contenido es lo más importante</strong>: Si no tienes una historia interesante que contar, entonces no hay gráfica alguna que vaya a hacer una presentación interesante. ¿Cuál es la historia que intentas contar? ¿Cuáles son los datos que tienes?, luego pasamos a pensar ¿cuál es la mejor manera de presentar eso?</p></li>
+</ol>
+<section id="referencias-y-fuentes-adicionales" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="referencias-y-fuentes-adicionales"><span class="header-section-number">2.3.1</span> Referencias y fuentes adicionales</h3>
+<ul>
+<li><p>Tufte, E. R. (2006). <a href="https://www.edwardtufte.com/tufte/books_be"><em>Beautiful evidence</em></a> (Vol. 1). Cheshire, CT: Graphics Press.</p></li>
+<li><p>Peng, R. D. (2020). <a href="https://bookdown.org/rdpeng/exdata/">Exploratory Data Analysis with R Book</a></p></li>
+<li><p>Chambers, J.M., W.S. Cleveland, B. Kleiner, and P.A. Tukey. 1983. “Graphical Methods for Data Analysis.” <em>The Wadsworth Statistics/Probability Series. Boston, MA: Duxury</em>.</p></li>
+<li><p>Cleveland, William S. 1993. <em>Visualizing Data</em>. Hobart Press.å</p></li>
+</ul>
 
 
 </section>
@@ -259,10 +264,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./est_cd.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estadística en la ciencia de datos</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./est_cd.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estadística en la ciencia de datos</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./referencias.html" class="pagination-link">
+        <span class="nav-page-text">Referencias</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

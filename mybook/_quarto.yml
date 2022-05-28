@@ -7,11 +7,11 @@ book:
   date: "5/3/2022"
   chapters:
     - index.qmd
-    - intro.qmd
-    - summary.qmd
-    - references.qmd
+    - est_cd.qmd
+    - analisis_exp.qmd
+    - referencias.qmd
 
-bibliography: references.bib
+bibliography: referencias.bib
 
 format:
   html:
