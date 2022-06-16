@@ -16,8 +16,7 @@ bibliography: referencias.bib
 format:
   html:
     theme: cosmo
-  pdf:
-    documentclass: scrreprt
+    lang: es
 
 
 

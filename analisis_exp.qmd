@@ -14,6 +14,13 @@ A veces, al final de un análisis de datos exploratorio, la conclusión es que e
 
 Texto
 
+```{r}
+#| message: false
+#| warning: false
+library(tidyverse)
+ggplot(mtcars, aes(x = mpg, y = hp)) + geom_point()
+```
+
 ## Principios y técnicas de visualización de datos
 
 Uno de esos campos que ha tenido que crecer junto con la ciencia de datos es la visualización de datos.
