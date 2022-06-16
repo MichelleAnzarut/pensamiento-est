@@ -10,7 +10,7 @@ env:
   RENV_PATHS_ROOT: ~/renv
 
 permissions:
-  pages: write
+  contents: write
 
 name: Render and deploy Book
 
