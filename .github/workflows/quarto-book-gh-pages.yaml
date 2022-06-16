@@ -9,6 +9,9 @@ on:
 env:
   RENV_PATHS_ROOT: ~/renv
 
+permissions:
+  pages: write
+
 name: Render and deploy Book
 
 jobs:
