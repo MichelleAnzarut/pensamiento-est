@@ -54,5 +54,33 @@
     "title": "2  Análisis exploratorio y visualización de datos",
     "section": "2.3 Principios y técnicas de visualización de datos",
     "text": "2.3 Principios y técnicas de visualización de datos\nUno de esos campos que ha tenido que crecer junto con la ciencia de datos es la visualización de datos.\nEdward Tufte describe en su libro Beautiful Evidence algunos principios para construir gráficas con datos:\n\nMuestra comparaciones: la evidencia siempre es relativa, si está comparando la Hipótesis A, tiene que haber alguna hipótesis alternativa con la que la va a comparar\nMuestra causalidad: el uso de la palabra causalidad aquí no es formal, la idea es solo mostrar lo que creemos. Para confirmar realmente la causalidad tendríamos que hacer más investigación, pero las gráficas pueden sugerir posibles explicaciones.\nDatos multivariados, muestra la mayor cantidad de datos posible en una sola gráfica: El mundo es intrínsecamente multivariado, hay muchas cosas que suceden todo el tiempo y si solo graficamos 2 o 3 variables no tendremos la imagen real de lo que está sucediendo.\nIntegrar la evidencia que tienes: Mostrar tanta evidencia como sea posible, usar tablas, diagramas y textos todos juntos, no dejar que las herramientas que utilizamos conduzcan la historia. Esa es una de las ventajas de utilizar lenguajes especializados en el análisis de datos, son muy flexibles. \nDocumentar la evidencia que presentamos: Ser claro en las gráficas, usando etiquetas y fuentes, también es importante preservar el código de computadora que hizo las gráficas. \nEl contenido es lo más importante: Si no tienes una historia interesante que contar, entonces no hay gráfica alguna que vaya a hacer una presentación interesante. ¿Cuál es la historia que intentas contar? ¿Cuáles son los datos que tienes?, luego pasamos a pensar ¿cuál es la mejor manera de presentar eso?\n\n\n2.3.1 Referencias y fuentes adicionales\n\nTufte, E. R. (2006). Beautiful evidence (Vol. 1). Cheshire, CT: Graphics Press.\nPeng, R. D. (2020). Exploratory Data Analysis with R Book\nChambers, J.M., W.S. Cleveland, B. Kleiner, and P.A. Tukey. 1983. “Graphical Methods for Data Analysis.” The Wadsworth Statistics/Probability Series. Boston, MA: Duxury.\nCleveland, William S. 1993. Visualizing Data. Hobart Press.å"
+  },
+  {
+    "objectID": "inferencia-1.html",
+    "href": "inferencia-1.html",
+    "title": "3  Inferencia estadística",
+    "section": "",
+    "text": "A grandes rasgos, en la inferencia estadística buscamos hacer afirmaciones acerca de una colección de datos de la cual sólo tenemos información parcial.\nNos concentraremos en dos de las situaciones más comunes:\nPor ejemplo, consideremos esta población de 15 personas:\nPara una muestra de ellos tenemos información acerca de su estatura y peso. ¿Qué podríamos decir acerca de la estatura y el peso de la población general?\nEn este caso, la situación se ve como sigue. Imaginemos que tenemos 15 personas con dolor de cabeza, y obtenemos los siguientes datos:\nNuestra pregunta en este caso es del tipo: ¿ayuda la aspirina a reducir el dolor de cabeza en esta población? ¿qué tanto ayudaa? Igualmente, tenemos información incompleta, en el sentido de que sólo observamos un resultado potencial de cada persona, dependiendo de si tomó aspirina o no. Si supiéramos los dos resultados potenciales de cada persona entonces podríamos contestar la pregunta sin dificultad."
+  },
+  {
+    "objectID": "inferencia-1.html#proceso-de-selección-o-asignación",
+    "href": "inferencia-1.html#proceso-de-selección-o-asignación",
+    "title": "3  Inferencia estadística",
+    "section": "3.1 Proceso de selección o asignación",
+    "text": "3.1 Proceso de selección o asignación\nLas preguntas que planteamos arriba son difíciles de contestar cuando no conocemos bien el proceso de selección de individuos en la muestra o no conocemos el proceso de asignación de la aspirina.\nPor ejemplo, llegaríamos a conclusiones muy distintas si nos dijeran que:\nPrimera población:\n\nEscogimos las 5 personas que usan ropa talla chica.\nEscogimos las 5 personas que llegaron primero en una carrera de 100 metros.\nEscogimos las personas cuyo día de nacimiento era más bajo.\n\nSegunda población:\n\nSólo dimos aspirinas a las personas que reportaron un nivel de dolor de cabeza muy alto.\nSolo dimos aspirina a las personas que llegaron primero en una carrera de 100 metros.\nDimos una aspirina exclusivamente a las personas cuyo día de nacimiento es par.\n\nDiscute qué conclusiones podrías llegar en cada uno de estos escenarios.\nLos casos 1 y 2 en ambas poblaciones son en general más difíciles de resolver adecuadamente, y explicaremos con más ejemplos. Adicionalmente, es también más difícil cuantificar el nivel de incertidumbre de nuestras respuestas, pues dependen de muchos detalles del proceso de selección o asignación.\n\n\n\n\n\n\nSelección y asignación\n\n\n\nCuando el proceso de selección o asignación tiene relaciones complicadas con las cantidades de interés, puede ser muy difícil dar respuesta a preguntas inferenciales de manera adecuada.\n\n\nAdecuada en este contexto quiere decir correctamente calibrada, lo cual explicaremos más adelante."
+  },
+  {
+    "objectID": "inferencia-1.html#asignación-aleatoria-de-tratamientos",
+    "href": "inferencia-1.html#asignación-aleatoria-de-tratamientos",
+    "title": "3  Inferencia estadística",
+    "section": "3.2 Asignación aleatoria de tratamientos",
+    "text": "3.2 Asignación aleatoria de tratamientos"
+  },
+  {
+    "objectID": "inferencia-1.html#selección-aleatoria-de-muestra",
+    "href": "inferencia-1.html#selección-aleatoria-de-muestra",
+    "title": "3  Inferencia estadística",
+    "section": "3.3 Selección aleatoria de muestra",
+    "text": "3.3 Selección aleatoria de muestra"
   }
 ]
