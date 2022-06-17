@@ -9,6 +9,7 @@ book:
     - index.qmd
     - est_cd.qmd
     - analisis_exp.qmd
+    - inferencia-1.qmd
     - referencias.qmd
 
 bibliography: referencias.bib

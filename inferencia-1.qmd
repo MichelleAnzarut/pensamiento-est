@@ -1,0 +1,120 @@
+# Inferencia estadística
+
+A grandes rasgos, en la inferencia estadística buscamos hacer afirmaciones acerca 
+de una colección de datos de la cual sólo tenemos información parcial.
+
+Nos concentraremos en dos de las situaciones más comunes:
+
+1. **Inferencia a poblaciones**: el proceso generador de datos "selecciona" a algunos
+elementos de una población, y queremos decir algo acerca de la población completa.
+
+Por ejemplo, consideremos esta población de 15 personas:
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+library(tidyverse)
+library(gt)
+pob_1 <- tibble(id = 1:15, 
+       edad = sample(18:65, 15),
+       estatura = c(1.58, 1.72, 1.64, 1.50, rep(NA, 11)),
+       peso = c(60, 72, 56, 60, rep(NA, 11))
+       )
+pob_1 |> gt()
+```
+
+Para una muestra de ellos tenemos información acerca de su estatura y peso.
+¿Qué podríamos decir acerca de la estatura y el peso de la población general?
+
+2. **Inferencia causal**: el proceso generador "asigna" tratamientos a una población o parte
+de ella, y quisiéramos saber cómo se comportarían las unidades tratadas si no recibieran
+tratamiento, y también cómo se comportarían unidades no tratadas si recibieran el tratamiento.
+
+En este caso, la situación se ve como sigue. Imaginemos que tenemos 15 personas con
+dolor de cabeza, y obtenemos los siguientes datos:
+
+```{r}
+#| echo: false
+pob_2 <- tibble(id = 1:15, 
+       edad = sample(18:65, 15),
+       tomo_aspirina = sample(c(0, 1), 15, replace = TRUE)) |> 
+  mutate(dolor_con_aspirina = ifelse(tomo_aspirina == 1, 6, NA)) |> 
+  mutate(dolor_sin_aspirina = ifelse(tomo_aspirina == 0, 3, NA)) |> 
+  mutate(dolor = ifelse(tomo_aspirina == 1, dolor_con_aspirina, dolor_sin_aspirina)) |> 
+  arrange(id, edad, dolor_con_aspirina, dolor_sin_aspirina, tomo_aspirina, dolor)
+pob_2 |> gt()
+```
+
+Nuestra pregunta en este caso es del tipo: ¿ayuda la aspirina a reducir el dolor de cabeza en esta población? ¿qué tanto ayudaa? Igualmente, tenemos información incompleta, en el sentido de que
+sólo observamos un resultado potencial de cada persona, dependiendo
+de si tomó aspirina o no. Si supiéramos los dos resultados potenciales de cada persona
+entonces podríamos contestar la pregunta sin dificultad.
+
+
+::: callout-tip
+## Datos incompletos e incertidumbre
+
+Casi por regla general, el hecho de que tengamos datos incompletos
+implica que una respuesta apropiada a la pregunta incorporará cierto
+grado de incertidumbre, y por lo tanto conviene utilizar modelos de probabilidad 
+para describir esa incertidumbre.
+
+:::
+
+
+## Proceso de selección o asignación
+
+Las preguntas que planteamos arriba son difíciles de contestar cuando no
+conocemos bien el proceso de selección de individuos en la muestra o no
+conocemos el proceso de asignación de la aspirina. 
+
+Por ejemplo, llegaríamos a conclusiones muy distintas si nos dijeran que:
+
+Primera población:
+
+1. Escogimos las 5 personas que usan ropa talla chica.
+2. Escogimos las 5 personas que llegaron primero en una carrera de 100 metros.
+3. Escogimos las personas cuyo día de nacimiento era más bajo.
+
+Segunda población:
+
+1. Sólo dimos aspirinas a las personas que reportaron un nivel de dolor de cabeza muy alto.
+2. Solo dimos aspirina a las personas que llegaron primero en una carrera de 100 metros.
+3. Dimos una aspirina exclusivamente a las personas cuyo día de nacimiento es par.
+
+Discute qué conclusiones podrías llegar en cada uno de estos escenarios.
+
+Los casos 1 y 2 en ambas poblaciones son en general más difíciles de resolver
+adecuadamente, y explicaremos con más ejemplos. Adicionalmente, es también más difícil
+cuantificar el nivel de incertidumbre de nuestras respuestas, pues dependen de muchos
+detalles del proceso de selección o asignación.
+
+::: callout-tip
+## Selección y asignación
+
+Cuando el proceso de selección o asignación tiene relaciones complicadas
+con las cantidades de interés, puede ser muy difícil dar respuesta a preguntas
+inferenciales de manera adecuada.
+
+:::
+
+Adecuada en este contexto quiere decir correctamente calibrada, lo cual explicaremos
+más adelante.
+
+## Asignación aleatoria de tratamientos
+
+
+## Selección aleatoria de muestra
+
+
+
+
+
+
+
+
+
+
+
+
