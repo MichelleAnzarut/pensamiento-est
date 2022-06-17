@@ -1,2 +1,2 @@
-# pensamiento-est
+# Pensamiento estadístico
  curso
