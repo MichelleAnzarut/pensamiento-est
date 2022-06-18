@@ -1,0 +1,211 @@
+# Inferencia estadística
+
+A grandes rasgos, en la inferencia estadística buscamos hacer afirmaciones acerca 
+de una colección de datos de la cual sólo tenemos información parcial.
+
+Nos concentraremos en dos de las situaciones más comunes:
+
+1. **Inferencia a poblaciones**: el proceso generador de datos "selecciona" a algunos
+elementos de una población, y queremos decir algo acerca de la población completa.
+
+Por ejemplo, consideremos esta población de 15 personas:
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+library(tidyverse)
+library(gt)
+theme_set(theme_minimal())
+pob_1 <- tibble(id = 1:15, 
+       edad = sample(18:65, 15),
+       estatura = c(1.58, 1.72, 1.64, 1.50, rep(NA, 11)),
+       peso = c(60, 72, 56, 60, rep(NA, 11))
+       )
+pob_1 |> gt()
+```
+
+Para una muestra de ellos tenemos información acerca de su estatura y peso.
+¿Qué podríamos decir acerca de la estatura y el peso de la población general?
+
+2. **Inferencia causal**: el proceso generador "asigna" tratamientos a una población o parte
+de ella, y quisiéramos saber cómo se comportarían las unidades tratadas si no recibieran
+tratamiento, y también cómo se comportarían unidades no tratadas si recibieran el tratamiento.
+
+En este caso, la situación se ve como sigue. Imaginemos que tenemos 15 personas con
+dolor de cabeza, y obtenemos los siguientes datos:
+
+```{r}
+#| echo: false
+pob_2 <- tibble(id = 1:15, 
+       edad = sample(18:65, 15),
+       tomo_aspirina = sample(c(0, 1), 15, replace = TRUE)) |> 
+  mutate(dolor_con_aspirina = ifelse(tomo_aspirina == 1, 6, NA)) |> 
+  mutate(dolor_sin_aspirina = ifelse(tomo_aspirina == 0, 3, NA)) |> 
+  mutate(dolor = ifelse(tomo_aspirina == 1, dolor_con_aspirina, dolor_sin_aspirina)) |> 
+  select(id, edad, dolor_con_aspirina, dolor_sin_aspirina, tomo_aspirina, dolor)
+pob_2 |> gt()
+```
+
+Nuestra pregunta en este caso es del tipo: ¿ayuda la aspirina a reducir el dolor de cabeza en esta población? ¿qué tanto ayudaa? Igualmente, tenemos información incompleta, en el sentido de que
+sólo observamos un resultado potencial de cada persona, dependiendo
+de si tomó aspirina o no. Si supiéramos los dos resultados potenciales de cada persona
+entonces podríamos contestar la pregunta sin dificultad.
+
+
+::: callout-tip
+## Datos incompletos e incertidumbre
+
+Casi por regla general, el hecho de que tengamos datos incompletos
+implica que una respuesta apropiada a la pregunta incorporará cierto
+grado de incertidumbre, y por lo tanto conviene utilizar modelos de probabilidad 
+para describir esa incertidumbre.
+
+:::
+
+
+## Proceso de selección o asignación
+
+Las preguntas que planteamos arriba son difíciles de contestar cuando no
+conocemos bien el proceso de selección de individuos en la muestra o no
+conocemos el proceso de asignación de la aspirina. 
+
+Por ejemplo, llegaríamos a conclusiones muy distintas si nos dijeran que:
+
+Primera población:
+
+1. Escogimos las 5 personas que usan ropa talla chica.
+2. Escogimos las 5 personas que llegaron primero en una carrera de 100 metros.
+3. Escogimos las personas cuyo día de nacimiento era más bajo.
+
+Segunda población:
+
+1. Sólo dimos aspirinas a las personas que reportaron un nivel de dolor de cabeza muy alto.
+2. Solo dimos aspirina a las personas que llegaron primero en una carrera de 100 metros.
+3. Dimos una aspirina exclusivamente a las personas cuyo día de nacimiento es par.
+
+Discute qué conclusiones podrías llegar en cada uno de estos escenarios.
+
+Los casos 1 y 2 en ambas poblaciones son en general más difíciles de resolver
+adecuadamente, y explicaremos con más ejemplos. Adicionalmente, es también más difícil
+cuantificar el nivel de incertidumbre de nuestras respuestas, pues dependen de muchos
+detalles del proceso de selección o asignación.
+
+::: callout-tip
+## Selección y asignación
+
+Cuando el proceso de selección o asignación tiene relaciones complicadas
+con las cantidades de interés, puede ser muy difícil dar respuesta a preguntas
+inferenciales de manera adecuada.
+
+:::
+
+Adecuada en este contexto quiere decir correctamente calibrada, lo cual explicaremos
+más adelante.
+
+## Asignación aleatoria de tratamientos
+
+Veremos primero unos ejemplos de qué sucede cuando el tratamiento no se 
+asigna al azar. En un estudio de 1981, investigadores reportaron una
+asociación de cáncer de páncreas con consumo de café. Sus resultados agregados
+fueron:
+
+```{r}
+tab_cafe <- crossing(num_tazas = c(0, 1.5, 3.5, 5), enf_pancreas = c("si", "no")) |> 
+  mutate(n = c(88, 20, 271, 153, 154, 106, 88, 130))
+tab_cafe |> pivot_wider(names_from = enf_pancreas, values_from = n) |> 
+  mutate(prop_si = si / (no + si))
+```
+
+Lo que indica una *asociación* fuerte entre consumo de café y proporción de pacientes
+con cáncer de páncres. Los pacientes fueron entrevistados en varios hospitales. Se 
+seleccionaron pacientes con cáncer de páncreas y
+pacientes control fueron entrevistados que corresponden a los mismos doctores. 
+En el artículo señala que por la 
+naturaleza de las enfermedades, había una cantidad considerable de pacientes control
+con condiciones gastrointestinales.
+
+En este caso, el proceso de asignación de quién toma café y cuánto toma es complicado.
+Sabemos sin embargo que:
+
+- Pacientes con problemas gastrointestinales muchas veces tienen dietas restringidas y no se les permite tomar café, o sólo o una cantidad baja de café.
+- Las razones para ser seleccionados con más alta probabilidad en el estudio son: tener cáncer de páncreas, o tener otros problemas gastrointestinales. 
+
+Estas tres relaciones causales podemos representarlas como sigue:
+
+
+```{r}
+library(dagitty)
+library(ggdag)
+dag_cafe <- dagitty('dag{Cafe [exposure,pos="-1,-2"]
+  Cancer [outcome,pos="1,-2"]
+  Entrevistado [pos="0,-3"]
+  Gastro [pos="-1,-2.5"]
+  Gastro -> Cafe
+  Cancer -> Entrevistado; Gastro  -> Entrevistado; Cafe -> Cancer}')
+dag_cafe_tidy <- tidy_dagitty(dag_cafe) |> 
+  mutate(tipo = ifelse(name == "Cafe" & to == "Cancer", "dotted", "solid"))
+dag_cafe_tidy |>
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend, colour = tipo )) + 
+  geom_dag_edges(aes(edge_linetype = tipo)) +
+  geom_dag_point(colour = "salmon") +
+  geom_dag_text(colour = "gray20") +
+  theme_dag()
+```
+
+Las consecuencias de estas tres relaciones casuales es la siguiente:
+si alguien es entrevistado,
+puede ser por dos razones diferentes: tiene cáncer, o si no tiene cáncer,
+tiene probabilidad alta de tener problemas gastrointestinales. Esto 
+último qui2312
+implica, por restricciones de dieta, que tienden a tomar menos café. Con esto, hemos
+demostrado que con este esquema de selección puede aparecer naturalmente una asociación entre cáncer y consumo de café, **aún cuando no exista una relación causal entre tomar
+café y cáncer de páncreas**.
+
+El problema es que la exposición a nuestro "tratamiento" está siendo influida
+por una variable que tiene asociación con nuestro "resultado". Esto puede pasar
+de diferentes maneras. Quizá en este ejemplo podemos controlar por enfermedad
+gastrointestinal, pero no podemos estar seguros que no existan otras dificultades:
+por ejemplo, si café estuviera asociado con fumar, entonces esa podría ser
+otra razón por la que observaríamos una relación entre cáncer y café aún cuando
+no haya relación causal entre estas dos variables.
+
+Sin embargo, si aleatorizamos el tratamiento, la sitación se hace mucho más 
+simple. Si pudiéramos escoger a un grupo de personas, y asignar un grupo a tomar café y
+otro grupo a no tomarlo, tendríamos el diagrama:
+
+```{r}
+dag_cafe <- dagitty("dag{Gastro -> Cafe;  Cafe -> Cancer}")
+dag_cafe_tidy <- tidy_dagitty(dag_cafe) |> 
+  mutate(tipo = ifelse(name == "Cafe" & to == "Cancer", "dotted", "solid"))
+dag_cafe_tidy |>
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend, colour = tipo )) + 
+  geom_dag_edges(aes(edge_linetype = tipo)) +
+  geom_dag_point(colour = "salmon") +
+  geom_dag_text(colour = "gray20") +
+  theme_dag()
+```
+
+Y en este caso, podemos ver directamente la relación causal entre café y cáncer,
+aún cuando problemas gastrointestinales pueden afectar la asignación del tratamiento.
+
+
+
+
+
+
+
+
+## Selección aleatoria de muestra
+
+
+
+
+
+
+
+
+
+
+
+

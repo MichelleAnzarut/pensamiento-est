@@ -7,10 +7,24 @@ book:
   date: "5/3/2022"
   chapters:
     - index.qmd
-    - est_cd.qmd
-    - analisis_exp.qmd
-    - inferencia-1.qmd
-    - referencias.qmd
+    - part: est_cd.qmd
+      chapters:
+        - analisis-exp-1.qmd
+        - analisis-exp-categoricos.qmd
+        - analisis-exp-numericos.qmd
+    - part: basicos-inferencia.qmd
+      chapters:
+        - pruebas-hipotesis.qmd
+        - remuestreo-bootstrap.qmd
+    - part: probabilidad.qmd
+      chapters:
+        - modelo-prob.qmd
+        - prob-condicional.qmd
+        - modelos-continuos.qmd
+        - inferencia-modelos.qmd
+    - part: inferencia-bayesiana.qmd
+      chapters:
+        - modelos-bayesianos.qmd
 
 bibliography: referencias.bib
 

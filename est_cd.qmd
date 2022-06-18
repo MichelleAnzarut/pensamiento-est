@@ -1,4 +1,5 @@
-# Estadística en la ciencia de datos
+# Estadística y ciencia de datos
+
 
 La estadística es una rama de las matemáticas aplicadas que implica la recopilación, descripción, análisis e inferencia de conclusiones a partir de datos. Para hacer esto la estadística utiliza la teoría de la probabilidad.
 
