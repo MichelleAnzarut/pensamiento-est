@@ -99,10 +99,10 @@ Este es un ejemplo completo, aunque muy simple, de inferencia bayesiana. La
 estrategia de **inferencia bayesiana implica tomar decisiones basadas en las
 probabilidades posteriores.**
 
-```{block, type='ejercicio'}
+::: callout-tip
 ¿Cuál sería la estimación de máxima verosimilitud para este problema? ¿Cómo
 cuantificaríamos la incertidumbre en la estimación de máxima verosimilitud?
-```
+:::
 
 Finalmente, podríamos hacer predicciones usando la **posterior predictiva**.
 Si ${X}_{nv}$ es una nueva tirada adicional de la moneda que estamos usando, nos
@@ -210,21 +210,18 @@ tabla_inferencia %>%
   select(moneda_obs, theta, prob_inicial, verosimilitud, prob_posterior)
 ```
 
-```{block, type='ejercicio'}
-
+::: callout-tip
 - ¿Qué pasa cuando el número de soles es 0? ¿Cómo cambian las probabilidades
 posteriores de cada moneda?
 - Incrementa el número de volados, por ejemplo a 10. ¿Qué pasa si observaste
 8 soles, por ejemplo? ¿Y si observaste 0?
 - ¿Qué pasa si cambias las probabilidades iniciales (por ejemplo incrementas
 la probabilidad inicial de la moneda 1 a 0.9)?
-
-```
+:::
 
 Justifica las siguientes aseveraciones (para este ejemplo):
 
-```{block, type='ejercicio'}
-
+::: callout-tip
 - Las probabilidades posteriores o finales son una especie de punto intermedio
 entre verosimilitud y probablidades iniciales.
 - Si tenemos pocas observaciones, las probabilidades posteriores son similares
@@ -234,14 +231,15 @@ concentradas, y no es tan importante la inicial.
 - Si la inicial está muy concentrada en algún valor, la posterior requiere de
 muchas observaciones para que se pueda concentrar en otros valores diferentes a
 los de la inicial.
-
-```
+:::
 
 Ahora resumimos los elementos básicos de la inferencia bayesiana, que son
 relativamente simples:
 
-```{block, type='mathblock'}
-**Inferencia bayesiana.** Con la notación de arriba:
+::: callout-tip
+# Inferencia bayesiana. 
+
+Con la notación de arriba:
 
 - Como $X$ son los datos observados, llamamos a $P(X|\theta)$ la *verosimilitud*,
 proceso generador de datos o modelo de los datos.
@@ -259,7 +257,7 @@ $$P(\theta | X) \propto P(X | \theta) P(\theta)$$
 donde $\propto$ significa "proporcional a". No ponemos $P(X)$ pues como vimos
 arriba, es una constante de normalización.
 
-```
+:::
 
 
 En estadística Bayesiana, las probablidades posteriores $P(\theta|X)$ dan toda
@@ -386,10 +384,11 @@ $n$ pruebas iniciales agregamos
 4 pruebas adicionales fijas, con 2 éxitos y 2 fracasos, y calculamos la proporción
 usual de éxitos.
 
-```{block, type='ejercicio'}
+::: callout-tip
 Repite el análisis considerando en general $n$ pruebas, con $k$ éxitos. Utiliza la
 misma distribución inicial.
-```
+:::
+
 - Lo mismo aplica para el intervalo de 95% (¿cómo se calcularía integrando?). También
 puedes usar la aproximación de R, por ejemplo:
 
@@ -581,10 +580,6 @@ la *precisión* $\tau$ como el inverso de la varianza $\sigma^2$, entonces la po
 de $\mu$ es Normal con media $(1-\lambda) \mu_0 + \lambda\overline{x}$,
 y precisión $\tau_0 + n\tau$, donde $\lambda = \frac{n\tau}{\tau_0 + n\tau}$
 
-```{block, type='ejercicio'}
-Completa cuadrados para mostrar las fórmulas del modelo normal-normal con
-varianza conocida.
-```
 
 Más útil es el siguiente modelo:
 
@@ -827,7 +822,8 @@ usando la distribución predictiva posterior.
 
 ## Pasos de un análisis de datos bayesiano {-}
 
-```{block, type='comentario'}
+
+::: callout-tip
 Como vimos en los ejemplos, en general un análisis de datos bayesiano sigue los
 siguientes pasos:
 
@@ -844,7 +840,8 @@ los posibles valores de los parámetros.
 
 - Verificar que la distribución posterior replique los datos de manera
 razonable, de no ser el caso considerar otros modelos descriptivos para los datos.
-```
+
+:::
 
 
 
@@ -900,7 +897,6 @@ modelo, y se llama **verificación predictiva posterior**.
 Supongamos que tenemos la posterior $p(\theta | x)$. Podemos generar una nueva
 *replicación* de los datos como sigue:
 
-```{block, type='mathblock'}
 La distribución **predictiva posterior** genera nuevas observaciones a partir de
 la información observada. La denotamos como $p(\tilde{x}|x)$.
 
@@ -917,8 +913,6 @@ Si queremos una replicación de las observaciones de la predictiva posterior,
 - Simulamos del modelo de las observaciones $\tilde{x}_1, \tilde{x}_2,\ldots, \tilde{x}_n \sim p(\tilde{x}|\tilde{\theta})$,
 done $n$ es el tamaño de muestra de la muestra original $x$.
 - Usamos este método para producir conjuntos de datos simulados que comparamos con los observados para verificar nuestro modelo.
-
-```
 
 
 ### Ejemplo: estaturas de tenores {-}
@@ -949,14 +943,13 @@ ggplot(lineup_tbl, aes(x = estatura_cm)) + geom_histogram(binwidth = 2.5) +
 ```
 Con este tipo de gráficas podemos checar desajustes potenciales de nuestro modelo.
 
-```{block, type="ejercicio"}
 
 - ¿Puedes encontrar los datos verdaderos? ¿Cuántos seleccionaron los
 datos correctos?
 - Prueba hacer pruebas con una gráfica de cuantiles. ¿Qué problema
 ves y cómo lo resolverías?
 
-```
+
 
 
 ### Ejemplo: modelo Poisson {-}
@@ -1069,12 +1062,6 @@ qt(c(0.025, 0.5, 0.975), 2 * alpha_post) * s + mu_post
 
 
 
-```{block, type='ejercicio'}
-
-- Calcula la posterior predictiva del modelo Beta-Bernoulli y Beta-Binomial.
-- (Más difícil) Calcula la posterior predictiva del modelo Poisson-Gamma.
-
-```
 
 
 
