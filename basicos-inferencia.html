@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.592">
+<meta name="generator" content="quarto-0.9.598">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Pensamiento estadístico - 3&nbsp; Inferencia estadística</title>
+<title>Pensamiento estadístico - Inferencia estadística</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -15,6 +15,69 @@ span.underline{text-decoration: underline;}
 div.column{display: inline-block; vertical-align: top; width: 50%;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -25,8 +88,8 @@ ul.task-list{list-style: none;}
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./referencias.html" rel="next">
-<link href="./analisis_exp.html" rel="prev">
+<link href="./pruebas-hipotesis.html" rel="next">
+<link href="./analisis-exp-numericos.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -65,7 +128,7 @@ ul.task-list{list-style: none;}
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Inferencia estadística</span></h1>
+      <h1 class="quarto-secondary-nav-title">Inferencia estadística</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -93,26 +156,96 @@ ul.task-list{list-style: none;}
   <a href="./index.html" class="sidebar-item-text sidebar-link">Introducción</a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="./est_cd.html" class="sidebar-item-text sidebar-link">Estadística y ciencia de datos</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./est_cd.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estadística en la ciencia de datos</span></a>
+  <a href="./analisis-exp-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Análisis exploratorio</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./analisis_exp.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Análisis exploratorio y visualización de datos</span></a>
+  <a href="./analisis-exp-categoricos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Datos univariados categóricos</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./inferencia-1.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Inferencia estadística</span></a>
+  <a href="./analisis-exp-numericos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Descripción de datos univariados numéricos</span></a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="./basicos-inferencia.html" class="sidebar-item-text sidebar-link active">Inferencia estadística</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pruebas-hipotesis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Inferencia y Remuestreo</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./referencias.html" class="sidebar-item-text sidebar-link">Referencias</a>
+  <a href="./remuestreo-bootstrap.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Remuestreo: el bootstrap</span></a>
   </div>
 </li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="./probabilidad.html" class="sidebar-item-text sidebar-link">Introducción a teoría de probabilidades</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modelo-prob.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Básicos de probabilidad y simulación</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prob-condicional.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Probabilidad condicional e independencia</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modelos-continuos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Modelos probabilísticos para variables continuas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inferencia-modelos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Inferencia con modelos probabilísticos</span></a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="./inferencia-bayesiana.html" class="sidebar-item-text sidebar-link">Estadística Bayesiana</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modelos-bayesianos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Inferencia bayesiana</span></a>
+  </div>
+</li>
+    </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -122,9 +255,9 @@ ul.task-list{list-style: none;}
     <h2 id="toc-title">Indice de contenidos</h2>
    
   <ul>
-  <li><a href="#proceso-de-selección-o-asignación" id="toc-proceso-de-selección-o-asignación" class="nav-link active" data-scroll-target="#proceso-de-selección-o-asignación"> <span class="header-section-number">3.1</span> Proceso de selección o asignación</a></li>
-  <li><a href="#asignación-aleatoria-de-tratamientos" id="toc-asignación-aleatoria-de-tratamientos" class="nav-link" data-scroll-target="#asignación-aleatoria-de-tratamientos"> <span class="header-section-number">3.2</span> Asignación aleatoria de tratamientos</a></li>
-  <li><a href="#selección-aleatoria-de-muestra" id="toc-selección-aleatoria-de-muestra" class="nav-link" data-scroll-target="#selección-aleatoria-de-muestra"> <span class="header-section-number">3.3</span> Selección aleatoria de muestra</a></li>
+  <li><a href="#proceso-de-selección-o-asignación" id="toc-proceso-de-selección-o-asignación" class="nav-link active" data-scroll-target="#proceso-de-selección-o-asignación">Proceso de selección o asignación</a></li>
+  <li><a href="#asignación-aleatoria-de-tratamientos" id="toc-asignación-aleatoria-de-tratamientos" class="nav-link" data-scroll-target="#asignación-aleatoria-de-tratamientos">Asignación aleatoria de tratamientos</a></li>
+  <li><a href="#selección-aleatoria-de-muestra" id="toc-selección-aleatoria-de-muestra" class="nav-link" data-scroll-target="#selección-aleatoria-de-muestra">Selección aleatoria de muestra</a></li>
   </ul>
 </nav>
     </div>
@@ -133,7 +266,7 @@ ul.task-list{list-style: none;}
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Inferencia estadística</span></h1>
+<h1 class="title d-none d-lg-block">Inferencia estadística</h1>
 </div>
 
 
@@ -156,12 +289,12 @@ ul.task-list{list-style: none;}
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="fknfjdaywz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="zpkmlyawoa" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#fknfjdaywz .gt_table {
+#zpkmlyawoa .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -186,7 +319,7 @@ ul.task-list{list-style: none;}
   border-left-color: #D3D3D3;
 }
 
-#fknfjdaywz .gt_heading {
+#zpkmlyawoa .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -198,7 +331,7 @@ ul.task-list{list-style: none;}
   border-right-color: #D3D3D3;
 }
 
-#fknfjdaywz .gt_title {
+#zpkmlyawoa .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -210,7 +343,7 @@ ul.task-list{list-style: none;}
   border-bottom-width: 0;
 }
 
-#fknfjdaywz .gt_subtitle {
+#zpkmlyawoa .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -222,13 +355,13 @@ ul.task-list{list-style: none;}
   border-top-width: 0;
 }
 
-#fknfjdaywz .gt_bottom_border {
+#zpkmlyawoa .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fknfjdaywz .gt_col_headings {
+#zpkmlyawoa .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -243,7 +376,7 @@ ul.task-list{list-style: none;}
   border-right-color: #D3D3D3;
 }
 
-#fknfjdaywz .gt_col_heading {
+#zpkmlyawoa .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -263,7 +396,7 @@ ul.task-list{list-style: none;}
   overflow-x: hidden;
 }
 
-#fknfjdaywz .gt_column_spanner_outer {
+#zpkmlyawoa .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -275,15 +408,15 @@ ul.task-list{list-style: none;}
   padding-right: 4px;
 }
 
-#fknfjdaywz .gt_column_spanner_outer:first-child {
+#zpkmlyawoa .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fknfjdaywz .gt_column_spanner_outer:last-child {
+#zpkmlyawoa .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fknfjdaywz .gt_column_spanner {
+#zpkmlyawoa .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -295,7 +428,7 @@ ul.task-list{list-style: none;}
   width: 100%;
 }
 
-#fknfjdaywz .gt_group_heading {
+#zpkmlyawoa .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -320,7 +453,7 @@ ul.task-list{list-style: none;}
   vertical-align: middle;
 }
 
-#fknfjdaywz .gt_empty_group_heading {
+#zpkmlyawoa .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -335,15 +468,15 @@ ul.task-list{list-style: none;}
   vertical-align: middle;
 }
 
-#fknfjdaywz .gt_from_md > :first-child {
+#zpkmlyawoa .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fknfjdaywz .gt_from_md > :last-child {
+#zpkmlyawoa .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fknfjdaywz .gt_row {
+#zpkmlyawoa .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -362,7 +495,7 @@ ul.task-list{list-style: none;}
   overflow-x: hidden;
 }
 
-#fknfjdaywz .gt_stub {
+#zpkmlyawoa .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -375,7 +508,7 @@ ul.task-list{list-style: none;}
   padding-right: 5px;
 }
 
-#fknfjdaywz .gt_stub_row_group {
+#zpkmlyawoa .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -389,11 +522,11 @@ ul.task-list{list-style: none;}
   vertical-align: top;
 }
 
-#fknfjdaywz .gt_row_group_first td {
+#zpkmlyawoa .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fknfjdaywz .gt_summary_row {
+#zpkmlyawoa .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -403,16 +536,16 @@ ul.task-list{list-style: none;}
   padding-right: 5px;
 }
 
-#fknfjdaywz .gt_first_summary_row {
+#zpkmlyawoa .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fknfjdaywz .gt_first_summary_row.thick {
+#zpkmlyawoa .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fknfjdaywz .gt_last_summary_row {
+#zpkmlyawoa .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -422,7 +555,7 @@ ul.task-list{list-style: none;}
   border-bottom-color: #D3D3D3;
 }
 
-#fknfjdaywz .gt_grand_summary_row {
+#zpkmlyawoa .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -432,7 +565,7 @@ ul.task-list{list-style: none;}
   padding-right: 5px;
 }
 
-#fknfjdaywz .gt_first_grand_summary_row {
+#zpkmlyawoa .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -442,11 +575,11 @@ ul.task-list{list-style: none;}
   border-top-color: #D3D3D3;
 }
 
-#fknfjdaywz .gt_striped {
+#zpkmlyawoa .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fknfjdaywz .gt_table_body {
+#zpkmlyawoa .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -455,7 +588,7 @@ ul.task-list{list-style: none;}
   border-bottom-color: #D3D3D3;
 }
 
-#fknfjdaywz .gt_footnotes {
+#zpkmlyawoa .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -469,7 +602,7 @@ ul.task-list{list-style: none;}
   border-right-color: #D3D3D3;
 }
 
-#fknfjdaywz .gt_footnote {
+#zpkmlyawoa .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -478,7 +611,7 @@ ul.task-list{list-style: none;}
   padding-right: 5px;
 }
 
-#fknfjdaywz .gt_sourcenotes {
+#zpkmlyawoa .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -492,7 +625,7 @@ ul.task-list{list-style: none;}
   border-right-color: #D3D3D3;
 }
 
-#fknfjdaywz .gt_sourcenote {
+#zpkmlyawoa .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -500,36 +633,36 @@ ul.task-list{list-style: none;}
   padding-right: 5px;
 }
 
-#fknfjdaywz .gt_left {
+#zpkmlyawoa .gt_left {
   text-align: left;
 }
 
-#fknfjdaywz .gt_center {
+#zpkmlyawoa .gt_center {
   text-align: center;
 }
 
-#fknfjdaywz .gt_right {
+#zpkmlyawoa .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fknfjdaywz .gt_font_normal {
+#zpkmlyawoa .gt_font_normal {
   font-weight: normal;
 }
 
-#fknfjdaywz .gt_font_bold {
+#zpkmlyawoa .gt_font_bold {
   font-weight: bold;
 }
 
-#fknfjdaywz .gt_font_italic {
+#zpkmlyawoa .gt_font_italic {
   font-style: italic;
 }
 
-#fknfjdaywz .gt_super {
+#zpkmlyawoa .gt_super {
   font-size: 65%;
 }
 
-#fknfjdaywz .gt_two_val_uncert {
+#zpkmlyawoa .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -538,31 +671,31 @@ ul.task-list{list-style: none;}
   margin-left: 0.1em;
 }
 
-#fknfjdaywz .gt_footnote_marks {
+#zpkmlyawoa .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#fknfjdaywz .gt_asterisk {
+#zpkmlyawoa .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fknfjdaywz .gt_slash_mark {
+#zpkmlyawoa .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#fknfjdaywz .gt_fraction_numerator {
+#zpkmlyawoa .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#fknfjdaywz .gt_fraction_denominator {
+#zpkmlyawoa .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -580,63 +713,63 @@ ul.task-list{list-style: none;}
   </thead>
   <tbody class="gt_table_body">
     <tr><td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">63</td>
+<td class="gt_row gt_right">36</td>
 <td class="gt_row gt_right">1.58</td>
 <td class="gt_row gt_right">60</td></tr>
     <tr><td class="gt_row gt_right">2</td>
-<td class="gt_row gt_right">28</td>
+<td class="gt_row gt_right">49</td>
 <td class="gt_row gt_right">1.72</td>
 <td class="gt_row gt_right">72</td></tr>
     <tr><td class="gt_row gt_right">3</td>
-<td class="gt_row gt_right">60</td>
+<td class="gt_row gt_right">41</td>
 <td class="gt_row gt_right">1.64</td>
 <td class="gt_row gt_right">56</td></tr>
     <tr><td class="gt_row gt_right">4</td>
-<td class="gt_row gt_right">55</td>
+<td class="gt_row gt_right">42</td>
 <td class="gt_row gt_right">1.50</td>
 <td class="gt_row gt_right">60</td></tr>
     <tr><td class="gt_row gt_right">5</td>
-<td class="gt_row gt_right">23</td>
+<td class="gt_row gt_right">57</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">NA</td></tr>
     <tr><td class="gt_row gt_right">6</td>
-<td class="gt_row gt_right">53</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td></tr>
-    <tr><td class="gt_row gt_right">7</td>
-<td class="gt_row gt_right">32</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td></tr>
-    <tr><td class="gt_row gt_right">8</td>
-<td class="gt_row gt_right">42</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td></tr>
-    <tr><td class="gt_row gt_right">9</td>
-<td class="gt_row gt_right">51</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td></tr>
-    <tr><td class="gt_row gt_right">10</td>
-<td class="gt_row gt_right">35</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td></tr>
-    <tr><td class="gt_row gt_right">11</td>
 <td class="gt_row gt_right">50</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">NA</td></tr>
-    <tr><td class="gt_row gt_right">12</td>
-<td class="gt_row gt_right">37</td>
+    <tr><td class="gt_row gt_right">7</td>
+<td class="gt_row gt_right">58</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">NA</td></tr>
-    <tr><td class="gt_row gt_right">13</td>
+    <tr><td class="gt_row gt_right">8</td>
+<td class="gt_row gt_right">35</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">NA</td></tr>
+    <tr><td class="gt_row gt_right">9</td>
+<td class="gt_row gt_right">52</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">NA</td></tr>
+    <tr><td class="gt_row gt_right">10</td>
 <td class="gt_row gt_right">61</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">NA</td></tr>
+    <tr><td class="gt_row gt_right">11</td>
+<td class="gt_row gt_right">21</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">NA</td></tr>
+    <tr><td class="gt_row gt_right">12</td>
+<td class="gt_row gt_right">22</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">NA</td></tr>
+    <tr><td class="gt_row gt_right">13</td>
+<td class="gt_row gt_right">19</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">NA</td></tr>
     <tr><td class="gt_row gt_right">14</td>
-<td class="gt_row gt_right">36</td>
+<td class="gt_row gt_right">48</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">NA</td></tr>
     <tr><td class="gt_row gt_right">15</td>
-<td class="gt_row gt_right">18</td>
+<td class="gt_row gt_right">55</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">NA</td></tr>
   </tbody>
@@ -654,12 +787,12 @@ ul.task-list{list-style: none;}
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="vjspsygici" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="oesssxsjvm" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#vjspsygici .gt_table {
+#oesssxsjvm .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -684,7 +817,7 @@ ul.task-list{list-style: none;}
   border-left-color: #D3D3D3;
 }
 
-#vjspsygici .gt_heading {
+#oesssxsjvm .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -696,7 +829,7 @@ ul.task-list{list-style: none;}
   border-right-color: #D3D3D3;
 }
 
-#vjspsygici .gt_title {
+#oesssxsjvm .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -708,7 +841,7 @@ ul.task-list{list-style: none;}
   border-bottom-width: 0;
 }
 
-#vjspsygici .gt_subtitle {
+#oesssxsjvm .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -720,13 +853,13 @@ ul.task-list{list-style: none;}
   border-top-width: 0;
 }
 
-#vjspsygici .gt_bottom_border {
+#oesssxsjvm .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vjspsygici .gt_col_headings {
+#oesssxsjvm .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -741,7 +874,7 @@ ul.task-list{list-style: none;}
   border-right-color: #D3D3D3;
 }
 
-#vjspsygici .gt_col_heading {
+#oesssxsjvm .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -761,7 +894,7 @@ ul.task-list{list-style: none;}
   overflow-x: hidden;
 }
 
-#vjspsygici .gt_column_spanner_outer {
+#oesssxsjvm .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -773,15 +906,15 @@ ul.task-list{list-style: none;}
   padding-right: 4px;
 }
 
-#vjspsygici .gt_column_spanner_outer:first-child {
+#oesssxsjvm .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vjspsygici .gt_column_spanner_outer:last-child {
+#oesssxsjvm .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vjspsygici .gt_column_spanner {
+#oesssxsjvm .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -793,7 +926,7 @@ ul.task-list{list-style: none;}
   width: 100%;
 }
 
-#vjspsygici .gt_group_heading {
+#oesssxsjvm .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -818,7 +951,7 @@ ul.task-list{list-style: none;}
   vertical-align: middle;
 }
 
-#vjspsygici .gt_empty_group_heading {
+#oesssxsjvm .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -833,15 +966,15 @@ ul.task-list{list-style: none;}
   vertical-align: middle;
 }
 
-#vjspsygici .gt_from_md > :first-child {
+#oesssxsjvm .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vjspsygici .gt_from_md > :last-child {
+#oesssxsjvm .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vjspsygici .gt_row {
+#oesssxsjvm .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -860,7 +993,7 @@ ul.task-list{list-style: none;}
   overflow-x: hidden;
 }
 
-#vjspsygici .gt_stub {
+#oesssxsjvm .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -873,7 +1006,7 @@ ul.task-list{list-style: none;}
   padding-right: 5px;
 }
 
-#vjspsygici .gt_stub_row_group {
+#oesssxsjvm .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -887,11 +1020,11 @@ ul.task-list{list-style: none;}
   vertical-align: top;
 }
 
-#vjspsygici .gt_row_group_first td {
+#oesssxsjvm .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vjspsygici .gt_summary_row {
+#oesssxsjvm .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -901,16 +1034,16 @@ ul.task-list{list-style: none;}
   padding-right: 5px;
 }
 
-#vjspsygici .gt_first_summary_row {
+#oesssxsjvm .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vjspsygici .gt_first_summary_row.thick {
+#oesssxsjvm .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vjspsygici .gt_last_summary_row {
+#oesssxsjvm .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -920,7 +1053,7 @@ ul.task-list{list-style: none;}
   border-bottom-color: #D3D3D3;
 }
 
-#vjspsygici .gt_grand_summary_row {
+#oesssxsjvm .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -930,7 +1063,7 @@ ul.task-list{list-style: none;}
   padding-right: 5px;
 }
 
-#vjspsygici .gt_first_grand_summary_row {
+#oesssxsjvm .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -940,11 +1073,11 @@ ul.task-list{list-style: none;}
   border-top-color: #D3D3D3;
 }
 
-#vjspsygici .gt_striped {
+#oesssxsjvm .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vjspsygici .gt_table_body {
+#oesssxsjvm .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -953,7 +1086,7 @@ ul.task-list{list-style: none;}
   border-bottom-color: #D3D3D3;
 }
 
-#vjspsygici .gt_footnotes {
+#oesssxsjvm .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -967,7 +1100,7 @@ ul.task-list{list-style: none;}
   border-right-color: #D3D3D3;
 }
 
-#vjspsygici .gt_footnote {
+#oesssxsjvm .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -976,7 +1109,7 @@ ul.task-list{list-style: none;}
   padding-right: 5px;
 }
 
-#vjspsygici .gt_sourcenotes {
+#oesssxsjvm .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -990,7 +1123,7 @@ ul.task-list{list-style: none;}
   border-right-color: #D3D3D3;
 }
 
-#vjspsygici .gt_sourcenote {
+#oesssxsjvm .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -998,36 +1131,36 @@ ul.task-list{list-style: none;}
   padding-right: 5px;
 }
 
-#vjspsygici .gt_left {
+#oesssxsjvm .gt_left {
   text-align: left;
 }
 
-#vjspsygici .gt_center {
+#oesssxsjvm .gt_center {
   text-align: center;
 }
 
-#vjspsygici .gt_right {
+#oesssxsjvm .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vjspsygici .gt_font_normal {
+#oesssxsjvm .gt_font_normal {
   font-weight: normal;
 }
 
-#vjspsygici .gt_font_bold {
+#oesssxsjvm .gt_font_bold {
   font-weight: bold;
 }
 
-#vjspsygici .gt_font_italic {
+#oesssxsjvm .gt_font_italic {
   font-style: italic;
 }
 
-#vjspsygici .gt_super {
+#oesssxsjvm .gt_super {
   font-size: 65%;
 }
 
-#vjspsygici .gt_two_val_uncert {
+#oesssxsjvm .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -1036,31 +1169,31 @@ ul.task-list{list-style: none;}
   margin-left: 0.1em;
 }
 
-#vjspsygici .gt_footnote_marks {
+#oesssxsjvm .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#vjspsygici .gt_asterisk {
+#oesssxsjvm .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vjspsygici .gt_slash_mark {
+#oesssxsjvm .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#vjspsygici .gt_fraction_numerator {
+#oesssxsjvm .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#vjspsygici .gt_fraction_denominator {
+#oesssxsjvm .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -1072,102 +1205,102 @@ ul.task-list{list-style: none;}
     <tr>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">id</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">edad</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">tomo_aspirina</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">dolor_con_aspirina</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">dolor_sin_aspirina</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">tomo_aspirina</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">dolor</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
     <tr><td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">37</td>
-<td class="gt_row gt_right">0</td>
+<td class="gt_row gt_right">41</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">0</td>
 <td class="gt_row gt_right">3</td></tr>
     <tr><td class="gt_row gt_right">2</td>
-<td class="gt_row gt_right">53</td>
-<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_right">36</td>
 <td class="gt_row gt_right">6</td>
 <td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">1</td>
 <td class="gt_row gt_right">6</td></tr>
     <tr><td class="gt_row gt_right">3</td>
-<td class="gt_row gt_right">52</td>
-<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_right">24</td>
 <td class="gt_row gt_right">6</td>
 <td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">1</td>
 <td class="gt_row gt_right">6</td></tr>
     <tr><td class="gt_row gt_right">4</td>
-<td class="gt_row gt_right">35</td>
-<td class="gt_row gt_right">0</td>
+<td class="gt_row gt_right">33</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">0</td>
 <td class="gt_row gt_right">3</td></tr>
     <tr><td class="gt_row gt_right">5</td>
-<td class="gt_row gt_right">32</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">3</td>
-<td class="gt_row gt_right">3</td></tr>
-    <tr><td class="gt_row gt_right">6</td>
-<td class="gt_row gt_right">64</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">3</td>
-<td class="gt_row gt_right">3</td></tr>
-    <tr><td class="gt_row gt_right">7</td>
-<td class="gt_row gt_right">48</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">3</td>
-<td class="gt_row gt_right">3</td></tr>
-    <tr><td class="gt_row gt_right">8</td>
-<td class="gt_row gt_right">54</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">3</td>
-<td class="gt_row gt_right">3</td></tr>
-    <tr><td class="gt_row gt_right">9</td>
-<td class="gt_row gt_right">41</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">3</td>
-<td class="gt_row gt_right">3</td></tr>
-    <tr><td class="gt_row gt_right">10</td>
-<td class="gt_row gt_right">50</td>
-<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_right">27</td>
 <td class="gt_row gt_right">6</td>
 <td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_right">6</td></tr>
+    <tr><td class="gt_row gt_right">6</td>
+<td class="gt_row gt_right">56</td>
+<td class="gt_row gt_right">6</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_right">6</td></tr>
+    <tr><td class="gt_row gt_right">7</td>
+<td class="gt_row gt_right">40</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">0</td>
+<td class="gt_row gt_right">3</td></tr>
+    <tr><td class="gt_row gt_right">8</td>
+<td class="gt_row gt_right">21</td>
+<td class="gt_row gt_right">6</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_right">6</td></tr>
+    <tr><td class="gt_row gt_right">9</td>
+<td class="gt_row gt_right">64</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">0</td>
+<td class="gt_row gt_right">3</td></tr>
+    <tr><td class="gt_row gt_right">10</td>
+<td class="gt_row gt_right">18</td>
+<td class="gt_row gt_right">6</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">1</td>
 <td class="gt_row gt_right">6</td></tr>
     <tr><td class="gt_row gt_right">11</td>
-<td class="gt_row gt_right">33</td>
-<td class="gt_row gt_right">0</td>
+<td class="gt_row gt_right">19</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">0</td>
 <td class="gt_row gt_right">3</td></tr>
     <tr><td class="gt_row gt_right">12</td>
-<td class="gt_row gt_right">62</td>
-<td class="gt_row gt_right">0</td>
+<td class="gt_row gt_right">42</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">0</td>
 <td class="gt_row gt_right">3</td></tr>
     <tr><td class="gt_row gt_right">13</td>
 <td class="gt_row gt_right">30</td>
-<td class="gt_row gt_right">0</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">0</td>
 <td class="gt_row gt_right">3</td></tr>
     <tr><td class="gt_row gt_right">14</td>
-<td class="gt_row gt_right">19</td>
-<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_right">47</td>
 <td class="gt_row gt_right">6</td>
 <td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">1</td>
 <td class="gt_row gt_right">6</td></tr>
     <tr><td class="gt_row gt_right">15</td>
-<td class="gt_row gt_right">47</td>
-<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_right">59</td>
 <td class="gt_row gt_right">6</td>
 <td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">1</td>
 <td class="gt_row gt_right">6</td></tr>
   </tbody>
   
@@ -1190,8 +1323,8 @@ Datos incompletos e incertidumbre
 <p>Casi por regla general, el hecho de que tengamos datos incompletos implica que una respuesta apropiada a la pregunta incorporará cierto grado de incertidumbre, y por lo tanto conviene utilizar modelos de probabilidad para describir esa incertidumbre.</p>
 </div>
 </div>
-<section id="proceso-de-selección-o-asignación" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="proceso-de-selección-o-asignación"><span class="header-section-number">3.1</span> Proceso de selección o asignación</h2>
+<section id="proceso-de-selección-o-asignación" class="level2">
+<h2 class="anchored" data-anchor-id="proceso-de-selección-o-asignación">Proceso de selección o asignación</h2>
 <p>Las preguntas que planteamos arriba son difíciles de contestar cuando no conocemos bien el proceso de selección de individuos en la muestra o no conocemos el proceso de asignación de la aspirina.</p>
 <p>Por ejemplo, llegaríamos a conclusiones muy distintas si nos dijeran que:</p>
 <p>Primera población:</p>
@@ -1223,11 +1356,82 @@ Selección y asignación
 </div>
 <p>Adecuada en este contexto quiere decir correctamente calibrada, lo cual explicaremos más adelante.</p>
 </section>
-<section id="asignación-aleatoria-de-tratamientos" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="asignación-aleatoria-de-tratamientos"><span class="header-section-number">3.2</span> Asignación aleatoria de tratamientos</h2>
+<section id="asignación-aleatoria-de-tratamientos" class="level2">
+<h2 class="anchored" data-anchor-id="asignación-aleatoria-de-tratamientos">Asignación aleatoria de tratamientos</h2>
+<p>Veremos primero unos ejemplos de qué sucede cuando el tratamiento no se asigna al azar. En un estudio de 1981, investigadores reportaron una asociación de cáncer de páncreas con consumo de café. Sus resultados agregados fueron:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>tab_cafe <span class="ot">&lt;-</span> <span class="fu">crossing</span>(<span class="at">num_tazas =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">1.5</span>, <span class="fl">3.5</span>, <span class="dv">5</span>), <span class="at">enf_pancreas =</span> <span class="fu">c</span>(<span class="st">"si"</span>, <span class="st">"no"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n =</span> <span class="fu">c</span>(<span class="dv">88</span>, <span class="dv">20</span>, <span class="dv">271</span>, <span class="dv">153</span>, <span class="dv">154</span>, <span class="dv">106</span>, <span class="dv">88</span>, <span class="dv">130</span>))</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>tab_cafe <span class="sc">|&gt;</span> <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> enf_pancreas, <span class="at">values_from =</span> n) <span class="sc">|&gt;</span> </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop_si =</span> si <span class="sc">/</span> (no <span class="sc">+</span> si))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 4
+  num_tazas    no    si prop_si
+      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+1       0      88    20   0.185
+2       1.5   271   153   0.361
+3       3.5   154   106   0.408
+4       5      88   130   0.596</code></pre>
+</div>
+</div>
+<p>Lo que indica una <em>asociación</em> fuerte entre consumo de café y proporción de pacientes con cáncer de páncres. Los pacientes fueron entrevistados en varios hospitales. Se seleccionaron pacientes con cáncer de páncreas y pacientes control fueron entrevistados que corresponden a los mismos doctores. En el artículo señala que por la naturaleza de las enfermedades, había una cantidad considerable de pacientes control con condiciones gastrointestinales.</p>
+<p>En este caso, el proceso de asignación de quién toma café y cuánto toma es complicado. Sabemos sin embargo que:</p>
+<ul>
+<li>Pacientes con problemas gastrointestinales muchas veces tienen dietas restringidas y no se les permite tomar café, o sólo o una cantidad baja de café.</li>
+<li>Las razones para ser seleccionados con más alta probabilidad en el estudio son: tener cáncer de páncreas, o tener otros problemas gastrointestinales.</li>
+</ul>
+<p>Estas tres relaciones causales podemos representarlas como sigue:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dagitty)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggdag)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'ggdag'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:stats':
+
+    filter</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dag_cafe <span class="ot">&lt;-</span> <span class="fu">dagitty</span>(<span class="st">'dag{Cafe [exposure,pos="-1,-2"]</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="st">  Cancer [outcome,pos="1,-2"]</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="st">  Entrevistado [pos="0,-3"]</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="st">  Gastro [pos="-1,-2.5"]</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="st">  Gastro -&gt; Cafe</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="st">  Cancer -&gt; Entrevistado; Gastro  -&gt; Entrevistado; Cafe -&gt; Cancer}'</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>dag_cafe_tidy <span class="ot">&lt;-</span> <span class="fu">tidy_dagitty</span>(dag_cafe) <span class="sc">|&gt;</span> </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tipo =</span> <span class="fu">ifelse</span>(name <span class="sc">==</span> <span class="st">"Cafe"</span> <span class="sc">&amp;</span> to <span class="sc">==</span> <span class="st">"Cancer"</span>, <span class="st">"dotted"</span>, <span class="st">"solid"</span>))</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>dag_cafe_tidy <span class="sc">|&gt;</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">xend =</span> xend, <span class="at">yend =</span> yend, <span class="at">colour =</span> tipo )) <span class="sc">+</span> </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dag_edges</span>(<span class="fu">aes</span>(<span class="at">edge_linetype =</span> tipo)) <span class="sc">+</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dag_point</span>(<span class="at">colour =</span> <span class="st">"salmon"</span>) <span class="sc">+</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dag_text</span>(<span class="at">colour =</span> <span class="st">"gray20"</span>) <span class="sc">+</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dag</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="basicos-inferencia_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Las consecuencias de estas tres relaciones casuales es la siguiente: si alguien es entrevistado, puede ser por dos razones diferentes: tiene cáncer, o si no tiene cáncer, tiene probabilidad alta de tener problemas gastrointestinales. Esto último qui2312 implica, por restricciones de dieta, que tienden a tomar menos café. Con esto, hemos demostrado que con este esquema de selección puede aparecer naturalmente una asociación entre cáncer y consumo de café, <strong>aún cuando no exista una relación causal entre tomar café y cáncer de páncreas</strong>.</p>
+<p>El problema es que la exposición a nuestro “tratamiento” está siendo influida por una variable que tiene asociación con nuestro “resultado”. Esto puede pasar de diferentes maneras. Quizá en este ejemplo podemos controlar por enfermedad gastrointestinal, pero no podemos estar seguros que no existan otras dificultades: por ejemplo, si café estuviera asociado con fumar, entonces esa podría ser otra razón por la que observaríamos una relación entre cáncer y café aún cuando no haya relación causal entre estas dos variables.</p>
+<p>Sin embargo, si aleatorizamos el tratamiento, la sitación se hace mucho más simple. Si pudiéramos escoger a un grupo de personas, y asignar un grupo a tomar café y otro grupo a no tomarlo, tendríamos el diagrama:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dag_cafe <span class="ot">&lt;-</span> <span class="fu">dagitty</span>(<span class="st">"dag{Gastro -&gt; Cafe;  Cafe -&gt; Cancer}"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>dag_cafe_tidy <span class="ot">&lt;-</span> <span class="fu">tidy_dagitty</span>(dag_cafe) <span class="sc">|&gt;</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tipo =</span> <span class="fu">ifelse</span>(name <span class="sc">==</span> <span class="st">"Cafe"</span> <span class="sc">&amp;</span> to <span class="sc">==</span> <span class="st">"Cancer"</span>, <span class="st">"dotted"</span>, <span class="st">"solid"</span>))</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>dag_cafe_tidy <span class="sc">|&gt;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">xend =</span> xend, <span class="at">yend =</span> yend, <span class="at">colour =</span> tipo )) <span class="sc">+</span> </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dag_edges</span>(<span class="fu">aes</span>(<span class="at">edge_linetype =</span> tipo)) <span class="sc">+</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dag_point</span>(<span class="at">colour =</span> <span class="st">"salmon"</span>) <span class="sc">+</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dag_text</span>(<span class="at">colour =</span> <span class="st">"gray20"</span>) <span class="sc">+</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dag</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="basicos-inferencia_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Y en este caso, podemos ver directamente la relación causal entre café y cáncer, aún cuando problemas gastrointestinales pueden afectar la asignación del tratamiento.</p>
 </section>
-<section id="selección-aleatoria-de-muestra" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="selección-aleatoria-de-muestra"><span class="header-section-number">3.3</span> Selección aleatoria de muestra</h2>
+<section id="selección-aleatoria-de-muestra" class="level2">
+<h2 class="anchored" data-anchor-id="selección-aleatoria-de-muestra">Selección aleatoria de muestra</h2>
 
 
 </section>
@@ -1314,13 +1518,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./analisis_exp.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Análisis exploratorio y visualización de datos</span></span>
+      <a href="./analisis-exp-numericos.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Descripción de datos univariados numéricos</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./referencias.html" class="pagination-link">
-        <span class="nav-page-text">Referencias</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./pruebas-hipotesis.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Inferencia y Remuestreo</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

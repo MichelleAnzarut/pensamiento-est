@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Felipe González y Michelle Anzarut">
 
-<title>Pensamiento estadístico</title>
+<title>Pensamiento estadístico - Introducción a teoría de probabilidades</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -26,7 +25,8 @@ ul.task-list{list-style: none;}
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./est_cd.html" rel="next">
+<link href="./modelo-prob.html" rel="next">
+<link href="./remuestreo-bootstrap.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -65,7 +65,7 @@ ul.task-list{list-style: none;}
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Pensamiento estadístico</h1>
+      <h1 class="quarto-secondary-nav-title">Introducción a teoría de probabilidades</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -90,7 +90,7 @@ ul.task-list{list-style: none;}
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">Introducción</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Introducción</a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -140,7 +140,7 @@ ul.task-list{list-style: none;}
   </li>
         <li class="sidebar-item sidebar-item-section">
     <div class="sidebar-item-container"> 
-        <a href="./probabilidad.html" class="sidebar-item-text sidebar-link">Introducción a teoría de probabilidades</a>
+        <a href="./probabilidad.html" class="sidebar-item-text sidebar-link active">Introducción a teoría de probabilidades</a>
       <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
         <i class="bi bi-chevron-right ms-2"></i>
       </a>
@@ -188,67 +188,30 @@ ul.task-list{list-style: none;}
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
-    <h2 id="toc-title">Indice de contenidos</h2>
-   
-  <ul>
-  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a>
-  <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
-  </ul></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Pensamiento estadístico</h1>
+<h1 class="title d-none d-lg-block">Introducción a teoría de probabilidades</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Autor</div>
-    <div class="quarto-title-meta-contents">
-             <p>Felipe González y Michelle Anzarut </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Fecha de Publicación</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">3 de mayo de 2022</p>
-    </div>
-  </div>
     
   </div>
   
 
 </header>
 
-<section id="introducción" class="level1 unnumbered">
-<h1 class="unnumbered">Introducción</h1>
-<p>Comenzaremos con una introducción a la ciencia de datos. Definiremos la ciencia de datos, discutiremos su papel en una multitud de dominios y el tipo de habilidades que los científicos de datos necesitan.</p>
-<p>Después del módulo introductorio, el resto de este curso proporcionará la base estadística que sustenta el análisis de datos. La estadística juega un papel central en el enfoque de la ciencia de datos, en casi todas las soluciones basadas en datos, los científicos de datos ejercen el pensamiento estadístico al diseñar estrategias de recopilación de datos, obtener información de los métodos de visualización, obtener evidencia para la toma de decisiones y construir modelos para predecir tendencias futuras.</p>
-<p>El módulo final presentará la filosofía de la inferencia bayesiana y las técnicas de modelado bayesiano utilizando estudios de casos ilustrativos.</p>
-<section id="section" class="level3">
-<h3 class="anchored" data-anchor-id="section"></h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="http://creativecommons.org/licenses/by/4.0/"><img src="https://files.cdn.thinkific.com/file_uploads/416308/images/ed2/9ce/c19/1623612457643.jpg" class="img-fluid figure-img" alt="Licencia Creative Commons"></a></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption">Licencia Creative Commons</figcaption><p></p>
-</figure>
-</div>
-<p>Este trabajo está bajo una licencia: <a href="https://creativecommons.org/licenses/by-nc/4.0/">Attribution-NonCommercial 4.0 International</a></p>
-<p>Eres libre de adaptarlo para propósitos no comerciales otorgando el crédito correspondiente.</p>
+<p>Introducción</p>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -332,10 +295,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./remuestreo-bootstrap.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Remuestreo: el bootstrap</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./est_cd.html" class="pagination-link">
-        <span class="nav-page-text">Estadística y ciencia de datos</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./modelo-prob.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Básicos de probabilidad y simulación</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
