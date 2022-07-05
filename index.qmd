@@ -1,6 +1,6 @@
 # Introducción {.unnumbered}
 
-Comenzaremos con una introducción a la ciencia de datos. Definiremos la ciencia de datos, discutiremos su papel en una multitud de dominios y el tipo de habilidades que los científicos de datos necesitan.
+Comenzaremos con una introducción a la ciencia de datos y el tipo de habilidades que los científicos de datos necesitan.
 
 Después del módulo introductorio, el resto de este curso proporcionará la base estadística que sustenta el análisis de datos. La estadística juega un papel central en el enfoque de la ciencia de datos, en casi todas las soluciones basadas en datos, los científicos de datos ejercen el pensamiento estadístico al diseñar estrategias de recopilación de datos, obtener información de los métodos de visualización, obtener evidencia para la toma de decisiones y construir modelos para predecir tendencias futuras.
 
