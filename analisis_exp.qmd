@@ -1,14 +1,31 @@
-# Análisis exploratorio y visualización de datos
+---
+editor_options: 
+  markdown: 
+    wrap: 72
+---
 
-El análisis exploratorio de datos es un proceso de investigación con el objetivo de descubrir patrones o relaciones, detectar anomalías, probar hipótesis y verificar suposiciones.
-
-Puede hacerse visualmente, con estadísticas resumidas en tablas o gráficas, pero también puede incluir técnicas avanzadas de procesamiento de datos.
 
 ## Formulación de preguntas
 
-El análisis exploratorio es fundamentalmente un proceso creativo, lo que lo convierte en difícil de enseñar en las clases de ciencias de datos. Como la mayoría de los procesos creativos, la clave es desarrollar conocimiento detallado del dominio para hacer preguntas de calidad. Es difícil hacer preguntas reveladoras al comienzo del análisis porque no sabe qué conocimientos están contenidos en el conjunto de datos, pero cada nueva pregunta expone aspectos de los datos y aumenta las posibilidades de hacer un descubrimiento. Muchos de los descubrimientos ocurren en el análisis exploratorio, por lo que no debe pasarse por alto, es esencial para descubrir información que se puede utilizar para responder a la pregunta de investigación planteada.
+El análisis exploratorio es fundamentalmente un proceso creativo, lo que
+lo convierte en difícil de enseñar en las clases de ciencias de datos.
+Como la mayoría de los procesos creativos, la clave es desarrollar
+conocimiento detallado del dominio para hacer preguntas de calidad. Es
+difícil hacer preguntas reveladoras al comienzo del análisis porque no
+sabe qué conocimientos están contenidos en el conjunto de datos, pero
+cada nueva pregunta expone aspectos de los datos y aumenta las
+posibilidades de hacer un descubrimiento. Muchos de los descubrimientos
+ocurren en el análisis exploratorio, por lo que no debe pasarse por
+alto, es esencial para descubrir información que se puede utilizar para
+responder a la pregunta de investigación planteada.
 
-A veces, al final de un análisis de datos exploratorio, la conclusión es que el conjunto de datos no es realmente apropiado para esta pregunta. En otros casos, no está claro que la pregunta que intentamos responder tenga relevancia inmediata. Uno de los objetivos del análisis exploratorio de datos es hacer que pensemos en estas posibilidades, en este punto, podemos refinar nuestra pregunta o recopilar nuevos datos, todo en un proceso iterativo para llegar al mejor resultado.
+A veces, al final de un análisis de datos exploratorio, la conclusión es
+que el conjunto de datos no es realmente apropiado para esta pregunta.
+En otros casos, no está claro que la pregunta que intentamos responder
+tenga relevancia inmediata. Uno de los objetivos del análisis
+exploratorio de datos es hacer que pensemos en estas posibilidades, en
+este punto, podemos refinar nuestra pregunta o recopilar nuevos datos,
+todo en un proceso iterativo para llegar al mejor resultado.
 
 ## Tipos de datos y sus resúmenes
 
@@ -23,28 +40,53 @@ ggplot(mtcars, aes(x = mpg, y = hp)) + geom_point()
 
 ## Principios y técnicas de visualización de datos
 
-Uno de esos campos que ha tenido que crecer junto con la ciencia de datos es la visualización de datos.
+Uno de esos campos que ha tenido que crecer junto con la ciencia de
+datos es la visualización de datos.
 
-Edward Tufte describe en su libro Beautiful Evidence algunos principios para construir gráficas con datos:
+Edward Tufte describe en su libro Beautiful Evidence algunos principios
+para construir gráficas con datos:
 
-1.  **Muestra comparaciones**: la evidencia siempre es relativa, si está comparando la Hipótesis A, tiene que haber alguna hipótesis alternativa con la que la va a comparar
+1.  **Muestra comparaciones**: la evidencia siempre es relativa, si está
+    comparando la Hipótesis A, tiene que haber alguna hipótesis
+    alternativa con la que la va a comparar
 
-2.  **Muestra causalidad**: el uso de la palabra causalidad aquí no es formal, la idea es solo mostrar lo que creemos. Para confirmar realmente la causalidad tendríamos que hacer más investigación, pero las gráficas pueden sugerir posibles explicaciones.
+2.  **Muestra causalidad**: el uso de la palabra causalidad aquí no es
+    formal, la idea es solo mostrar lo que creemos. Para confirmar
+    realmente la causalidad tendríamos que hacer más investigación, pero
+    las gráficas pueden sugerir posibles explicaciones.
 
-3.  **Datos multivariados, muestra la mayor cantidad de datos posible en una sola gráfica:** El mundo es intrínsecamente multivariado, hay muchas cosas que suceden todo el tiempo y si solo graficamos 2 o 3 variables no tendremos la imagen real de lo que está sucediendo.
+3.  **Datos multivariados**, muestra la mayor cantidad de datos posible en
+    una sola gráfica:** El mundo es intrínsecamente multivariado, hay
+    muchas cosas que suceden todo el tiempo y si solo graficamos 2 o 3
+    variables no tendremos la imagen real de lo que está sucediendo.
 
-4.  **Integrar la evidencia que tienes:** Mostrar tanta evidencia como sea posible, usar tablas, diagramas y textos todos juntos, no dejar que las herramientas que utilizamos conduzcan la historia. Esa es una de las ventajas de utilizar lenguajes especializados en el análisis de datos, son muy flexibles. 
+4.  **Integrar la evidencia que tienes:** Mostrar tanta evidencia como
+    sea posible, usar tablas, diagramas y textos todos juntos, no dejar
+    que las herramientas que utilizamos conduzcan la historia. Esa es
+    una de las ventajas de utilizar lenguajes especializados en el
+    análisis de datos, son muy flexibles. 
 
-5.  **Documentar la evidencia que presentamos**: Ser claro en las gráficas, usando etiquetas y fuentes, también es importante preservar el código de computadora que hizo las gráficas. 
+5.  **Documentar la evidencia que presentamos**: Ser claro en las
+    gráficas, usando etiquetas y fuentes, también es importante
+    preservar el código de computadora que hizo las gráficas. 
 
-6.  **El contenido es lo más importante**: Si no tienes una historia interesante que contar, entonces no hay gráfica alguna que vaya a hacer una presentación interesante. ¿Cuál es la historia que intentas contar? ¿Cuáles son los datos que tienes?, luego pasamos a pensar ¿cuál es la mejor manera de presentar eso?
+6.  **El contenido es lo más importante**: Si no tienes una historia
+    interesante que contar, entonces no hay gráfica alguna que vaya a
+    hacer una presentación interesante. ¿Cuál es la historia que
+    intentas contar? ¿Cuáles son los datos que tienes?, luego pasamos a
+    pensar ¿cuál es la mejor manera de presentar eso?
 
 ### Referencias y fuentes adicionales
 
--   Tufte, E. R. (2006). [*Beautiful evidence*](https://www.edwardtufte.com/tufte/books_be) (Vol. 1). Cheshire, CT: Graphics Press.
+-   Tufte, E. R. (2006). [*Beautiful
+    evidence*](https://www.edwardtufte.com/tufte/books_be) (Vol. 1).
+    Cheshire, CT: Graphics Press.
 
--   Peng, R. D. (2020). [Exploratory Data Analysis with R Book](https://bookdown.org/rdpeng/exdata/)
+-   Peng, R. D. (2020). [Exploratory Data Analysis with R
+    Book](https://bookdown.org/rdpeng/exdata/)
 
--   Chambers, J.M., W.S. Cleveland, B. Kleiner, and P.A. Tukey. 1983. "Graphical Methods for Data Analysis." *The Wadsworth Statistics/Probability Series. Boston, MA: Duxury*.
+-   Chambers, J.M., W.S. Cleveland, B. Kleiner, and P.A. Tukey. 1983.
+    "Graphical Methods for Data Analysis." *The Wadsworth
+    Statistics/Probability Series. Boston, MA: Duxury*.
 
 -   Cleveland, William S. 1993. *Visualizing Data*. Hobart Press.å
