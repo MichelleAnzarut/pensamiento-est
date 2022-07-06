@@ -7,6 +7,7 @@ Tukey), aplicando repetidamente los mismos resúmenes a lo largo de esos distint
 
 ```{r, message = FALSE, echo = FALSE, include = FALSE}
 ggplot2::theme_set(ggplot2::theme_light())
+library(quantreg)
 ```
 
 ## Cuantiles o percentiles de una variable
