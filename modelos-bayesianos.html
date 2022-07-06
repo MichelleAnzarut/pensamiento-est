@@ -411,6 +411,8 @@ P({X}_{nv}=\mathsf{sol}\, | \, X=2) &amp; = \sum_{\theta \in \Theta} P({X}_{nv}=
 <h4 class="unnumbered anchored" data-anchor-id="ejercicio">Ejercicio</h4>
 <p>Cambia distintos parámetros del número de soles observados, las probabilidades de sol de las monedas, y las probabilidades iniciales de selección de las monedas.</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>n_volados <span class="ot">&lt;-</span> <span class="dv">2</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># posible valores del parámetro desconocido</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">0.4</span>, <span class="fl">0.6</span>)</span>
@@ -419,6 +421,7 @@ P({X}_{nv}=\mathsf{sol}\, | \, X=2) &amp; = \sum_{\theta \in \Theta} P({X}_{nv}=
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">theta =</span> theta,</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">prob_inicial =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>))</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>probs_inicial</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 3
   moneda theta prob_inicial
@@ -426,6 +429,8 @@ P({X}_{nv}=\mathsf{sol}\, | \, X=2) &amp; = \sum_{\theta \in \Theta} P({X}_{nv}=
 1      1   0.4          0.5
 2      2   0.6          0.5</code></pre>
 </div>
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># verosimilitud</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>crear_verosim <span class="ot">&lt;-</span> <span class="cf">function</span>(no_soles){</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    verosim <span class="ot">&lt;-</span> <span class="cf">function</span>(theta){</span>
@@ -446,6 +451,7 @@ P({X}_{nv}=\mathsf{sol}\, | \, X=2) &amp; = \sum_{\theta \in \Theta} P({X}_{nv}=
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>tabla_inferencia <span class="sc">%&gt;%</span></span>
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">moneda_obs =</span> moneda) <span class="sc">%&gt;%</span></span>
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(moneda_obs, theta, prob_inicial, verosimilitud, prob_posterior)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 5
   moneda_obs theta prob_inicial verosimilitud prob_posterior
@@ -531,18 +537,24 @@ Inferencia bayesiana.
 <p><span class="math display">\[P(\theta) \propto \theta^2(1-\theta)^2.\]</span></p>
 <p>La constante de normalización es 1/30, pero no la requerimos. Podemos simular para examinar su forma:</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sim_inicial <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">theta =</span> <span class="fu">rbeta</span>(<span class="dv">10000</span>, <span class="dv">3</span>, <span class="dv">3</span>))</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sim_inicial) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> theta, <span class="at">y =</span> ..density..), <span class="at">bins =</span> <span class="dv">15</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <p><img src="modelos-bayesianos_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>De modo que nuestra información inicial es que la proporción puede tomar cualquier valor entre 0 y 1, pero es probable que tome un valor no tan lejano de 0.5. Por ejemplo, con probabilidad 0.95 creemos que <span class="math inline">\(\theta\)</span> está en el intervalo</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(sim_inicial<span class="sc">$</span>theta, <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>)) <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code> 2.5% 97.5% 
- 0.15  0.85 </code></pre>
+ 0.14  0.85 </code></pre>
 </div>
 </div>
 <p>Es difícil justificar en abstracto por qué escogeriamos una inicial con esta forma. <em>Aunque esto los detallaremos más adelante</em>, puedes pensar, por el momento, que alguien observó algunos casos de esta población, y quizá vio tres éxitos y tres fracasos. Esto sugeriría que es poco probable que la probablidad <span class="math inline">\(\theta\)</span> sea muy cercana a 0 o muy cercana a 1.</p>
@@ -555,11 +567,14 @@ Inferencia bayesiana.
 <p><span class="math display">\[\frac{1}{B(a,b)} \theta^{a-1}(1-\theta)^{b-1}\]</span></p>
 <p>Concluimos entonces que la posterior tiene una distribución <span class="math inline">\(\mathsf{Beta}(22, 14)\)</span>. Podemos simular de la posterior usando código estándar para ver cómo luce:</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sim_inicial <span class="ot">&lt;-</span> sim_inicial <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">dist =</span> <span class="st">"inicial"</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>sim_posterior <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">theta =</span> <span class="fu">rbeta</span>(<span class="dv">10000</span>, <span class="dv">22</span>, <span class="dv">14</span>)) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">dist =</span> <span class="st">"posterior"</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>sims <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(sim_inicial, sim_posterior)</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sims, <span class="fu">aes</span>(<span class="at">x =</span> theta, <span class="at">fill =</span> dist)) <span class="sc">+</span></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> theta), <span class="at">bins =</span> <span class="dv">30</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">"identity"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <p><img src="modelos-bayesianos_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -567,23 +582,29 @@ Inferencia bayesiana.
 <p>La posterior nos dice cuáles son las <em>posibilidades</em> de dónde puede estar el parámetro <span class="math inline">\(\theta\)</span>. Nótese que ahora excluye prácticamente valores más chicos que 0.25 o mayores que 0.9. Esta distribución posterior es el objeto con el que hacemos inferencia: nos dice dónde es creíble que esté el parámetro <span class="math inline">\(\theta\)</span>.</p>
 <p>Podemos resumir de varias maneras. Por ejemplo, si queremos un estimador puntual usamos la media posterior:</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sims <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(dist) <span class="sc">%&gt;%</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">theta_hat =</span> <span class="fu">mean</span>(theta) <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">3</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
   dist      theta_hat
   &lt;chr&gt;         &lt;dbl&gt;
-1 inicial       0.5  
-2 posterior     0.612</code></pre>
+1 inicial       0.499
+2 posterior     0.61 </code></pre>
 </div>
 </div>
 <p>Nota que el estimador de máxima verosimilitud es <span class="math inline">\(\hat{p} = 19/30 = 0.63\)</span>, que es ligeramente diferente de la media posterior. ¿Por qué?</p>
 <p>Y podemos construir intervalos de percentiles, que en esta situación suelen llamarse <em>intervalos de credibilidad</em>, por ejemplo:</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>sims <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(dist) <span class="sc">%&gt;%</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">cuantiles =</span> <span class="fu">quantile</span>(theta, f) <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">2</span>), <span class="at">f =</span> f) <span class="sc">%&gt;%</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> f, <span class="at">values_from =</span> cuantiles)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by 'dist'. You can override using the
 `.groups` argument.</code></pre>
@@ -593,7 +614,7 @@ Inferencia bayesiana.
 # Groups:   dist [2]
   dist      `0.025` `0.975`
   &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;
-1 inicial      0.15    0.85
+1 inicial      0.14    0.85
 2 posterior    0.45    0.76</code></pre>
 </div>
 </div>
@@ -626,11 +647,17 @@ Tip
 <li>Lo mismo aplica para el intervalo de 95% (¿cómo se calcularía integrando?). También puedes usar la aproximación de R, por ejemplo:</li>
 </ul>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qbeta</span>(<span class="fl">0.025</span>, <span class="at">shape1 =</span> <span class="dv">22</span>, <span class="at">shape2 =</span> <span class="dv">14</span>) <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.45</code></pre>
 </div>
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qbeta</span>(<span class="fl">0.975</span>, <span class="at">shape1 =</span> <span class="dv">22</span>, <span class="at">shape2 =</span> <span class="dv">14</span>) <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.76</code></pre>
 </div>
@@ -647,8 +674,11 @@ Tip
 <p><span class="math display">\[P(\theta) = \frac{\alpha \theta_0^\alpha}{\theta^{\alpha + 1}}\]</span></p>
 <p>con soporte en <span class="math inline">\([\theta_0,\infty]\)</span>. Tenemos que escoger entonces el mínimo <span class="math inline">\(\theta_0\)</span> y el parámetro <span class="math inline">\(\alpha\)</span>. En primer lugar, como sabemos que es una lotería nacional, creemos que no puede haber menos de unos 300 mil números, así que <span class="math inline">\(\theta_0 = 300\)</span>. La función acumulada de la pareto es <span class="math inline">\(1- (300/\theta)^\alpha\)</span>, así que el cuantil 99% es</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">1.1</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>(<span class="dv">300</span><span class="sc">/</span>(<span class="fl">0.01</span>)<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span>alpha))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 19738</code></pre>
 </div>
@@ -658,8 +688,11 @@ Tip
 <p>para <span class="math inline">\(\theta\)</span> mayor que el máximo de las <span class="math inline">\(X_n\)</span>’s y 300, y cero en otro caso. Esta distribución es pareto con <span class="math inline">\(\theta_0' = \max\{300, X_1,\ldots, X_n\}\)</span> y <span class="math inline">\(\alpha = n + 1.1\)</span></p>
 <p>Una vez planteado nuestro modelo, veamos los datos. Obtuvimos la siguiente muestra de números:</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>loteria_tbl <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"datos/nums_loteria_avion.csv"</span>, <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"numero"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">numero =</span> <span class="fu">as.integer</span>(numero))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 99 Columns: 2
 ── Column specification ────────────────────────────────────────────────────────
@@ -670,10 +703,13 @@ dbl (1): id
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">334</span>)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>muestra_loteria <span class="ot">&lt;-</span> <span class="fu">sample_n</span>(loteria_tbl, <span class="dv">25</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">numero =</span> numero<span class="sc">/</span><span class="dv">1000</span>)</span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>muestra_loteria <span class="sc">%&gt;%</span> as.data.frame <span class="sc">%&gt;%</span> head</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>  id   numero
 1 87  348.341
@@ -686,20 +722,28 @@ dbl (1): id
 </div>
 <p>Podemos simular de una Pareto como sigue:</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>rpareto <span class="ot">&lt;-</span> <span class="cf">function</span>(n, theta_0, alpha){</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># usar el método de inverso de distribución acumulada</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  u <span class="ot">&lt;-</span> <span class="fu">runif</span>(n, <span class="dv">0</span>, <span class="dv">1</span>)</span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  theta_0 <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">-</span> u)<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span>alpha)</span>
 <span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>Simulamos de la inicial:</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>sims_pareto_inicial <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">theta =</span> <span class="fu">rpareto</span>(<span class="dv">20000</span>, <span class="dv">300</span>, <span class="fl">1.1</span> ),</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">dist =</span> <span class="st">"inicial"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>Y con los datos de la muestra, simulamos de la posterior:</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>sims_pareto_posterior <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">theta =</span> <span class="fu">rpareto</span>(<span class="dv">20000</span>,</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">max</span>(<span class="fu">c</span>(<span class="dv">300</span>, muestra_loteria<span class="sc">$</span>numero)),</span>
@@ -712,6 +756,7 @@ dbl (1): id
 <span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>                 <span class="at">boundary =</span> <span class="fu">max</span>(muestra_loteria<span class="sc">$</span>numero))  <span class="sc">+</span></span>
 <span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">15000</span>) <span class="sc">+</span> <span class="fu">scale_y_sqrt</span>() <span class="sc">+</span></span>
 <span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rug</span>(<span class="at">data =</span> muestra_loteria, <span class="fu">aes</span>(<span class="at">x =</span> numero))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Removed 273 rows containing non-finite values (stat_bin).</code></pre>
 </div>
@@ -725,10 +770,13 @@ dbl (1): id
 <p>Nótese que cortamos algunos valores de la inicial en la cola derecha: un defecto de esta distribución inicial, con una cola tan larga a la derecha, es que pone cierto peso en valores que son poco creíbles y la vuelve poco apropiada para este problema. Regresamos más adelante a este problema.</p>
 <p>Si obtenemos percentiles, obtenemos el intervalo</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.5</span>, <span class="fl">0.975</span>)</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>sims_theta <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(dist) <span class="sc">%&gt;%</span></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">cuantiles =</span> <span class="fu">quantile</span>(theta, f) <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">2</span>), <span class="at">f =</span> f) <span class="sc">%&gt;%</span></span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> f, <span class="at">values_from =</span> cuantiles)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by 'dist'. You can override using the
 `.groups` argument.</code></pre>
@@ -744,15 +792,21 @@ dbl (1): id
 </div>
 <p>Estimamos entre 5.8 millones y 6.7 millones de boletos. El máximo en la muestra es de</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(muestra_loteria<span class="sc">$</span>numero)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5851.982</code></pre>
 </div>
 </div>
 <p>Escoger la distribución pareto como inicial es conveniente y nos permitió resolver el problema sin dificultad, pero por su forma vemos que no necesariamente es apropiada para el problema por lo que señalamos arriba. Nos gustaría, por ejemplo, poner una inicial como la siguiente</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="fu">rgamma</span>(<span class="dv">2000</span>, <span class="dv">5</span>, <span class="fl">0.001</span>), <span class="at">geom=</span><span class="st">"histogram"</span>, <span class="at">bins =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1000</span>, <span class="dv">15000</span>, <span class="at">by =</span> <span class="dv">2000</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <p><img src="modelos-bayesianos_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -816,6 +870,8 @@ dbl (1): id
 <p>Una vez decidido el modelo, tenemos que poner distribución inicial para los parámetros <span class="math inline">\((\mu, \sigma^2)\)</span>.</p>
 <p>Comenzamos con <span class="math inline">\(\sigma^2\)</span>. Como está el modelo, esta inicial debe estar dada para la precisión <span class="math inline">\(\tau\)</span>, pero podemos simular para ver cómo se ve nuestra inicial para la desviación estándar. En la población general la desviación estándar es alrededor de 7 centímetros</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comenzamos seleccionando un valor que creemos típico para la desviación estándar</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>sigma_0 <span class="ot">&lt;-</span> <span class="dv">7</span></span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># seleccionamos un valor para a, por ejemplo: si es más chico sigma tendrá más</span></span>
@@ -824,6 +880,7 @@ dbl (1): id
 <span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="co"># ponemos 8 = sqrt(b/a) -&gt; b = a * 64</span></span>
 <span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> a <span class="sc">*</span> sigma_0<span class="sc">^</span><span class="dv">2</span></span>
 <span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">a =</span> a, <span class="at">b =</span> b)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>  a   b 
   3 147 </code></pre>
@@ -831,18 +888,27 @@ dbl (1): id
 </div>
 <p>Ahora simulamos para calcular cuantiles</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>tau <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(<span class="dv">1000</span>, a, b)</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(tau, <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.95</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>         5%         95% 
 0.005781607 0.042170161 </code></pre>
 </div>
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="fu">sqrt</span>(tau)</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(sigma)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 8.002706</code></pre>
 </div>
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(sigma, <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.95</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>       5%       95% 
  4.869653 13.151520 </code></pre>
@@ -852,12 +918,15 @@ dbl (1): id
 <p>Comenzamos con <span class="math inline">\(\mu\)</span>. Sabemos, por ejemplo, que con alta probabilidad la media debe ser algún número entre 1.60 y 1.80. Podemos investigar: la media nacional en estados unidos está alrededor de 1.75, y el percentil 90% es 1.82. Esto es <em>variabilidad en la población</em>: debe ser muy poco probable, por ejemplo, que la media de tenores sea 1.82 Quizá los cantantes tienden a ser un poco más altos o bajos que la población general, así que podríamos agregar algo de dispersión.</p>
 <p>Podemos establecer parámetros y simular de la marginal a partir de las fórmulas de arriba para entender cómo se ve la inicial de <span class="math inline">\(\mu\)</span>:</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>mu_0 <span class="ot">&lt;-</span> <span class="dv">175</span> <span class="co"># valor medio de inicial</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>n_0 <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="co"># cuánta concentración en la inicial</span></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>tau <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(<span class="dv">1000</span>, a,b)</span>
 <span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span><span class="fu">sqrt</span>(tau)</span>
 <span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(sigma, <span class="sc">~</span> <span class="fu">rnorm</span>(<span class="dv">1</span>, mu_0, .x <span class="sc">/</span> <span class="fu">sqrt</span>(n_0)))</span>
 <span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(mu, <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.5</span>, <span class="fl">0.95</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>      5%      50%      95% 
 168.7275 174.8412 180.7905 </code></pre>
@@ -866,6 +935,8 @@ dbl (1): id
 <p>Que consideramos un rango en el que con alta probabilidad debe estar la media poblacional de los cantantes.</p>
 <p>Podemos checar nuestros supuestos simulando posibles muestras usando sólo nuestra información previa:</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>simular_normal_invgamma <span class="ot">&lt;-</span> <span class="cf">function</span>(n, pars){</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  mu_0 <span class="ot">&lt;-</span> pars[<span class="dv">1</span>]</span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  n_0 <span class="ot">&lt;-</span> pars[<span class="dv">2</span>]</span>
@@ -885,6 +956,7 @@ dbl (1): id
 <span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sims_tbl, <span class="fu">aes</span>(<span class="at">x =</span> estatura)) <span class="sc">+</span> <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
 <span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> rep) <span class="sc">+</span></span>
 <span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">c</span>(<span class="dv">150</span>, <span class="dv">180</span>), <span class="at">colour =</span> <span class="st">"red"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
@@ -895,12 +967,15 @@ dbl (1): id
 <p>Pusimos líneas de referencia en 150 y 180. Vemos que nuestras iniciales no producen simulaciones totalmente fuera del contexto, y parecen cubrir apropiadamente el espacio de posiblidades para estaturas de los tenores. Quizá hay algunas realizaciones poco creíbles, pero no extremadamente. En este punto, podemos regresar y ajustar la inicial para <span class="math inline">\(\sigma\)</span>, que parece tomar valores demasiado grandes (produciendo por ejemplo una simulación con estatura de 220 y 140, que deberían ser menos probables).</p>
 <p>Ahora podemos usar los datos para calcular nuestras posteriores.</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">3413</span>)</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>cantantes <span class="ot">&lt;-</span> lattice<span class="sc">::</span>singer <span class="sc">%&gt;%</span></span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">estatura_cm =</span> <span class="fu">round</span>(<span class="fl">2.54</span> <span class="sc">*</span> height)) <span class="sc">%&gt;%</span></span>
 <span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(voice.part, <span class="st">"Tenor"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">20</span>)</span>
 <span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>cantantes</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>    height voice.part estatura_cm
 139     70    Tenor 1         178
@@ -927,6 +1002,8 @@ dbl (1): id
 </div>
 <p>Los cálculos son un poco tediosos, pero podemos construir una función apropiada:</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>calcular_pars_posterior <span class="ot">&lt;-</span> <span class="cf">function</span>(x, pars_inicial){</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># iniciales</span></span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  mu_0 <span class="ot">&lt;-</span> pars_inicial[<span class="dv">1</span>]</span>
@@ -947,12 +1024,15 @@ dbl (1): id
 <span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb49-19"><a href="#cb49-19" aria-hidden="true" tabindex="-1"></a>pars_posterior <span class="ot">&lt;-</span> <span class="fu">calcular_pars_posterior</span>(cantantes<span class="sc">$</span>estatura_cm, <span class="fu">c</span>(mu_0, n_0, a, b))</span>
 <span id="cb49-20"><a href="#cb49-20" aria-hidden="true" tabindex="-1"></a>pars_posterior</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 175.8  25.0  13.0 509.0</code></pre>
 </div>
 </div>
 <p>¿Cómo se ve nuestra posterior comparada con la inicial? Podemos hacer simulaciones:</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>sim_params <span class="ot">&lt;-</span> <span class="cf">function</span>(m, pars){</span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  mu_0 <span class="ot">&lt;-</span> pars[<span class="dv">1</span>]</span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  n_0 <span class="ot">&lt;-</span> pars[<span class="dv">2</span>]</span>
@@ -972,12 +1052,15 @@ dbl (1): id
 <span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a>sims <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(sims_inicial, sims_posterior)</span>
 <span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sims, <span class="fu">aes</span>(<span class="at">x =</span> mu, <span class="at">y =</span> sigma, <span class="at">colour =</span> dist)) <span class="sc">+</span></span>
 <span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <p><img src="modelos-bayesianos_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Y vemos que nuestra posterior es consistente con la información inicial que usamos, hemos aprendido considerablemente de la muestra. La posterior se ve como sigue. Hemos marcado también las medias posteriores de cada parámetro: media y desviación estándar.</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>medias_post <span class="ot">&lt;-</span> sims <span class="sc">%&gt;%</span> <span class="fu">filter</span>(dist <span class="sc">==</span> <span class="st">"posterior"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>dist) <span class="sc">%&gt;%</span></span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), mean))</span>
@@ -986,18 +1069,22 @@ dbl (1): id
 <span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"#00BFC4"</span>) <span class="sc">+</span></span>
 <span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> medias_post, <span class="at">size =</span> <span class="dv">5</span>, <span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
 <span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_equal</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <p><img src="modelos-bayesianos_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Podemos construir intervalos creíbles del 90% para estos dos parámetros, por ejemplo haciendo intervalos de percentiles:</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.5</span>, <span class="fl">0.95</span>)</span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>sims <span class="sc">%&gt;%</span></span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> mu<span class="sc">:</span>sigma, <span class="at">names_to =</span> <span class="st">"parametro"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(dist, parametro) <span class="sc">%&gt;%</span></span>
 <span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">cuantil =</span> <span class="fu">quantile</span>(value, f) <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">1</span>), <span class="at">f=</span> f) <span class="sc">%&gt;%</span></span>
 <span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> f, <span class="at">values_from =</span> cuantil)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by 'dist', 'parametro'. You can override using
 the `.groups` argument.</code></pre>
@@ -1015,9 +1102,12 @@ the `.groups` argument.</code></pre>
 </div>
 <p>Como comparación, los estimadores de máxima verosimlitud son</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>media_mv <span class="ot">&lt;-</span> <span class="fu">mean</span>(cantantes<span class="sc">$</span>estatura_cm)</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>sigma_mv <span class="ot">&lt;-</span> <span class="fu">mean</span>((cantantes<span class="sc">$</span>estatura_cm <span class="sc">-</span> media_mv)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> sqrt</span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(media_mv, sigma_mv)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 176   6</code></pre>
 </div>
@@ -1091,8 +1181,11 @@ Tip
 <p>En este ejemplo, usaremos la posterior predictiva para checar nuestro modelo. Vamos a crear varias muestras, del mismo tamaño que la original, según nuestra predictiva posterior, y compararemos estas muestras con la observada.</p>
 <p>Y ahora simulamos otra muestra</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>muestra_sim <span class="ot">&lt;-</span> <span class="fu">simular_normal_invgamma</span>(<span class="dv">20</span>, pars_posterior)</span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>muestra_sim <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">0</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 167 181 184 181 167 167 172 170 177 172 169 174 182 184 176 171 175 176 168
 [20] 181</code></pre>
@@ -1100,6 +1193,8 @@ Tip
 </div>
 <p>Podemos simular varias muestras y hacer una prueba de lineup:</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nullabor)</span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>sims_obs <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">.n =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">19</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">estatura_cm =</span> <span class="fu">map</span>(.n, <span class="sc">~</span> <span class="fu">simular_normal_invgamma</span>(<span class="dv">20</span>, pars_posterior))) <span class="sc">%&gt;%</span></span>
@@ -1110,6 +1205,7 @@ Tip
 <span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a>                     <span class="at">samples =</span> sims_obs, <span class="at">pos =</span> pos)</span>
 <span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lineup_tbl, <span class="fu">aes</span>(<span class="at">x =</span> estatura_cm)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
 <span id="cb60-10"><a href="#cb60-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>.sample)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <p><img src="modelos-bayesianos_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -1128,6 +1224,8 @@ Tip
 <p>que es una distribución gamma con parámetros <span class="math inline">\((n\overline{x} + 1, n+0.1)\)</span></p>
 <p>Ahora supongamos que observamos la siguiente muestra, ajustamos nuestro modelo y hacemos replicaciones posteriores de los datos observados:</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnbinom</span>(<span class="dv">250</span>, <span class="at">mu =</span> <span class="dv">20</span>, <span class="at">size =</span> <span class="dv">3</span>)</span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>crear_sim_rep <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
 <span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
@@ -1145,12 +1243,15 @@ Tip
 <span id="cb61-15"><a href="#cb61-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lineup_tbl, <span class="fu">aes</span>(<span class="at">x =</span> x_rep)) <span class="sc">+</span></span>
 <span id="cb61-16"><a href="#cb61-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">15</span>) <span class="sc">+</span></span>
 <span id="cb61-17"><a href="#cb61-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>rep)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <p><img src="modelos-bayesianos_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Y vemos claramente que nuestro modelo no explica apropiadamente la variación de los datos observados. Contrasta con:</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">223</span>)</span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rpois</span>(<span class="dv">250</span>, <span class="dv">15</span>)</span>
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>crear_sim_rep <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
@@ -1169,6 +1270,7 @@ Tip
 <span id="cb62-16"><a href="#cb62-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lineup_tbl, <span class="fu">aes</span>(<span class="at">x =</span> x_rep)) <span class="sc">+</span></span>
 <span id="cb62-17"><a href="#cb62-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">15</span>) <span class="sc">+</span></span>
 <span id="cb62-18"><a href="#cb62-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>rep)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <p><img src="modelos-bayesianos_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -1188,9 +1290,12 @@ Tip
 <h3 class="unnumbered anchored" data-anchor-id="ejemplo-cantantes">Ejemplo: cantantes</h3>
 <p>Si un nuevo tenor llega a un coro, ¿cómo hacemos una predicción de su estatura? Como siempre, quisiéramos obtener un intervalo que exprese nuestra incertidumbre acerca del valor que vamos a observar. Entonces haríamos:</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>sims_posterior <span class="ot">&lt;-</span> <span class="fu">sim_params</span>(<span class="dv">50000</span>, pars_posterior) <span class="sc">%&gt;%</span></span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">y_pred =</span> <span class="fu">rnorm</span>(<span class="fu">n</span>(), mu, sigma))</span>
 <span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>sims_posterior <span class="sc">%&gt;%</span> head</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 4
      tau sigma    mu y_pred
@@ -1204,8 +1309,11 @@ Tip
 </div>
 </div>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.5</span>, <span class="fl">0.975</span>)</span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>sims_posterior <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">f =</span> f, <span class="at">y_pred =</span> <span class="fu">quantile</span>(y_pred, f))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
       f y_pred
@@ -1221,12 +1329,15 @@ Tip
 <li>La posterior predictiva para el modelo normal-gamma inverso es una distribución <span class="math inline">\(t\)</span> con <span class="math inline">\(2\alpha'\)</span> grados de libertad, centrada en <span class="math inline">\(\mu'\)</span>, y con escala <span class="math inline">\(s^2 = \frac{\beta'}{\alpha'}\frac{n + n_0 + 1}{n +n_0}\)</span></li>
 </ul>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>mu_post <span class="ot">&lt;-</span> pars_posterior[<span class="dv">1</span>]</span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>n_post <span class="ot">&lt;-</span> pars_posterior[<span class="dv">2</span>]</span>
 <span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>alpha_post <span class="ot">&lt;-</span> pars_posterior[<span class="dv">3</span>]</span>
 <span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>beta_post <span class="ot">&lt;-</span> pars_posterior[<span class="dv">4</span>]</span>
 <span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(beta_post<span class="sc">/</span>alpha_post) <span class="sc">*</span> <span class="fu">sqrt</span>((n_post <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">/</span>n_post)</span>
 <span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.5</span>, <span class="fl">0.975</span>), <span class="dv">2</span> <span class="sc">*</span> alpha_post) <span class="sc">*</span> s <span class="sc">+</span> mu_post</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 162.6832 175.8000 188.9168</code></pre>
 </div>
@@ -1236,6 +1347,8 @@ Tip
 <h3 class="unnumbered anchored" data-anchor-id="ejemplo-posterior-predictiva-de-pareto-uniforme.">Ejemplo: posterior predictiva de Pareto-Uniforme.</h3>
 <p>La posterior predictiva del modelo Pareto-Uniforme no tiene un nombre estándar, pero podemos aproximarla usando simulación. Usando los mismos datos del ejercicio de la lotería, haríamos:</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>rpareto <span class="ot">&lt;-</span> <span class="cf">function</span>(n, theta_0, alpha){</span>
 <span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># usar el método de inverso de distribución acumulada</span></span>
 <span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>  u <span class="ot">&lt;-</span> <span class="fu">runif</span>(n, <span class="dv">0</span>, <span class="dv">1</span>)</span>
@@ -1253,6 +1366,7 @@ Tip
 <span id="cb69-15"><a href="#cb69-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sims_post_pred, <span class="fu">aes</span>(<span class="at">x =</span> x_pred)) <span class="sc">+</span></span>
 <span id="cb69-16"><a href="#cb69-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">50</span>) <span class="sc">+</span></span>
 <span id="cb69-17"><a href="#cb69-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> lim_inf_post, <span class="at">colour =</span> <span class="st">"red"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <p><img src="modelos-bayesianos_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid" width="672"></p>
 </div>

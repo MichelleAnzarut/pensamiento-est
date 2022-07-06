@@ -390,14 +390,20 @@ es decir, dividimos el número de maneras en que pueden ocurrir <span class="mat
 <section id="ejemplo-simulación-tres-cartas" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="ejemplo-simulación-tres-cartas">Ejemplo: simulación tres cartas</h3>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>baraja <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">numero =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">13</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">crossing</span>(<span class="fu">tibble</span>(<span class="at">figura =</span> <span class="fu">c</span>(<span class="st">"C"</span>, <span class="st">"D"</span>, <span class="st">"T"</span>, <span class="st">"P"</span>))) <span class="sc">%&gt;%</span> </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">carta =</span> <span class="fu">paste</span>(numero, figura))</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(baraja)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 52</code></pre>
 </div>
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>baraja</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 52 × 3
    numero figura carta
@@ -416,20 +422,26 @@ es decir, dividimos el número de maneras en que pueden ocurrir <span class="mat
 </div>
 </div>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>cartas <span class="ot">&lt;-</span> baraja<span class="sc">$</span>carta</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>exp_3_cartas <span class="ot">&lt;-</span> <span class="cf">function</span>(cartas){</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">sample</span>(cartas, <span class="dv">3</span>) </span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">132185</span>)</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">exp_3_cartas</span>(cartas)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "7 C"  "8 P"  "13 T"</code></pre>
 </div>
 </div>
 <p>Simulamos el experimento</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sims <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20000</span>, <span class="sc">~</span> <span class="fu">exp_3_cartas</span>(cartas))</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>sims[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] "4 C"  "8 T"  "12 D"
@@ -449,22 +461,31 @@ es decir, dividimos el número de maneras en que pueden ocurrir <span class="mat
 </div>
 <p>Sin más información, la probabilidad de corazón en la primera extracción es:</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sims <span class="sc">%&gt;%</span> </span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">map_lgl</span>(<span class="sc">~</span> <span class="fu">str_detect</span>(.x[<span class="dv">1</span>], <span class="st">"C"</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mean</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2474</code></pre>
 </div>
 </div>
 <p>Que debe estar alrededor de 1/4. Ahora condicionamos a que las cartas 2 y 3 son corazones:</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sims_F <span class="ot">&lt;-</span> sims <span class="sc">%&gt;%</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">keep</span>(<span class="sc">~</span> <span class="fu">str_detect</span>(.x[<span class="dv">2</span>], <span class="st">"C"</span>) <span class="sc">&amp;</span> <span class="fu">str_detect</span>(.x[<span class="dv">3</span>], <span class="st">"C"</span>))</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(sims_F)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1203</code></pre>
 </div>
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>sims_F[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] "9 T"  "3 C"  "12 C"
@@ -484,9 +505,12 @@ es decir, dividimos el número de maneras en que pueden ocurrir <span class="mat
 </div>
 <p>Y sobre estas simulaciones hacemos <strong>el mismo cálculo de arriba</strong>:</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>sims_F  <span class="sc">%&gt;%</span> </span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">map_lgl</span>(<span class="sc">~</span> <span class="fu">str_detect</span>(.x[<span class="dv">1</span>], <span class="st">"C"</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mean</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2236076</code></pre>
 </div>
@@ -584,9 +608,12 @@ es decir, dividimos el número de maneras en que pueden ocurrir <span class="mat
 <p><span class="math display">\[(1/6)(1/2) + (1/6)(1/2)^2 +(1/6)(1/2)^3 +(1/6)(1/2)^4 +(1/6)(1/2)^5 +(1/6)(1/2)^6\]</span></p>
 <p>que es igual a</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>probs_x <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>, <span class="dv">6</span>)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>probs_y_x <span class="ot">=</span> <span class="fl">0.5</span><span class="sc">^</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(probs_y_x <span class="sc">*</span> probs_x)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1640625</code></pre>
 </div>
@@ -597,6 +624,8 @@ es decir, dividimos el número de maneras en que pueden ocurrir <span class="mat
 <h2 data-number="7.7" class="anchored" data-anchor-id="ejercicio-dados-y-monedas-simulación"><span class="header-section-number">7.7</span> Ejercicio: dados y monedas (simulación)</h2>
 <p>Este es un experimento más interesante para simular:</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>simular_soles <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>   dado <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">1</span>)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>   soles <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"sol"</span>, <span class="st">"águila"</span>), dado, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
@@ -605,14 +634,18 @@ es decir, dividimos el número de maneras en que pueden ocurrir <span class="mat
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">82332</span>)</span>
 <span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="fu">simular_soles</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
 </div>
 <p>Si hacemos 10 mil simulaciones:</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>sims <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>, <span class="sc">~</span> <span class="fu">simular_soles</span>())</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(sims)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stderr">
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
@@ -622,7 +655,10 @@ es decir, dividimos el número de maneras en que pueden ocurrir <span class="mat
 </div>
 <p>La frecuencia relativa de cero soles es:</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(sims<span class="sc">==</span><span class="dv">0</span>) <span class="sc">/</span> <span class="fu">length</span>(sims)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1655</code></pre>
 </div>
@@ -773,6 +809,8 @@ es decir, dividimos el número de maneras en que pueden ocurrir <span class="mat
 <p><span class="math display">\[ L(p) = p^2(1-p)^6\]</span></p>
 <p>Ahora la idea es <strong>encontrar la p que maximiza la probabilidad de lo que observamos</strong>. En este caso se puede hacer con cálculo, pero vamos a ver una gráfica de esta función y cómo resolverla de manera numérica.</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>verosimilitud <span class="ot">&lt;-</span> <span class="cf">function</span>(p){</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  p<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span><span class="sc">-</span>p)<span class="sc">^</span><span class="dv">6</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>}</span>
@@ -780,6 +818,7 @@ es decir, dividimos el número de maneras en que pueden ocurrir <span class="mat
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat_verosim, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> prob)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span></span>
 <span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">0.25</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
 <span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"p"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <p><img src="prob-condicional_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="384"></p>
 </div>
@@ -816,6 +855,8 @@ es decir, dividimos el número de maneras en que pueden ocurrir <span class="mat
 <p>Y esta es nuestra función de verosimilitud para una observación.</p>
 <p>Suponemos que las <span class="math inline">\(r_1,r_2, \ldots, r_{11}\)</span> observaciones son independientes (por ejemplo, después de cada corrida la máquina se prepara de una manera estándar, y es como si el proceso comenzara otra vez). Entonces tenemos que multiplicar estas probabilidades para cada observación <span class="math inline">\(r_1\)</span>:</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>calc_verosim <span class="ot">&lt;-</span> <span class="cf">function</span>(r){</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  q_func <span class="ot">&lt;-</span> <span class="fl">0.03</span><span class="sc">^</span>r<span class="sc">*</span>(<span class="fl">0.97</span>)<span class="sc">^</span>(<span class="dv">10</span><span class="sc">-</span>r)</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  q_falla <span class="ot">&lt;-</span> <span class="fl">0.2</span><span class="sc">^</span>r<span class="sc">*</span>(<span class="fl">0.8</span>)<span class="sc">^</span>(<span class="dv">10</span><span class="sc">-</span>r)</span>
@@ -827,15 +868,19 @@ es decir, dividimos el número de maneras en que pueden ocurrir <span class="mat
 <span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>verosim <span class="ot">&lt;-</span> <span class="fu">calc_verosim</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
 <span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="fu">verosim</span>(<span class="fl">0.1</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.692087e-14</code></pre>
 </div>
 </div>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>dat_verosim <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>, <span class="fl">0.001</span>)) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">prob =</span> <span class="fu">map_dbl</span>(x, verosim))</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat_verosim, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> prob)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">0.8</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"prop funcionado"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <p><img src="prob-condicional_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="480"></p>
 </div>
@@ -846,17 +891,23 @@ es decir, dividimos el número de maneras en que pueden ocurrir <span class="mat
 <h3 class="unnumbered anchored" data-anchor-id="aspectos-numéricos">Aspectos numéricos</h3>
 <p>Cuando calculamos la verosimilitud arriba, nótese que estamos multiplicando números que pueden ser muy chicos (por ejemplo <span class="math inline">\(p^6\)</span>, etc). Esto puede producir desbordes numéricos fácilmente. Por ejemplo para un tamaño de muestra de 1000, podríamos tener que calcular</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fl">0.1</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>proba <span class="ot">&lt;-</span> (p <span class="sc">^</span> <span class="dv">800</span>)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p)<span class="sc">^</span><span class="dv">200</span></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>proba</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0</code></pre>
 </div>
 </div>
 <p>En estos casos, es mejor hacer los cálculos en la escala logarítmica. El logaritmo convierte productos en sumas, y baja exponentes multiplicando. Si calculamos en escala logaritmica la cantidad de arriba, no tenemos problema:</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>log_proba <span class="ot">&lt;-</span> <span class="dv">800</span> <span class="sc">*</span> <span class="fu">log</span>(p) <span class="sc">+</span> <span class="dv">200</span> <span class="sc">*</span> <span class="fu">log</span>(<span class="dv">1</span><span class="sc">-</span>p)</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>log_proba</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -1863.14</code></pre>
 </div>
