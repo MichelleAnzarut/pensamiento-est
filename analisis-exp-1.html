@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.598">
+<meta name="generator" content="quarto-0.9.644">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Pensamiento estadístico - 1&nbsp; Análisis exploratorio</title>
+<title>Pensamiento estadístico - 1&nbsp; Análisis exploratorio y visualización de datos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -151,7 +151,7 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Análisis exploratorio</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Análisis exploratorio y visualización de datos</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -189,7 +189,7 @@ div.csl-indent {
     <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./analisis-exp-1.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Análisis exploratorio</span></a>
+  <a href="./analisis-exp-1.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Análisis exploratorio y visualización de datos</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -283,11 +283,9 @@ div.csl-indent {
   <li><a href="#ejemplo-cálculos-renales" id="toc-ejemplo-cálculos-renales" class="nav-link" data-scroll-target="#ejemplo-cálculos-renales">Ejemplo (cálculos renales)</a></li>
   <li><a href="#inferencia-y-predicción" id="toc-inferencia-y-predicción" class="nav-link" data-scroll-target="#inferencia-y-predicción"> <span class="header-section-number">1.2</span> Inferencia y predicción</a></li>
   <li><a href="#ejercicio-admisiones-de-berkeley" id="toc-ejercicio-admisiones-de-berkeley" class="nav-link" data-scroll-target="#ejercicio-admisiones-de-berkeley">Ejercicio: admisiones de Berkeley</a></li>
-  <li><a href="#descripciones-simples-y-problemas-complejas" id="toc-descripciones-simples-y-problemas-complejas" class="nav-link" data-scroll-target="#descripciones-simples-y-problemas-complejas"> <span class="header-section-number">1.3</span> Descripciones simples y problemas complejas</a></li>
-  <li><a href="#qué-preguntas-formular" id="toc-qué-preguntas-formular" class="nav-link" data-scroll-target="#qué-preguntas-formular"> <span class="header-section-number">1.4</span> ¿Qué preguntas formular?</a></li>
-  <li><a href="#formulación-de-preguntas-y-respuestas" id="toc-formulación-de-preguntas-y-respuestas" class="nav-link" data-scroll-target="#formulación-de-preguntas-y-respuestas"> <span class="header-section-number">1.5</span> Formulación de preguntas y respuestas</a></li>
-  <li><a href="#cómo-saber-que-vamos-en-el-camino-correcto" id="toc-cómo-saber-que-vamos-en-el-camino-correcto" class="nav-link" data-scroll-target="#cómo-saber-que-vamos-en-el-camino-correcto"> <span class="header-section-number">1.6</span> ¿Cómo saber que vamos en el camino correcto?</a></li>
-  <li><a href="#gráfica-de-minard" id="toc-gráfica-de-minard" class="nav-link" data-scroll-target="#gráfica-de-minard"> <span class="header-section-number">1.7</span> Gráfica de Minard</a></li>
+  <li><a href="#formulación-de-preguntas" id="toc-formulación-de-preguntas" class="nav-link" data-scroll-target="#formulación-de-preguntas"> <span class="header-section-number">1.3</span> Formulación de preguntas</a></li>
+  <li><a href="#cómo-saber-que-vamos-en-el-camino-correcto" id="toc-cómo-saber-que-vamos-en-el-camino-correcto" class="nav-link" data-scroll-target="#cómo-saber-que-vamos-en-el-camino-correcto"> <span class="header-section-number">1.4</span> ¿Cómo saber que vamos en el camino correcto?</a></li>
+  <li><a href="#gráfica-de-minard" id="toc-gráfica-de-minard" class="nav-link" data-scroll-target="#gráfica-de-minard"> <span class="header-section-number">1.5</span> Gráfica de Minard</a></li>
   </ul>
 </nav>
     </div>
@@ -296,7 +294,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="analisis-1" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Análisis exploratorio</span></span></h1>
+<h1 class="title"><span id="analisis-1" class="quarto-section-identifier d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Análisis exploratorio y visualización de datos</span></span></h1>
 </div>
 
 
@@ -313,6 +311,19 @@ div.csl-indent {
 <blockquote class="blockquote">
 <p>“Exploratory data analysis can never be the whole story, but nothing else can serve as the foundation stone –as the first step.” — John Tukey</p>
 </blockquote>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El análisis exploratorio de datos es un proceso de investigación con el objetivo de descubrir patrones o relaciones, detectar anomalías, probar hipótesis y verificar suposiciones. Puede hacerse visualmente, con estadísticas resumidas en tablas o gráficas, pero también puede incluir técnicas avanzadas de procesamiento de datos.</p>
+</div>
+</div>
 <p>Muchas veces se le llama <strong>análisis descriptivo</strong> a una combinación de resúmenes, gráficas y tablas cuyos propósitos pueden englobarse en:</p>
 <ol type="1">
 <li><p><strong>Validación de datos</strong>. Verificar si en los datos existen o no valores imposibles o “extraños” para algunas mediciones, si existen datos faltantes, o existen otros posibles “defectos”, irregularidades o sorpresas.</p></li>
@@ -434,7 +445,7 @@ div.csl-indent {
 <p>Esta es una descripción de los datos, que quizá no es muy compacta pero muestra varios aspectos importantes. En este caso notamos algunos patrones que saltan a la vista. Podemos marcar los domingos de cada semana:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>domingos_tbl <span class="ot">&lt;-</span> nacimientos <span class="sc">|&gt;</span> </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(<span class="fu">weekdays</span>(fecha) <span class="sc">==</span> <span class="st">"domingo"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(<span class="fu">weekdays</span>(fecha) <span class="sc">==</span> <span class="st">"Sunday"</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nacimientos, <span class="fu">aes</span>(<span class="at">x =</span> fecha, <span class="at">y =</span> n)) <span class="sc">+</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> fecha), domingos_tbl, <span class="at">colour =</span> <span class="st">"salmon"</span>) <span class="sc">+</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>() <span class="sc">+</span></span>
@@ -476,7 +487,7 @@ El proceso generador de datos
 <section id="ejemplo-cálculos-renales" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="ejemplo-cálculos-renales">Ejemplo (cálculos renales)</h2>
 <p>En este ejemplo también intentaremos mostrar los datos completos sin intentar resumir.</p>
-<p>Este es un estudio real acerca de tratamientos para cálculos renales (<span class="citation" data-cites="kidney94">Julious y Mullee (<a href="#ref-kidney94" role="doc-biblioref">1994</a>)</span>). Pacientes se asignaron de una forma no controlada a dos tipos de tratamientos para reducir cálculos renales. Para cada paciente, conocemos el el tipo de ćalculos que tenía (grandes o chicos) y si el tratamiento tuvo éxito o no.</p>
+<p>Este es un estudio real acerca de tratamientos para cálculos renales (<span class="citation" data-cites="kidney94">Julious y Mullee (<a href="#ref-kidney94" role="doc-biblioref">1994</a>)</span>). Pacientes se asignaron de una forma no controlada a dos tipos de tratamientos para reducir cálculos renales. Para cada paciente, conocemos el tipo de ćalculos que tenía (grandes o chicos) y si el tratamiento tuvo éxito o no.</p>
 <p>La tabla original se ve como sigue (muestreamos algunos renglones):</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>calculos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"./datos/kidney_stone_data.csv"</span>)</span>
@@ -504,47 +515,22 @@ El proceso generador de datos
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> grandes </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> grandes </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> chicos </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A </td>
+   <td style="text-align:left;"> B </td>
    <td style="text-align:left;"> chicos </td>
    <td style="text-align:left;"> mejora </td>
   </tr>
   <tr>
    <td style="text-align:left;"> B </td>
    <td style="text-align:left;"> chicos </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> grandes </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> chicos </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> grandes </td>
-   <td style="text-align:left;"> mejora </td>
+   <td style="text-align:left;"> sin_mejora </td>
   </tr>
   <tr>
    <td style="text-align:left;"> B </td>
+   <td style="text-align:left;"> grandes </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> A </td>
    <td style="text-align:left;"> chicos </td>
    <td style="text-align:left;"> mejora </td>
   </tr>
@@ -565,11 +551,31 @@ El proceso generador de datos
   </tr>
   <tr>
    <td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> grandes </td>
+   <td style="text-align:left;"> chicos </td>
    <td style="text-align:left;"> mejora </td>
   </tr>
   <tr>
    <td style="text-align:left;"> B </td>
+   <td style="text-align:left;"> chicos </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:left;"> chicos </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:left;"> chicos </td>
+   <td style="text-align:left;"> sin_mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:left;"> grandes </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> A </td>
    <td style="text-align:left;"> grandes </td>
    <td style="text-align:left;"> mejora </td>
   </tr>
@@ -584,13 +590,8 @@ El proceso generador de datos
    <td style="text-align:left;"> sin_mejora </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> grandes </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> grandes </td>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:left;"> chicos </td>
    <td style="text-align:left;"> mejora </td>
   </tr>
   <tr>
@@ -599,7 +600,17 @@ El proceso generador de datos
    <td style="text-align:left;"> mejora </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> A </td>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:left;"> chicos </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:left;"> chicos </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> B </td>
    <td style="text-align:left;"> chicos </td>
    <td style="text-align:left;"> mejora </td>
   </tr>
@@ -801,7 +812,7 @@ El proceso generador de datos
 
 </div>
 </div>
-<p>Nuestra hipótesis aquí es que la decisión de qué tratamiento usar depende del tamaño de los cálculos. En este caso, por alguna razón se prefiere utilizar el tratamiento <span class="math inline">\(A\)</span> para cálculos grandes, y <span class="math inline">\(B\)</span> para cálculos chicos. Esto quiere decir que en la tabla total <em>el tratamiento <span class="math inline">\(A\)</span> está en desventaja porque se usa en casos más difíciles</em>, pero el tratamiento <span class="math inline">\(A\)</span> parece ser en general mejor.</p>
+<p>Nuestra hipótesis aquí es que la decisión de qué tratamiento usar depende del tamaño de los cálculos. En este caso, por alguna razón se prefiere utilizar el tratamiento <span class="math inline">\(A\)</span> para cálculos grandes, y <span class="math inline">\(B\)</span> para cálculos chicos. Esto quiere decir que en la tabla total <em>el tratamiento</em> <span class="math inline">\(A\)</span> está en desventaja porque se usa en casos más difíciles, pero el tratamiento <span class="math inline">\(A\)</span> parece ser en general mejor.</p>
 <p>Igual que en el ejemplo anterior, los resúmenes descriptivos están acompañados de hipótesis acerca del <em>proceso generador de datos</em>, y esto ilumina lo que estamos observando y nos guía hacia descripciones provechosas de los datos. Las explicaciones no son tan simples y, otra vez, interviene el comportamiento de doctores, tratamientos, y distintos tipos de padecimientos.</p>
 </section>
 <section id="inferencia-y-predicción" class="level2" data-number="1.2">
@@ -1073,13 +1084,11 @@ El proceso generador de datos
 <li>Esta es una tabla <em>descriptiva</em>. Sin embargo, tiene que ser entendida en el contexto de los datos y su generación. ¿Qué hipótesis importantes sugieren estos datos? ¿Por qué hay tanta diferencia de género de solicitudes en algunos departamentos? ¿Por qué es sorprendente o no las variaciones en tasas de aceptación de estudiantes de cada género?</li>
 </ul>
 </section>
-<section id="descripciones-simples-y-problemas-complejas" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="descripciones-simples-y-problemas-complejas"><span class="header-section-number">1.3</span> Descripciones simples y problemas complejas</h2>
-<p>Muchas veces se descarta al análisis descriptivo o exploratorio (al menos en sus formas más crudas) como algo que no requiere mucha habilidad técnica o conocimiento de dominio, o cuando se quiere evitar plantear hipótesis claras acerca de los datos que ayuden en su entendimiento.</p>
-<p>En realidad el análisis descriptivo y exploratorio es crucial en el análisis de datos en general, y tiene siempre que venir acompañado de conocimiento de dominio, habilidad técnica, una mente crítica y muchas veces ingenio y creatividad.</p>
-</section>
-<section id="qué-preguntas-formular" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="qué-preguntas-formular"><span class="header-section-number">1.4</span> ¿Qué preguntas formular?</h2>
+<section id="formulación-de-preguntas" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="formulación-de-preguntas"><span class="header-section-number">1.3</span> Formulación de preguntas</h2>
+<p>El análisis exploratorio es fundamentalmente un proceso creativo, lo que lo convierte en difícil de enseñar en las clases de ciencias de datos. Como la mayoría de los procesos creativos, la clave es desarrollar conocimiento detallado del dominio para hacer <strong>preguntas de calidad</strong>.</p>
+<p>Es difícil hacer preguntas reveladoras al comienzo del análisis porque no se sabe qué conocimientos están contenidos en el conjunto de datos, pero cada nueva pregunta expone aspectos de los datos y aumenta las posibilidades de hacer un descubrimiento. Muchos de los descubrimientos ocurren en el análisis exploratorio, por lo que no debe pasarse por alto, es esencial para descubrir información que se puede utilizar para responder a la pregunta de investigación planteada.</p>
+<p>A veces, al final de un análisis de datos exploratorio, la conclusión es que el conjunto de datos no es realmente apropiado para esta pregunta. En otros casos, no está claro que la pregunta que intentamos responder tenga relevancia inmediata. Uno de los objetivos del análisis exploratorio de datos es hacer que pensemos en estas posibilidades, en este punto, podemos refinar nuestra pregunta o recopilar nuevos datos, todo en un proceso iterativo para llegar al mejor resultado.</p>
 <p>Existen algunas prácticas generales que utilizamos para hacer validaciones y resúmenes simples de los datos que discutiremos más adelante. Por el momento, discutimos las razones por las que estamos haciendo ese análisis en un principio.</p>
 <p>En general, comenzamos con algunas preguntas básicas que quisiéramos contestar con los datos. El análisis exploratorio juega un papel central para comenzar a responder:</p>
 <ul>
@@ -1087,9 +1096,6 @@ El proceso generador de datos
 <li>¿Podemos contestar la pregunta con los datos que tenemos?</li>
 </ul>
 <p>Aunque estos dos incisos a veces parecen transparentes y simples de contestar, generalmente no lo son: las preguntas que queremos contestar y los problemas que queremos resolver usualmente son no triviales.</p>
-</section>
-<section id="formulación-de-preguntas-y-respuestas" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="formulación-de-preguntas-y-respuestas"><span class="header-section-number">1.5</span> Formulación de preguntas y respuestas</h2>
 <p>El proceso de la ciencia de datos no va desde las preguntas hasta las respuestas en un camino lineal.</p>
 <p>En esta gráfica <a href="https://simplystatistics.org/2019/04/17/tukey-design-thinking-and-better-questions">Roger Peng</a> hay tres caminos: uno es uno ideal que pocas veces sucede, otro produce respuestas poco útiles pero es fácil, y otro es tortuoso pero que caracteriza el mejor trabajo de análisis de datos:</p>
 <div class="cell">
@@ -1118,8 +1124,8 @@ El proceso generador de datos
 </div>
 </div>
 </section>
-<section id="cómo-saber-que-vamos-en-el-camino-correcto" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="cómo-saber-que-vamos-en-el-camino-correcto"><span class="header-section-number">1.6</span> ¿Cómo saber que vamos en el camino correcto?</h2>
+<section id="cómo-saber-que-vamos-en-el-camino-correcto" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="cómo-saber-que-vamos-en-el-camino-correcto"><span class="header-section-number">1.4</span> ¿Cómo saber que vamos en el camino correcto?</h2>
 <p>Comenzamos por discribir cuáles son los signos de calidad del análisis que piensa usarse como insumo para una decisión. Los principios del diseño analítico de Edward Tufte (<span class="citation" data-cites="tufte06">Tufte (<a href="#ref-tufte06" role="doc-biblioref">2006</a>)</span>) son:</p>
 <p>Los análisis exitosos:</p>
 <ol type="1">
@@ -1150,8 +1156,8 @@ Tip
 </div>
 </div>
 </section>
-<section id="gráfica-de-minard" class="level2" data-number="1.7">
-<h2 data-number="1.7" class="anchored" data-anchor-id="gráfica-de-minard"><span class="header-section-number">1.7</span> Gráfica de Minard</h2>
+<section id="gráfica-de-minard" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="gráfica-de-minard"><span class="header-section-number">1.5</span> Gráfica de Minard</h2>
 <p>La ilustración que Tufte usa para mostrar excelencia en diseño analítico es una <a href="https://en.wikipedia.org/wiki/Charles_Joseph_Minard">gráfica de Minard</a> que sirve para entender la campaña de Napoleón (1812) en Rusia. Es un ejemplo atípico, pero representa bien los principios y también muestra la importancia del ingenio en la construcción de un anállsis:</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -1169,6 +1175,7 @@ Tip
 ¿Cómo satisface los principios del diseño analítico este gráfico?
 </div>
 </div>
+<p>La gráfica de Minard da al espectador la mayor cantidad de ideas en el menor tiempo, con la menor cantidad de tinta, y en el espacio más pequeño. Combina muchas dimensiones: pérdida de vidas en un momento y lugar, temperatura, geografía, contexto histórico. Por ejemplo, muestra los puntos donde las tropas de Napoleón se dividen en subgrupos dividiendo la barra principal en ramas. Agrega líneas finas para representar los cruces de ríos en el viaje de regreso que diezmaron aún más las tropas decrecientes de Napoleón y es capaz de mostrar la drástica pérdida de vidas por la decisión de Napoleón en una sola esquina del diagrama.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">

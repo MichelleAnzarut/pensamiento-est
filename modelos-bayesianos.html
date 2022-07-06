@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.598">
+<meta name="generator" content="quarto-0.9.644">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -185,7 +185,7 @@ div.csl-indent {
     <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./analisis-exp-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Análisis exploratorio</span></a>
+  <a href="./analisis-exp-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Análisis exploratorio y visualización de datos</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -542,7 +542,7 @@ Inferencia bayesiana.
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(sim_inicial<span class="sc">$</span>theta, <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>)) <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> 2.5% 97.5% 
- 0.15  0.86 </code></pre>
+ 0.15  0.85 </code></pre>
 </div>
 </div>
 <p>Es difícil justificar en abstracto por qué escogeriamos una inicial con esta forma. <em>Aunque esto los detallaremos más adelante</em>, puedes pensar, por el momento, que alguien observó algunos casos de esta población, y quizá vio tres éxitos y tres fracasos. Esto sugeriría que es poco probable que la probablidad <span class="math inline">\(\theta\)</span> sea muy cercana a 0 o muy cercana a 1.</p>
@@ -573,8 +573,8 @@ Inferencia bayesiana.
 <pre><code># A tibble: 2 × 2
   dist      theta_hat
   &lt;chr&gt;         &lt;dbl&gt;
-1 inicial       0.501
-2 posterior     0.61 </code></pre>
+1 inicial       0.5  
+2 posterior     0.612</code></pre>
 </div>
 </div>
 <p>Nota que el estimador de máxima verosimilitud es <span class="math inline">\(\hat{p} = 19/30 = 0.63\)</span>, que es ligeramente diferente de la media posterior. ¿Por qué?</p>
@@ -593,7 +593,7 @@ Inferencia bayesiana.
 # Groups:   dist [2]
   dist      `0.025` `0.975`
   &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;
-1 inicial      0.15    0.86
+1 inicial      0.15    0.85
 2 posterior    0.45    0.76</code></pre>
 </div>
 </div>

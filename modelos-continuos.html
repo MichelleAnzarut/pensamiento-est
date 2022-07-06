@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.598">
+<meta name="generator" content="quarto-0.9.644">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -167,7 +167,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./analisis-exp-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Análisis exploratorio</span></a>
+  <a href="./analisis-exp-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Análisis exploratorio y visualización de datos</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -514,8 +514,8 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(x_sim_u, <span class="fu">c</span>(<span class="fl">0.10</span>, <span class="fl">0.50</span>, <span class="fl">0.90</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     10%      50%      90% 
-1.016461 5.655713 9.236678 </code></pre>
+<pre><code>      10%       50%       90% 
+0.7228508 4.9042604 8.9673423 </code></pre>
 </div>
 </div>
 <p>Por el ejercicio anterior sabemos cuáles son los cuantiles teóricos correspondientes a una uniforme en <span class="math inline">\([0,10]\)</span>. Podemos calcularlos también como sigue:</p>
@@ -621,22 +621,22 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 <pre><code># A tibble: 16 × 2
    inicial     n
      &lt;dbl&gt; &lt;int&gt;
- 1    0       41
- 2    0.25   125
- 3    0.5    214
- 4    0.75   276
- 5    1      315
- 6    1.25   458
- 7    1.5    484
- 8    1.75   605
- 9    2      583
-10    2.25   536
-11    2.5    420
-12    2.75   374
-13    3      252
-14    3.25   164
-15    3.5    125
-16    3.75    28</code></pre>
+ 1    0       37
+ 2    0.25   121
+ 3    0.5    185
+ 4    0.75   281
+ 5    1      337
+ 6    1.25   429
+ 7    1.5    523
+ 8    1.75   581
+ 9    2      602
+10    2.25   484
+11    2.5    446
+12    2.75   341
+13    3      272
+14    3.25   198
+15    3.5    123
+16    3.75    40</code></pre>
 </div>
 </div>
 <p>Y calculamos la aproximación a la media como sigue:</p>
@@ -647,7 +647,7 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 <pre><code># A tibble: 1 × 1
   media_aprox
         &lt;dbl&gt;
-1        1.86</code></pre>
+1        1.88</code></pre>
 </div>
 </div>
 <p>Apliquemos esta idea cuando tenemos una densidad <span class="math inline">\(f(x)\)</span>. Dividimos el rango de la densidad en cubetas, y aproximamos la densidad por rangos, por ejemplo:</p>
@@ -761,7 +761,7 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 <span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">simular_bolsa</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.325</code></pre>
+<pre><code>[1] 3.45</code></pre>
 </div>
 </div>
 <p>Veamos cómo se ven los resultados si hacemos este experimento un número grande de veces:</p>

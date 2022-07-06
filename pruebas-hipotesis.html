@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.598">
+<meta name="generator" content="quarto-0.9.644">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -189,7 +189,7 @@ div.csl-indent {
     <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./analisis-exp-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Análisis exploratorio</span></a>
+  <a href="./analisis-exp-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Análisis exploratorio y visualización de datos</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -454,7 +454,7 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">88</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="fu">lineup</span>(<span class="fu">null_permute</span>(<span class="st">"grupo"</span>), muestra_tab, <span class="at">n =</span> <span class="dv">20</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>decrypt("iq8a h0d0 9v cWY9d9Wv ne")</code></pre>
+<pre><code>decrypt("Jn3o HPdP I7 LQgIdIQ7 eA")</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>reps_mezcla <span class="ot">&lt;-</span> reps <span class="sc">|&gt;</span>  <span class="fu">mutate</span>(<span class="at">grupo_1 =</span> <span class="fu">factor</span>(digest<span class="sc">::</span><span class="fu">digest2int</span>(grupo) <span class="sc">%%</span> <span class="dv">177</span>))</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grafica_cuantiles</span>(reps_mezcla, grupo_1, x) <span class="sc">+</span> </span>
@@ -489,7 +489,7 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">121</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="fu">lineup</span>(<span class="fu">null_permute</span>(<span class="st">"grupo"</span>), muestra_tab, <span class="at">n =</span> <span class="dv">20</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>decrypt("iq8a h0d0 9v cWY9d9Wv nC")</code></pre>
+<pre><code>decrypt("Jn3o HPdP I7 LQgIdIQ7 ex")</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grafica_cuantiles</span>(reps <span class="sc">|&gt;</span>  <span class="fu">mutate</span>(<span class="at">grupo_escondido =</span> <span class="fu">factor</span>(digest<span class="sc">::</span><span class="fu">digest2int</span>(grupo) <span class="sc">%%</span> <span class="dv">177</span>)), </span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                             grupo_escondido, x) <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>.sample) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"x"</span>) <span class="sc">+</span></span>
@@ -784,7 +784,7 @@ cols(
 )</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>decrypt("iq8a h0d0 9v cWY9d9Wv nn")</code></pre>
+<pre><code>decrypt("Jn3o HPdP I7 LQgIdIQ7 ee")</code></pre>
 </div>
 <div class="cell-output-display">
 <p><img src="pruebas-hipotesis_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="768"></p>
