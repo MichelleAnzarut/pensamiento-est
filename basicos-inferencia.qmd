@@ -17,6 +17,7 @@ Por ejemplo, consideremos esta población de 15 personas:
 library(tidyverse)
 library(gt)
 theme_set(theme_minimal())
+source("R/funciones_auxiliares_notas.R")
 pob_1 <- tibble(id = 1:15, 
        edad = sample(18:65, 15),
        estatura = c(1.58, 1.72, 1.64, 1.50, rep(NA, 11)),
@@ -74,13 +75,12 @@ conocemos el proceso de asignación de la aspirina.
 
 Por ejemplo, llegaríamos a conclusiones muy distintas si nos dijeran que:
 
-Primera población:
 
 1. Escogimos las 5 personas que usan ropa talla chica.
 2. Escogimos las 5 personas que llegaron primero en una carrera de 100 metros.
 3. Escogimos las personas cuyo día de nacimiento era más bajo.
 
-Segunda población:
+O en el ejemplo de la aspirina,
 
 1. Sólo dimos aspirinas a las personas que reportaron un nivel de dolor de cabeza muy alto.
 2. Solo dimos aspirina a las personas que llegaron primero en una carrera de 100 metros.
@@ -92,7 +92,7 @@ Discute qué conclusiones podrías llegar en cada uno de estos escenarios.
 
 :::
 
-Los casos 1 y 2 en ambas poblaciones son en general más difíciles de resolver
+Los casos 1 y 2 en ambas poblaciones son en general difíciles de resolver
 adecuadamente, y explicaremos con más ejemplos. Adicionalmente, es también más difícil
 cuantificar el nivel de incertidumbre de nuestras respuestas, pues dependen de muchos
 detalles del proceso de selección o asignación.
@@ -108,11 +108,142 @@ genera los datos**, muchas veces a un nivel muy detallado.
 :::
 
 
+## Procesos generadores de datos e inferencia causal
+
+Consideramos los datos de ENLACE (2011), y en particular los resultados promedio 
+de matemáticas en sexto grado por escuela. ENLACE era una prueba que se aplicaba
+en todas las escuelas, de forma que tenemos información de la población completa
+de interés.
+
+Nos interesa saber cómo varían los resultados en función de el tipo de primaria:
+pública o privada. 
+
+
+El rango
+de la calificación de matemáticas para un alumno es de 0-800, y aproximadamente
+la mitad de los alumnos califica en el rengo de 450 a 550. Vemos dispersión
+considerable en las calificaciones de las escuelas, y diferencias considerables 
+entre tipo de escuelas:
+
+```{r, message = FALSE, echo = FALSE}
+enlace <- read_csv("datos/enlace.csv")
+enlace <- enlace |>  filter(num_evaluados_total > 0, mate_6 > 0) |>
+    mutate(marginacion = fct_reorder(marginacion, mate_6, median)) |> 
+    mutate(tipo = recode(tipo, `INDÍGENA`="Indígena/Conafe", CONAFE="Indígena/Conafe", GENERAL="General", PARTICULAR="Particular")) |> 
+    mutate(tipo = fct_reorder(tipo, mate_6, mean)) 
+```
+
+```{r, message = FALSE}
+enlace_tbl <- enlace |> group_by(tipo) |> 
+    summarise(n_escuelas = n(),
+              cuantiles = list(cuantil(mate_6, c(0.05, 0.25, 0.5, 0.75, 0.95)))) |> 
+    unnest(cols = cuantiles) |> mutate(valor = round(valor)) 
+enlace_tbl |> spread(cuantil, valor) |>  formatear_tabla()
+```
+
+Podemos graficar de varias maneras, por ejemplo, mostrando los cuantiles 0.05, 0.25, 0.5, 0.75 y 0.95:
+
+
+```{r, fig.width = 10, fig.height = 6, echo = FALSE, message = FALSE}
+g_medianas <- ggplot(enlace_tbl %>% filter(cuantil == 0.50), aes(x = tipo, y = valor)) +
+    geom_point(colour = "red") + ylim(c(150,880)) + labs(subtitle = "Gráfica 1")
+g_80_p <- ggplot(enlace_tbl  %>% spread(cuantil,valor), aes(x = tipo, y = `0.5`)) +
+    geom_linerange(aes(ymin= `0.05`, ymax = `0.95`), colour = "gray40") +
+    geom_linerange(aes(ymin= `0.25`, ymax = `0.75`), size = 2, colour = "white") +
+    geom_point(colour = "red", size = 3) +
+     ylim(c(150,880)) + labs(subtitle = "Gráfica 1")+
+    ylab("Promedios Matemáticas")
+g_80_p
+```
+
+
+Y vemos que las escuelas privadas tienen mejor resultados que las públicas por
+un margen considerable. Ahora preguntamos: ¿la calidad de las escuelas es lo 
+que *causa* estos resultados? Por ejemplo, ¿si cambiáramos un niño de una escuela
+pública a una privada su resultado sería mejor? 
+
+Es dificil contestar esta pregunta, porque no entendemos el proceso generador
+de datos que asigna niños a escuelas. Una posible hipótesis de cómo se asigna el 
+tratamiento y cómo se relaciona con la calificación en Enlace:
+
+```{r}
+library(dagitty)
+library(ggdag)
+dag_cafe <- dagitty('dag{"Escuela" [exposure,pos="-3,3"]
+  "Calif" [outcome,pos="3,3"]
+  "Marginación" [pos="0,1"]
+  "Educación padres" [pos = "2,2"]
+  "Recursos escolares" [pos = "0,4"]
+  "Marginación"  -> "Escuela"
+    "Escuela" -> "Calif"
+    "Marginación" -> "Educación padres" -> "Calif"
+    "Escuela" -> "Recursos escolares" -> "Calif"
+  }')
+dag_cafe_tidy <- tidy_dagitty(dag_cafe) #|> 
+  #mutate(tipo = ifelse(name == "Cafe" & to == "Cancer", "dotted", "solid"))
+dag_cafe_tidy |>
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend )) + 
+  geom_dag_edges() +
+  geom_dag_point(colour = "salmon", size = 20) +
+  geom_dag_text(colour = "gray20") +
+  theme_dag()
+```
+- El grado de marginación del hogar de un estudiante influye en el tipo de escuela
+al que asiste.
+- Pero también influye en la calificación que obtiene el estudiante, por ejemplo
+actuando mediante el nivel de educación de los padres.
+- Esto implica que cuando cruzamos tipo de escuela y calificación obtenida, en parte
+estamos viendo el efecto que la escuela tiene en los estudiantes, pero también un
+efecto común de la marginación.
+- La comparación entre tipos de escuelas está sesgada si el propósito es estimar
+el efecto de tipo de escuela en los resultados de los estudiantes.
+
+
+```{r}
+#| message: false
+#| warning: false
+enlace_tbl_marg <- enlace %>% 
+    group_by(tipo, marginacion) %>% 
+    summarise(n_alumnos = sum(num_evaluados_total),
+              cuantiles = list(cuantil(mate_6, c(0.05, 0.25, 0.5, 0.75, 0.95)))) %>% 
+    unnest(cols = cuantiles) %>% mutate(valor = round(valor)) %>% 
+    filter( n_alumnos > 20)
+```
+
+Podemos considerar el grado de marginación del municipio donde está cada escuela,
+y vemos la diferencia tan grande se debe en parte a las escuelas privadas tienden estar
+en municipios de baja marginación. Por ejemplo, los promedios no son tan diferentes
+para escuelas públicas en zonas de marginación muy baja comparado con escuelas privadas
+en zonas de marginación alta:
+
+```{r, fig.width = 10, fig.height = 4, echo = FALSE}
+g_80_p <- ggplot(enlace_tbl_marg  |>  spread(cuantil, valor), 
+                                     aes(x = marginacion, y = `0.5`)) +
+    geom_linerange(aes(ymin= `0.05`, ymax = `0.95`), colour = "gray40") +
+    geom_linerange(aes(ymin= `0.25`, ymax = `0.75`), size = 2, colour = "white") +
+    geom_point(colour = "red", aes(size = log10(n_alumnos/1000))) +
+    ylab("Promedios Matemáticas") + facet_wrap(~tipo, nrow = 1) +
+    theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+    scale_size_continuous(name = "Miles de \nAlumnos",
+                          breaks = c(-0.3, 0, 1, 2, 2.7),
+                          labels = c(0.5, 1, 10, 100, 500)) 
+g_80_p
+```
+
+En esta nueva comparación, existen muchos otros factores que probablemente tenemos que
+pensar, algunos de ellos no estarán disponibles en los datos, y otros puede que se escapen
+de nuestra consideración. 
+
+- El problema central en este análisis es que el proceso generador de datos, en cuanto
+a quíen le toca ir a cada escuela, es complejo. 
+- Hacer inferencia causal en este caso es retador y
+depende de varios supuestos **que no son estadísticos**.
 
 
 
 
-## Asignación de tratamientos
+
+## Procesos generadores de datos 2: inferencia causal
 
 En un estudio de 1981, investigadores reportaron una
 asociación de cáncer de páncreas con consumo de café. Sus resultados agregados
@@ -198,8 +329,17 @@ Y en este caso, podemos ver directamente la relación causal entre café y cánc
 aún cuando problemas gastrointestinales pueden afectar la asignación del tratamiento.
 
 
+## Procesos generadores de datos e inferencia a poblaciones
 
-## Selección de 
+En el siguiente ejemplo, consideramos el problema del Conteo Rápido en 
+las elecciones presidenciales de 2018. El Conteo Rápido busca estimar con precisión
+los resultados finales de las elecciones en el mismo día que se lleva a cabo
+la votación.
+
+
+
+
+
 
 
 
