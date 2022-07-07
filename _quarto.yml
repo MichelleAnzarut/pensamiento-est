@@ -7,11 +7,11 @@ book:
   date: "5/3/2022"
   chapters:
     - index.qmd
-    - part: est_cd.qmd
-      chapters:
-        - analisis-exp-1.qmd
-        - analisis-exp-categoricos.qmd
-        - analisis-exp-numericos.qmd
+    #- part: est_cd.qmd
+    #  chapters:
+    #    - analisis-exp-1.qmd
+    #    - analisis-exp-categoricos.qmd
+    #    - analisis-exp-numericos.qmd
     - part: basicos-inferencia.qmd
       chapters:
         - pruebas-hipotesis.qmd

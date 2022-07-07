@@ -1,12 +1,14 @@
 # Inferencia estadística
 
 A grandes rasgos, en la inferencia estadística buscamos hacer afirmaciones acerca 
-de una colección de datos de la cual sólo tenemos información parcial.
+de una colección de datos (que muchas veces llamamos población) de la cual sólo 
+tenemos información parcial.
 
-Nos concentraremos en dos de las situaciones más comunes:
+Una manera de organizar la inferencia es dividiéndola en dos partes
 
-1. **Inferencia a poblaciones**: el proceso generador de datos "selecciona" a algunos
-elementos de una población, y queremos decir algo acerca de la población completa.
+1. **Inferencia a poblaciones**: el proceso generador de los datos observados 
+"selecciona" a algunos elementos de una población, y queremos decir algo acerca de 
+la población completa.
 
 Por ejemplo, consideremos esta población de 15 personas:
 
@@ -28,7 +30,12 @@ pob_1 |> gt()
 Para una muestra de ellos tenemos información acerca de su estatura y peso.
 ¿Qué podríamos decir acerca de la estatura y el peso de la población general?
 
-2. **Inferencia causal**: el proceso generador "asigna" tratamientos a una población o parte
+
+
+En esta parte también podemos considerar el problema de **predicción**, donde consideramos que
+los datos desconocidos también ocurren en el futuro.
+
+2. **Inferencia causal**: el proceso generador de datos "asigna" tratamientos a una población o parte
 de ella, y quisiéramos saber cómo se comportarían las unidades tratadas si no recibieran
 tratamiento, y también cómo se comportarían unidades no tratadas si recibieran el tratamiento.
 
@@ -51,6 +58,8 @@ Nuestra pregunta en este caso es del tipo: ¿ayuda la aspirina a reducir el dolo
 sólo observamos un resultado potencial de cada persona, dependiendo
 de si tomó aspirina o no. Si supiéramos los dos resultados potenciales de cada persona
 entonces podríamos contestar la pregunta sin dificultad.
+
+
 
 
 ::: callout-tip

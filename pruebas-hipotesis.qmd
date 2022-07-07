@@ -1,4 +1,4 @@
-# Inferencia y Remuestreo
+# Pruebas de hipótesis
 
 
 ```{r, message = FALSE, echo = FALSE}
@@ -11,41 +11,12 @@ source("R/funciones_auxiliares_notas.R")
 ```
 
 
-En una buena parte de los problemas de análisis de datos tenemos información incompleta. Por ejemplo:
-
-- **No observamos todas las unidades en interés**: Sólo observamos una parte de la población o del sistema de interés. 
-(a veces por costo o tiempo, a veces porque observaciones de interés están en futuro, por ejemplo).
-- **No observamos todas las variables de interés**: Existen variables para las cuales no tenemos información que influyen
-en las observaciones que estamos considerando.
-
-En ambos casos, las comparaciones que hacemos están sujetas a variabilidad que no controlamos. Podemos
-pensar en esta variabiliad de dos formas:
-
-- **Diferencias sistemáticas**: por ejemplo, sólo observamos cierto tipo de unidades, con características muy particulares, o
-en el caso de variables, no tenemos información de variables que afectan nuestras comparaciones de manera sistemática. Estas 
-consideraciones inducen incertidumbre en nuestro análisis que es relativamente difícil de cuantificar.
-
-- **Diferencias no sistemáticas**: si descartamos la primera posibilidad, consideramos que nuestras comparaciones están
-influidas por *fluctuaciones* que se deben al azar. En este caso, nuestras comparaciones pueden ser difíciles de interpretar
-por esa componente de ruido:  ¿cómo podemos
-saber si una comparación se ve de cierta manera debida a fluctuaciones debidas al azar (pues tenemos información incompleta)?
-
-La incertidumbre del segundo caso es más fácil de cuantificar bajo ciertas condiciones: 
-
-- Cuando tenemos cuantificaciones históricas de la variabilidad natural de un proceso,
-- Cuando usamos supuestos razonables soportados por teoría,
-- Cuando introducimos patrones de aleatorización conocidos y cuantificables en la selección de la muestra o aplicación de tratamientos o intervenciones, por ejemplo.
-
-
-## Pruebas de hipótesis {-}
-
 Las primeras técnicas que veremos intentan contestar la siguiente pregunta: 
 
 - Si observamos
 cierto patrón en los datos, ¿cómo podemos cuantificar  la evidencia de que es un
 patrón notable y no sólo debido a fluctuaciones en los datos particulares que tenemos?
 ¿Cómo sabemos que no estamos **sobreinterpretando** esas fluctuaciones?
-
 
 Por ejemplo:
 
@@ -54,6 +25,7 @@ El sistema presenta fluctuaciones en el tiempo.
 - Observamos la última salida de nuestro sistema. Naturalmente, tiene fluctuaciones. 
 ¿Esas fluctuaciones son consistentes con la operación usual del sistema? ¿Existe
 evidencia para pensar que algo en el sistema cambió?
+- Observamos a algunos
 
 ## Comparación con poblaciones de referencia {-}
 

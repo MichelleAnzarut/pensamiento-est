@@ -53,13 +53,15 @@ de si tomó aspirina o no. Si supiéramos los dos resultados potenciales de cada
 entonces podríamos contestar la pregunta sin dificultad.
 
 
-::: callout-tip
+::: callout-note
 ## Datos incompletos e incertidumbre
 
 Casi por regla general, el hecho de que tengamos datos incompletos
 implica que una respuesta apropiada a la pregunta incorporará cierto
-grado de incertidumbre, y por lo tanto conviene utilizar modelos de probabilidad 
-para describir esa incertidumbre.
+grado de incertidumbre.
+
+Entender la posibilidad y manera de cuantificar correctamente esa incertidumbre en nuestra
+respuesta es una tarea central en la estadística.
 
 :::
 
@@ -84,7 +86,11 @@ Segunda población:
 2. Solo dimos aspirina a las personas que llegaron primero en una carrera de 100 metros.
 3. Dimos una aspirina exclusivamente a las personas cuyo día de nacimiento es par.
 
+::: callout-tip
+
 Discute qué conclusiones podrías llegar en cada uno de estos escenarios.
+
+:::
 
 Los casos 1 y 2 en ambas poblaciones son en general más difíciles de resolver
 adecuadamente, y explicaremos con más ejemplos. Adicionalmente, es también más difícil
@@ -92,21 +98,23 @@ cuantificar el nivel de incertidumbre de nuestras respuestas, pues dependen de m
 detalles del proceso de selección o asignación.
 
 ::: callout-tip
-## Selección y asignación
+## Proceso generador de datos
 
-Cuando el proceso de selección o asignación tiene relaciones complicadas
+Cuando el proceso de selección de observaciones o asignación tiene relaciones complicadas
 con las cantidades de interés, puede ser muy difícil dar respuesta a preguntas
-inferenciales de manera adecuada.
+inferenciales de manera adecuada, y es importante entender el **proceso que 
+genera los datos**, muchas veces a un nivel muy detallado.
 
 :::
 
-Adecuada en este contexto quiere decir correctamente calibrada, lo cual explicaremos
-más adelante.
 
-## Asignación aleatoria de tratamientos
 
-Veremos primero unos ejemplos de qué sucede cuando el tratamiento no se 
-asigna al azar. En un estudio de 1981, investigadores reportaron una
+
+
+
+## Asignación de tratamientos
+
+En un estudio de 1981, investigadores reportaron una
 asociación de cáncer de páncreas con consumo de café. Sus resultados agregados
 fueron:
 
@@ -157,7 +165,7 @@ Las consecuencias de estas tres relaciones casuales es la siguiente:
 si alguien es entrevistado,
 puede ser por dos razones diferentes: tiene cáncer, o si no tiene cáncer,
 tiene probabilidad alta de tener problemas gastrointestinales. Esto 
-último qui2312
+último 
 implica, por restricciones de dieta, que tienden a tomar menos café. Con esto, hemos
 demostrado que con este esquema de selección puede aparecer naturalmente una asociación entre cáncer y consumo de café, **aún cuando no exista una relación causal entre tomar
 café y cáncer de páncreas**.
@@ -170,7 +178,7 @@ por ejemplo, si café estuviera asociado con fumar, entonces esa podría ser
 otra razón por la que observaríamos una relación entre cáncer y café aún cuando
 no haya relación causal entre estas dos variables.
 
-Sin embargo, si aleatorizamos el tratamiento, la sitación se hace mucho más 
+Sin embargo, si aleatorizamos el tratamiento, la situación se hace mucho más 
 simple. Si pudiéramos escoger a un grupo de personas, y asignar un grupo a tomar café y
 otro grupo a no tomarlo, tendríamos el diagrama:
 
@@ -191,12 +199,7 @@ aún cuando problemas gastrointestinales pueden afectar la asignación del trata
 
 
 
-
-
-
-
-
-## Selección aleatoria de muestra
+## Selección de 
 
 
 

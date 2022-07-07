@@ -1,10 +1,13 @@
 # Introducción {.unnumbered}
 
-Comenzaremos con una introducción a la ciencia de datos y el tipo de habilidades que los científicos de datos necesitan.
+En casi todas las soluciones basadas en datos, los científicos de datos ejercen el pensamiento estadístico al diseñar estrategias de recopilación de datos, obtener evidencia para la toma de decisiones y construir modelos para predecir tendencias futuras.
 
-Después del módulo introductorio, el resto de este curso proporcionará la base estadística que sustenta el análisis de datos. La estadística juega un papel central en el enfoque de la ciencia de datos, en casi todas las soluciones basadas en datos, los científicos de datos ejercen el pensamiento estadístico al diseñar estrategias de recopilación de datos, obtener información de los métodos de visualización, obtener evidencia para la toma de decisiones y construir modelos para predecir tendencias futuras.
+Este curso busca explicar con los principios básicos de la estadística, y su papel
+en el análisis de datos. Nuestro punto de vista es uno de fundamentos, con menos énfasis en
+recetas o técnicas particulares.
 
-El módulo final presentará la filosofía de la inferencia bayesiana y las técnicas de modelado bayesiano utilizando estudios de casos ilustrativos.
+En particular, estudiaremos básicos de probabilidad, métodos basados en remuestreo, y
+en la parte final la filosofía de la inferencia bayesiana y las técnicas de modelado bayesiano utilizando estudios de casos ilustrativos.
 
 ### 
 
