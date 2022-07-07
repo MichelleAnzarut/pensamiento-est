@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.644">
+<meta name="generator" content="quarto-0.9.652">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Pensamiento estadístico - 8&nbsp; Modelos probabilísticos para variables continuas</title>
+<title>Pensamiento estadístico - 5&nbsp; Modelos probabilísticos para variables continuas</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -129,7 +129,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Modelos probabilísticos para variables continuas</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Modelos probabilísticos para variables continuas</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -159,7 +159,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item sidebar-item-section">
     <div class="sidebar-item-container"> 
-        <a href="./est_cd.html" class="sidebar-item-text sidebar-link">Estadística y ciencia de datos</a>
+        <a href="./basicos-inferencia.html" class="sidebar-item-text sidebar-link">Inferencia estadística</a>
       <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
         <i class="bi bi-chevron-right ms-2"></i>
       </a>
@@ -167,37 +167,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./analisis-exp-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Análisis exploratorio y visualización de datos</span></a>
+  <a href="./pruebas-hipotesis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Pruebas de hipótesis</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./analisis-exp-categoricos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Datos univariados categóricos</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./analisis-exp-numericos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Descripción de datos univariados numéricos</span></a>
-  </div>
-</li>
-    </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a href="./basicos-inferencia.html" class="sidebar-item-text sidebar-link">Inferencia estadística</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./pruebas-hipotesis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Inferencia y Remuestreo</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./remuestreo-bootstrap.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Remuestreo: el bootstrap</span></a>
+  <a href="./remuestreo-bootstrap.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Remuestreo: el bootstrap</span></a>
   </div>
 </li>
     </ul>
@@ -205,29 +180,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <li class="sidebar-item sidebar-item-section">
     <div class="sidebar-item-container"> 
         <a href="./probabilidad.html" class="sidebar-item-text sidebar-link">Introducción a teoría de probabilidades</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
         <i class="bi bi-chevron-right ms-2"></i>
       </a>
     </div>
-    <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+    <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modelo-prob.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Básicos de probabilidad y simulación</span></a>
+  <a href="./modelo-prob.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Básicos de probabilidad y simulación</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./prob-condicional.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Probabilidad condicional e independencia</span></a>
+  <a href="./prob-condicional.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probabilidad condicional e independencia</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modelos-continuos.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Modelos probabilísticos para variables continuas</span></a>
+  <a href="./modelos-continuos.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Modelos probabilísticos para variables continuas</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./inferencia-modelos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Inferencia con modelos probabilísticos</span></a>
+  <a href="./inferencia-modelos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Inferencia con modelos probabilísticos</span></a>
   </div>
 </li>
     </ul>
@@ -235,14 +210,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <li class="sidebar-item sidebar-item-section">
     <div class="sidebar-item-container"> 
         <a href="./inferencia-bayesiana.html" class="sidebar-item-text sidebar-link">Estadística Bayesiana</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
         <i class="bi bi-chevron-right ms-2"></i>
       </a>
     </div>
-    <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+    <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modelos-bayesianos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Inferencia bayesiana</span></a>
+  <a href="./modelos-bayesianos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Inferencia bayesiana</span></a>
   </div>
 </li>
     </ul>
@@ -256,57 +231,57 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Indice de contenidos</h2>
    
   <ul>
-  <li><a href="#ejemplo-ruleta-justa" id="toc-ejemplo-ruleta-justa" class="nav-link active" data-scroll-target="#ejemplo-ruleta-justa"> <span class="header-section-number">8.0.1</span> Ejemplo: ruleta justa</a></li>
-  <li><a href="#modelo-equiprobable-o-uniforme" id="toc-modelo-equiprobable-o-uniforme" class="nav-link" data-scroll-target="#modelo-equiprobable-o-uniforme"> <span class="header-section-number">8.1</span> Modelo equiprobable o uniforme</a>
+  <li><a href="#ejemplo-ruleta-justa" id="toc-ejemplo-ruleta-justa" class="nav-link active" data-scroll-target="#ejemplo-ruleta-justa"> <span class="header-section-number">5.0.1</span> Ejemplo: ruleta justa</a></li>
+  <li><a href="#modelo-equiprobable-o-uniforme" id="toc-modelo-equiprobable-o-uniforme" class="nav-link" data-scroll-target="#modelo-equiprobable-o-uniforme"> <span class="header-section-number">5.1</span> Modelo equiprobable o uniforme</a>
   <ul class="collapse">
-  <li><a href="#ejemplo-ruleta-sesgada" id="toc-ejemplo-ruleta-sesgada" class="nav-link" data-scroll-target="#ejemplo-ruleta-sesgada"> <span class="header-section-number">8.1.1</span> Ejemplo: ruleta sesgada</a></li>
+  <li><a href="#ejemplo-ruleta-sesgada" id="toc-ejemplo-ruleta-sesgada" class="nav-link" data-scroll-target="#ejemplo-ruleta-sesgada"> <span class="header-section-number">5.1.1</span> Ejemplo: ruleta sesgada</a></li>
   </ul></li>
-  <li><a href="#funciones-de-densidad" id="toc-funciones-de-densidad" class="nav-link" data-scroll-target="#funciones-de-densidad"> <span class="header-section-number">8.2</span> Funciones de densidad</a></li>
-  <li><a href="#ejemplo-densidad-triangular" id="toc-ejemplo-densidad-triangular" class="nav-link" data-scroll-target="#ejemplo-densidad-triangular"> <span class="header-section-number">8.3</span> Ejemplo: densidad triangular</a>
+  <li><a href="#funciones-de-densidad" id="toc-funciones-de-densidad" class="nav-link" data-scroll-target="#funciones-de-densidad"> <span class="header-section-number">5.2</span> Funciones de densidad</a></li>
+  <li><a href="#ejemplo-densidad-triangular" id="toc-ejemplo-densidad-triangular" class="nav-link" data-scroll-target="#ejemplo-densidad-triangular"> <span class="header-section-number">5.3</span> Ejemplo: densidad triangular</a>
   <ul class="collapse">
   <li><a href="#ejemplo" id="toc-ejemplo" class="nav-link" data-scroll-target="#ejemplo">Ejemplo</a></li>
   </ul></li>
-  <li><a href="#cuantiles-de-variables-aleatorias" id="toc-cuantiles-de-variables-aleatorias" class="nav-link" data-scroll-target="#cuantiles-de-variables-aleatorias"> <span class="header-section-number">8.4</span> Cuantiles de variables aleatorias</a>
+  <li><a href="#cuantiles-de-variables-aleatorias" id="toc-cuantiles-de-variables-aleatorias" class="nav-link" data-scroll-target="#cuantiles-de-variables-aleatorias"> <span class="header-section-number">5.4</span> Cuantiles de variables aleatorias</a>
   <ul class="collapse">
   <li><a href="#ejemplo-densidad-triangular-1" id="toc-ejemplo-densidad-triangular-1" class="nav-link" data-scroll-target="#ejemplo-densidad-triangular-1">Ejemplo: densidad triangular</a></li>
   <li><a href="#ejercicio-densidad-uniforme" id="toc-ejercicio-densidad-uniforme" class="nav-link" data-scroll-target="#ejercicio-densidad-uniforme">Ejercicio: densidad uniforme</a></li>
   </ul></li>
-  <li><a href="#comparando-cuantiles-teóricos-y-empíricos" id="toc-comparando-cuantiles-teóricos-y-empíricos" class="nav-link" data-scroll-target="#comparando-cuantiles-teóricos-y-empíricos"> <span class="header-section-number">8.5</span> Comparando cuantiles teóricos y empíricos</a>
+  <li><a href="#comparando-cuantiles-teóricos-y-empíricos" id="toc-comparando-cuantiles-teóricos-y-empíricos" class="nav-link" data-scroll-target="#comparando-cuantiles-teóricos-y-empíricos"> <span class="header-section-number">5.5</span> Comparando cuantiles teóricos y empíricos</a>
   <ul class="collapse">
-  <li><a href="#ejemplo-distribución-uniforme" id="toc-ejemplo-distribución-uniforme" class="nav-link" data-scroll-target="#ejemplo-distribución-uniforme"> <span class="header-section-number">8.5.1</span> Ejemplo: distribución uniforme</a></li>
-  <li><a href="#ejemplo-distribución-triangular" id="toc-ejemplo-distribución-triangular" class="nav-link" data-scroll-target="#ejemplo-distribución-triangular"> <span class="header-section-number">8.5.2</span> Ejemplo: distribución triangular</a></li>
+  <li><a href="#ejemplo-distribución-uniforme" id="toc-ejemplo-distribución-uniforme" class="nav-link" data-scroll-target="#ejemplo-distribución-uniforme"> <span class="header-section-number">5.5.1</span> Ejemplo: distribución uniforme</a></li>
+  <li><a href="#ejemplo-distribución-triangular" id="toc-ejemplo-distribución-triangular" class="nav-link" data-scroll-target="#ejemplo-distribución-triangular"> <span class="header-section-number">5.5.2</span> Ejemplo: distribución triangular</a></li>
   </ul></li>
-  <li><a href="#histogramas-y-densidades" id="toc-histogramas-y-densidades" class="nav-link" data-scroll-target="#histogramas-y-densidades"> <span class="header-section-number">8.6</span> Histogramas y densidades</a></li>
-  <li><a href="#más-descriptivos-media-y-desviación-estándar" id="toc-más-descriptivos-media-y-desviación-estándar" class="nav-link" data-scroll-target="#más-descriptivos-media-y-desviación-estándar"> <span class="header-section-number">8.7</span> Más descriptivos: media y desviación estándar</a>
+  <li><a href="#histogramas-y-densidades" id="toc-histogramas-y-densidades" class="nav-link" data-scroll-target="#histogramas-y-densidades"> <span class="header-section-number">5.6</span> Histogramas y densidades</a></li>
+  <li><a href="#más-descriptivos-media-y-desviación-estándar" id="toc-más-descriptivos-media-y-desviación-estándar" class="nav-link" data-scroll-target="#más-descriptivos-media-y-desviación-estándar"> <span class="header-section-number">5.7</span> Más descriptivos: media y desviación estándar</a>
   <ul class="collapse">
-  <li><a href="#media-teórica-y-empírica" id="toc-media-teórica-y-empírica" class="nav-link" data-scroll-target="#media-teórica-y-empírica"> <span class="header-section-number">8.7.1</span> Media teórica y empírica</a></li>
-  <li><a href="#varianza-y-desviación-estándar" id="toc-varianza-y-desviación-estándar" class="nav-link" data-scroll-target="#varianza-y-desviación-estándar"> <span class="header-section-number">8.7.2</span> Varianza y desviación estándar</a></li>
+  <li><a href="#media-teórica-y-empírica" id="toc-media-teórica-y-empírica" class="nav-link" data-scroll-target="#media-teórica-y-empírica"> <span class="header-section-number">5.7.1</span> Media teórica y empírica</a></li>
+  <li><a href="#varianza-y-desviación-estándar" id="toc-varianza-y-desviación-estándar" class="nav-link" data-scroll-target="#varianza-y-desviación-estándar"> <span class="header-section-number">5.7.2</span> Varianza y desviación estándar</a></li>
   <li><a href="#notación" id="toc-notación" class="nav-link" data-scroll-target="#notación">Notación</a></li>
-  <li><a href="#cuándo-usar-media-y-desviación-estándar" id="toc-cuándo-usar-media-y-desviación-estándar" class="nav-link" data-scroll-target="#cuándo-usar-media-y-desviación-estándar"> <span class="header-section-number">8.7.3</span> ¿Cuándo usar media y desviación estándar?</a></li>
+  <li><a href="#cuándo-usar-media-y-desviación-estándar" id="toc-cuándo-usar-media-y-desviación-estándar" class="nav-link" data-scroll-target="#cuándo-usar-media-y-desviación-estándar"> <span class="header-section-number">5.7.3</span> ¿Cuándo usar media y desviación estándar?</a></li>
   <li><a href="#ejercicio" id="toc-ejercicio" class="nav-link" data-scroll-target="#ejercicio">Ejercicio</a></li>
   </ul></li>
-  <li><a href="#la-distribución-normal" id="toc-la-distribución-normal" class="nav-link" data-scroll-target="#la-distribución-normal"> <span class="header-section-number">8.8</span> La distribución normal</a>
+  <li><a href="#la-distribución-normal" id="toc-la-distribución-normal" class="nav-link" data-scroll-target="#la-distribución-normal"> <span class="header-section-number">5.8</span> La distribución normal</a>
   <ul class="collapse">
-  <li><a href="#promedio-de-variables" id="toc-promedio-de-variables" class="nav-link" data-scroll-target="#promedio-de-variables"> <span class="header-section-number">8.8.1</span> Promedio de variables</a></li>
+  <li><a href="#promedio-de-variables" id="toc-promedio-de-variables" class="nav-link" data-scroll-target="#promedio-de-variables"> <span class="header-section-number">5.8.1</span> Promedio de variables</a></li>
   </ul></li>
-  <li><a href="#la-densidad-normal-estándar" id="toc-la-densidad-normal-estándar" class="nav-link" data-scroll-target="#la-densidad-normal-estándar"> <span class="header-section-number">8.9</span> La densidad normal estándar</a></li>
-  <li><a href="#cuantiles-y-concentración-de-la-densidad-normal" id="toc-cuantiles-y-concentración-de-la-densidad-normal" class="nav-link" data-scroll-target="#cuantiles-y-concentración-de-la-densidad-normal"> <span class="header-section-number">8.10</span> Cuantiles y concentración de la densidad normal</a></li>
-  <li><a href="#el-teorema-central-del-límite" id="toc-el-teorema-central-del-límite" class="nav-link" data-scroll-target="#el-teorema-central-del-límite"> <span class="header-section-number">8.11</span> El teorema central del límite</a></li>
-  <li><a href="#otras-densidades-comunes" id="toc-otras-densidades-comunes" class="nav-link" data-scroll-target="#otras-densidades-comunes"> <span class="header-section-number">8.12</span> Otras densidades comunes</a>
+  <li><a href="#la-densidad-normal-estándar" id="toc-la-densidad-normal-estándar" class="nav-link" data-scroll-target="#la-densidad-normal-estándar"> <span class="header-section-number">5.9</span> La densidad normal estándar</a></li>
+  <li><a href="#cuantiles-y-concentración-de-la-densidad-normal" id="toc-cuantiles-y-concentración-de-la-densidad-normal" class="nav-link" data-scroll-target="#cuantiles-y-concentración-de-la-densidad-normal"> <span class="header-section-number">5.10</span> Cuantiles y concentración de la densidad normal</a></li>
+  <li><a href="#el-teorema-central-del-límite" id="toc-el-teorema-central-del-límite" class="nav-link" data-scroll-target="#el-teorema-central-del-límite"> <span class="header-section-number">5.11</span> El teorema central del límite</a></li>
+  <li><a href="#otras-densidades-comunes" id="toc-otras-densidades-comunes" class="nav-link" data-scroll-target="#otras-densidades-comunes"> <span class="header-section-number">5.12</span> Otras densidades comunes</a>
   <ul class="collapse">
-  <li><a href="#variables-aleatorias-exponenciales" id="toc-variables-aleatorias-exponenciales" class="nav-link" data-scroll-target="#variables-aleatorias-exponenciales"> <span class="header-section-number">8.12.1</span> Variables aleatorias exponenciales</a></li>
-  <li><a href="#ejemplo-exponencial" id="toc-ejemplo-exponencial" class="nav-link" data-scroll-target="#ejemplo-exponencial"> <span class="header-section-number">8.12.2</span> Ejemplo: exponencial</a></li>
-  <li><a href="#variables-aleatorias-gamma" id="toc-variables-aleatorias-gamma" class="nav-link" data-scroll-target="#variables-aleatorias-gamma"> <span class="header-section-number">8.12.3</span> Variables aleatorias gamma</a></li>
+  <li><a href="#variables-aleatorias-exponenciales" id="toc-variables-aleatorias-exponenciales" class="nav-link" data-scroll-target="#variables-aleatorias-exponenciales"> <span class="header-section-number">5.12.1</span> Variables aleatorias exponenciales</a></li>
+  <li><a href="#ejemplo-exponencial" id="toc-ejemplo-exponencial" class="nav-link" data-scroll-target="#ejemplo-exponencial"> <span class="header-section-number">5.12.2</span> Ejemplo: exponencial</a></li>
+  <li><a href="#variables-aleatorias-gamma" id="toc-variables-aleatorias-gamma" class="nav-link" data-scroll-target="#variables-aleatorias-gamma"> <span class="header-section-number">5.12.3</span> Variables aleatorias gamma</a></li>
   </ul></li>
-  <li><a href="#modelos-conjuntos-de-probabilidad" id="toc-modelos-conjuntos-de-probabilidad" class="nav-link" data-scroll-target="#modelos-conjuntos-de-probabilidad"> <span class="header-section-number">8.13</span> Modelos conjuntos de probabilidad</a></li>
-  <li><a href="#estaturas-modelando-relaciones-de-dependencia" id="toc-estaturas-modelando-relaciones-de-dependencia" class="nav-link" data-scroll-target="#estaturas-modelando-relaciones-de-dependencia"> <span class="header-section-number">8.14</span> Estaturas: modelando relaciones de dependencia</a></li>
-  <li><a href="#distribuciones-condicionales" id="toc-distribuciones-condicionales" class="nav-link" data-scroll-target="#distribuciones-condicionales"> <span class="header-section-number">8.15</span> Distribuciones condicionales</a></li>
-  <li><a href="#estaturas-variación-gamma" id="toc-estaturas-variación-gamma" class="nav-link" data-scroll-target="#estaturas-variación-gamma"> <span class="header-section-number">8.16</span> Estaturas: variación gamma</a></li>
-  <li><a href="#modelos-conjuntos-para-factor-categórico" id="toc-modelos-conjuntos-para-factor-categórico" class="nav-link" data-scroll-target="#modelos-conjuntos-para-factor-categórico"> <span class="header-section-number">8.17</span> Modelos conjuntos para factor categórico</a>
+  <li><a href="#modelos-conjuntos-de-probabilidad" id="toc-modelos-conjuntos-de-probabilidad" class="nav-link" data-scroll-target="#modelos-conjuntos-de-probabilidad"> <span class="header-section-number">5.13</span> Modelos conjuntos de probabilidad</a></li>
+  <li><a href="#estaturas-modelando-relaciones-de-dependencia" id="toc-estaturas-modelando-relaciones-de-dependencia" class="nav-link" data-scroll-target="#estaturas-modelando-relaciones-de-dependencia"> <span class="header-section-number">5.14</span> Estaturas: modelando relaciones de dependencia</a></li>
+  <li><a href="#distribuciones-condicionales" id="toc-distribuciones-condicionales" class="nav-link" data-scroll-target="#distribuciones-condicionales"> <span class="header-section-number">5.15</span> Distribuciones condicionales</a></li>
+  <li><a href="#estaturas-variación-gamma" id="toc-estaturas-variación-gamma" class="nav-link" data-scroll-target="#estaturas-variación-gamma"> <span class="header-section-number">5.16</span> Estaturas: variación gamma</a></li>
+  <li><a href="#modelos-conjuntos-para-factor-categórico" id="toc-modelos-conjuntos-para-factor-categórico" class="nav-link" data-scroll-target="#modelos-conjuntos-para-factor-categórico"> <span class="header-section-number">5.17</span> Modelos conjuntos para factor categórico</a>
   <ul class="collapse">
-  <li><a href="#ejemplo-cuentas-y-propinas" id="toc-ejemplo-cuentas-y-propinas" class="nav-link" data-scroll-target="#ejemplo-cuentas-y-propinas"> <span class="header-section-number">8.17.1</span> Ejemplo: cuentas y propinas</a></li>
+  <li><a href="#ejemplo-cuentas-y-propinas" id="toc-ejemplo-cuentas-y-propinas" class="nav-link" data-scroll-target="#ejemplo-cuentas-y-propinas"> <span class="header-section-number">5.17.1</span> Ejemplo: cuentas y propinas</a></li>
   </ul></li>
-  <li><a href="#modelos-multivariados" id="toc-modelos-multivariados" class="nav-link" data-scroll-target="#modelos-multivariados"> <span class="header-section-number">8.18</span> Modelos multivariados</a></li>
+  <li><a href="#modelos-multivariados" id="toc-modelos-multivariados" class="nav-link" data-scroll-target="#modelos-multivariados"> <span class="header-section-number">5.18</span> Modelos multivariados</a></li>
   </ul>
 </nav>
     </div>
@@ -315,7 +290,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Modelos probabilísticos para variables continuas</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Modelos probabilísticos para variables continuas</span></h1>
 </div>
 
 
@@ -332,8 +307,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>En la parte anterior consideramos un númeroo fijo de resultados numéricos de experimentos aleatorios, por ejemplo, cuando <span class="math inline">\(X\)</span> el resultado de una tirada de dado. En este caso, un modelo de probabilidad para <span class="math inline">\(X\)</span> asigna una probabilidad dada a cada posible resultado, por ejemplo</p>
 <p><span class="math display">\[P(X=1) = 1/6\]</span></p>
 <p>e igualmente <span class="math inline">\(P(X=2)=\cdots = P(X=6) = 1/6\)</span>. En muchos casos, la cantidad <span class="math inline">\(X\)</span> que nos interesa puede tomar valores numéricos arbitrarios, y en este esquema no está claro cómo asignaríamos probabilidades.</p>
-<section id="ejemplo-ruleta-justa" class="level3" data-number="8.0.1">
-<h3 data-number="8.0.1" class="anchored" data-anchor-id="ejemplo-ruleta-justa"><span class="header-section-number">8.0.1</span> Ejemplo: ruleta justa</h3>
+<section id="ejemplo-ruleta-justa" class="level3" data-number="5.0.1">
+<h3 data-number="5.0.1" class="anchored" data-anchor-id="ejemplo-ruleta-justa"><span class="header-section-number">5.0.1</span> Ejemplo: ruleta justa</h3>
 <p>Supongamos que giramos una ruleta con una flecha indicadora, y el resultado del experimento es el ángulo en grados final de la flecha. ¿Cómo podríamos poner, por ejemplo <span class="math inline">\(P(X= 92.7)\)</span>? ¿Qué pasa si podemos medir con resultados con varios decimales de exactitud?</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -348,8 +323,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>y quizá también otros como</p>
 <p><span class="math display">\[P(Y &lt; 180).\]</span></p>
 </section>
-<section id="modelo-equiprobable-o-uniforme" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="modelo-equiprobable-o-uniforme"><span class="header-section-number">8.1</span> Modelo equiprobable o uniforme</h2>
+<section id="modelo-equiprobable-o-uniforme" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="modelo-equiprobable-o-uniforme"><span class="header-section-number">5.1</span> Modelo equiprobable o uniforme</h2>
 <p>Los modelos más simple para una medición continua <span class="math inline">\(X\)</span> son los modelos uniforme.</p>
 <p>Para nuestra ruleta, por ejemplo, <span class="math inline">\(X\)</span> puede tomar valores en el intervalo <span class="math inline">\([0, 360)\)</span>. Si la ruleta es justa, entonces la probabilidad de que la flecha caiga en cualquier sector <span class="math inline">\([a,b]\)</span> debe ser igual. Una manera de lograr esto usar como probabilidad la proporción de la longitud de <span class="math inline">\([a,b]\)</span> con respecto al total de <span class="math inline">\([0, 360)\)</span>:</p>
 <p><span class="math inline">\(P(X\in [a,b]) = \frac{b-a}{360}.\)</span></p>
@@ -363,8 +338,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[P(X \in [a,b]) = \frac{b-a}{L-U}\]</span></p>
 <pre><code>&lt;/div&gt;\EndKnitrBlock{comentario}</code></pre>
 <p>:::</p>
-<section id="ejemplo-ruleta-sesgada" class="level3" data-number="8.1.1">
-<h3 data-number="8.1.1" class="anchored" data-anchor-id="ejemplo-ruleta-sesgada"><span class="header-section-number">8.1.1</span> Ejemplo: ruleta sesgada</h3>
+<section id="ejemplo-ruleta-sesgada" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="ejemplo-ruleta-sesgada"><span class="header-section-number">5.1.1</span> Ejemplo: ruleta sesgada</h3>
 <p>Ahora supongamos que nuestra ruleta no está del todo balanceada. Por ejemplo, podría ser estuviera colgada en una pared, y al girar la flecha es un poco más probable que la flecha apunte hacia el piso en lugar de hacia el cielo.</p>
 <p>En este caso, si la dirección hacia arriba es 90 grados y hacia abajo es 270 grados, quisiéramos por ejemplo que</p>
 <p><span class="math display">\[P(260 &lt; X &lt;280) &lt; P(80 &lt; X &lt; 100)\]</span></p>
@@ -425,8 +400,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Y ahora vemos que para la versión perturbada, más de la probabilidad se concentra alrededor de 270 grados que alrededor de 90. Por las propiedades de la integral, todas las propiedades usuales de probabilidad se cumplen.</p>
 </section>
 </div></section>
-<section id="funciones-de-densidad" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="funciones-de-densidad"><span class="header-section-number">8.2</span> Funciones de densidad</h2>
+<section id="funciones-de-densidad" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="funciones-de-densidad"><span class="header-section-number">5.2</span> Funciones de densidad</h2>
 <p>Cuando trabajamos con mediciones de tipo continuo, es más conveniente definir asignaciones de probabilidad utilizando <em>funciones de densidad de probabilidad</em>:</p>
 <div class="cell" type="comentario">
 
@@ -437,8 +412,8 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 </div>
 </div>
 </section>
-<section id="ejemplo-densidad-triangular" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="ejemplo-densidad-triangular"><span class="header-section-number">8.3</span> Ejemplo: densidad triangular</h2>
+<section id="ejemplo-densidad-triangular" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="ejemplo-densidad-triangular"><span class="header-section-number">5.3</span> Ejemplo: densidad triangular</h2>
 <p>Supongamos que tenemos una variable aleatoria que tiene mediana 2, y puede tomar valores entre 0 y 4. Podríamos definir una densidad como sigue: Si <span class="math inline">\(x\)</span> está entre 0 y 2, entonces</p>
 <p><span class="math display">\[f(x) = \frac{x}{4}\]</span></p>
 <p>y si <span class="math inline">\(x\)</span> está entre 2 y 4, entonces</p>
@@ -469,8 +444,8 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 <p>En general, podemos dar una fórmula para una densidad triangular en el intervalo <span class="math inline">\([A,B]\)</span> con mediana en <span class="math inline">\((A + B)/2\)</span>. ¿Cómo sería la fórmula?</p>
 </section>
 </section>
-<section id="cuantiles-de-variables-aleatorias" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="cuantiles-de-variables-aleatorias"><span class="header-section-number">8.4</span> Cuantiles de variables aleatorias</h2>
+<section id="cuantiles-de-variables-aleatorias" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="cuantiles-de-variables-aleatorias"><span class="header-section-number">5.4</span> Cuantiles de variables aleatorias</h2>
 <p>Antes vimos la definición de cuantiles para datos numéricos. Podemos definirlos también para variables aleatorias numéricas:</p>
 ::: {.cell type=‘comentario’}
 <div class="comentario">
@@ -513,11 +488,11 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 <p>Calcula la mediana, y los percentiles 0.10 y 0.90 de una variable uniforme en <span class="math inline">\([0, 10]\)</span>.</p>
 </section>
 </div></section>
-<section id="comparando-cuantiles-teóricos-y-empíricos" class="level2" data-number="8.5">
-<h2 data-number="8.5" class="anchored" data-anchor-id="comparando-cuantiles-teóricos-y-empíricos"><span class="header-section-number">8.5</span> Comparando cuantiles teóricos y empíricos</h2>
+<section id="comparando-cuantiles-teóricos-y-empíricos" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="comparando-cuantiles-teóricos-y-empíricos"><span class="header-section-number">5.5</span> Comparando cuantiles teóricos y empíricos</h2>
 <p>Los cuantiles que vimos en la parte de descriptivos para datos numéricos se llaman usualmente <em>cuantiles empíricos</em>. Estos cuantiles podemos compararlos con cuantiles teóricos para ver qué tan similares son, y si el modelo teórico describe adecuadamente los datos.</p>
-<section id="ejemplo-distribución-uniforme" class="level3" data-number="8.5.1">
-<h3 data-number="8.5.1" class="anchored" data-anchor-id="ejemplo-distribución-uniforme"><span class="header-section-number">8.5.1</span> Ejemplo: distribución uniforme</h3>
+<section id="ejemplo-distribución-uniforme" class="level3" data-number="5.5.1">
+<h3 data-number="5.5.1" class="anchored" data-anchor-id="ejemplo-distribución-uniforme"><span class="header-section-number">5.5.1</span> Ejemplo: distribución uniforme</h3>
 <p>Simularemos 500 datos uniformes en <span class="math inline">\([0, 10]\)</span>:</p>
 <div class="cell">
 <details>
@@ -532,8 +507,8 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(x_sim_u, <span class="fu">c</span>(<span class="fl">0.10</span>, <span class="fl">0.50</span>, <span class="fl">0.90</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>     10%      50%      90% 
-1.067105 5.030016 8.962207 </code></pre>
+<pre><code>      10%       50%       90% 
+0.8904966 5.1288896 9.2062020 </code></pre>
 </div>
 </div>
 <p>Por el ejercicio anterior sabemos cuáles son los cuantiles teóricos correspondientes a una uniforme en <span class="math inline">\([0,10]\)</span>. Podemos calcularlos también como sigue:</p>
@@ -561,8 +536,8 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 </div>
 <p>Y vemos que la forma de las dos distribuciones es muy similar: los cuantiles empíricos son muy similares a los teóricos. Existen algunas fluctuaciones debidas al muestreo aleatorio.</p>
 </section>
-<section id="ejemplo-distribución-triangular" class="level3" data-number="8.5.2">
-<h3 data-number="8.5.2" class="anchored" data-anchor-id="ejemplo-distribución-triangular"><span class="header-section-number">8.5.2</span> Ejemplo: distribución triangular</h3>
+<section id="ejemplo-distribución-triangular" class="level3" data-number="5.5.2">
+<h3 data-number="5.5.2" class="anchored" data-anchor-id="ejemplo-distribución-triangular"><span class="header-section-number">5.5.2</span> Ejemplo: distribución triangular</h3>
 <p>Repetimos para la distribución triangular. Los cuantiles que calculamos arriba son:</p>
 <div class="cell">
 <details>
@@ -589,8 +564,8 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 <p>Nótese que otra vez, los cuantiles teóricos se alinean bien con los teóricos.</p>
 </section>
 </section>
-<section id="histogramas-y-densidades" class="level2" data-number="8.6">
-<h2 data-number="8.6" class="anchored" data-anchor-id="histogramas-y-densidades"><span class="header-section-number">8.6</span> Histogramas y densidades</h2>
+<section id="histogramas-y-densidades" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="histogramas-y-densidades"><span class="header-section-number">5.6</span> Histogramas y densidades</h2>
 <p>Para el análisis de datos usual, las gráficas cuantil-cuantil tienden a ser útiles para entender si unos datos se comportan según alguna densidad teórica. Sin embargo, muchas veces se usan histogramas, como en las siguientes gráficas:</p>
 <div class="cell">
 <details>
@@ -624,11 +599,11 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 <p>Esto implica que para aproximar la densidad, es necesario dividir las frecuencias relativas entre el ancho de los intervalos correspondientes, y de ahí la escala vertical de las gráficas de arriba.</p>
 <p><strong>Observación</strong>: las gráficas de cuantiles son generalmente más prácticas para evaluar el ajuste a un modelo teórico, aunque son menos comunes.</p>
 </section>
-<section id="más-descriptivos-media-y-desviación-estándar" class="level2" data-number="8.7">
-<h2 data-number="8.7" class="anchored" data-anchor-id="más-descriptivos-media-y-desviación-estándar"><span class="header-section-number">8.7</span> Más descriptivos: media y desviación estándar</h2>
+<section id="más-descriptivos-media-y-desviación-estándar" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="más-descriptivos-media-y-desviación-estándar"><span class="header-section-number">5.7</span> Más descriptivos: media y desviación estándar</h2>
 <p>Podemos utilizar cuantiles para describir modelos teóricos y también conjuntos de datos (por ejemplo, mediana para centralidad y diferencia entre cuantiles 0.9 y 0.10 para dispersión), y funcionan bien en general. Sin embargo, para modelos teóricos y conjuntos de datos particulares muchas veces es más conveniente usar medidas como la media y desviación estándar.</p>
-<section id="media-teórica-y-empírica" class="level3" data-number="8.7.1">
-<h3 data-number="8.7.1" class="anchored" data-anchor-id="media-teórica-y-empírica"><span class="header-section-number">8.7.1</span> Media teórica y empírica</h3>
+<section id="media-teórica-y-empírica" class="level3" data-number="5.7.1">
+<h3 data-number="5.7.1" class="anchored" data-anchor-id="media-teórica-y-empírica"><span class="header-section-number">5.7.1</span> Media teórica y empírica</h3>
 <p>Sabemos que la media de un conjunto de datos <span class="math inline">\(x_1,x_2,\ldots,x_n\)</span> está dada por</p>
 <p><span class="math display">\[\bar{x} = \frac{x_1 + x_2 + \cdots x_n}{n}.\]</span></p>
 <p>Ahora consideremos qué pasa con esta cantidad cuando las <span class="math inline">\(x_i's\)</span> son observaciones independientes de una distribución con densidad teórica <span class="math inline">\(f(x)\)</span>. Utilizaremos simulaciones de la distribución triangular que vimos arriba</p>
@@ -660,22 +635,22 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 <pre><code># A tibble: 16 × 2
    inicial     n
      &lt;dbl&gt; &lt;int&gt;
- 1    0       38
- 2    0.25   121
- 3    0.5    186
- 4    0.75   269
- 5    1      356
- 6    1.25   448
- 7    1.5    537
- 8    1.75   607
- 9    2      569
-10    2.25   505
-11    2.5    416
-12    2.75   357
-13    3      276
-14    3.25   162
-15    3.5    109
-16    3.75    44</code></pre>
+ 1    0       57
+ 2    0.25   113
+ 3    0.5    216
+ 4    0.75   301
+ 5    1      337
+ 6    1.25   439
+ 7    1.5    500
+ 8    1.75   610
+ 9    2      601
+10    2.25   493
+11    2.5    421
+12    2.75   333
+13    3      284
+14    3.25   176
+15    3.5     77
+16    3.75    42</code></pre>
 </div>
 </div>
 <p>Y calculamos la aproximación a la media como sigue:</p>
@@ -689,7 +664,7 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 <pre><code># A tibble: 1 × 1
   media_aprox
         &lt;dbl&gt;
-1        1.86</code></pre>
+1        1.84</code></pre>
 </div>
 </div>
 <p>Apliquemos esta idea cuando tenemos una densidad <span class="math inline">\(f(x)\)</span>. Dividimos el rango de la densidad en cubetas, y aproximamos la densidad por rangos, por ejemplo:</p>
@@ -753,8 +728,8 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 </ul>
 <p>Es decir, cuando tenemos una densidad teórica continua, es necesario <strong>integrar</strong> en lugar de <strong>sumar</strong> para calcular su media.</p>
 </section>
-<section id="varianza-y-desviación-estándar" class="level3" data-number="8.7.2">
-<h3 data-number="8.7.2" class="anchored" data-anchor-id="varianza-y-desviación-estándar"><span class="header-section-number">8.7.2</span> Varianza y desviación estándar</h3>
+<section id="varianza-y-desviación-estándar" class="level3" data-number="5.7.2">
+<h3 data-number="5.7.2" class="anchored" data-anchor-id="varianza-y-desviación-estándar"><span class="header-section-number">5.7.2</span> Varianza y desviación estándar</h3>
 <p>Otra cantidad importante es la varianza de una muestra. Es una medida de dispersión, y se calcula como</p>
 <p>$$</p>
 <p>^2 = _{i=1}^n (x_i - {x})^2</p>
@@ -783,8 +758,8 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 <p>Aunque esto requiere de un teorema simple (el teorema del estadístico inconsciente) que establece que para cualquier función <span class="math inline">\(h\)</span>, si <span class="math inline">\(Y=h(X)\)</span> y <span class="math inline">\(f\)</span> es la función de densidad de <span class="math inline">\(X\)</span>, entonces</p>
 <p><span class="math display">\[E(Y) = E(h(X)) = \int h(x) f(x) \,dx\]</span></p>
 </section>
-<section id="cuándo-usar-media-y-desviación-estándar" class="level3" data-number="8.7.3">
-<h3 data-number="8.7.3" class="anchored" data-anchor-id="cuándo-usar-media-y-desviación-estándar"><span class="header-section-number">8.7.3</span> ¿Cuándo usar media y desviación estándar?</h3>
+<section id="cuándo-usar-media-y-desviación-estándar" class="level3" data-number="5.7.3">
+<h3 data-number="5.7.3" class="anchored" data-anchor-id="cuándo-usar-media-y-desviación-estándar"><span class="header-section-number">5.7.3</span> ¿Cuándo usar media y desviación estándar?</h3>
 <p>Algunos modelos probabilísticos son más fáciles de tratar analíticamente usando media y varianza. En esos casos, conviene usar estas medidas. Esto es especialmente cierto cuando las distribuciones son simétricas y no tienen colas muy largas.</p>
 <p>En cuanto a datos observados, conviene usar media y varianza cuando pretendemos modelarlos con densidades como las del párrafo anterior. En este caso, la interpretación de estos valores se hace a través de la forma de la densidad. Es importante checar (por ejemplo usando gráficas de cuantiles) que esas densidades describen apropiadamente a los datos.</p>
 </section>
@@ -797,11 +772,11 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 </ul>
 </section>
 </section>
-<section id="la-distribución-normal" class="level2" data-number="8.8">
-<h2 data-number="8.8" class="anchored" data-anchor-id="la-distribución-normal"><span class="header-section-number">8.8</span> La distribución normal</h2>
+<section id="la-distribución-normal" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="la-distribución-normal"><span class="header-section-number">5.8</span> La distribución normal</h2>
 <p>La distribución normal es una que aparece naturalmente en al teoría de probabilidad.</p>
-<section id="promedio-de-variables" class="level3" data-number="8.8.1">
-<h3 data-number="8.8.1" class="anchored" data-anchor-id="promedio-de-variables"><span class="header-section-number">8.8.1</span> Promedio de variables</h3>
+<section id="promedio-de-variables" class="level3" data-number="5.8.1">
+<h3 data-number="5.8.1" class="anchored" data-anchor-id="promedio-de-variables"><span class="header-section-number">5.8.1</span> Promedio de variables</h3>
 <p>Consideremos que tiramos 40 dados justos de 6 lados, y consideramos su promedio <span class="math inline">\(\bar{X}\)</span> como resultado de nuestro experimento aleatorio. ¿Cómo se ve la distribución de probabilidades de esta variable <span class="math inline">\(\bar{X}\)</span>?</p>
 <p>Comenzamos haciendo simulacion:</p>
 <div class="cell">
@@ -815,7 +790,7 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">simular_bolsa</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.4</code></pre>
+<pre><code>[1] 3.275</code></pre>
 </div>
 </div>
 <p>Veamos cómo se ven los resultados si hacemos este experimento un número grande de veces:</p>
@@ -894,8 +869,8 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 <p>Otra vez, la forma general es la misma, aún cuando los datos están centrados y escalados de manera distinta.</p>
 </section>
 </section>
-<section id="la-densidad-normal-estándar" class="level2" data-number="8.9">
-<h2 data-number="8.9" class="anchored" data-anchor-id="la-densidad-normal-estándar"><span class="header-section-number">8.9</span> La densidad normal estándar</h2>
+<section id="la-densidad-normal-estándar" class="level2" data-number="5.9">
+<h2 data-number="5.9" class="anchored" data-anchor-id="la-densidad-normal-estándar"><span class="header-section-number">5.9</span> La densidad normal estándar</h2>
 <p>Como expicamos, la densidad normal estándar está dada por</p>
 <p><span class="math display">\[f(x) = \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}},\]</span></p>
 <p>cuya gráfica es como sigue:</p>
@@ -985,8 +960,8 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 </div>
 </div>
 </section>
-<section id="cuantiles-y-concentración-de-la-densidad-normal" class="level2" data-number="8.10">
-<h2 data-number="8.10" class="anchored" data-anchor-id="cuantiles-y-concentración-de-la-densidad-normal"><span class="header-section-number">8.10</span> Cuantiles y concentración de la densidad normal</h2>
+<section id="cuantiles-y-concentración-de-la-densidad-normal" class="level2" data-number="5.10">
+<h2 data-number="5.10" class="anchored" data-anchor-id="cuantiles-y-concentración-de-la-densidad-normal"><span class="header-section-number">5.10</span> Cuantiles y concentración de la densidad normal</h2>
 <p>Con un poco de cálculo podemos ver qué tan fuertemente se concentra la densidad alrededor de la media para una distribución normal. La regla es la siguiente:</p>
 <ul>
 <li>68% de la densidad se concentra en el intervalo <span class="math inline">\([\mu-\sigma, \mu+\sigma]\)</span></li>
@@ -1023,8 +998,8 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 <p><strong>Nota</strong>: esto aplica para cualquier densidad normal, independientemente de los parámetros.</p>
 <p>Obsérvese que esto nos da una interpretación natural de la desviación estándar de una distribución normal en términos de percentiles de los datos, y la manera usual con la que entendemos la desviación estándar de la distribución normal.</p>
 </section>
-<section id="el-teorema-central-del-límite" class="level2" data-number="8.11">
-<h2 data-number="8.11" class="anchored" data-anchor-id="el-teorema-central-del-límite"><span class="header-section-number">8.11</span> El teorema central del límite</h2>
+<section id="el-teorema-central-del-límite" class="level2" data-number="5.11">
+<h2 data-number="5.11" class="anchored" data-anchor-id="el-teorema-central-del-límite"><span class="header-section-number">5.11</span> El teorema central del límite</h2>
 <p>Una de las razones por las que el modelo normal es tan importante es el siguiente resultado:</p>
 ::: {.cell type=‘comentario’}
 <div class="comentario">
@@ -1061,12 +1036,12 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 <li>Estos intervalos tienen cobertura <em>nominal</em> de 95%, sin embargo, puede variar dependiendo del tamaño de muestra y la forma de la distribución teórica (poblacional). Existen métodos como el <em>bootstrap</em> donde podemos checar qué tan razonable es hacer esta aproximación. También se puede hacer simulación modelando la distribución <span class="math inline">\(f(x)\)</span>.</li>
 </ul>
 </section>
-<section id="otras-densidades-comunes" class="level2" data-number="8.12">
-<h2 data-number="8.12" class="anchored" data-anchor-id="otras-densidades-comunes"><span class="header-section-number">8.12</span> Otras densidades comunes</h2>
+<section id="otras-densidades-comunes" class="level2" data-number="5.12">
+<h2 data-number="5.12" class="anchored" data-anchor-id="otras-densidades-comunes"><span class="header-section-number">5.12</span> Otras densidades comunes</h2>
 <p>Como vimos arriba, consideraciones teóricas hacen razonable suponer que una variable aleatoria tiene cierta distribución: por ejemplo, si una variable aleatoria es suma de muchas perturbaciones independientes, la suma o promedio resultante puede modelarse como una distribución normal.</p>
 <p>Otras consideraciones teóricas sugieren otro tipo formas útiles de densidades. Un primer ejemplo es la distribución exponencial.</p>
-<section id="variables-aleatorias-exponenciales" class="level3" data-number="8.12.1">
-<h3 data-number="8.12.1" class="anchored" data-anchor-id="variables-aleatorias-exponenciales"><span class="header-section-number">8.12.1</span> Variables aleatorias exponenciales</h3>
+<section id="variables-aleatorias-exponenciales" class="level3" data-number="5.12.1">
+<h3 data-number="5.12.1" class="anchored" data-anchor-id="variables-aleatorias-exponenciales"><span class="header-section-number">5.12.1</span> Variables aleatorias exponenciales</h3>
 <p>Supongamos que estamos modelando tiempos a la ocurrencia <span class="math inline">\(X\)</span> de un evento (por ejemplo en análisis de supervivencia en estudios clínicos). Esta es una variable que toma valores en los números positivos. ¿Cómo podría ser su forma?</p>
 <p>Consideremos por ejemplo que el tiempo de espera <em>no tienen memoria</em>. Es decir: si hay esperamos un periodo de <span class="math inline">\(t\)</span> días por ejemplo, la distribución del tiempo restante que tenemos que esperar no depende de <span class="math inline">\(s\)</span>. En términos de probabilidad, podríamos escribir:</p>
 <p><span class="math display">\[P(X &gt; s + t | X &gt; t) = P(X &gt; s)\]</span></p>
@@ -1106,8 +1081,8 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 <p><span class="math display">\[P(Y&gt;t)=P(kX &gt; t) = P(X &gt; t/k) = \int_{t/k}^\infty e^{-x}\,dx = e^{-t/k}\]</span></p>
 <p>De modo que derivando, encontramos que la densidad de <span class="math inline">\(Y\)</span> es <span class="math inline">\(\frac{1}{k} e^{-t/k}\)</span>, que es una exponencial con tasa <span class="math inline">\(\lambda = 1/k\)</span>.</p>
 </section>
-<section id="ejemplo-exponencial" class="level3" data-number="8.12.2">
-<h3 data-number="8.12.2" class="anchored" data-anchor-id="ejemplo-exponencial"><span class="header-section-number">8.12.2</span> Ejemplo: exponencial</h3>
+<section id="ejemplo-exponencial" class="level3" data-number="5.12.2">
+<h3 data-number="5.12.2" class="anchored" data-anchor-id="ejemplo-exponencial"><span class="header-section-number">5.12.2</span> Ejemplo: exponencial</h3>
 <p>Supongamos que un tipo de focos tienen tiempos de vida exponencial con una vida media de 10 años. ¿Cuál es la probabilidad de que un foco dure más de 15 años? Si tenemos un foco que ya vivió 10 años, cuál es la probabilidad de que dure otros 15 años.</p>
 <p>Tenemos que la vida de un foco es una variable <span class="math inline">\(X\)</span> exponencial con parámetro <span class="math inline">\(\lambda = 1/10\)</span>. La probabilidad de que dure más de 15 años es entonces</p>
 <p><span class="math display">\[P(X&gt;15) = \int_{15}^\infty \frac{1}{10} e^{x/10}\,dx\]</span></p>
@@ -1122,8 +1097,8 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 </div>
 </div>
 </section>
-<section id="variables-aleatorias-gamma" class="level3" data-number="8.12.3">
-<h3 data-number="8.12.3" class="anchored" data-anchor-id="variables-aleatorias-gamma"><span class="header-section-number">8.12.3</span> Variables aleatorias gamma</h3>
+<section id="variables-aleatorias-gamma" class="level3" data-number="5.12.3">
+<h3 data-number="5.12.3" class="anchored" data-anchor-id="variables-aleatorias-gamma"><span class="header-section-number">5.12.3</span> Variables aleatorias gamma</h3>
 <p>Esta es otra familia que extiende la familia de distribuciones exponenciales. La forma analítica de una densidad gamma con parámetro de forma <span class="math inline">\(k&gt;0\)</span> y tasa <span class="math inline">\(\lambda\)</span></p>
 <p><span class="math display">\[f(x) = C x^{k-1} e^{-\lambda x}\]</span></p>
 <p>donde la constante <span class="math inline">\(C\)</span> de normalización depende de <span class="math inline">\(k\)</span> y <span class="math inline">\(\lambda\)</span>.</p>
@@ -1152,8 +1127,8 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 <p>Nótese que cada columna es un rescalamiento de la otra, pero las densidades de los renglones tienen distinta forma. Puedes ver <a href="https://en.wikipedia.org/wiki/Gamma_distribution">aquí</a> parámetros como esperanza, varianza de esta estas distribuciones, junto con otras propiedades y aplicaciones.</p>
 </section>
 </section>
-<section id="modelos-conjuntos-de-probabilidad" class="level2" data-number="8.13">
-<h2 data-number="8.13" class="anchored" data-anchor-id="modelos-conjuntos-de-probabilidad"><span class="header-section-number">8.13</span> Modelos conjuntos de probabilidad</h2>
+<section id="modelos-conjuntos-de-probabilidad" class="level2" data-number="5.13">
+<h2 data-number="5.13" class="anchored" data-anchor-id="modelos-conjuntos-de-probabilidad"><span class="header-section-number">5.13</span> Modelos conjuntos de probabilidad</h2>
 <p>Usualmente no nos interesa una sola variable aleatoria, sino varias. Nos interesa entender cómo están relacionadas o cómo depende una de otra.</p>
 <p>Por ejemplo, ¿cuál es la mediana de peso para un infante de 2 meses, y qué tan diferente es de la mediana de peso para un infante de 5 meses? ¿qué relación hay entre temperatura y presión atmosférica? ¿qué relación hay entre creencias religiosas y afiliación política? En todos estos casos quisiéramos describir de distintas formas cómo ser relaciona una cantidad aleatoria con otra.</p>
 <p>Al principio de este curso, vimos algunas técnicas descriptivas para mostrar y explorar estas relaciones. Por ejemplo:</p>
@@ -1164,8 +1139,8 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 </ul>
 <p>En esta parte veremos una introducción cómo se formalizan estos conceptos en modelos probabilísticos.</p>
 </section>
-<section id="estaturas-modelando-relaciones-de-dependencia" class="level2" data-number="8.14">
-<h2 data-number="8.14" class="anchored" data-anchor-id="estaturas-modelando-relaciones-de-dependencia"><span class="header-section-number">8.14</span> Estaturas: modelando relaciones de dependencia</h2>
+<section id="estaturas-modelando-relaciones-de-dependencia" class="level2" data-number="5.14">
+<h2 data-number="5.14" class="anchored" data-anchor-id="estaturas-modelando-relaciones-de-dependencia"><span class="header-section-number">5.14</span> Estaturas: modelando relaciones de dependencia</h2>
 <p>Supongamos que <span class="math inline">\(X\)</span> es la edad de una persona entre 4 y 15 años. y <span class="math inline">\(Y\)</span> es su estatura. La relación entre <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\)</span> no es determinística, pues existe variación en el crecimiento para las personas por distintas razones. Por esta razón, no tiene mucho sentido dar una relación como <span class="math inline">\(Y = 80 + 5.5 X\)</span>, por ejemplo, pues esta relación no se cumple para prácticamente ninguna persona.</p>
 <p>Tiene más sentido, sin embargo, decir cómo es <strong>la distribución condicional</strong> de <span class="math inline">\(Y\)</span> dado que conocemos <span class="math inline">\(X\)</span>. Por ejemplo, podríamos hacer la hipótesis de que la mediana de estatura para una persona de edad <span class="math inline">\(X\)</span> está dada por</p>
 <p><span class="math display">\[med(Y|X) = 80 + 5.5 X\]</span></p>
@@ -1227,8 +1202,8 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 </div>
 <p>Y observamos igualmente que la dispersión para el grupo de 15 años es cercana al doble que la dispersión para el grupo de 4 años.</p>
 </section>
-<section id="distribuciones-condicionales" class="level2" data-number="8.15">
-<h2 data-number="8.15" class="anchored" data-anchor-id="distribuciones-condicionales"><span class="header-section-number">8.15</span> Distribuciones condicionales</h2>
+<section id="distribuciones-condicionales" class="level2" data-number="5.15">
+<h2 data-number="5.15" class="anchored" data-anchor-id="distribuciones-condicionales"><span class="header-section-number">5.15</span> Distribuciones condicionales</h2>
 <p>Todo el trabajo de arriba de modelación teórica consiste entonces en definir <strong>distribuciones condicionales</strong>. En el ejemplo anterior,</p>
 <ul>
 <li>Dimos una distribución para <span class="math inline">\(X\)</span>, que en este caso la tomamos uniforme en [4, 15], pues suponemos que esta es la estructura de nuestra población (hay el aproximadamente el mismo número de personas de cada edad)</li>
@@ -1238,8 +1213,8 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 <p><span class="math display">\[f(x,y) = f_X(x)f_{Y|X}(y|x)\]</span></p>
 <p>Sabemos que <span class="math inline">\(f_X(x) = 1/(15- 3)\)</span> para <span class="math inline">\(x\)</span> entre 4 y 15 años, y la forma de <span class="math inline">\(f_{Y|X}(y|x)\)</span> sabemos que es normal con media y varianza conocida (en términos de x). Esta conjunta puede ser integrada sobre cualquier región (al menos en teoría) para calcular la probabilidad de interés</p>
 </section>
-<section id="estaturas-variación-gamma" class="level2" data-number="8.16">
-<h2 data-number="8.16" class="anchored" data-anchor-id="estaturas-variación-gamma"><span class="header-section-number">8.16</span> Estaturas: variación gamma</h2>
+<section id="estaturas-variación-gamma" class="level2" data-number="5.16">
+<h2 data-number="5.16" class="anchored" data-anchor-id="estaturas-variación-gamma"><span class="header-section-number">5.16</span> Estaturas: variación gamma</h2>
 <p>Podemos juntar estos bloques de densidades condicionales para construir otro tipo de modelos. Por ejemplo, supondremos que la estatura dada la edad es una distribución gamma <span class="math inline">\((k,\lambda)\)</span> y la misma media y desviación estándar que vimos arriba. Como la media de una gamma de este tipo es <span class="math inline">\(\mu = k/\lambda\)</span> y su desviación estándar es <span class="math inline">\(\sigma = \sqrt{k}/\lambda\)</span>, podemos despejar <span class="math inline">\(k\)</span> y <span class="math inline">\(lambda\)</span> y hacer:</p>
 <div class="cell">
 <details>
@@ -1286,11 +1261,11 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 </div>
 <p>Este caso claramente no serviría para modelar estaturas, pero podemos ver cómo introdujimos asimetría considerable en las distribuciones condicionales de y dado x una vez que especificamos la media y la varianza condicionales.</p>
 </section>
-<section id="modelos-conjuntos-para-factor-categórico" class="level2" data-number="8.17">
-<h2 data-number="8.17" class="anchored" data-anchor-id="modelos-conjuntos-para-factor-categórico"><span class="header-section-number">8.17</span> Modelos conjuntos para factor categórico</h2>
+<section id="modelos-conjuntos-para-factor-categórico" class="level2" data-number="5.17">
+<h2 data-number="5.17" class="anchored" data-anchor-id="modelos-conjuntos-para-factor-categórico"><span class="header-section-number">5.17</span> Modelos conjuntos para factor categórico</h2>
 <p>Supongamos ahora que la variable <span class="math inline">\(Y\)</span> es numérica y la variable <span class="math inline">\(X\)</span> es categórica. En este caso, un modelo conjunto está definido por las probabilidades <span class="math inline">\(P(X=x)\)</span> junto con densidades condicionales <span class="math inline">\(Y|X\)</span>.</p>
-<section id="ejemplo-cuentas-y-propinas" class="level3" data-number="8.17.1">
-<h3 data-number="8.17.1" class="anchored" data-anchor-id="ejemplo-cuentas-y-propinas"><span class="header-section-number">8.17.1</span> Ejemplo: cuentas y propinas</h3>
+<section id="ejemplo-cuentas-y-propinas" class="level3" data-number="5.17.1">
+<h3 data-number="5.17.1" class="anchored" data-anchor-id="ejemplo-cuentas-y-propinas"><span class="header-section-number">5.17.1</span> Ejemplo: cuentas y propinas</h3>
 <p>Supongamos que <span class="math inline">\(X\)</span> es la hora del día (comida y cena) y que <span class="math inline">\(Y\)</span> es el tamaño de la cuenta.</p>
 <p>Podríamos establecer por ejemplo, que <span class="math inline">\(Y|X=comida\)</span> es Gamma con media 10 dólares y desviacion estándar 10 dólares. Sin embargo, <span class="math inline">\(Y|X=cena\)</span> es Gamma con media 25 dólares y desviación estándar 20 dólares. Simulamos y analizamos:</p>
 <div class="cell">
@@ -1312,8 +1287,8 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 <p>Y esta gráfica busca mostrar una estimación de las distribuciones condicionales de cuenta dado el turno donde el cliente consumió.</p>
 </section>
 </section>
-<section id="modelos-multivariados" class="level2" data-number="8.18">
-<h2 data-number="8.18" class="anchored" data-anchor-id="modelos-multivariados"><span class="header-section-number">8.18</span> Modelos multivariados</h2>
+<section id="modelos-multivariados" class="level2" data-number="5.18">
+<h2 data-number="5.18" class="anchored" data-anchor-id="modelos-multivariados"><span class="header-section-number">5.18</span> Modelos multivariados</h2>
 <p>Ahora consideremos que queremos construir un modelo conjunto para tres variables <span class="math inline">\(X, Y\)</span> y <span class="math inline">\(Z\)</span>. La forma en que procedemos dependerá del problema particular, pero podemos usar la regla del producto como guía. Por ejemplo, podríamos dar una distribución para <span class="math inline">\(Z\)</span>, luego una densidad condicional de Y dado <span class="math inline">\(Z\)</span>, y finalmente una condicional de <span class="math inline">\(Y\)</span> dada tanto <span class="math inline">\(X\)</span> como <span class="math inline">\(Z\)</span>.</p>
 <div class="cell">
 <details>
@@ -1674,12 +1649,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./prob-condicional.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Probabilidad condicional e independencia</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probabilidad condicional e independencia</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./inferencia-modelos.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Inferencia con modelos probabilísticos</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Inferencia con modelos probabilísticos</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

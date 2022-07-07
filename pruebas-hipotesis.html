@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.644">
+<meta name="generator" content="quarto-0.9.652">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Pensamiento estadístico - 4&nbsp; Inferencia y Remuestreo</title>
+<title>Pensamiento estadístico - 1&nbsp; Pruebas de hipótesis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -151,7 +151,7 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Inferencia y Remuestreo</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Pruebas de hipótesis</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -181,7 +181,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item sidebar-item-section">
     <div class="sidebar-item-container"> 
-        <a href="./est_cd.html" class="sidebar-item-text sidebar-link">Estadística y ciencia de datos</a>
+        <a href="./basicos-inferencia.html" class="sidebar-item-text sidebar-link">Inferencia estadística</a>
       <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
         <i class="bi bi-chevron-right ms-2"></i>
       </a>
@@ -189,37 +189,12 @@ div.csl-indent {
     <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./analisis-exp-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Análisis exploratorio y visualización de datos</span></a>
+  <a href="./pruebas-hipotesis.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Pruebas de hipótesis</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./analisis-exp-categoricos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Datos univariados categóricos</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./analisis-exp-numericos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Descripción de datos univariados numéricos</span></a>
-  </div>
-</li>
-    </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-    <div class="sidebar-item-container"> 
-        <a href="./basicos-inferencia.html" class="sidebar-item-text sidebar-link">Inferencia estadística</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
-        <i class="bi bi-chevron-right ms-2"></i>
-      </a>
-    </div>
-    <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./pruebas-hipotesis.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Inferencia y Remuestreo</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./remuestreo-bootstrap.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Remuestreo: el bootstrap</span></a>
+  <a href="./remuestreo-bootstrap.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Remuestreo: el bootstrap</span></a>
   </div>
 </li>
     </ul>
@@ -227,29 +202,29 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
     <div class="sidebar-item-container"> 
         <a href="./probabilidad.html" class="sidebar-item-text sidebar-link">Introducción a teoría de probabilidades</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
         <i class="bi bi-chevron-right ms-2"></i>
       </a>
     </div>
-    <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+    <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modelo-prob.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Básicos de probabilidad y simulación</span></a>
+  <a href="./modelo-prob.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Básicos de probabilidad y simulación</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./prob-condicional.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Probabilidad condicional e independencia</span></a>
+  <a href="./prob-condicional.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probabilidad condicional e independencia</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modelos-continuos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Modelos probabilísticos para variables continuas</span></a>
+  <a href="./modelos-continuos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Modelos probabilísticos para variables continuas</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./inferencia-modelos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Inferencia con modelos probabilísticos</span></a>
+  <a href="./inferencia-modelos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Inferencia con modelos probabilísticos</span></a>
   </div>
 </li>
     </ul>
@@ -257,14 +232,14 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
     <div class="sidebar-item-container"> 
         <a href="./inferencia-bayesiana.html" class="sidebar-item-text sidebar-link">Estadística Bayesiana</a>
-      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
         <i class="bi bi-chevron-right ms-2"></i>
       </a>
     </div>
-    <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+    <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modelos-bayesianos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Inferencia bayesiana</span></a>
+  <a href="./modelos-bayesianos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Inferencia bayesiana</span></a>
   </div>
 </li>
     </ul>
@@ -278,8 +253,7 @@ div.csl-indent {
     <h2 id="toc-title">Indice de contenidos</h2>
    
   <ul>
-  <li><a href="#pruebas-de-hipótesis" id="toc-pruebas-de-hipótesis" class="nav-link active" data-scroll-target="#pruebas-de-hipótesis">Pruebas de hipótesis</a></li>
-  <li><a href="#comparación-con-poblaciones-de-referencia" id="toc-comparación-con-poblaciones-de-referencia" class="nav-link" data-scroll-target="#comparación-con-poblaciones-de-referencia">Comparación con poblaciones de referencia</a>
+  <li><a href="#comparación-con-poblaciones-de-referencia" id="toc-comparación-con-poblaciones-de-referencia" class="nav-link active" data-scroll-target="#comparación-con-poblaciones-de-referencia">Comparación con poblaciones de referencia</a>
   <ul class="collapse">
   <li><a href="#ejemplo" id="toc-ejemplo" class="nav-link" data-scroll-target="#ejemplo">Ejemplo</a></li>
   </ul></li>
@@ -310,7 +284,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Inferencia y Remuestreo</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Pruebas de hipótesis</span></h1>
 </div>
 
 
@@ -327,24 +301,6 @@ div.csl-indent {
 <div class="cell">
 
 </div>
-<p>En una buena parte de los problemas de análisis de datos tenemos información incompleta. Por ejemplo:</p>
-<ul>
-<li><strong>No observamos todas las unidades en interés</strong>: Sólo observamos una parte de la población o del sistema de interés. (a veces por costo o tiempo, a veces porque observaciones de interés están en futuro, por ejemplo).</li>
-<li><strong>No observamos todas las variables de interés</strong>: Existen variables para las cuales no tenemos información que influyen en las observaciones que estamos considerando.</li>
-</ul>
-<p>En ambos casos, las comparaciones que hacemos están sujetas a variabilidad que no controlamos. Podemos pensar en esta variabiliad de dos formas:</p>
-<ul>
-<li><p><strong>Diferencias sistemáticas</strong>: por ejemplo, sólo observamos cierto tipo de unidades, con características muy particulares, o en el caso de variables, no tenemos información de variables que afectan nuestras comparaciones de manera sistemática. Estas consideraciones inducen incertidumbre en nuestro análisis que es relativamente difícil de cuantificar.</p></li>
-<li><p><strong>Diferencias no sistemáticas</strong>: si descartamos la primera posibilidad, consideramos que nuestras comparaciones están influidas por <em>fluctuaciones</em> que se deben al azar. En este caso, nuestras comparaciones pueden ser difíciles de interpretar por esa componente de ruido: ¿cómo podemos saber si una comparación se ve de cierta manera debida a fluctuaciones debidas al azar (pues tenemos información incompleta)?</p></li>
-</ul>
-<p>La incertidumbre del segundo caso es más fácil de cuantificar bajo ciertas condiciones:</p>
-<ul>
-<li>Cuando tenemos cuantificaciones históricas de la variabilidad natural de un proceso,</li>
-<li>Cuando usamos supuestos razonables soportados por teoría,</li>
-<li>Cuando introducimos patrones de aleatorización conocidos y cuantificables en la selección de la muestra o aplicación de tratamientos o intervenciones, por ejemplo.</li>
-</ul>
-<section id="pruebas-de-hipótesis" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="pruebas-de-hipótesis">Pruebas de hipótesis</h2>
 <p>Las primeras técnicas que veremos intentan contestar la siguiente pregunta:</p>
 <ul>
 <li>Si observamos cierto patrón en los datos, ¿cómo podemos cuantificar la evidencia de que es un patrón notable y no sólo debido a fluctuaciones en los datos particulares que tenemos? ¿Cómo sabemos que no estamos <strong>sobreinterpretando</strong> esas fluctuaciones?</li>
@@ -353,8 +309,8 @@ div.csl-indent {
 <ul>
 <li>Un sistema tiene cierto comportamiento “usual” para el cual tenemos datos históricos. El sistema presenta fluctuaciones en el tiempo.</li>
 <li>Observamos la última salida de nuestro sistema. Naturalmente, tiene fluctuaciones. ¿Esas fluctuaciones son consistentes con la operación usual del sistema? ¿Existe evidencia para pensar que algo en el sistema cambió?</li>
+<li>Observamos a algunos</li>
 </ul>
-</section>
 <section id="comparación-con-poblaciones-de-referencia" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="comparación-con-poblaciones-de-referencia">Comparación con poblaciones de referencia</h2>
 <p>En las prueba de hipótesis, tratamos de construir distribuciones de referencia para comparar resultados que obtengamos con un “estándar” de variación, y juzgar si nuestros resultados son consistentes con la referencia o no (<span class="citation" data-cites="box78">Box et&nbsp;al. (<a href="#ref-box78" role="doc-biblioref">1978</a>)</span>).</p>
@@ -463,7 +419,7 @@ div.csl-indent {
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="fu">lineup</span>(<span class="fu">null_permute</span>(<span class="st">"grupo"</span>), muestra_tab, <span class="at">n =</span> <span class="dv">20</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>decrypt("rHs0 SARA eo TUJeReUo dC")</code></pre>
+<pre><code>decrypt("bOij qSVS 7h GdF7V7dh vu")</code></pre>
 </div>
 <details>
 <summary>Código</summary>
@@ -504,7 +460,7 @@ div.csl-indent {
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="fu">lineup</span>(<span class="fu">null_permute</span>(<span class="st">"grupo"</span>), muestra_tab, <span class="at">n =</span> <span class="dv">20</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>decrypt("rHs0 SARA eo TUJeReUo dt")</code></pre>
+<pre><code>decrypt("bOij qSVS 7h GdF7V7dh vp")</code></pre>
 </div>
 <details>
 <summary>Código</summary>
@@ -835,7 +791,7 @@ cols(
 )</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>decrypt("rHs0 SARA eo TUJeReUo dd")</code></pre>
+<pre><code>decrypt("bOij qSVS 7h GdF7V7dh vv")</code></pre>
 </div>
 <div class="cell-output-display">
 <p><img src="pruebas-hipotesis_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="768"></p>
@@ -1177,7 +1133,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./remuestreo-bootstrap.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Remuestreo: el bootstrap</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Remuestreo: el bootstrap</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
