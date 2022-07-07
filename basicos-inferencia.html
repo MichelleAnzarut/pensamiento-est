@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.652">
+<meta name="generator" content="quarto-0.9.653">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -119,6 +119,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   }
 }</script>
 
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
 
 </head>
 
@@ -231,8 +234,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
   <li><a href="#proceso-de-selección-o-asignación" id="toc-proceso-de-selección-o-asignación" class="nav-link active" data-scroll-target="#proceso-de-selección-o-asignación">Proceso de selección o asignación</a></li>
-  <li><a href="#asignación-de-tratamientos" id="toc-asignación-de-tratamientos" class="nav-link" data-scroll-target="#asignación-de-tratamientos">Asignación de tratamientos</a></li>
-  <li><a href="#selección-de" id="toc-selección-de" class="nav-link" data-scroll-target="#selección-de">Selección de</a></li>
+  <li><a href="#procesos-generadores-de-datos-e-inferencia-causal" id="toc-procesos-generadores-de-datos-e-inferencia-causal" class="nav-link" data-scroll-target="#procesos-generadores-de-datos-e-inferencia-causal">Procesos generadores de datos e inferencia causal</a></li>
+  <li><a href="#procesos-generadores-de-datos-2-inferencia-causal" id="toc-procesos-generadores-de-datos-2-inferencia-causal" class="nav-link" data-scroll-target="#procesos-generadores-de-datos-2-inferencia-causal">Procesos generadores de datos 2: inferencia causal</a></li>
+  <li><a href="#procesos-generadores-de-datos-e-inferencia-a-poblaciones" id="toc-procesos-generadores-de-datos-e-inferencia-a-poblaciones" class="nav-link" data-scroll-target="#procesos-generadores-de-datos-e-inferencia-a-poblaciones">Procesos generadores de datos e inferencia a poblaciones</a></li>
   </ul>
 </nav>
     </div>
@@ -264,12 +268,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="fuymcymgpr" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="aknsvpucdi" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#fuymcymgpr .gt_table {
+#aknsvpucdi .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -294,7 +298,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-left-color: #D3D3D3;
 }
 
-#fuymcymgpr .gt_heading {
+#aknsvpucdi .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -306,7 +310,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#fuymcymgpr .gt_title {
+#aknsvpucdi .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -318,7 +322,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-width: 0;
 }
 
-#fuymcymgpr .gt_subtitle {
+#aknsvpucdi .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -330,13 +334,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-width: 0;
 }
 
-#fuymcymgpr .gt_bottom_border {
+#aknsvpucdi .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fuymcymgpr .gt_col_headings {
+#aknsvpucdi .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -351,7 +355,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#fuymcymgpr .gt_col_heading {
+#aknsvpucdi .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -371,7 +375,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#fuymcymgpr .gt_column_spanner_outer {
+#aknsvpucdi .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -383,15 +387,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 4px;
 }
 
-#fuymcymgpr .gt_column_spanner_outer:first-child {
+#aknsvpucdi .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fuymcymgpr .gt_column_spanner_outer:last-child {
+#aknsvpucdi .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fuymcymgpr .gt_column_spanner {
+#aknsvpucdi .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -403,7 +407,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   width: 100%;
 }
 
-#fuymcymgpr .gt_group_heading {
+#aknsvpucdi .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -428,7 +432,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#fuymcymgpr .gt_empty_group_heading {
+#aknsvpucdi .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -443,15 +447,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#fuymcymgpr .gt_from_md > :first-child {
+#aknsvpucdi .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fuymcymgpr .gt_from_md > :last-child {
+#aknsvpucdi .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fuymcymgpr .gt_row {
+#aknsvpucdi .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -470,7 +474,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#fuymcymgpr .gt_stub {
+#aknsvpucdi .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -483,7 +487,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#fuymcymgpr .gt_stub_row_group {
+#aknsvpucdi .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -497,11 +501,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: top;
 }
 
-#fuymcymgpr .gt_row_group_first td {
+#aknsvpucdi .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fuymcymgpr .gt_summary_row {
+#aknsvpucdi .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -511,16 +515,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#fuymcymgpr .gt_first_summary_row {
+#aknsvpucdi .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fuymcymgpr .gt_first_summary_row.thick {
+#aknsvpucdi .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fuymcymgpr .gt_last_summary_row {
+#aknsvpucdi .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -530,7 +534,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#fuymcymgpr .gt_grand_summary_row {
+#aknsvpucdi .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -540,7 +544,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#fuymcymgpr .gt_first_grand_summary_row {
+#aknsvpucdi .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -550,11 +554,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#fuymcymgpr .gt_striped {
+#aknsvpucdi .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fuymcymgpr .gt_table_body {
+#aknsvpucdi .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -563,7 +567,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#fuymcymgpr .gt_footnotes {
+#aknsvpucdi .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -577,7 +581,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#fuymcymgpr .gt_footnote {
+#aknsvpucdi .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -586,7 +590,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#fuymcymgpr .gt_sourcenotes {
+#aknsvpucdi .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -600,7 +604,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#fuymcymgpr .gt_sourcenote {
+#aknsvpucdi .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -608,36 +612,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#fuymcymgpr .gt_left {
+#aknsvpucdi .gt_left {
   text-align: left;
 }
 
-#fuymcymgpr .gt_center {
+#aknsvpucdi .gt_center {
   text-align: center;
 }
 
-#fuymcymgpr .gt_right {
+#aknsvpucdi .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fuymcymgpr .gt_font_normal {
+#aknsvpucdi .gt_font_normal {
   font-weight: normal;
 }
 
-#fuymcymgpr .gt_font_bold {
+#aknsvpucdi .gt_font_bold {
   font-weight: bold;
 }
 
-#fuymcymgpr .gt_font_italic {
+#aknsvpucdi .gt_font_italic {
   font-style: italic;
 }
 
-#fuymcymgpr .gt_super {
+#aknsvpucdi .gt_super {
   font-size: 65%;
 }
 
-#fuymcymgpr .gt_two_val_uncert {
+#aknsvpucdi .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -646,31 +650,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   margin-left: 0.1em;
 }
 
-#fuymcymgpr .gt_footnote_marks {
+#aknsvpucdi .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#fuymcymgpr .gt_asterisk {
+#aknsvpucdi .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fuymcymgpr .gt_slash_mark {
+#aknsvpucdi .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#fuymcymgpr .gt_fraction_numerator {
+#aknsvpucdi .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#fuymcymgpr .gt_fraction_denominator {
+#aknsvpucdi .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -688,19 +692,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </thead>
   <tbody class="gt_table_body">
     <tr><td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">39</td>
+<td class="gt_row gt_right">56</td>
 <td class="gt_row gt_right">1.58</td>
 <td class="gt_row gt_right">60</td></tr>
     <tr><td class="gt_row gt_right">2</td>
-<td class="gt_row gt_right">59</td>
+<td class="gt_row gt_right">24</td>
 <td class="gt_row gt_right">1.72</td>
 <td class="gt_row gt_right">72</td></tr>
     <tr><td class="gt_row gt_right">3</td>
-<td class="gt_row gt_right">34</td>
+<td class="gt_row gt_right">22</td>
 <td class="gt_row gt_right">1.64</td>
 <td class="gt_row gt_right">56</td></tr>
     <tr><td class="gt_row gt_right">4</td>
-<td class="gt_row gt_right">30</td>
+<td class="gt_row gt_right">37</td>
 <td class="gt_row gt_right">1.50</td>
 <td class="gt_row gt_right">60</td></tr>
     <tr><td class="gt_row gt_right">5</td>
@@ -708,43 +712,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">NA</td></tr>
     <tr><td class="gt_row gt_right">6</td>
-<td class="gt_row gt_right">52</td>
+<td class="gt_row gt_right">65</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">NA</td></tr>
     <tr><td class="gt_row gt_right">7</td>
-<td class="gt_row gt_right">41</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td></tr>
-    <tr><td class="gt_row gt_right">8</td>
-<td class="gt_row gt_right">36</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td></tr>
-    <tr><td class="gt_row gt_right">9</td>
-<td class="gt_row gt_right">56</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td></tr>
-    <tr><td class="gt_row gt_right">10</td>
-<td class="gt_row gt_right">55</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td></tr>
-    <tr><td class="gt_row gt_right">11</td>
-<td class="gt_row gt_right">50</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td></tr>
-    <tr><td class="gt_row gt_right">12</td>
-<td class="gt_row gt_right">35</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td></tr>
-    <tr><td class="gt_row gt_right">13</td>
 <td class="gt_row gt_right">18</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">NA</td></tr>
+    <tr><td class="gt_row gt_right">8</td>
+<td class="gt_row gt_right">60</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">NA</td></tr>
+    <tr><td class="gt_row gt_right">9</td>
+<td class="gt_row gt_right">41</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">NA</td></tr>
+    <tr><td class="gt_row gt_right">10</td>
+<td class="gt_row gt_right">25</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">NA</td></tr>
+    <tr><td class="gt_row gt_right">11</td>
+<td class="gt_row gt_right">23</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">NA</td></tr>
+    <tr><td class="gt_row gt_right">12</td>
+<td class="gt_row gt_right">46</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">NA</td></tr>
+    <tr><td class="gt_row gt_right">13</td>
+<td class="gt_row gt_right">42</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">NA</td></tr>
     <tr><td class="gt_row gt_right">14</td>
-<td class="gt_row gt_right">51</td>
+<td class="gt_row gt_right">20</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">NA</td></tr>
     <tr><td class="gt_row gt_right">15</td>
-<td class="gt_row gt_right">33</td>
+<td class="gt_row gt_right">59</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">NA</td></tr>
   </tbody>
@@ -762,12 +766,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="jsfkfvueae" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="gsaglfclpq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#jsfkfvueae .gt_table {
+#gsaglfclpq .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -792,7 +796,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-left-color: #D3D3D3;
 }
 
-#jsfkfvueae .gt_heading {
+#gsaglfclpq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -804,7 +808,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#jsfkfvueae .gt_title {
+#gsaglfclpq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -816,7 +820,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-width: 0;
 }
 
-#jsfkfvueae .gt_subtitle {
+#gsaglfclpq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -828,13 +832,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-width: 0;
 }
 
-#jsfkfvueae .gt_bottom_border {
+#gsaglfclpq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#jsfkfvueae .gt_col_headings {
+#gsaglfclpq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -849,7 +853,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#jsfkfvueae .gt_col_heading {
+#gsaglfclpq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -869,7 +873,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#jsfkfvueae .gt_column_spanner_outer {
+#gsaglfclpq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -881,15 +885,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 4px;
 }
 
-#jsfkfvueae .gt_column_spanner_outer:first-child {
+#gsaglfclpq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jsfkfvueae .gt_column_spanner_outer:last-child {
+#gsaglfclpq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jsfkfvueae .gt_column_spanner {
+#gsaglfclpq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -901,7 +905,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   width: 100%;
 }
 
-#jsfkfvueae .gt_group_heading {
+#gsaglfclpq .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -926,7 +930,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#jsfkfvueae .gt_empty_group_heading {
+#gsaglfclpq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -941,15 +945,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#jsfkfvueae .gt_from_md > :first-child {
+#gsaglfclpq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jsfkfvueae .gt_from_md > :last-child {
+#gsaglfclpq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jsfkfvueae .gt_row {
+#gsaglfclpq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -968,7 +972,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#jsfkfvueae .gt_stub {
+#gsaglfclpq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -981,7 +985,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#jsfkfvueae .gt_stub_row_group {
+#gsaglfclpq .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -995,11 +999,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: top;
 }
 
-#jsfkfvueae .gt_row_group_first td {
+#gsaglfclpq .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jsfkfvueae .gt_summary_row {
+#gsaglfclpq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1009,16 +1013,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#jsfkfvueae .gt_first_summary_row {
+#gsaglfclpq .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#jsfkfvueae .gt_first_summary_row.thick {
+#gsaglfclpq .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jsfkfvueae .gt_last_summary_row {
+#gsaglfclpq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1028,7 +1032,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#jsfkfvueae .gt_grand_summary_row {
+#gsaglfclpq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1038,7 +1042,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#jsfkfvueae .gt_first_grand_summary_row {
+#gsaglfclpq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1048,11 +1052,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#jsfkfvueae .gt_striped {
+#gsaglfclpq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#jsfkfvueae .gt_table_body {
+#gsaglfclpq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1061,7 +1065,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#jsfkfvueae .gt_footnotes {
+#gsaglfclpq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1075,7 +1079,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#jsfkfvueae .gt_footnote {
+#gsaglfclpq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1084,7 +1088,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#jsfkfvueae .gt_sourcenotes {
+#gsaglfclpq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1098,7 +1102,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#jsfkfvueae .gt_sourcenote {
+#gsaglfclpq .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1106,36 +1110,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#jsfkfvueae .gt_left {
+#gsaglfclpq .gt_left {
   text-align: left;
 }
 
-#jsfkfvueae .gt_center {
+#gsaglfclpq .gt_center {
   text-align: center;
 }
 
-#jsfkfvueae .gt_right {
+#gsaglfclpq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jsfkfvueae .gt_font_normal {
+#gsaglfclpq .gt_font_normal {
   font-weight: normal;
 }
 
-#jsfkfvueae .gt_font_bold {
+#gsaglfclpq .gt_font_bold {
   font-weight: bold;
 }
 
-#jsfkfvueae .gt_font_italic {
+#gsaglfclpq .gt_font_italic {
   font-style: italic;
 }
 
-#jsfkfvueae .gt_super {
+#gsaglfclpq .gt_super {
   font-size: 65%;
 }
 
-#jsfkfvueae .gt_two_val_uncert {
+#gsaglfclpq .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -1144,31 +1148,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   margin-left: 0.1em;
 }
 
-#jsfkfvueae .gt_footnote_marks {
+#gsaglfclpq .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#jsfkfvueae .gt_asterisk {
+#gsaglfclpq .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jsfkfvueae .gt_slash_mark {
+#gsaglfclpq .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#jsfkfvueae .gt_fraction_numerator {
+#gsaglfclpq .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#jsfkfvueae .gt_fraction_denominator {
+#gsaglfclpq .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -1188,95 +1192,95 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </thead>
   <tbody class="gt_table_body">
     <tr><td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">24</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">3</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">3</td></tr>
-    <tr><td class="gt_row gt_right">2</td>
-<td class="gt_row gt_right">23</td>
+<td class="gt_row gt_right">65</td>
 <td class="gt_row gt_right">6</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">1</td>
 <td class="gt_row gt_right">6</td></tr>
+    <tr><td class="gt_row gt_right">2</td>
+<td class="gt_row gt_right">62</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">0</td>
+<td class="gt_row gt_right">3</td></tr>
     <tr><td class="gt_row gt_right">3</td>
-<td class="gt_row gt_right">35</td>
+<td class="gt_row gt_right">28</td>
 <td class="gt_row gt_right">6</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">1</td>
 <td class="gt_row gt_right">6</td></tr>
     <tr><td class="gt_row gt_right">4</td>
-<td class="gt_row gt_right">58</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">3</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">3</td></tr>
-    <tr><td class="gt_row gt_right">5</td>
-<td class="gt_row gt_right">30</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">3</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">3</td></tr>
-    <tr><td class="gt_row gt_right">6</td>
-<td class="gt_row gt_right">29</td>
+<td class="gt_row gt_right">33</td>
 <td class="gt_row gt_right">6</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">1</td>
 <td class="gt_row gt_right">6</td></tr>
-    <tr><td class="gt_row gt_right">7</td>
-<td class="gt_row gt_right">37</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">3</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">3</td></tr>
-    <tr><td class="gt_row gt_right">8</td>
+    <tr><td class="gt_row gt_right">5</td>
 <td class="gt_row gt_right">61</td>
 <td class="gt_row gt_right">6</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">1</td>
 <td class="gt_row gt_right">6</td></tr>
-    <tr><td class="gt_row gt_right">9</td>
+    <tr><td class="gt_row gt_right">6</td>
+<td class="gt_row gt_right">44</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">0</td>
+<td class="gt_row gt_right">3</td></tr>
+    <tr><td class="gt_row gt_right">7</td>
+<td class="gt_row gt_right">64</td>
+<td class="gt_row gt_right">6</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_right">6</td></tr>
+    <tr><td class="gt_row gt_right">8</td>
 <td class="gt_row gt_right">52</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">3</td>
 <td class="gt_row gt_right">0</td>
 <td class="gt_row gt_right">3</td></tr>
-    <tr><td class="gt_row gt_right">10</td>
-<td class="gt_row gt_right">47</td>
+    <tr><td class="gt_row gt_right">9</td>
+<td class="gt_row gt_right">49</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">3</td>
 <td class="gt_row gt_right">0</td>
 <td class="gt_row gt_right">3</td></tr>
+    <tr><td class="gt_row gt_right">10</td>
+<td class="gt_row gt_right">25</td>
+<td class="gt_row gt_right">6</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_right">6</td></tr>
     <tr><td class="gt_row gt_right">11</td>
-<td class="gt_row gt_right">40</td>
+<td class="gt_row gt_right">53</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">3</td>
 <td class="gt_row gt_right">0</td>
 <td class="gt_row gt_right">3</td></tr>
     <tr><td class="gt_row gt_right">12</td>
-<td class="gt_row gt_right">22</td>
+<td class="gt_row gt_right">19</td>
 <td class="gt_row gt_right">6</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">1</td>
 <td class="gt_row gt_right">6</td></tr>
     <tr><td class="gt_row gt_right">13</td>
-<td class="gt_row gt_right">63</td>
-<td class="gt_row gt_right">6</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">6</td></tr>
-    <tr><td class="gt_row gt_right">14</td>
-<td class="gt_row gt_right">53</td>
-<td class="gt_row gt_right">6</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">6</td></tr>
-    <tr><td class="gt_row gt_right">15</td>
-<td class="gt_row gt_right">31</td>
+<td class="gt_row gt_right">46</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">3</td>
 <td class="gt_row gt_right">0</td>
 <td class="gt_row gt_right">3</td></tr>
+    <tr><td class="gt_row gt_right">14</td>
+<td class="gt_row gt_right">63</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">0</td>
+<td class="gt_row gt_right">3</td></tr>
+    <tr><td class="gt_row gt_right">15</td>
+<td class="gt_row gt_right">56</td>
+<td class="gt_row gt_right">6</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_right">6</td></tr>
   </tbody>
   
   
@@ -1303,13 +1307,12 @@ Datos incompletos e incertidumbre
 <h2 class="anchored" data-anchor-id="proceso-de-selección-o-asignación">Proceso de selección o asignación</h2>
 <p>Las preguntas que planteamos arriba son difíciles de contestar cuando no conocemos bien el proceso de selección de individuos en la muestra o no conocemos el proceso de asignación de la aspirina.</p>
 <p>Por ejemplo, llegaríamos a conclusiones muy distintas si nos dijeran que:</p>
-<p>Primera población:</p>
 <ol type="1">
 <li>Escogimos las 5 personas que usan ropa talla chica.</li>
 <li>Escogimos las 5 personas que llegaron primero en una carrera de 100 metros.</li>
 <li>Escogimos las personas cuyo día de nacimiento era más bajo.</li>
 </ol>
-<p>Segunda población:</p>
+<p>O en el ejemplo de la aspirina,</p>
 <ol type="1">
 <li>Sólo dimos aspirinas a las personas que reportaron un nivel de dolor de cabeza muy alto.</li>
 <li>Solo dimos aspirina a las personas que llegaron primero en una carrera de 100 metros.</li>
@@ -1328,7 +1331,7 @@ Tip
 <p>Discute qué conclusiones podrías llegar en cada uno de estos escenarios.</p>
 </div>
 </div>
-<p>Los casos 1 y 2 en ambas poblaciones son en general más difíciles de resolver adecuadamente, y explicaremos con más ejemplos. Adicionalmente, es también más difícil cuantificar el nivel de incertidumbre de nuestras respuestas, pues dependen de muchos detalles del proceso de selección o asignación.</p>
+<p>Los casos 1 y 2 en ambas poblaciones son en general difíciles de resolver adecuadamente, y explicaremos con más ejemplos. Adicionalmente, es también más difícil cuantificar el nivel de incertidumbre de nuestras respuestas, pues dependen de muchos detalles del proceso de selección o asignación.</p>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1343,16 +1346,157 @@ Proceso generador de datos
 </div>
 </div>
 </section>
-<section id="asignación-de-tratamientos" class="level2">
-<h2 class="anchored" data-anchor-id="asignación-de-tratamientos">Asignación de tratamientos</h2>
+<section id="procesos-generadores-de-datos-e-inferencia-causal" class="level2">
+<h2 class="anchored" data-anchor-id="procesos-generadores-de-datos-e-inferencia-causal">Procesos generadores de datos e inferencia causal</h2>
+<p>Consideramos los datos de ENLACE (2011), y en particular los resultados promedio de matemáticas en sexto grado por escuela. ENLACE era una prueba que se aplicaba en todas las escuelas, de forma que tenemos información de la población completa de interés.</p>
+<p>Nos interesa saber cómo varían los resultados en función de el tipo de primaria: pública o privada.</p>
+<p>El rango de la calificación de matemáticas para un alumno es de 0-800, y aproximadamente la mitad de los alumnos califica en el rengo de 450 a 550. Vemos dispersión considerable en las calificaciones de las escuelas, y diferencias considerables entre tipo de escuelas:</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>enlace_tbl <span class="ot">&lt;-</span> enlace <span class="sc">|&gt;</span> <span class="fu">group_by</span>(tipo) <span class="sc">|&gt;</span> </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">n_escuelas =</span> <span class="fu">n</span>(),</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">cuantiles =</span> <span class="fu">list</span>(<span class="fu">cuantil</span>(mate_6, <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.95</span>)))) <span class="sc">|&gt;</span> </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unnest</span>(<span class="at">cols =</span> cuantiles) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">valor =</span> <span class="fu">round</span>(valor)) </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>enlace_tbl <span class="sc">|&gt;</span> <span class="fu">spread</span>(cuantil, valor) <span class="sc">|&gt;</span>  <span class="fu">formatear_tabla</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+
+<table class="table table-striped table-hover table-condensed table-responsive" style="font-size: 15px; width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> tipo </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> n_escuelas </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> 0.05 </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> 0.25 </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> 0.5 </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> 0.75 </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> 0.95 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Indígena/Conafe </td>
+   <td style="text-align:right;"> 13599 </td>
+   <td style="text-align:right;"> 304 </td>
+   <td style="text-align:right;"> 358 </td>
+   <td style="text-align:right;"> 412 </td>
+   <td style="text-align:right;"> 478 </td>
+   <td style="text-align:right;"> 588 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> General </td>
+   <td style="text-align:right;"> 60166 </td>
+   <td style="text-align:right;"> 380 </td>
+   <td style="text-align:right;"> 454 </td>
+   <td style="text-align:right;"> 502 </td>
+   <td style="text-align:right;"> 548 </td>
+   <td style="text-align:right;"> 631 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Particular </td>
+   <td style="text-align:right;"> 6816 </td>
+   <td style="text-align:right;"> 479 </td>
+   <td style="text-align:right;"> 551 </td>
+   <td style="text-align:right;"> 593 </td>
+   <td style="text-align:right;"> 634 </td>
+   <td style="text-align:right;"> 703 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>Podemos graficar de varias maneras, por ejemplo, mostrando los cuantiles 0.05, 0.25, 0.5, 0.75 y 0.95:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="basicos-inferencia_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="960"></p>
+</div>
+</div>
+<p>Y vemos que las escuelas privadas tienen mejor resultados que las públicas por un margen considerable. Ahora preguntamos: ¿la calidad de las escuelas es lo que <em>causa</em> estos resultados? Por ejemplo, ¿si cambiáramos un niño de una escuela pública a una privada su resultado sería mejor?</p>
+<p>Es dificil contestar esta pregunta, porque no entendemos el proceso generador de datos que asigna niños a escuelas. Una posible hipótesis de cómo se asigna el tratamiento y cómo se relaciona con la calificación en Enlace:</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dagitty)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggdag)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'ggdag'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:stats':
+
+    filter</code></pre>
+</div>
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dag_cafe <span class="ot">&lt;-</span> <span class="fu">dagitty</span>(<span class="st">'dag{"Escuela" [exposure,pos="-3,3"]</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="st">  "Calif" [outcome,pos="3,3"]</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="st">  "Marginación" [pos="0,1"]</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="st">  "Educación padres" [pos = "2,2"]</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="st">  "Recursos escolares" [pos = "0,4"]</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="st">  "Marginación"  -&gt; "Escuela"</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="st">    "Escuela" -&gt; "Calif"</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="st">    "Marginación" -&gt; "Educación padres" -&gt; "Calif"</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="st">    "Escuela" -&gt; "Recursos escolares" -&gt; "Calif"</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="st">  }'</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>dag_cafe_tidy <span class="ot">&lt;-</span> <span class="fu">tidy_dagitty</span>(dag_cafe) <span class="co">#|&gt; </span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">#mutate(tipo = ifelse(name == "Cafe" &amp; to == "Cancer", "dotted", "solid"))</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>dag_cafe_tidy <span class="sc">|&gt;</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">xend =</span> xend, <span class="at">yend =</span> yend )) <span class="sc">+</span> </span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dag_edges</span>() <span class="sc">+</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dag_point</span>(<span class="at">colour =</span> <span class="st">"salmon"</span>, <span class="at">size =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dag_text</span>(<span class="at">colour =</span> <span class="st">"gray20"</span>) <span class="sc">+</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dag</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="basicos-inferencia_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ul>
+<li>El grado de marginación del hogar de un estudiante influye en el tipo de escuela al que asiste.</li>
+<li>Pero también influye en la calificación que obtiene el estudiante, por ejemplo actuando mediante el nivel de educación de los padres.</li>
+<li>Esto implica que cuando cruzamos tipo de escuela y calificación obtenida, en parte estamos viendo el efecto que la escuela tiene en los estudiantes, pero también un efecto común de la marginación.</li>
+<li>La comparación entre tipos de escuelas está sesgada si el propósito es estimar el efecto de tipo de escuela en los resultados de los estudiantes.</li>
+</ul>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>enlace_tbl_marg <span class="ot">&lt;-</span> enlace <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(tipo, marginacion) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">n_alumnos =</span> <span class="fu">sum</span>(num_evaluados_total),</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">cuantiles =</span> <span class="fu">list</span>(<span class="fu">cuantil</span>(mate_6, <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.95</span>)))) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unnest</span>(<span class="at">cols =</span> cuantiles) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">valor =</span> <span class="fu">round</span>(valor)) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>( n_alumnos <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Podemos considerar el grado de marginación del municipio donde está cada escuela, y vemos la diferencia tan grande se debe en parte a las escuelas privadas tienden estar en municipios de baja marginación. Por ejemplo, los promedios no son tan diferentes para escuelas públicas en zonas de marginación muy baja comparado con escuelas privadas en zonas de marginación alta:</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="basicos-inferencia_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="960"></p>
+</div>
+</div>
+<p>En esta nueva comparación, existen muchos otros factores que probablemente tenemos que pensar, algunos de ellos no estarán disponibles en los datos, y otros puede que se escapen de nuestra consideración.</p>
+<ul>
+<li>El problema central en este análisis es que el proceso generador de datos, en cuanto a quíen le toca ir a cada escuela, es complejo.</li>
+<li>Hacer inferencia causal en este caso es retador y depende de varios supuestos <strong>que no son estadísticos</strong>.</li>
+</ul>
+</section>
+<section id="procesos-generadores-de-datos-2-inferencia-causal" class="level2">
+<h2 class="anchored" data-anchor-id="procesos-generadores-de-datos-2-inferencia-causal">Procesos generadores de datos 2: inferencia causal</h2>
 <p>En un estudio de 1981, investigadores reportaron una asociación de cáncer de páncreas con consumo de café. Sus resultados agregados fueron:</p>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>tab_cafe <span class="ot">&lt;-</span> <span class="fu">crossing</span>(<span class="at">num_tazas =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">1.5</span>, <span class="fl">3.5</span>, <span class="dv">5</span>), <span class="at">enf_pancreas =</span> <span class="fu">c</span>(<span class="st">"si"</span>, <span class="st">"no"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n =</span> <span class="fu">c</span>(<span class="dv">88</span>, <span class="dv">20</span>, <span class="dv">271</span>, <span class="dv">153</span>, <span class="dv">154</span>, <span class="dv">106</span>, <span class="dv">88</span>, <span class="dv">130</span>))</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>tab_cafe <span class="sc">|&gt;</span> <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> enf_pancreas, <span class="at">values_from =</span> n) <span class="sc">|&gt;</span> </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop_si =</span> si <span class="sc">/</span> (no <span class="sc">+</span> si))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tab_cafe <span class="ot">&lt;-</span> <span class="fu">crossing</span>(<span class="at">num_tazas =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">1.5</span>, <span class="fl">3.5</span>, <span class="dv">5</span>), <span class="at">enf_pancreas =</span> <span class="fu">c</span>(<span class="st">"si"</span>, <span class="st">"no"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n =</span> <span class="fu">c</span>(<span class="dv">88</span>, <span class="dv">20</span>, <span class="dv">271</span>, <span class="dv">153</span>, <span class="dv">154</span>, <span class="dv">106</span>, <span class="dv">88</span>, <span class="dv">130</span>))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>tab_cafe <span class="sc">|&gt;</span> <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> enf_pancreas, <span class="at">values_from =</span> n) <span class="sc">|&gt;</span> </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">prop_si =</span> si <span class="sc">/</span> (no <span class="sc">+</span> si))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 4
@@ -1374,37 +1518,25 @@ Proceso generador de datos
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dagitty)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggdag)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'ggdag'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:stats':
-
-    filter</code></pre>
-</div>
-<details>
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dag_cafe <span class="ot">&lt;-</span> <span class="fu">dagitty</span>(<span class="st">'dag{Cafe [exposure,pos="-1,-2"]</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="st">  Cancer [outcome,pos="1,-2"]</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="st">  Entrevistado [pos="0,-3"]</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="st">  Gastro [pos="-1,-2.5"]</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="st">  Gastro -&gt; Cafe</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="st">  Cancer -&gt; Entrevistado; Gastro  -&gt; Entrevistado; Cafe -&gt; Cancer}'</span>)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>dag_cafe_tidy <span class="ot">&lt;-</span> <span class="fu">tidy_dagitty</span>(dag_cafe) <span class="sc">|&gt;</span> </span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tipo =</span> <span class="fu">ifelse</span>(name <span class="sc">==</span> <span class="st">"Cafe"</span> <span class="sc">&amp;</span> to <span class="sc">==</span> <span class="st">"Cancer"</span>, <span class="st">"dotted"</span>, <span class="st">"solid"</span>))</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>dag_cafe_tidy <span class="sc">|&gt;</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">xend =</span> xend, <span class="at">yend =</span> yend, <span class="at">colour =</span> tipo )) <span class="sc">+</span> </span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dag_edges</span>(<span class="fu">aes</span>(<span class="at">edge_linetype =</span> tipo)) <span class="sc">+</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dag_point</span>(<span class="at">colour =</span> <span class="st">"salmon"</span>) <span class="sc">+</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dag_text</span>(<span class="at">colour =</span> <span class="st">"gray20"</span>) <span class="sc">+</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dag</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dagitty)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggdag)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>dag_cafe <span class="ot">&lt;-</span> <span class="fu">dagitty</span>(<span class="st">'dag{Cafe [exposure,pos="-1,-2"]</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="st">  Cancer [outcome,pos="1,-2"]</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="st">  Entrevistado [pos="0,-3"]</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="st">  Gastro [pos="-1,-2.5"]</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="st">  Gastro -&gt; Cafe</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="st">  Cancer -&gt; Entrevistado; Gastro  -&gt; Entrevistado; Cafe -&gt; Cancer}'</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>dag_cafe_tidy <span class="ot">&lt;-</span> <span class="fu">tidy_dagitty</span>(dag_cafe) <span class="sc">|&gt;</span> </span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tipo =</span> <span class="fu">ifelse</span>(name <span class="sc">==</span> <span class="st">"Cafe"</span> <span class="sc">&amp;</span> to <span class="sc">==</span> <span class="st">"Cancer"</span>, <span class="st">"dotted"</span>, <span class="st">"solid"</span>))</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>dag_cafe_tidy <span class="sc">|&gt;</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">xend =</span> xend, <span class="at">yend =</span> yend, <span class="at">colour =</span> tipo )) <span class="sc">+</span> </span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dag_edges</span>(<span class="fu">aes</span>(<span class="at">edge_linetype =</span> tipo)) <span class="sc">+</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dag_point</span>(<span class="at">colour =</span> <span class="st">"salmon"</span>) <span class="sc">+</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dag_text</span>(<span class="at">colour =</span> <span class="st">"gray20"</span>) <span class="sc">+</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dag</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="basicos-inferencia_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<p><img src="basicos-inferencia_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Las consecuencias de estas tres relaciones casuales es la siguiente: si alguien es entrevistado, puede ser por dos razones diferentes: tiene cáncer, o si no tiene cáncer, tiene probabilidad alta de tener problemas gastrointestinales. Esto último implica, por restricciones de dieta, que tienden a tomar menos café. Con esto, hemos demostrado que con este esquema de selección puede aparecer naturalmente una asociación entre cáncer y consumo de café, <strong>aún cuando no exista una relación causal entre tomar café y cáncer de páncreas</strong>.</p>
@@ -1413,24 +1545,25 @@ Attaching package: 'ggdag'</code></pre>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dag_cafe <span class="ot">&lt;-</span> <span class="fu">dagitty</span>(<span class="st">"dag{Gastro -&gt; Cafe;  Cafe -&gt; Cancer}"</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>dag_cafe_tidy <span class="ot">&lt;-</span> <span class="fu">tidy_dagitty</span>(dag_cafe) <span class="sc">|&gt;</span> </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tipo =</span> <span class="fu">ifelse</span>(name <span class="sc">==</span> <span class="st">"Cafe"</span> <span class="sc">&amp;</span> to <span class="sc">==</span> <span class="st">"Cancer"</span>, <span class="st">"dotted"</span>, <span class="st">"solid"</span>))</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>dag_cafe_tidy <span class="sc">|&gt;</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">xend =</span> xend, <span class="at">yend =</span> yend, <span class="at">colour =</span> tipo )) <span class="sc">+</span> </span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dag_edges</span>(<span class="fu">aes</span>(<span class="at">edge_linetype =</span> tipo)) <span class="sc">+</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dag_point</span>(<span class="at">colour =</span> <span class="st">"salmon"</span>) <span class="sc">+</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dag_text</span>(<span class="at">colour =</span> <span class="st">"gray20"</span>) <span class="sc">+</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dag</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>dag_cafe <span class="ot">&lt;-</span> <span class="fu">dagitty</span>(<span class="st">"dag{Gastro -&gt; Cafe;  Cafe -&gt; Cancer}"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>dag_cafe_tidy <span class="ot">&lt;-</span> <span class="fu">tidy_dagitty</span>(dag_cafe) <span class="sc">|&gt;</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tipo =</span> <span class="fu">ifelse</span>(name <span class="sc">==</span> <span class="st">"Cafe"</span> <span class="sc">&amp;</span> to <span class="sc">==</span> <span class="st">"Cancer"</span>, <span class="st">"dotted"</span>, <span class="st">"solid"</span>))</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>dag_cafe_tidy <span class="sc">|&gt;</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">xend =</span> xend, <span class="at">yend =</span> yend, <span class="at">colour =</span> tipo )) <span class="sc">+</span> </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dag_edges</span>(<span class="fu">aes</span>(<span class="at">edge_linetype =</span> tipo)) <span class="sc">+</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dag_point</span>(<span class="at">colour =</span> <span class="st">"salmon"</span>) <span class="sc">+</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dag_text</span>(<span class="at">colour =</span> <span class="st">"gray20"</span>) <span class="sc">+</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dag</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="basicos-inferencia_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+<p><img src="basicos-inferencia_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Y en este caso, podemos ver directamente la relación causal entre café y cáncer, aún cuando problemas gastrointestinales pueden afectar la asignación del tratamiento.</p>
 </section>
-<section id="selección-de" class="level2">
-<h2 class="anchored" data-anchor-id="selección-de">Selección de</h2>
+<section id="procesos-generadores-de-datos-e-inferencia-a-poblaciones" class="level2">
+<h2 class="anchored" data-anchor-id="procesos-generadores-de-datos-e-inferencia-a-poblaciones">Procesos generadores de datos e inferencia a poblaciones</h2>
+<p>En el siguiente ejemplo, consideramos el problema del Conteo Rápido en las elecciones presidenciales de 2018. El Conteo Rápido busca estimar con precisión los resultados finales de las elecciones en el mismo día que se lleva a cabo la votación.</p>
 
 
 </section>
