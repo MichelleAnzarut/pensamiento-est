@@ -48,7 +48,7 @@ pob_2 <- tibble(id = 1:15,
 pob_2 |> gt()
 ```
 
-Nuestra pregunta en este caso es del tipo: ¿ayuda la aspirina a reducir el dolor de cabeza en esta población? ¿qué tanto ayudaa? Igualmente, tenemos información incompleta, en el sentido de que
+Nuestra pregunta en este caso es del tipo: ¿ayuda la aspirina a reducir el dolor de cabeza en esta población? ¿qué tanto ayuda? Igualmente, tenemos información incompleta, en el sentido de que
 sólo observamos un resultado potencial de cada persona, dependiendo
 de si tomó aspirina o no. Si supiéramos los dos resultados potenciales de cada persona
 entonces podríamos contestar la pregunta sin dificultad.
@@ -61,8 +61,9 @@ Casi por regla general, el hecho de que tengamos datos incompletos
 implica que una respuesta apropiada a la pregunta incorporará cierto
 grado de incertidumbre.
 
-Entender la posibilidad y manera de cuantificar correctamente esa incertidumbre en nuestra
-respuesta es una tarea central en la estadística.
+Entender si es posible producir respuestas precisas a nuestras preguntas,
+y si es posible cuantificar correctamente la incertidumbre na la respuesta
+es una tarea central en la estadística.
 
 :::
 
@@ -334,15 +335,155 @@ aún cuando problemas gastrointestinales pueden afectar la asignación del trata
 En el siguiente ejemplo, consideramos el problema del Conteo Rápido en 
 las elecciones presidenciales de 2018. El Conteo Rápido busca estimar con precisión
 los resultados finales de las elecciones en el mismo día que se lleva a cabo
-la votación.
+la votación, y se basa en una muestra aleatoria de casillas seleccionadas.
+
+Supongamos que decidimos hacer una estimación con las casillas que han sido 
+reportadas a cierta hora de la jornada electoral, que son una fracción de las casillas
+totales.
+
+¿Cómo podemos estimar, por ejemplo, la participación ciudadana con estos datos?
+
+
+
+El tiempo de arribo de las casillas depende de procesos que no controlamos, como
+es el conteo de los votos en esas casillas, eventos metereológicos que dificultan la
+transimisión de datos, etc. En algunos casos, quisiéramos reportar resultados aún cuando
+no haya llegado la muestra completa.
+
+```{r}
+#| warning: false
+#| message: false
+computos_pres <- read_delim("datos/conteo_rapido/presidencia.csv", 
+    skip = 6, delim = "|") |> 
+  mutate(lista_nominal = as.numeric(LISTA_NOMINAL_CASILLA)) 
+
+sum(computos_pres$TOTAL_VOTOS_CALCULADOS)  
+sum(computos_pres$lista_nominal, na.rm = TRUE)
+estratificacion_tbl <-  computos_pres |> 
+  select(CLAVE_CASILLA, ID_ESTADO, ID_DISTRITO) |>
+  filter(ID_DISTRITO != 0) |> 
+  mutate(estrato = interaction(ID_ESTADO, ID_DISTRITO)) |> 
+  count(estrato)
+```
+
+
+```{r}
+#| warning: false
+#| message: false
+remesa_tbl <- read_delim("datos/conteo_rapido/REMESAS0100020000.txt", 
+  skip = 1, delim = "|") |> 
+  mutate(tiempo_llegada = lubridate::ymd_hms(paste(ANIO, MES, DIA, HORA, MINUTOS, SEGUNDOS, sep = "-"),
+                             tz = "America/Mexico_City")) |> 
+  mutate(estrato = interaction(iD_ESTADO, ID_DISTRITO_FEDERAL)) |> 
+  select(estrato, TOTAL, JAMK, RAC, AMLO, tiempo_llegada) |>
+  left_join(estratificacion_tbl)
+remesa_9_tbl <- filter(remesa_tbl, tiempo_llegada <= lubridate::ymd_hms("2018-07-01-20-00-00", tz = "America/Mexico_City"))
+```
+
+
+
+```{r}
+# extrae muestra bootstrap estratificada
+extraer_bootstrap <- function(muestra, var_estrato){
+  remuestra <- muestra |> 
+    group_by({{ var_estrato }}) |> 
+    slice_sample( prop = 1, replace = TRUE) |> 
+    ungroup()
+  remuestra
+}
+# cálculo del estimador de razón para una muestra
+estimar_razon <- function(muestra, num, denom, var_estrato){
+  estimador <- muestra |> 
+    group_by({{ var_estrato }}) |> 
+    summarise(candidato = mean({{ num }}), total = mean({{ denom }}), n = first(n)) |> 
+    mutate(candidato = n * candidato, total = n * total) |> 
+    ungroup() |> 
+    summarise(prop = sum(candidato) / sum(total))
+  estimador$prop
+}
+```
+
+
+```{r}
+remuestreo_tbl <- map_df(1:500, function(rep){
+  remuestra <- extraer_bootstrap(remesa_9_tbl, estrato)
+  estimador_rac <- estimar_razon(remuestra, RAC, TOTAL, estrato)
+  estimador_amlo <- estimar_razon(remuestra, AMLO, TOTAL, estrato)
+  estimador_jamk <- estimar_razon(remuestra, JAMK, TOTAL, estrato)
+  tibble(rep = rep, RAC = estimador_rac, AMLO = estimador_amlo,
+         JAMK = estimador_jamk)
+})
+```
+
+```{r}
+computos_finales <- tibble(candidato = c("RAC", "JAMK", "AMLO"), prop = c(0.2227, 0.164099, 0.531936))
+resumen_1 <- remuestreo_tbl |> summarise(across(RAC:JAMK, quantile, probs = c(0.025, 0.975))) |> 
+  mutate(tipo = c("inf", "sup")) |> 
+  pivot_longer(RAC:JAMK, names_to = "candidato", values_to = "prop") |> 
+  pivot_wider(names_from = tipo, values_from = prop) |> mutate(remesa = "8:30pm")
+
+```
+
+Como vemos, los resultados con esta muestra parcial subestima severamente 
+a un candidato, y sobreestima a otro, aún cuando la muestra ha sido 
+ponderada para representar los distintos distritos electorales. Sin embargo,
+las estimaciones con muestra completa son las siguientes:
+
+
+```{r}
+remuestreo_tbl <- map_df(1:500, function(rep){
+  remuestra <- extraer_bootstrap(remesa_tbl, estrato)
+  estimador_rac <- estimar_razon(remuestra, RAC, TOTAL, estrato)
+  estimador_amlo <- estimar_razon(remuestra, AMLO, TOTAL, estrato)
+  estimador_jamk <- estimar_razon(remuestra, JAMK, TOTAL, estrato)
+  tibble(rep = rep, RAC = estimador_rac, AMLO = estimador_amlo,
+         JAMK = estimador_jamk)
+})
+```
+
+```{r}
+resumen_2 <- remuestreo_tbl |> summarise(across(RAC:JAMK, quantile, probs = c(0.025, 0.975))) |> 
+  mutate(tipo = c("inf", "sup")) |> 
+  pivot_longer(RAC:JAMK, names_to = "candidato", values_to = "prop") |> 
+  pivot_wider(names_from = tipo, values_from = prop) |> 
+  mutate(remesa = "11:59")
+
+```
+
+
+
+```{r}
+resumen <- bind_rows(resumen_1, resumen_2)
+ggplot(resumen_1) +
+  geom_linerange(aes(x = candidato, ymin = 100 * inf, ymax = 100 * sup)) +
+  geom_point(data = computos_finales, aes(x = candidato,  y = 100 * prop), colour = "red", size = 5) + 
+  labs(subtitle = "Estimaciones con muestras incompletas") + 
+  facet_wrap(~candidato, scales = "free_y")
+```
+
+La razón es que aún cuando hagamos esfuerzos por reponderar 
 
 
 
 
-
-
-
-
+```{r}
+library(dagitty)
+library(ggdag)
+dag_cafe <- dagitty('dag{Cafe [exposure,pos="-1,-2"]
+  Cancer [outcome,pos="1,-2"]
+  Entrevistado [pos="0,-3"]
+  Gastro [pos="-1,-2.5"]
+  Gastro -> Cafe
+  Cancer -> Entrevistado; Gastro  -> Entrevistado; Cafe -> Cancer}')
+dag_cafe_tidy <- tidy_dagitty(dag_cafe) |> 
+  mutate(tipo = ifelse(name == "Cafe" & to == "Cancer", "dotted", "solid"))
+dag_cafe_tidy |>
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend, colour = tipo )) + 
+  geom_dag_edges(aes(edge_linetype = tipo)) +
+  geom_dag_point(colour = "salmon") +
+  geom_dag_text(colour = "gray20") +
+  theme_dag()
+```
 
 
 
