@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.655">
+<meta name="generator" content="quarto-1.0.12">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Pensamiento estadístico - 4&nbsp; Básicos de probabilidad y simulación</title>
+<title>Pensamiento estadístico - 5&nbsp; Básicos de probabilidad y simulación</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -98,7 +98,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -129,7 +129,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Básicos de probabilidad y simulación</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Básicos de probabilidad y simulación</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -157,14 +157,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="./index.html" class="sidebar-item-text sidebar-link">Introducción</a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./est-cd-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estadística y ciencia de datos</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
     <div class="sidebar-item-container"> 
-        <a href="./basicos-inferencia.html" class="sidebar-item-text sidebar-link">Inferencia estadística</a>
+        <a href="./est-cd-1.html" class="sidebar-item-text sidebar-link">Estadística y ciencia de datos</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analisis-resumenes-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Resúmenes para datos numéricos</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analisis-resumenes-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Datos univariados categóricos</span></a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a href="./intro-inferencia.html" class="sidebar-item-text sidebar-link">Inferencia estadística</a>
       <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
         <i class="bi bi-chevron-right ms-2"></i>
       </a>
@@ -172,12 +187,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pruebas-hipotesis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Pruebas de hipótesis</span></a>
+  <a href="./pruebas-hipotesis-aleatorizacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Aleatorización en inferencia causal</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./remuestreo-bootstrap.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Remuestreo: el bootstrap</span></a>
+  <a href="./estimacion-aleatorizacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Inferencia por intervalos</span></a>
   </div>
 </li>
     </ul>
@@ -192,22 +207,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modelo-prob.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Básicos de probabilidad y simulación</span></a>
+  <a href="./modelo-prob.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Básicos de probabilidad y simulación</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./prob-condicional.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probabilidad condicional e independencia</span></a>
+  <a href="./prob-condicional.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Probabilidad condicional e independencia</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modelos-continuos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelos probabilísticos para variables continuas</span></a>
+  <a href="./modelos-continuos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modelos probabilísticos para variables continuas</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./inferencia-modelos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Inferencia con modelos probabilísticos</span></a>
+  <a href="./inferencia-modelos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inferencia con modelos probabilísticos</span></a>
   </div>
 </li>
     </ul>
@@ -222,7 +237,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modelos-bayesianos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inferencia bayesiana</span></a>
+  <a href="./modelos-bayesianos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Inferencia bayesiana</span></a>
   </div>
 </li>
     </ul>
@@ -236,23 +251,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Indice de contenidos</h2>
    
   <ul>
-  <li><a href="#equiprobabilidad-y-simetría" id="toc-equiprobabilidad-y-simetría" class="nav-link active" data-scroll-target="#equiprobabilidad-y-simetría"> <span class="header-section-number">4.1</span> Equiprobabilidad y simetría</a></li>
+  <li><a href="#equiprobabilidad-y-simetría" id="toc-equiprobabilidad-y-simetría" class="nav-link active" data-scroll-target="#equiprobabilidad-y-simetría"> <span class="header-section-number">5.1</span> Equiprobabilidad y simetría</a></li>
   <li><a href="#ejemplo-dados" id="toc-ejemplo-dados" class="nav-link" data-scroll-target="#ejemplo-dados">Ejemplo: dados</a></li>
   <li><a href="#ejemplo-cartas" id="toc-ejemplo-cartas" class="nav-link" data-scroll-target="#ejemplo-cartas">Ejemplo: cartas</a></li>
-  <li><a href="#probabilidad-y-frecuencias-relativas" id="toc-probabilidad-y-frecuencias-relativas" class="nav-link" data-scroll-target="#probabilidad-y-frecuencias-relativas"> <span class="header-section-number">4.2</span> Probabilidad y frecuencias relativas</a></li>
+  <li><a href="#probabilidad-y-frecuencias-relativas" id="toc-probabilidad-y-frecuencias-relativas" class="nav-link" data-scroll-target="#probabilidad-y-frecuencias-relativas"> <span class="header-section-number">5.2</span> Probabilidad y frecuencias relativas</a></li>
   <li><a href="#ejemplo-simulación-de-un-dado" id="toc-ejemplo-simulación-de-un-dado" class="nav-link" data-scroll-target="#ejemplo-simulación-de-un-dado">Ejemplo: simulación de un dado</a></li>
-  <li><a href="#datos-y-modelos-de-probabilidad" id="toc-datos-y-modelos-de-probabilidad" class="nav-link" data-scroll-target="#datos-y-modelos-de-probabilidad"> <span class="header-section-number">4.3</span> Datos y modelos de probabilidad</a></li>
-  <li><a href="#espacios-no-equiprobables" id="toc-espacios-no-equiprobables" class="nav-link" data-scroll-target="#espacios-no-equiprobables"> <span class="header-section-number">4.4</span> Espacios no equiprobables</a></li>
+  <li><a href="#datos-y-modelos-de-probabilidad" id="toc-datos-y-modelos-de-probabilidad" class="nav-link" data-scroll-target="#datos-y-modelos-de-probabilidad"> <span class="header-section-number">5.3</span> Datos y modelos de probabilidad</a></li>
+  <li><a href="#espacios-no-equiprobables" id="toc-espacios-no-equiprobables" class="nav-link" data-scroll-target="#espacios-no-equiprobables"> <span class="header-section-number">5.4</span> Espacios no equiprobables</a></li>
   <li><a href="#ejemplo-dos-dados" id="toc-ejemplo-dos-dados" class="nav-link" data-scroll-target="#ejemplo-dos-dados">Ejemplo: dos dados</a></li>
-  <li><a href="#reglas-básicas-de-probabilidad" id="toc-reglas-básicas-de-probabilidad" class="nav-link" data-scroll-target="#reglas-básicas-de-probabilidad"> <span class="header-section-number">4.5</span> Reglas básicas de probabilidad</a></li>
-  <li><a href="#simulación-y-probabilidad" id="toc-simulación-y-probabilidad" class="nav-link" data-scroll-target="#simulación-y-probabilidad"> <span class="header-section-number">4.6</span> Simulación y probabilidad</a>
+  <li><a href="#reglas-básicas-de-probabilidad" id="toc-reglas-básicas-de-probabilidad" class="nav-link" data-scroll-target="#reglas-básicas-de-probabilidad"> <span class="header-section-number">5.5</span> Reglas básicas de probabilidad</a></li>
+  <li><a href="#simulación-y-probabilidad" id="toc-simulación-y-probabilidad" class="nav-link" data-scroll-target="#simulación-y-probabilidad"> <span class="header-section-number">5.6</span> Simulación y probabilidad</a>
   <ul class="collapse">
   <li><a href="#ejemplo-simulando-dos-dados" id="toc-ejemplo-simulando-dos-dados" class="nav-link" data-scroll-target="#ejemplo-simulando-dos-dados">Ejemplo: simulando dos dados</a></li>
   <li><a href="#ejemplo-problema-de-pelotas" id="toc-ejemplo-problema-de-pelotas" class="nav-link" data-scroll-target="#ejemplo-problema-de-pelotas">Ejemplo: problema de pelotas</a></li>
-  <li><a href="#ejemplo" id="toc-ejemplo" class="nav-link" data-scroll-target="#ejemplo"> <span class="header-section-number">4.6.1</span> Ejemplo:</a></li>
+  <li><a href="#ejemplo" id="toc-ejemplo" class="nav-link" data-scroll-target="#ejemplo"> <span class="header-section-number">5.6.1</span> Ejemplo:</a></li>
   </ul></li>
-  <li><a href="#probabilidad-subjetiva" id="toc-probabilidad-subjetiva" class="nav-link" data-scroll-target="#probabilidad-subjetiva"> <span class="header-section-number">4.7</span> Probabilidad subjetiva</a></li>
-  <li><a href="#probabilidad-subjetiva-y-calibración-frecuentista" id="toc-probabilidad-subjetiva-y-calibración-frecuentista" class="nav-link" data-scroll-target="#probabilidad-subjetiva-y-calibración-frecuentista"> <span class="header-section-number">4.8</span> Probabilidad subjetiva y calibración frecuentista</a></li>
+  <li><a href="#probabilidad-subjetiva" id="toc-probabilidad-subjetiva" class="nav-link" data-scroll-target="#probabilidad-subjetiva"> <span class="header-section-number">5.7</span> Probabilidad subjetiva</a></li>
+  <li><a href="#probabilidad-subjetiva-y-calibración-frecuentista" id="toc-probabilidad-subjetiva-y-calibración-frecuentista" class="nav-link" data-scroll-target="#probabilidad-subjetiva-y-calibración-frecuentista"> <span class="header-section-number">5.8</span> Probabilidad subjetiva y calibración frecuentista</a></li>
   </ul>
 </nav>
     </div>
@@ -261,7 +276,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Básicos de probabilidad y simulación</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Básicos de probabilidad y simulación</span></h1>
 </div>
 
 
@@ -281,8 +296,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Sin embargo, existe una teoría matemática que formaliza cómo debe operarse con probabilidades, independientemente de la interpretación.</li>
 <li>Podemos utilizar esta teoría matemática para construir <em>modelos</em> compactos o parsimoniosos que explican observaciones de datos reales.</li>
 </ul>
-<section id="equiprobabilidad-y-simetría" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="equiprobabilidad-y-simetría"><span class="header-section-number">4.1</span> Equiprobabilidad y simetría</h2>
+<section id="equiprobabilidad-y-simetría" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="equiprobabilidad-y-simetría"><span class="header-section-number">5.1</span> Equiprobabilidad y simetría</h2>
 <p>Históricamente, el concepto de probabilidad nació en el contexto de juegos de azar, y cómo definir apuestas ajustas o equitativas. Por ejemplo:</p>
 <ul>
 <li>Supongamos que nos cuesta 1 peso entrar a un juego de dados, y que ganamos si tiramos un 3. ¿Cuánto dinero deberíamos ganar si sale un 3 para que el costo de entrada sea justo?</li>
@@ -317,8 +332,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[P(N_2) = 26 / 52 = 1/2\]</span></p>
 <p>Estos espacios equiprobables nos dan nuestros modelos probabilísticos más simples. Están basados en simetrías del espacio de resultados.</p>
 </section>
-<section id="probabilidad-y-frecuencias-relativas" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="probabilidad-y-frecuencias-relativas"><span class="header-section-number">4.2</span> Probabilidad y frecuencias relativas</h2>
+<section id="probabilidad-y-frecuencias-relativas" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="probabilidad-y-frecuencias-relativas"><span class="header-section-number">5.2</span> Probabilidad y frecuencias relativas</h2>
 <p>La conexión entre experimentos reales y modelos de probabilidad, está en que si repetimos muchas veces el experimento, entonces las frecuencias relativas de ocurrencia de los eventos aproxima a las probabilidades teóricas. Por ejemplo, si tiramos muchos volados con una moneda bien balanceada, esperamos obtener alrededor de 1/2 de soles y 1/2 de águilas, y si tiramos un dado muchas veces esperamos obtener alrededor de 1/6 de las tiradas un 5, por ejemplo (bajo los modelos de resultados equiprobables correspondientes).</p>
 <p>En realidad, esta es otra <em>definición</em> de probabilidad en términos de repeticiones de experimentos.</p>
 <div class="cell" type="comentario">
@@ -423,8 +438,8 @@ es decir, <span class="math inline">\(P(A)\)</span> el la frecuencia al largo pl
 </div>
 </div>
 </section>
-<section id="datos-y-modelos-de-probabilidad" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="datos-y-modelos-de-probabilidad"><span class="header-section-number">4.3</span> Datos y modelos de probabilidad</h2>
+<section id="datos-y-modelos-de-probabilidad" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="datos-y-modelos-de-probabilidad"><span class="header-section-number">5.3</span> Datos y modelos de probabilidad</h2>
 <p>¿Cómo podemos usar modelos de probablidad para describir datos observados? La idea (simplificada) es la siguiente:</p>
 <ul>
 <li>Hacemos una hipótesis acerca de cómo es el modelo de probabilidad asociado a un fenómeno</li>
@@ -528,8 +543,8 @@ argument.</code></pre>
 <p><strong>Pregunta</strong>: ¿qué defecto le ves a esta gráfica que tiene los datos en la posición 20? ¿Cómo podríamos hacer una evaluación más apropiada de la calidad del ajuste?</p>
 <p><strong>Observación</strong>: como veremos, muchas veces proponemos modelos que tienen parámetros que deben ser estimados con la muestra. Este caso más común es más complejo que el explicado arriba, pero el proceso es similar.</p>
 </section>
-<section id="espacios-no-equiprobables" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="espacios-no-equiprobables"><span class="header-section-number">4.4</span> Espacios no equiprobables</h2>
+<section id="espacios-no-equiprobables" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="espacios-no-equiprobables"><span class="header-section-number">5.4</span> Espacios no equiprobables</h2>
 <p>Depende cómo planteemos nuestro experimento aleatorio, puede ser o no apropiado el modelo equiprobable. Veremos ahora algunos ejemplos donde construimos modelos no equiprobables</p>
 </section>
 <section id="ejemplo-dos-dados" class="level2 unnumbered">
@@ -684,8 +699,8 @@ argument.</code></pre>
 </div>
 <p>Podríamos tirar dos dado un gran número de veces para verificar si este modelo da las probabilidades correctas (o más propiamente dicho, si estas observaciones son consistentes con el modelo de probabilidad mostrado arriba).</p>
 </section>
-<section id="reglas-básicas-de-probabilidad" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="reglas-básicas-de-probabilidad"><span class="header-section-number">4.5</span> Reglas básicas de probabilidad</h2>
+<section id="reglas-básicas-de-probabilidad" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="reglas-básicas-de-probabilidad"><span class="header-section-number">5.5</span> Reglas básicas de probabilidad</h2>
 <p>Tanto modelos equiprobables como la interpretación frecuentista de la probabilidad resultan en un conjunto de reglas útiles para operar con probabilidades. Estas son <strong>reglas generales</strong> que aplican independientemente de la interpretación particular de la probabilidad que utilicemos.</p>
 <ol type="1">
 <li><strong>La probabilidad del evento cierto es 1</strong> Si <span class="math inline">\(A\)</span> es el evento que cubre todos los posibles resultados, entonces <span class="math inline">\(P(A) = 1\)</span>.</li>
@@ -728,8 +743,8 @@ argument.</code></pre>
 <p><span class="math display">\[P(D) = P(D_1) + P(D_2) + \dots + P(D_{20})\]</span></p>
 <p>Finalmente, <span class="math inline">\(P(D_1)= 1/100\)</span>, pues hay 100 pelotas y todas tienen igual probabilidad de aparecen en la primera extracción. Pero también <span class="math inline">\(P(D_2) = 1/100\)</span>, pues todas las pelotas tienen la misma probabilidad de aparecer en la segunda extracción. Se sigue entonces que, haciendo la suma de arriba, que: <span class="math inline">\(P(D) = 20(\frac{1}{100}) = 0.20\)</span></p>
 </section>
-<section id="simulación-y-probabilidad" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="simulación-y-probabilidad"><span class="header-section-number">4.6</span> Simulación y probabilidad</h2>
+<section id="simulación-y-probabilidad" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="simulación-y-probabilidad"><span class="header-section-number">5.6</span> Simulación y probabilidad</h2>
 <p>Usando la interpetación frecuentista, también es posible resolver una variedad de problemas de probabilidad usando <em>simulación</em>. La idea es, si queremos aproximar la probabilidad <span class="math inline">\(P(E)\)</span> de un evento es:</p>
 <ol type="1">
 <li>Definimos el espacio de resultados del experimento aleatorio.</li>
@@ -889,8 +904,8 @@ Este tipo de métodos basados en simulación se llaman en general <em>métodos d
 </div>
 </div>
 </section>
-<section id="ejemplo" class="level3" data-number="4.6.1">
-<h3 data-number="4.6.1" class="anchored" data-anchor-id="ejemplo"><span class="header-section-number">4.6.1</span> Ejemplo:</h3>
+<section id="ejemplo" class="level3" data-number="5.6.1">
+<h3 data-number="5.6.1" class="anchored" data-anchor-id="ejemplo"><span class="header-section-number">5.6.1</span> Ejemplo:</h3>
 <p>Supongamos que ponemos 15 puntos igualmente espaciados en una circunferencia. Si escogemos tres puntos al azar, ¿cuál es la probabilidad de que formen un triángulo equilátero? Este problema se puede resolver contando los posibles resultados donde se forma un triángulo equilátero, pero no es trivial. Veamos cómo la haríamos simulando:</p>
 <div class="cell">
 <details>
@@ -951,8 +966,8 @@ Este tipo de métodos basados en simulación se llaman en general <em>métodos d
 <p>¿Puedes resolver este problema contando los posibles triángulos, y cuáles de ellos son equiláteros?</p>
 </section>
 </section>
-<section id="probabilidad-subjetiva" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="probabilidad-subjetiva"><span class="header-section-number">4.7</span> Probabilidad subjetiva</h2>
+<section id="probabilidad-subjetiva" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="probabilidad-subjetiva"><span class="header-section-number">5.7</span> Probabilidad subjetiva</h2>
 <p>Existe otra manera más flexible de interpretar la probabilidad que tiene que ver con un “grado de creencia” en que un evento va a ocurrir. Por ejemplo, el evento <span class="math inline">\(A\)</span> podría ser “va a llover mañana”, y según mi conocimiento establezco que <span class="math display">\[P(A) = 0.25\]</span></p>
 <p>Esta es una probablidad subjetiva pero no arbitraria. Para entender por qué es eso, pensemos en un juego de azar que consiste jugar una lotería de 100 boletos, donde podemos jugar con un número de boletos dado. Comparamos entonces dos alternativas:</p>
 <ol type="1">
@@ -978,8 +993,8 @@ Este tipo de métodos basados en simulación se llaman en general <em>métodos d
 <p>En todos estos casos importantes donde tenemos que tomar decisiones, la única alternativa real es pensar en términos de probabilidad subjetiva.</p>
 <p>En la práctica, este tipo de enfoque se utiliza para poner probabilidades sobre cantidades o aspectos difíciles de medir directamente pero que son relativamente simples, y luego se utilizan modelos y reglas de probabilidad para producir otras probabilidades de interés más complicadas.</p>
 </section>
-<section id="probabilidad-subjetiva-y-calibración-frecuentista" class="level2" data-number="4.8">
-<h2 data-number="4.8" class="anchored" data-anchor-id="probabilidad-subjetiva-y-calibración-frecuentista"><span class="header-section-number">4.8</span> Probabilidad subjetiva y calibración frecuentista</h2>
+<section id="probabilidad-subjetiva-y-calibración-frecuentista" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="probabilidad-subjetiva-y-calibración-frecuentista"><span class="header-section-number">5.8</span> Probabilidad subjetiva y calibración frecuentista</h2>
 <p>Como podemos imaginarnos, para muchas decisiones importantes, el enfoque subjetivo por sí solo puede no ser suficiente. Por ejemplo, imaginemos que trabajamos en INEGI queremos estimar el ingreso total de los hogares en México. Sería difícil proponer para esta tarea un enfoque puramente subjetivo.</p>
 <p>En estos caso, podemos usar un enfoque donde utilizamos las probabilidades de manera subjetiva (por ejemplo elicitadas de un pánel de expertos), pero demostramos también que nuestro método tiene propiedades frecuentistas apropiadas: por ejemplo, que nuestros intervalos de 95% de estimación son realmente de 95%. Esto normalmente se cumple 1) Checando supuestos de nuestro modelo 2) Sometiendo nuestro método a distintos escenarios de estimación, y checando que se cumplen estimaciones frecuentistas apropiadas. En realidad, usualmente estos dos últimos pasos, 1 y 2, deben ser llevados a cabo no importa el enfoque de interpretación que utilicemos, pues cualquier método, frecuentista o subjetivo, tiene condiciones bajo las que puede fallar.</p>
 
@@ -989,6 +1004,21 @@ Este tipo de métodos basados en simulación se llaman en general <em>métodos d
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    toggleBodyColorMode(window.document.querySelector("link#quarto-bootstrap"));
+  }
+  toggleBodyColorPrimary();  
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -1074,7 +1104,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./prob-condicional.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probabilidad condicional e independencia</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Probabilidad condicional e independencia</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
