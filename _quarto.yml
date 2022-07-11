@@ -8,15 +8,13 @@ book:
   chapters:
     - index.qmd
     - part: est-cd-1.qmd
-    #- part: est_cd.qmd
-    #  chapters:
-    #    - analisis-exp-1.qmd
-    #    - analisis-exp-categoricos.qmd
-    #    - analisis-exp-numericos.qmd
-    - part: basicos-inferencia.qmd
       chapters:
-        - pruebas-hipotesis.qmd
-        - remuestreo-bootstrap.qmd
+        - analisis-resumenes-1.qmd
+        - analisis-resumenes-2.qmd
+    - part: intro-inferencia.qmd
+      chapters:
+        - pruebas-hipotesis-aleatorizacion.qmd
+        - estimacion-aleatorizacion.qmd
     - part: probabilidad.qmd
       chapters:
         - modelo-prob.qmd

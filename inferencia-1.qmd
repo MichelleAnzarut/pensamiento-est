@@ -77,7 +77,7 @@ para describir esa incertidumbre.
 
 Las preguntas que planteamos arriba son difíciles de contestar cuando no
 conocemos bien el proceso de selección de individuos en la muestra o no
-conocemos el proceso de asignación de la aspirina. 
+conocemos el proceso de asignación del tratamiento. 
 
 Por ejemplo, llegaríamos a conclusiones muy distintas si nos dijeran que:
 

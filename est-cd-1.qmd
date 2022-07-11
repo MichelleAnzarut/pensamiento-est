@@ -1,63 +1,39 @@
 # Estadística y ciencia de datos
 
-La estadística es una rama de las matemáticas aplicadas que implica la recopilación, descripción, análisis e inferencia de conclusiones a partir de datos. Para hacer esto la estadística utiliza la teoría de la probabilidad.
+El término "ciencia de datos" surgió recientemente, y hay discusión acerca de qué tan
+apropiado es el término, si es correcto llamarla "ciencia", y en general, en cómo
+definirla exactamente. En este curso tomamos el punto de vista de que:
 
-La idea es que podemos aprender sobre las propiedades de grandes conjuntos de objetos o eventos (a las que llamamos **población**). Debido a que en muchos casos recopilar los datos completos sobre una población completa es demasiado costoso, difícil o imposible, las estadísticas comienzan estudiando un número menor de objetos o eventos que es un subconjunto de la población (al que llamamos **muestra**).
 
-La importancia de la ciencia de datos se basa en la capacidad de usar los datos para generar conocimientos útiles.
+- La ciencia de datos antes se llamaba análisis de datos. Esto quiere decir que
+no ocurre en un espacio teórico o matemático, sino en aplicaciones específicas donde
+buscamos tomar decisiones informadas. A su vez, algunas personas consideran
+el análisis de datos como "estadística aplicada".
+- La ciencia de datos, a diferencia del análisis de datos más tradicional,
+reconoce y adopta ideas de desarrollo de software
+e ingeniería que son relevantes para producir análisis y productos con buena
+calidad y desempeño.
 
--   El término "Ciencia de datos" surgió recientemente, pero dar sentido a los datos tiene una larga historia y ha sido discutido por científicos, estadísticos, bibliotecarios, informáticos y otros durante años.
+Desde este punto de vista, 
+el estándar de validez más importante en la ciencia de datos (@tukeyda) es su 
+funcionamiento en la práctica, y no la adherencia a argumentos teóricos, 
+matemáticos o estadísticos.
 
--   La ciencia de datos antes se llamaba análisis de datos.
+Igualmente puede ser difícil definir qué es la estadística (algunos la ven como una
+parte o rama de las matemáticas, en un extremo, y otros la consideran algo más cercano
+al análisis de datos). En cualquier caso:
 
--   La estadística es parte de la ciencia de datos.
+- La estadística puede considerarse como parte de la ciencia de datos. Sus resultados 
+teóricos son guías y
+nos dan bases para juzgar y pensar en procedimientos para contestar 
+preguntas con datos (@tukeyda).
 
-## Ejemplos de la estadística en la ciencia de datos
 
-**Identificar fuentes de datos**: El recolectar datos algunas veces implicará diseñar una muestra que sea representativa de la población, los diseños muestrales se hacen utilizando métodos estadísticos. Más aún, para entender cualquier fuente de datos es importante entender el procedimeinto en el que se recolectó o el diseño muestral en su caso.
 
-**Preparar los datos:** Preparar los datos se enfoca en limpiarlos para que puedan ser utilizados. Para grandes conjuntos de datos, el muestreo estadístico puede acelerar enormemente el procesamiento y la exploración que se requiere para hacer la limpieza. En este paso, también se utiliza la estadística para el tratamiento de datos faltantes. Por distintas causas las bases de datos pueden contener datos faltantes, y muchas técnicas de modelado no pueden manejar los datos faltantes, por lo que si falta parte de una observación, se debe decidir si eliminarla por completo o hacer una imputación. La imputación se puede realizar con algún método estadístico para extrapolar las observaciones faltantes utilizando el resto de observaciones. Por último, los datos tienden a ser sucios, a veces debido a errores humanos, por lo que las bases de datos deben de explorarse en busca de posibles errores antes de utilizarse. Algunas medidas estadísticas pueden ayudar en éstas búsquedas.
-
-**Análisis exploratorio de datos**: Una vez que tenemos todos los datos necesarios para el proyecto, se pueden utilizar métodos estadísticos exploratorios para exponer cualquier relación en los datos. Este paso se centra en encontrar anomalías, patrones y relaciones. Esto ayudará a descubrir información que se puede utilizar para responder a la pregunta de investigación planteada.
-
-**Modelado de datos:** Después de explorar los datos, el científico de datos debe de seleccionar el mejor modelo para el proyecto. El objetivo del modelado es representar el comportamiento general de la población bajo estudio, teniendo en cuenta la pregunta que se desea responder. La elección de un modelo estadístico no es sencilla, puede estar íntimamente ligada a la pregunta específica que se está investigando, también puede guiarse por la forma de las relaciones entre las variables que se descubrieron en el análisis exploratorio o por el campo de especialidad de quién realiza el análisis. Usualmente, los científicos de datos elegirán un conjunto de modelos con los cuales correrán el análisis para al final decidir cuál es el que mejor se ajusta a los datos. Todos los modelos tendrán cierta incertidumbre, es trabajo del científico de datos cuantificar la incertidumbre restante en cada tipo de análisis, de manera que se tome en cuenta adecuadamente al momento de tomar decisiones. Todo esto es estadístico, los modelos, la cuantificación de la incertidumbre, incluso los métodos de selección de un modelo entre un conjunto de ellos.
-
-**Comunicación de resultados:**Comunicar los resultados requiere un cuidadoso equilibrio de comunicación, psicología, estadística y diseño para poder entregar información valiosa.
-
-::: {.callout-note icon="false"}
--   El entendimiento de la estadística es sumamente importante para el científico de datos. Incluso si el área de especialidad del científico de datos es más enfocada a la computación, siempre será una buena idea el tener un entendimeinto general de cómo otras partes del flujo de trabajo están funcionando.
-
--   Los datos + la estadística no son iguales a la objetividad.
-:::
-
-### ¿Por dónde empezar?
-
-Supongamos que hemos identificado una fuente de datos y están listos para trabajarse. ¿Qué buscamos hacer con ellos?
-
-Es difícil hacer preguntas reveladoras al comienzo del análisis porque no se sabe qué conocimientos están contenidos en el conjunto de datos, pero cada nueva pregunta expone aspectos de los datos y aumenta las posibilidades de hacer un descubrimiento. Muchos de los descubrimientos ocurren en el **análisis exploratorio**, por lo que no debe pasarse por alto, es esencial para descubrir información que se puede utilizar para responder a la pregunta de investigación planteada.
-
-### Análisis exploratorio
-
-> "Exploratory data analysis can never be the whole story, but nothing else can serve as the foundation stone --as the first step." --- John Tukey
-
-```{r, message = FALSE, echo = FALSE, include = FALSE}
-ggplot2::theme_set(ggplot2::theme_light())
-```
-
-::: {.callout-note icon="false"}
-El análisis exploratorio de datos es un proceso de investigación con el objetivo de descubrir patrones o relaciones, detectar anomalías, probar hipótesis y verificar suposiciones. Puede hacerse visualmente, con estadísticas resumidas en tablas o gráficas, pero también puede incluir técnicas avanzadas de procesamiento de datos.
-:::
-
-Ésta fase del análisis de datos es fundamentalmente un proceso creativo. Se caracteríza por un *enfoque de detective*: quizá tenemos algunas preguntas, algunas sospechas, y en esta fase acumulamos indicios que nos indiquen caminos prometedores de investigación.
-
-En contraste, tenemos el *análisis confirmatorio*, que busca validar hipótesis o dar respuestas correctamente cuantificadas en cuanto a su incertidumbre o grado de error. En esta parte somos más *jueces* que detectives, y utilizamos más maquinaria matemática (teoría de probabilidad) para especificar con claridad nuestros supuestos y poder hacer cálculos cuidadosos, generalmente basados en algún tipo de aleatorización.
-
-En este capítulo veremos brevemente el análisis exploratorio, sin embargo, el enfoque principal de este curso será en el análisis confirmatorio, inferencia estadística. Déjenos resaltar de nuevo que ambos tipos de análisis son fundamentales a la hora de estudiar un conjunto de datos. Ninguno de los dos tipos de análisis funciona muy bien sin el otro (@tukeyexpconf).
-
-Para ilustrar el enfoque exploratorio, comenzaremos con datos que podemos describir de manera completa y efectiva sin necesidad de hacer resúmenes o aplicar técnicas avanzadas.
 
 ## Ejemplo: nacimientos
 
+Comenzamos con un ejemplo de **análisis exploratorio**.
 Consideremos una parte de los datos de nacimientos por día del INEGI de 1999 a 2016. Consideraremos sólo tres meses: enero a marzo de 2016. Estos datos, por su tamaño, pueden representarse de manera razonablemente efectiva en una visualización de serie de tiempo
 
 ```{r}
@@ -117,21 +93,30 @@ La confirmación de estas hipótesis, dependiendo de su forma, puede ser relativ
 
 ## Procesos generadores de datos {.unnumbered}
 
-De este primer ejemplo donde usamos una gráfica simple:
+ótese que en todas estas preguntas hemos tenido que recurrir a conocimientos generales y de dominio para interpretar y hacer hipótesis acerca de lo que vemos en la gráfica. Una visión descontextualizada no tiene mucha utilidad. Las explicaciones son típicamente complejas e intervienen distintos aspectos del comportamiento de actores, sistemas, y métodos de recolección de datos involucrados.
 
 ::: callout-tip
 # El proceso generador de datos
 
-Nótese que en todas estas preguntas hemos tenido que recurrir a conocimientos generales y de dominio para interpretar y hacer hipótesis acerca de lo que vemos en la gráfica. Una visión descontextualizada no tiene mucha utilidad. Las explicaciones son típicamente complejas e intervienen distintos aspectos del comportamiento de actores, sistemas, y métodos de recolección de datos involucrados. Al conjunto de esos aspectos que determinan los datos que finalmente observamos le llamamos el **proceso generador de datos**.
+Al conjunto de esos aspectos que determinan los datos que finalmente observamos le llamamos el **proceso generador de datos**. Para datos que observamos "naturalmente" este proceso
+generalmente es complicado.
+
 :::
 
-El análisis de datos en general busca entender las partes importantes del proceso que los generó. En el análisis descriptivo y exploratorio buscamos iluminar ese proceso, proponer hipótesis y buscar caminos interesantes para investigar, ya sea con técnicas cuantitativas o con trabajo de campo (como sugiere el título de artículo de David A. Friedman: [Statistical Models and Shoe Leather](https://psychology.okstate.edu/faculty/jgrice/psyc5314/Freedman_1991A.pdf)).
+En la Ciencia de Datos buscamos entender las partes importantes del proceso que los generó:
 
-Con la teoría de probabilidades podemos modelar más explícitamente partes de estos procesos generadores de datos, especialmente cuando controlamos parte de ese proceso generador mediante técnicas estadísticas de diseño, por ejemplo, usando aleatorización.
+- La descripición correcta de los datos se logra con ese entendimiento de dominio y del proceso generador.
+- La formulación y refinamiento de preguntas importantes y sus respuestas 
+acerca de estos datos requiere entendimiento de dominio y del proceso generador.
+- Más tarde, veremos que la inferencia estadística también depende de este entendimiento,
+junto con propuestas del *diseño estadístico* que nos permite obtener los datos
+necesarios para simplificar y dar certeza en el proceso de contestar las preguntas de interés.
+
+Mucha parte de este trabajo no es estadístico, sino que es un esfuerzo
+por entender el dominio (como sugiere el título de artículo de David A. Friedman: [Statistical Models and Shoe Leather](https://psychology.okstate.edu/faculty/jgrice/psyc5314/Freedman_1991A.pdf)).
+
 
 ## Ejemplo (cálculos renales) {.unnumbered}
-
-En este ejemplo también intentaremos mostrar los datos completos sin intentar resumir.
 
 Este es un estudio real acerca de tratamientos para cálculos renales (@kidney94). Pacientes se asignaron de una forma no controlada a dos tipos de tratamientos para reducir cálculos renales. Para cada paciente, conocemos el tipo de ćalculos que tenía (grandes o chicos) y si el tratamiento tuvo éxito o no.
 
@@ -191,19 +176,15 @@ calculos |> group_by(tratamiento, tamaño) |> count() |>
    kable()
 ```
 
-Nuestra hipótesis aquí es que la decisión de qué tratamiento usar depende del tamaño de los cálculos. En este caso, por alguna razón se prefiere utilizar el tratamiento $A$ para cálculos grandes, y $B$ para cálculos chicos. Esto quiere decir que en la tabla total *el tratamiento* $A$ está en desventaja porque se usa en casos más difíciles, pero el tratamiento $A$ parece ser en general mejor.
+Nuestra hipótesis aquí es que la decisión de qué tratamiento usar depende del tamaño de los cálculos. En este caso, por alguna razón se prefiere utilizar el tratamiento $A$ para cálculos grandes, y $B$ para cálculos chicos. Esto quiere decir que en la tabla total *el tratamiento* $A$ está en desventaja porque se usa en casos más difíciles, pero el tratamiento $A$ parece ser en general mejor. 
+
+- Una mejor respuesta a la pregunta
+de qué tratamiento es mejor es la que presenta los datos agregados
+- La tabla desagregada nos informa acerca de cómo se está distribuyendo el tratamiento
+en los pacientes.
 
 Igual que en el ejemplo anterior, los resúmenes descriptivos están acompañados de hipótesis acerca del *proceso generador de datos*, y esto ilumina lo que estamos observando y nos guía hacia descripciones provechosas de los datos. Las explicaciones no son tan simples y, otra vez, interviene el comportamiento de doctores, tratamientos, y distintos tipos de padecimientos.
 
-## Inferencia y predicción
-
-En los ejemplos anteriores, sólo vimos muestras de datos (algunos pacientes, algunas fechas). Nuestras descripciones son, estrictamente hablando, válidas para esa muestra de los datos.
-
-Si quisiéramos generalizar a la población de pacientes con cálculos (quizá en nuestra muestra el tratamiento A parece mejor, pero ¿qué podemos decir para la población de pacientes), o quisiéramos predecir cómo van a ser los nacimientos en 2021, requerimos otro tipo de análisis: **inferencial y predictivo**. Estos dos tipos de análisis, centrales en la estadística, buscan establecer condiciones para poder generalizar de nuestra muestra a datos no observados (otros pacientes, nacimientos en el futuro), y cuantificar qué tan bien o mal podemos hacerlo.
-
-Para llegar a este tipo de análisis, generalmente tenemos que comenzar con el análisis exploratorio, y con la comprensión de los fundamentos del proceso generador asociado a nuestros datos. En algunos casos, veremos que es posible usar herramientas matemáticas para modelar aspectos de nuestro proceso generador de datos, que cuando válidas, nos permiten generalizar y ampliar apropiadamente el rango de nuestras conclusiones.
-
-La herramienta básica para construir, entender y operar con estos modelos es la **teoría de probabilidad**, que veremos más adelante.
 
 ## Ejercicio: admisiones de Berkeley {.unnumbered}
 

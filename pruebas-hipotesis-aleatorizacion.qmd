@@ -1,0 +1,207 @@
+# Aleatorización en inferencia causal
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+library(tidyverse)
+library(gt)
+theme_set(theme_minimal())
+source("R/funciones_auxiliares_notas.R")
+```
+
+
+
+Empezaremos con ejemplos de inferencia causal y consideramos el ejemplo
+de (@box78).
+
+Supongamos que un jardinero aficionado tiene un fertilizante, y quiere ver
+si es efectivo agregarlo a sus plantes. Nuestro jardinero solamente tiene
+una línea donde caben 11 plantas.
+
+Cuando las plantas crezcan, observaremos *variabilidad*, independientemente
+de si se usa fertilizante o no. Esta variabilidad proviene de muchos factores 
+ambientales, variaciones en las condiciones del suelo, insectos, etc. Interpretar
+los resultados correctamente implica necesariamente cuantificar esa variabilidad.
+
+El jardinero escogió algunos lugares dónde poner el fertilizante y dónde no.
+El resultado que obtuvo es:
+
+```{r}
+res_obs <- tibble(planta = 1:16,
+       T = c("nf", "nf", "f", "f", "nf", "f", "f", "f", "nf", "nf", "f", "nf", "f", "f", "nf", "f"),
+       y = c(16.9, 19.4, 27.6, 26.7, 20.3, 26.5, 18.2, 19.9, 14.5, 15.1, 29.1, 15.2, 23.5, 24.8, 20.5, 21.2) / 2) |> 
+  mutate(y_f = ifelse(T == "nf", y, NA),
+         y_nf = ifelse(T == "f", y, NA))
+res_obs |> select(planta, T, y)
+```
+
+Para decidir qué tan bueno es el nuevo fertilizante, el jardinero decide usar
+la siguiente estadística $D$ (Kolmogorov-Smirnov):
+
+- Calculamos la fda empírica para los datos con fertilizante y los que
+no tienen fertilizante
+- Calculamos la diferencia máxima entre estas dos curvas.
+
+Un valor de $D$ grande sugiere que el fertilizante tiene algún efecto. En nuestro
+experimento, obtuvimos:
+
+```{r}
+ggplot(res_obs, aes(y, colour = T)) +
+  stat_ecdf()
+```
+La diferencia más grande en estas curvas es:
+
+```{r}
+ks_est_2 <- function(datos, grupo){
+  sep_tbl <- group_split(datos, {{ grupo }})
+  invisible(ks.test(sep_tbl[[1]]$y, sep_tbl[[2]]$y))$statistic
+}
+```
+
+
+
+```{r}
+resumen <- res_obs |> 
+  summarise(D = ks_est_2(res_obs, T)) 
+resumen
+```
+Por lo que las plantas fertilizadas tuvieron un resultado mejor que las no fertilizadas.
+El problema aquí es que las plantas tienen variabilidad, y la diferencia que observamos,
+que no es muy grande, podría deberse a esa variabilidad, y no tener qué ver con
+el fertilizante.
+
+Reescribimos nuestros datos como
+
+```{r}
+res_obs
+```
+
+
+Nótese que escribimos en cada caso el dato observado y el no observado. 
+
+Ahora supongamos que el tratamiento no tiene ningún efecto sobre el crecimiento de las
+plantas. Bajo esta hipótesis, podemos rellenar los valores no observados:
+en cada caso, el dato faltante lo conocemos, y es igual al valor observado para cada planta.
+
+```{r}
+bajo_nula <- res_obs |> 
+  mutate(y_f = y, y_nf = y)
+bajo_nula
+```
+
+
+Bajo esta hipótesis, podemos calcular qué pasaría
+si hubiéramos escogido distintas plantas para el tratamiento de fertilizante.
+Simplemente consideramos todas las permutaciones
+de la columna $T$, y vemos el valor que tiene nuestra estadística en cada caso.
+
+Podemos simular una gran cantidad de permutaciones
+
+```{r}
+permutar_est <- function(datos_tbl){
+  datos_perm_tbl <- datos_tbl |> 
+    mutate(T = sample(T, size = length(T))) |> 
+    mutate(y_obs = ifelse(T == "f", y_f, y_nf))
+  datos_perm_tbl |>  
+    summarise(D = ks_est_2(datos_perm_tbl, T)) 
+}
+permutar_est_datos <- function(datos_tbl){
+  datos_perm_tbl <- datos_tbl |> 
+    mutate(T = sample(T, size = length(T))) |> 
+    mutate(y_obs = ifelse(T == "f", y_f, y_nf))
+  datos_perm_tbl 
+}
+set.seed(112)
+permutar_est(bajo_nula)
+permutar_est(bajo_nula)
+```
+
+```{r}
+perms_dist <- map_df(1:1000, function(i){
+  permutar_est(bajo_nula) |> 
+    mutate(rep = i)
+})
+```
+
+```{r}
+ggplot(perms_dist, aes(sample = D)) +
+  geom_qq(distribution = qunif) +
+  geom_hline(yintercept = resumen$D, colour = "red")
+```
+
+Y aquí vemos **todos** los posibles resultados bajo distintas asignaciones del
+fertilizante, **bajo la hipótesis** del que el fertilizante no tiene ningún efecto.
+Adicionalmente, marcamos el valor que observamos en el experimento. 
+
+Como vemos, el resultado que obtuvimos está en el lado alto de la destribución.
+Parece ser que el fertilizante tiene algún efecto.
+
+Sin embargo, hay un hueco en nuestro argumento. Por ejemplo, 
+
+- ¿Qué pasaría si el jardinero decidió poner el fertilizante en plantas más grandes o
+que se veían más fuertes para "aprovechar mejor el fertilizante"?
+- ¿Qué pasaría si el jardinero decidió poner el fertilizante a las plantas que
+reciben más horas de sol?
+
+Si esto es cierto, entonces nuestro argumento no es válido. Quizá la diferencia
+no es rande porque el fertilizante se aplicó a plantas con más potencial desde un principio.
+
+Una solución simple es la siguiente:
+
+- Supongamos que le recomendamos al jardinero al principio escoger al azar una
+asignación del tratamiento.
+- En ese caso, la probabilidad de haber observado este resultado (o uno más grande)
+**bajo la hipótesis de que el fertilizante no tiene efecto** es
+
+```{r}
+mean(perms_dist$D >= resumen$D)
+```
+- Este valor es bajo, y da evidencia de que el fertilizante ayuda a las plantas. 
+Hay una probabilidad  muy baja de que por azar el jardinero haya escogido una
+asignación que produce una diferencia tan grande si el fertilizante no ayuda.
+
+- Sin embargo, este argumento no funciona si el jardinero intentó "optimizar" la aplicación
+del fertilizante. En ese caso, quizá activamente buscó una configuración que 
+favorece al fertilizante.
+
+- Esta prueba es exacta, en el sentido de que el valor-p que calculamos refleja
+correctamente la probabilidad de obtener un resultado tan grande o mayor del que
+observamos si la hipótesis nula es cierta.
+
+Otra idea es hacer una prueba visual
+
+```{r}
+library(nullabor)
+
+set.seed(83814)
+# comenzamos con rorsach, viendo datos nulos
+reps_rorschach <- rorschach(method = null_permute("T"), n = 20, res_obs) |> 
+  as_tibble()
+```
+
+
+```{r}
+ggplot(reps_rorschach, aes(sample = y, colour = T, group = T)) +
+  stat_qq(distribution = stats::qunif) +
+  stat_qq_line(distribution = stats::qunif, fullrange = TRUE, line_p = c(0.10, 0.90)) +
+  facet_wrap(~ .sample) + theme(strip.background =element_rect(fill="gray85"))
+```
+Y ahora hacemos nuestra prueba 
+
+
+```{r}
+reps <- lineup(method = null_permute("T"), n = 20, res_obs) |> 
+  as_tibble()
+ggplot(reps, aes(sample = y, colour = T, group = T)) +
+  stat_qq(distribution = stats::qunif) +
+  stat_qq_line(distribution = stats::qunif, fullrange = TRUE) +
+  facet_wrap(~ .sample) + theme(strip.background =element_rect(fill="gray85"))
+```
+
+- Otra vez, esta prueba es exacta: la probabilidad 
+de identificar los datos correctamente cuando el fertilizante no tiene efecto es
+menor o igual a 0.05 (valor $p$).
+
+
+
