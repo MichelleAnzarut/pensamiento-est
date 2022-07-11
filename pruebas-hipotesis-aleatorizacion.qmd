@@ -17,7 +17,7 @@ de (@box78).
 
 Supongamos que un jardinero aficionado tiene un fertilizante, y quiere ver
 si es efectivo agregarlo a sus plantes. Nuestro jardinero solamente tiene
-una línea donde caben 11 plantas.
+una línea donde caben 16 plantas.
 
 Cuando las plantas crezcan, observaremos *variabilidad*, independientemente
 de si se usa fertilizante o no. Esta variabilidad proviene de muchos factores 

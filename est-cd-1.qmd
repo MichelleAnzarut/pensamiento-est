@@ -179,11 +179,19 @@ calculos |> group_by(tratamiento, tamaño) |> count() |>
 Nuestra hipótesis aquí es que la decisión de qué tratamiento usar depende del tamaño de los cálculos. En este caso, por alguna razón se prefiere utilizar el tratamiento $A$ para cálculos grandes, y $B$ para cálculos chicos. Esto quiere decir que en la tabla total *el tratamiento* $A$ está en desventaja porque se usa en casos más difíciles, pero el tratamiento $A$ parece ser en general mejor. 
 
 - Una mejor respuesta a la pregunta
-de qué tratamiento es mejor es la que presenta los datos agregados
-- La tabla desagregada nos informa acerca de cómo se está distribuyendo el tratamiento
+de qué tratamiento es mejor es la que presenta los datos desagregados
+- La tabla desagregada de asignación del tratamiento nos informa acerca de cómo se está distribuyendo el tratamiento
 en los pacientes.
 
 Igual que en el ejemplo anterior, los resúmenes descriptivos están acompañados de hipótesis acerca del *proceso generador de datos*, y esto ilumina lo que estamos observando y nos guía hacia descripciones provechosas de los datos. Las explicaciones no son tan simples y, otra vez, interviene el comportamiento de doctores, tratamientos, y distintos tipos de padecimientos.
+
+:::callout-tip
+Describe qué tabla utilizarías para contestar la pregunta bajo el siguiente escenario: el tratamiento para enfermedad de corazón
+se asigna a los pacientes, y unos días después se mide la presión
+arterial, que puede ser alta (grandes) o baja (chicos). Sabemos
+que parte del efecto del tratamiento se produce al bajar la presión
+arterial de los pacientes.
+:::
 
 
 ## Ejercicio: admisiones de Berkeley {.unnumbered}
