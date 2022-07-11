@@ -514,37 +514,7 @@ El proceso generador de datos
 <tbody>
   <tr>
    <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> chicos </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A </td>
    <td style="text-align:left;"> grandes </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> chicos </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> chicos </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> chicos </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> grandes </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> chicos </td>
    <td style="text-align:left;"> sin_mejora </td>
   </tr>
   <tr>
@@ -559,11 +529,6 @@ El proceso generador de datos
   </tr>
   <tr>
    <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> chicos </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A </td>
    <td style="text-align:left;"> grandes </td>
    <td style="text-align:left;"> sin_mejora </td>
   </tr>
@@ -573,6 +538,21 @@ El proceso generador de datos
    <td style="text-align:left;"> mejora </td>
   </tr>
   <tr>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:left;"> grandes </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:left;"> chicos </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:left;"> chicos </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
    <td style="text-align:left;"> A </td>
    <td style="text-align:left;"> grandes </td>
    <td style="text-align:left;"> mejora </td>
@@ -589,26 +569,46 @@ El proceso generador de datos
   </tr>
   <tr>
    <td style="text-align:left;"> B </td>
+   <td style="text-align:left;"> grandes </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> A </td>
    <td style="text-align:left;"> chicos </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:left;"> grandes </td>
    <td style="text-align:left;"> sin_mejora </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> A </td>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:left;"> chicos </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> B </td>
    <td style="text-align:left;"> chicos </td>
    <td style="text-align:left;"> mejora </td>
   </tr>
   <tr>
    <td style="text-align:left;"> B </td>
    <td style="text-align:left;"> grandes </td>
-   <td style="text-align:left;"> mejora </td>
+   <td style="text-align:left;"> sin_mejora </td>
   </tr>
   <tr>
    <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> grandes </td>
+   <td style="text-align:left;"> chicos </td>
    <td style="text-align:left;"> mejora </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> B </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:left;"> chicos </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> A </td>
    <td style="text-align:left;"> chicos </td>
    <td style="text-align:left;"> mejora </td>
   </tr>
@@ -824,10 +824,23 @@ El proceso generador de datos
 </div>
 <p>Nuestra hipótesis aquí es que la decisión de qué tratamiento usar depende del tamaño de los cálculos. En este caso, por alguna razón se prefiere utilizar el tratamiento <span class="math inline">\(A\)</span> para cálculos grandes, y <span class="math inline">\(B\)</span> para cálculos chicos. Esto quiere decir que en la tabla total <em>el tratamiento</em> <span class="math inline">\(A\)</span> está en desventaja porque se usa en casos más difíciles, pero el tratamiento <span class="math inline">\(A\)</span> parece ser en general mejor.</p>
 <ul>
-<li>Una mejor respuesta a la pregunta de qué tratamiento es mejor es la que presenta los datos agregados</li>
-<li>La tabla desagregada nos informa acerca de cómo se está distribuyendo el tratamiento en los pacientes.</li>
+<li>Una mejor respuesta a la pregunta de qué tratamiento es mejor es la que presenta los datos desagregados</li>
+<li>La tabla desagregada de asignación del tratamiento nos informa acerca de cómo se está distribuyendo el tratamiento en los pacientes.</li>
 </ul>
 <p>Igual que en el ejemplo anterior, los resúmenes descriptivos están acompañados de hipótesis acerca del <em>proceso generador de datos</em>, y esto ilumina lo que estamos observando y nos guía hacia descripciones provechosas de los datos. Las explicaciones no son tan simples y, otra vez, interviene el comportamiento de doctores, tratamientos, y distintos tipos de padecimientos.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Describe qué tabla utilizarías para contestar la pregunta bajo el siguiente escenario: el tratamiento para enfermedad de corazón se asigna a los pacientes, y unos días después se mide la presión arterial, que puede ser alta (grandes) o baja (chicos). Sabemos que parte del efecto del tratamiento se produce al bajar la presión arterial de los pacientes.</p>
+</div>
+</div>
 </section>
 <section id="ejercicio-admisiones-de-berkeley" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="ejercicio-admisiones-de-berkeley">Ejercicio: admisiones de Berkeley</h2>
