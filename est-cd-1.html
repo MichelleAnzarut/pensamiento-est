@@ -455,8 +455,8 @@ div.csl-indent {
 </section>
 <section id="procesos-generadores-de-datos" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="procesos-generadores-de-datos">Procesos generadores de datos</h2>
-<p>ótese que en todas estas preguntas hemos tenido que recurrir a conocimientos generales y de dominio para interpretar y hacer hipótesis acerca de lo que vemos en la gráfica. Una visión descontextualizada no tiene mucha utilidad. Las explicaciones son típicamente complejas e intervienen distintos aspectos del comportamiento de actores, sistemas, y métodos de recolección de datos involucrados.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<p>Nótese que en todas estas preguntas hemos tenido que recurrir a conocimientos generales y de dominio para interpretar y hacer hipótesis acerca de lo que vemos en la gráfica. Una visión descontextualizada no tiene mucha utilidad. Las explicaciones son típicamente complejas e intervienen distintos aspectos del comportamiento de actores, sistemas, y métodos de recolección de datos involucrados.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -469,10 +469,10 @@ El proceso generador de datos
 <p>Al conjunto de esos aspectos que determinan los datos que finalmente observamos le llamamos el <strong>proceso generador de datos</strong>. Para datos que observamos “naturalmente” este proceso generalmente es complicado.</p>
 </div>
 </div>
-<p>En la Ciencia de Datos buscamos entender las partes importantes del proceso que los generó:</p>
+<p>En la Ciencia de Datos buscamos entender las partes importantes del proceso generador</p>
 <ul>
-<li>La descripición correcta de los datos se logra con ese entendimiento de dominio y del proceso generador.</li>
-<li>La formulación y refinamiento de preguntas importantes y sus respuestas acerca de estos datos requiere entendimiento de dominio y del proceso generador.</li>
+<li>La <strong>descripición</strong> correcta de los datos se logra con ese entendimiento de dominio y del proceso generador.</li>
+<li>La formulación y refinamiento de <strong>preguntas</strong> importantes y sus respuestas acerca de estos datos requiere entendimiento de dominio y del proceso generador.</li>
 <li>Más tarde, veremos que la inferencia estadística también depende de este entendimiento, junto con propuestas del <em>diseño estadístico</em> que nos permite obtener los datos necesarios para simplificar y dar certeza en el proceso de contestar las preguntas de interés.</li>
 </ul>
 <p>Mucha parte de este trabajo no es estadístico, sino que es un esfuerzo por entender el dominio (como sugiere el título de artículo de David A. Friedman: <a href="https://psychology.okstate.edu/faculty/jgrice/psyc5314/Freedman_1991A.pdf">Statistical Models and Shoe Leather</a>).</p>
@@ -513,26 +513,6 @@ El proceso generador de datos
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> grandes </td>
-   <td style="text-align:left;"> sin_mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> chicos </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> grandes </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> grandes </td>
-   <td style="text-align:left;"> sin_mejora </td>
-  </tr>
-  <tr>
    <td style="text-align:left;"> A </td>
    <td style="text-align:left;"> grandes </td>
    <td style="text-align:left;"> mejora </td>
@@ -543,17 +523,7 @@ El proceso generador de datos
    <td style="text-align:left;"> mejora </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> chicos </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
    <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> chicos </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A </td>
    <td style="text-align:left;"> grandes </td>
    <td style="text-align:left;"> mejora </td>
   </tr>
@@ -569,11 +539,26 @@ El proceso generador de datos
   </tr>
   <tr>
    <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> grandes </td>
+   <td style="text-align:left;"> chicos </td>
    <td style="text-align:left;"> mejora </td>
   </tr>
   <tr>
    <td style="text-align:left;"> A </td>
+   <td style="text-align:left;"> chicos </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:left;"> chicos </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:left;"> grandes </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> B </td>
    <td style="text-align:left;"> chicos </td>
    <td style="text-align:left;"> mejora </td>
   </tr>
@@ -585,10 +570,20 @@ El proceso generador de datos
   <tr>
    <td style="text-align:left;"> B </td>
    <td style="text-align:left;"> chicos </td>
+   <td style="text-align:left;"> sin_mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:left;"> chicos </td>
    <td style="text-align:left;"> mejora </td>
   </tr>
   <tr>
    <td style="text-align:left;"> B </td>
+   <td style="text-align:left;"> chicos </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> A </td>
    <td style="text-align:left;"> chicos </td>
    <td style="text-align:left;"> mejora </td>
   </tr>
@@ -598,17 +593,22 @@ El proceso generador de datos
    <td style="text-align:left;"> sin_mejora </td>
   </tr>
   <tr>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:left;"> grandes </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
    <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> chicos </td>
+   <td style="text-align:left;"> grandes </td>
    <td style="text-align:left;"> mejora </td>
   </tr>
   <tr>
    <td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> chicos </td>
-   <td style="text-align:left;"> mejora </td>
+   <td style="text-align:left;"> grandes </td>
+   <td style="text-align:left;"> sin_mejora </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> A </td>
+   <td style="text-align:left;"> B </td>
    <td style="text-align:left;"> chicos </td>
    <td style="text-align:left;"> mejora </td>
   </tr>
@@ -743,7 +743,7 @@ El proceso generador de datos
 
 </div>
 </div>
-<p>Esta tabla descriptiva es una reescritura de los datos, y no hemos resumido nada todavía. Sin embargo, esta tabla es apropiada para empezar a contestar la pregunta:</p>
+<p>Esta tabla descriptiva es una reescritura de los datos, y no hemos resumido nada todavía. Pero es apropiada para empezar a contestar la pregunta:</p>
 <ul>
 <li>¿Qué indican estos datos acerca de qué tratamiento es mejor? ¿Acerca del tamaño de cálculos grandes o chicos?</li>
 </ul>

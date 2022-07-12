@@ -528,7 +528,7 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     10%      50%      90% 
-1.151650 4.830806 8.843670 </code></pre>
+1.099195 5.072742 9.027689 </code></pre>
 </div>
 </div>
 <p>Por el ejercicio anterior sabemos cuáles son los cuantiles teóricos correspondientes a una uniforme en <span class="math inline">\([0,10]\)</span>. Podemos calcularlos también como sigue:</p>
@@ -655,22 +655,22 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 <pre><code># A tibble: 16 × 2
    inicial     n
      &lt;dbl&gt; &lt;int&gt;
- 1    0       29
- 2    0.25   108
- 3    0.5    204
- 4    0.75   275
- 5    1      344
- 6    1.25   443
- 7    1.5    511
- 8    1.75   578
- 9    2      600
-10    2.25   509
-11    2.5    412
-12    2.75   386
-13    3      259
-14    3.25   181
-15    3.5    124
-16    3.75    37</code></pre>
+ 1    0       36
+ 2    0.25   139
+ 3    0.5    185
+ 4    0.75   265
+ 5    1      382
+ 6    1.25   450
+ 7    1.5    474
+ 8    1.75   594
+ 9    2      582
+10    2.25   538
+11    2.5    408
+12    2.75   343
+13    3      273
+14    3.25   178
+15    3.5    121
+16    3.75    32</code></pre>
 </div>
 </div>
 <p>Y calculamos la aproximación a la media como sigue:</p>
@@ -684,7 +684,7 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 <pre><code># A tibble: 1 × 1
   media_aprox
         &lt;dbl&gt;
-1        1.88</code></pre>
+1        1.86</code></pre>
 </div>
 </div>
 <p>Apliquemos esta idea cuando tenemos una densidad <span class="math inline">\(f(x)\)</span>. Dividimos el rango de la densidad en cubetas, y aproximamos la densidad por rangos, por ejemplo:</p>
@@ -810,7 +810,7 @@ En este caso decimos que <span class="math inline">\(f\)</span> es la función d
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">simular_bolsa</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.45</code></pre>
+<pre><code>[1] 3.7</code></pre>
 </div>
 </div>
 <p>Veamos cómo se ven los resultados si hacemos este experimento un número grande de veces:</p>

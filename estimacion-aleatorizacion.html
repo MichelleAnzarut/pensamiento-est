@@ -275,91 +275,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>En esta parte consideramos hacer inferencia a una población. Quiséramos decir algo acerca de la mediana de una población, si solo tenemos información parcial.</p>
+<p>En esta parte consideramos hacer inferencia a una población. Quiséramos decir algo acerca de la mediana de una población cuando solo tenemos información parcial.</p>
+<p>En este ejemplo, queremos aprender acerca de los precios de casas en una región determinada (los precios están en miles de dólares).</p>
+<p>Supongamos que tenemos la siguiente datos, que sólo son parte de la población:</p>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>✔ ggplot2 3.3.6     ✔ purrr   0.3.4
-✔ tibble  3.1.7     ✔ dplyr   1.0.9
-✔ tidyr   1.2.0     ✔ stringr 1.4.0
-✔ readr   2.1.2     ✔ forcats 0.5.1</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()</code></pre>
-</div>
-<details>
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"R/casas_preprocesamiento.R"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 1460 Columns: 81</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr (43): MSZoning, Street, Alley, LotShape, LandContour, Utilities, LotConf...
-dbl (38): Id, MSSubClass, LotFrontage, LotArea, OverallQual, OverallCond, Ye...
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-Rows: 27 Columns: 3
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr (1): Neighborhood
-dbl (2): lat, long
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
-<details>
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>casas</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1,388 × 45
-      id tipo_zona frente_lote calle forma_lote nombre_zona tipo_edificio estilo
-   &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;         &lt;chr&gt; 
- 1     1 RL                 65 Pave  Reg        CollgCr     1Fam          2Story
- 2     3 RL                 68 Pave  IR1        CollgCr     1Fam          2Story
- 3     4 RL                 60 Pave  IR1        Crawfor     1Fam          2Story
- 4     5 RL                 84 Pave  IR1        NoRidge     1Fam          2Story
- 5     6 RL                 85 Pave  IR1        Mitchel     1Fam          1.5Fin
- 6     7 RL                 75 Pave  Reg        Somerst     1Fam          1Story
- 7     8 RL                 NA Pave  IR1        NWAmes      1Fam          2Story
- 8     9 RM                 51 Pave  Reg        OldTown     1Fam          1.5Fin
- 9    10 RL                 50 Pave  Reg        BrkSide     2fmCon        1.5Unf
-10    11 RL                 70 Pave  Reg        Sawyer      1Fam          1Story
-# … with 1,378 more rows, and 37 more variables: calidad_gral &lt;dbl&gt;,
-#   condicion_gral &lt;dbl&gt;, año_construccion &lt;dbl&gt;, calidad_exteriores &lt;chr&gt;,
-#   material_exteriores &lt;chr&gt;, condicion_exteriores &lt;chr&gt;,
-#   calidad_sotano &lt;chr&gt;, condicion_sotano &lt;chr&gt;, tipo_sotano &lt;chr&gt;,
-#   calefaccion &lt;chr&gt;, calidad_calefaccion &lt;chr&gt;, aire_acondicionado &lt;chr&gt;,
-#   baños_completos &lt;dbl&gt;, baños_medios &lt;dbl&gt;, recamaras_sup &lt;dbl&gt;,
-#   calidad_cocina &lt;chr&gt;, cuartos_sup &lt;dbl&gt;, tipo_garage &lt;chr&gt;, …</code></pre>
-</div>
-</div>
-<div class="cell">
-<details>
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>datos_casas <span class="ot">&lt;-</span> casas <span class="sc">|&gt;</span> <span class="fu">select</span>(id, precio_miles) <span class="sc">|&gt;</span> </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">orden =</span> <span class="fu">dense_rank</span>(precio_miles))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>Supongamos que tenemos la siguiente muestra:</p>
-<div class="cell">
-<details>
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">6622</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>muestra <span class="ot">&lt;-</span> datos_casas <span class="sc">|&gt;</span> <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">20</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>muestra</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">6622</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>muestra <span class="ot">&lt;-</span> datos_casas <span class="sc">|&gt;</span> <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">20</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>muestra</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 20 × 3
@@ -388,46 +312,114 @@ dbl (2): lat, long
 </div>
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(muestra, <span class="fu">aes</span>(<span class="at">sample =</span> precio_miles ) ) <span class="sc">+</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq</span>(<span class="at">distribution =</span> stats<span class="sc">::</span>qunif)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(muestra, <span class="fu">aes</span>(<span class="at">sample =</span> precio_miles ) ) <span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq</span>(<span class="at">distribution =</span> stats<span class="sc">::</span>qunif)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="estimacion-aleatorizacion_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+<p><img src="estimacion-aleatorizacion_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>El resto de los valores poblacionales están distribuidos en el eje y. Queremos estimar el valor <span class="math inline">\(m\)</span> que es la mediana poblacional. Este valor tiene la propiedad de que separa a los datos en dos grupos de tamaño igual.</p>
-<p>Si observáramos un valor <span class="math inline">\(y\)</span> en la muestra, ¡cuál es la probabilidad de que caiga por arriba de la mediana? Si no sabemos cómo se extrajo la muestra, o se extrajo bajo un mecanismo complicado, esta pregunta es difícil de contestar.</p>
-<p>Sin embargo, si este valor se extrajo tomando un valor al azar entre todos los de la población, entonces sabemos que la probabilidad es</p>
+<p>Supongamos que queremos estimar el valor <span class="math inline">\(m\)</span> que es la mediana poblacional. Este valor tiene la propiedad de que separa a los datos en dos grupos de tamaño igual.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Estimar en este caso significa dar un rango donde creemos creíble que el valor poblacional está. No tiene sentido dar un sólo valor pues no conocemos la población total, así que tendremos incertidumbre de dónde está la mediana verdadera</p>
+</div>
+</div>
+<p>Para construir estos rangos haremos algunos cálculos básicos.</p>
+<p>En primer lugar, si observáramos un valor <span class="math inline">\(y\)</span> en la muestra, ¿cuál es la probabilidad de que caiga por arriba de la mediana? Si no sabemos cómo se extrajo la muestra, o se extrajo bajo un mecanismo complicado, esta pregunta es difícil de contestar.</p>
+<p>Sin embargo, si este valor se extrajo <strong>tomando un valor al azar entre todos los de la población</strong>, entonces sabemos que la probabilidad es</p>
 <p><span class="math display">\[P(y &lt;= m) = 0.5\]</span></p>
-<p>Ahora podemos calcular: cuál es la probabilidad, por ejemplo, de que la mediana esté entre los valores <span class="math inline">\(y_{(2)}\)</span> y <span class="math inline">\(y_{(n-1)}\)</span>?</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Aleatorización al rescate
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Supondremos que cada elemento de la muestra se extrajo de la población total al azar, cada uno de manera independiente de los otros.</p>
+</div>
+</div>
+<p>Con esta idea básica, podríamos por ejemplo calcular: ¿cuál es la probabilidad, de que la mediana esté entre los valores el mínimo y el máximo de la muestra?</p>
+<p>Denotemos por <span class="math inline">\(y_1,y_2,\ldots, y_n\)</span> la muestra observada. Denotaremos a la muestra ordenada del valor más chico al valor más grande como</p>
+<p><span class="math display">\[y_{(1)}, y_{(2)}, \ldots, y_{(n)}\]</span></p>
+<p>Nuestra primera pregunta entonces es:</p>
 <ul>
-<li>La probabilidad de que la mediana sea menor a <span class="math inline">\(y_{(1)}\)</span> es la probabilidad de que todos los valores de la muestra caigan por arriba de la mediana. Esta probabilidad es <span class="math inline">\((1/2)^n\)</span> (tirar 0 soles en n volados)</li>
-<li>La probabilidad de que la mediana sea menor a <span class="math inline">\(y_{(2)}\)</span> es la probabilidad (tirar 0 o 1 sol en n volados)</li>
-<li>La probabilidad de que la mediana sea menor a <span class="math inline">\(y_{(3)}\)</span> es la probabilidad de tirar 0,1 o 2 soles en n volados).</li>
+<li>¿Cuál es la probabilidad de el valor de la mediana verdadera esté en el intervalo <span class="math inline">\([y_{(1)}, y_{(n)}]\)</span></li>
 </ul>
-<p>Estas probabilidades las podemos calcular fácilmente. La probabilidad de que la mediana esté entre los valores <span class="math inline">\([y_{j}, y_{n-j+1}]\)</span> puede calcularse analíticamente para nuestro ejemplo, tenemos una muestra</p>
-<ul>
-<li><span class="math inline">\(n= 20\)</span></li>
-</ul>
-<p>La probabilidad de la mediana poblacional esté entre <span class="math inline">\([y_{7}, y_{14}]\)</span> es</p>
+<p><em>Respuesta</em>: La probabilidad de que la mediana esté por debajo del mínimo <span class="math inline">\(y_{(1)}\)</span> de la muestra es <span class="math inline">\((1/2)^n\)</span>, pues todos los valores de la muestra tienen que caer por arriba de la mediana. La probabilidad de que la mediana esté por arriba del máximo <span class="math inline">\(y_{(1)}\)</span> es también <span class="math inline">\((1/2)^n\)</span>. Así que la probabilidad de el verdadero valor de la mediana esté en este intervalo es de $ 2(1/2)^n$</p>
+<p>Esta es la probabilidad de tirar solamente soles o solamente águilas en <span class="math inline">\(n\)</span> tiradas de una moneda, Si <span class="math inline">\(X\)</span> denota el número de soles obtenidos en <span class="math inline">\(n\)</span> tiradas de dados, buscamos calcular la probabilidad de que la mediana esté en intervalo como</p>
+<p><span class="math display">\[1 - P(X &gt; n - 1) - P(X \leq 0) = 1 - 2(1/2)^n\]</span></p>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">14</span>, <span class="dv">20</span>, <span class="fl">0.5</span>) <span class="sc">-</span> <span class="fu">pbinom</span>(<span class="dv">6</span>, <span class="dv">20</span>, <span class="fl">0.5</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#! code-fold: false</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>bajo <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>alto <span class="ot">&lt;-</span> n <span class="sc">-</span> bajo <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pbinom</span>(alto <span class="sc">-</span> <span class="dv">1</span>, <span class="dv">20</span>, <span class="fl">0.5</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>) <span class="sc">-</span> <span class="fu">pbinom</span>(bajo <span class="sc">-</span> <span class="dv">1</span>, <span class="dv">20</span>, <span class="fl">0.5</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9216461</code></pre>
+<pre><code>[1] 0.9999981</code></pre>
+</div>
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)<span class="sc">^</span><span class="dv">20</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9999981</code></pre>
 </div>
 </div>
-<p>De manera que tomando</p>
-<p>Consideramos la tabla completa de casas, ordenada por el precio en miles.</p>
+<p>Prácticamente, es casi seguro que este intervalo contenga a la media verdadero. Esto no es muy informativo. Probemos ahora con <span class="math inline">\([y_{(2)}, y_{(n-1)}]\)</span>. Por un argumento similar, la probabilidad de la mediana verdadera esté en este intervalo es:</p>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>intervalo <span class="ot">&lt;-</span> muestra <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">pos =</span> <span class="fu">dense_rank</span>(precio_miles)) <span class="sc">|&gt;</span> </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(pos) <span class="sc">|&gt;</span> </span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(pos <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">14</span>))</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>intervalo <span class="sc">|&gt;</span> <span class="fu">select</span>(pos, precio_miles)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#! code-fold: false</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>bajo <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>alto <span class="ot">&lt;-</span> n <span class="sc">-</span> bajo <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pbinom</span>(alto <span class="sc">-</span> <span class="dv">1</span>, <span class="dv">20</span>, <span class="fl">0.5</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>) <span class="sc">-</span> <span class="fu">pbinom</span>(bajo <span class="sc">-</span> <span class="dv">1</span>, <span class="dv">20</span>, <span class="fl">0.5</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9999599</code></pre>
+</div>
+</div>
+<p>Esto también es altamente probable. Sin embargo, la probabilidad de la mediana poblacional esté entre <span class="math inline">\([y_{6}, y_{15}]\)</span> es</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#! code-fold: false</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>bajo <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>alto <span class="ot">&lt;-</span> n <span class="sc">-</span> bajo <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pbinom</span>(alto <span class="sc">-</span> <span class="dv">1</span>, <span class="dv">20</span>, <span class="fl">0.5</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>) <span class="sc">-</span> <span class="fu">pbinom</span>(bajo <span class="sc">-</span> <span class="dv">1</span>, <span class="dv">20</span>, <span class="fl">0.5</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8846817</code></pre>
+</div>
+</div>
+<p>Así, este intervalo tiene probabilidad de casi 90% de probabilidad de contener al verdadero valor:</p>
+<ul>
+<li>Esta es una probabilidad que se refiere al conjunto de muestras posibles de los datos. Es altamente probable que este intervalo <em>cubra</em> al verdadero valor.</li>
+</ul>
+<p>Ahora extraemos el intervalo correspondiente:</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>intervalo <span class="ot">&lt;-</span> muestra <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">pos =</span> <span class="fu">dense_rank</span>(precio_miles)) <span class="sc">|&gt;</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(pos) <span class="sc">|&gt;</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(pos <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">14</span>))</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>intervalo <span class="sc">|&gt;</span> <span class="fu">select</span>(pos, precio_miles)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
@@ -437,88 +429,81 @@ dbl (2): lat, long
 2    14          235</code></pre>
 </div>
 </div>
-<p>Y este es un intervalo de confianza de al menos 90% para la mediana de la población. Cuando tomamos muestras más grandes, podemos obtener mejores precisiones. Por ejemplo, para una muestra de 150 casas, usaríamos</p>
+<p>Y este es un intervalo de confianza de cerca de 90% para la mediana de la población. Cuando tomamos muestras más grandes, podemos obtener mejores precisiones. Por ejemplo, para una muestra de 151 casas, usaríamos</p>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">151</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>bajo <span class="ot">&lt;-</span> <span class="dv">65</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>alto <span class="ot">&lt;-</span> n <span class="sc">-</span> bajo <span class="sc">-</span> <span class="dv">1</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(alto, n, <span class="fl">0.5</span>) </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">151</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>bajo <span class="ot">&lt;-</span> <span class="dv">65</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>alto <span class="ot">&lt;-</span> n <span class="sc">-</span> bajo <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>cobertura <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pbinom</span>(alto <span class="sc">-</span> <span class="dv">1</span>, n, <span class="fl">0.5</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>) <span class="sc">-</span> <span class="fu">pbinom</span>(bajo <span class="sc">-</span> <span class="dv">1</span>, n, <span class="fl">0.5</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>cobertura</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9483499</code></pre>
-</div>
-<details>
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(bajo, n, <span class="fl">0.5</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.05165007</code></pre>
-</div>
-<details>
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>cobertura <span class="ot">&lt;-</span> <span class="fu">pbinom</span>(alto, n, <span class="fl">0.5</span>) <span class="sc">-</span> <span class="fu">pbinom</span>(bajo <span class="sc">-</span> <span class="dv">1</span>, n, <span class="fl">0.5</span>)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>cobertura</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9118254</code></pre>
+<pre><code>[1] 0.8921164</code></pre>
 </div>
 </div>
+<p>Tomamos una muestra y extraemos el intervalo:</p>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">3555881</span>)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>muestra_2 <span class="ot">&lt;-</span> datos_casas <span class="sc">|&gt;</span> <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">151</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pos =</span> <span class="fu">row_number</span>(precio_miles)) </span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>muestra_2 <span class="sc">|&gt;</span> </span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(pos) <span class="sc">|&gt;</span> </span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(pos <span class="sc">%in%</span> <span class="fu">c</span>(bajo, alto))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">3555881</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>muestra_2 <span class="ot">&lt;-</span> datos_casas <span class="sc">|&gt;</span> <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">151</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pos =</span> <span class="fu">row_number</span>(precio_miles)) </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>muestra_2 <span class="sc">|&gt;</span> </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(pos) <span class="sc">|&gt;</span> </span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(pos <span class="sc">%in%</span> <span class="fu">c</span>(bajo, alto)) <span class="sc">|&gt;</span> </span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(precio_miles, pos)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 4
-     id precio_miles orden   pos
-  &lt;dbl&gt;        &lt;dbl&gt; &lt;int&gt; &lt;int&gt;
-1    45          141   191    65
-2   716          165   272    85</code></pre>
+<pre><code># A tibble: 2 × 2
+  precio_miles   pos
+         &lt;dbl&gt; &lt;int&gt;
+1          141    65
+2          165    85</code></pre>
 </div>
 </div>
 <p>Esto intervalos tienen la garantía inferencial, y no es necesario hacer ningún supuesto, excepto en que la muestra se escoge al azar.</p>
 <section id="remuestreo" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="remuestreo"><span class="header-section-number">4.1</span> Remuestreo</h2>
 <p>Podemos pensar en este procedimiento de una manera diferente.</p>
-<p>Si la muestra completa se seleccionó de esta manera, entonces, si escogemos un valor no observado en la muestra, tenemos que <span class="math inline">\(y\)</span> tiene la misma probabilidad de caer en cualquiera de los intervalos</p>
+<p>Si la muestra completa se seleccionó al azar, entonces, si escogemos un valor no observado en la muestra, tenemos que <span class="math inline">\(y\)</span> tiene la misma probabilidad de caer en cualquiera de los intervalos</p>
 <p><span class="math display">\[I_1 = (0, y_1), I_2 = [y_1, y_2), I_3 = [y_2, y_3),\ldots, I_{n} = [y_{n}, \infty ]\]</span></p>
 <p>La razón es que si consideramos la muestra original con el nuevo dato agregado tomado al azar, todos los ordenamientos de <span class="math inline">\(y_1, y_2, \ldots, y_n, y_{n+1}\)</span> son igualmente probables: esto implica que es igualmente probable que <span class="math inline">\(y_{n+1}\)</span> caiga en cualquiera de estos intervalos (probabilidad <span class="math inline">\(1/{n+1}\)</span>).</p>
-<p>Podemos imputar nuestra población entera tomando escogiendo para cada valor no observado un intervalo, y muestreamos de esta población repetidamente para calcular nuestra distribución de muestreo.</p>
+<ol type="1">
+<li>Podemos imputar nuestra población entera tomando escogiendo para cada valor no observado un intervalo,</li>
+<li>Podemos entonces muestrear de esta población otra vez para obtener una muestra nueva.</li>
+<li>Repetimos los dos anteriores una gran cantidad de veces para ver todos los posibles valores de medianas que podemos obtener.</li>
+</ol>
 <p>Cada muestra es una sucesión de intervalos. Acumulamos para obtener una distribución sobre estos intervalos. La probabilidad de uqe la mediana salga en alguno de los intervalos extremos es igual a</p>
 <p><span class="math display">\[(1/n)^{n/2},\]</span></p>
-<p>que es un número del orden de <span class="math display">\[10^{-5}\]</span>, que es chico aún cuando <span class="math inline">\(n=10\)</span>. Para valores más grandes, esta probabilidad es astronómicamente chica. Podemos hacer una distribución</p>
+<p>que es un número del orden de <span class="math display">\[10^{-5}\]</span>, que es chico aún cuando <span class="math inline">\(n=10\)</span>. Para valores más grandes, esta probabilidad es astronómicamente chica. Como el intervalo final consistirá de datos observados en nuestra muestra, en el resto de los intervalos no importa donde están los verdaderos poblacionales, y nos basta con saber si están o no en cada intervalo.</p>
+<p>Este proceso se llama remuestreo, y lo hacemos a continuación</p>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>remuestrear <span class="ot">&lt;-</span> <span class="cf">function</span>(muestra){</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(muestra, <span class="at">prop =</span> <span class="dv">1</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mediana =</span> <span class="fu">median</span>(precio_miles))</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>remuestras <span class="ot">&lt;-</span> <span class="fu">map_df</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>, <span class="sc">~</span> <span class="fu">remuestrear</span>(muestra))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>remuestrear <span class="ot">&lt;-</span> <span class="cf">function</span>(muestra){</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(muestra, <span class="at">prop =</span> <span class="dv">1</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mediana =</span> <span class="fu">median</span>(precio_miles))</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>remuestras <span class="ot">&lt;-</span> <span class="fu">map_df</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>, <span class="sc">~</span> <span class="fu">remuestrear</span>(muestra))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(remuestras, <span class="fu">aes</span>(<span class="at">x =</span> mediana)) <span class="sc">+</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">breaks =</span> muestra <span class="sc">|&gt;</span> <span class="fu">pull</span>(precio_miles)) <span class="sc">+</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rug</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(remuestras, <span class="fu">aes</span>(<span class="at">x =</span> mediana)) <span class="sc">+</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">breaks =</span> muestra <span class="sc">|&gt;</span> <span class="fu">pull</span>(precio_miles)) <span class="sc">+</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rug</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="estimacion-aleatorizacion_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+<p><img src="estimacion-aleatorizacion_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(remuestras<span class="sc">$</span>mediana, <span class="fu">c</span>(<span class="fl">0.051</span>, <span class="fl">0.948</span>), <span class="at">type =</span> <span class="dv">8</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(remuestras<span class="sc">$</span>mediana, <span class="fu">c</span>(<span class="fl">0.051</span>, <span class="fl">0.948</span>), <span class="at">type =</span> <span class="dv">8</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code> 5.1% 94.8% 
@@ -531,21 +516,21 @@ dbl (2): lat, long
 <h2 data-number="4.2" class="anchored" data-anchor-id="remuestreo-para-otras-estadísticas"><span class="header-section-number">4.2</span> Remuestreo para otras estadísticas</h2>
 <p>Podemos repetir este método para otras estadísticas como la media. Sin embargo, en este caso no podemos dar garantías independientes de la distribución poblacional. La razón es que las colas pueden ser muy extremas.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>remuestrear_media <span class="ot">&lt;-</span> <span class="cf">function</span>(muestra){</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(muestra, <span class="at">prop =</span> <span class="dv">1</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">media =</span> <span class="fu">mean</span>(precio_miles))</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>remuestras_media <span class="ot">&lt;-</span> <span class="fu">map_df</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>, <span class="sc">~</span> <span class="fu">remuestrear_media</span>(muestra))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>remuestrear_media <span class="ot">&lt;-</span> <span class="cf">function</span>(muestra){</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_sample</span>(muestra, <span class="at">prop =</span> <span class="dv">1</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">media =</span> <span class="fu">mean</span>(precio_miles))</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>remuestras_media <span class="ot">&lt;-</span> <span class="fu">map_df</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>, <span class="sc">~</span> <span class="fu">remuestrear_media</span>(muestra))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(remuestras_media) <span class="sc">+</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> media), <span class="at">binwidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rug</span>(<span class="at">data =</span> muestra, <span class="fu">aes</span>(<span class="at">x =</span> precio_miles))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(remuestras_media) <span class="sc">+</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">x =</span> media), <span class="at">binwidth =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rug</span>(<span class="at">data =</span> muestra, <span class="fu">aes</span>(<span class="at">x =</span> precio_miles))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="estimacion-aleatorizacion_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+<p><img src="estimacion-aleatorizacion_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Y nuestro problema en este caso es que la media sí cambia dependiendo de cómo es la distribución dentro de cada intervalo, incluyendo los intervalos izquierdo y derecho.</p>

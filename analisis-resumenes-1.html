@@ -273,9 +273,11 @@ div.csl-indent {
   <li><a href="#cuantiles-o-percentiles-de-una-variable" id="toc-cuantiles-o-percentiles-de-una-variable" class="nav-link active" data-scroll-target="#cuantiles-o-percentiles-de-una-variable"> <span class="header-section-number">1.1</span> Cuantiles o percentiles de una variable</a></li>
   <li><a href="#distribución-acumulada-empírica" id="toc-distribución-acumulada-empírica" class="nav-link" data-scroll-target="#distribución-acumulada-empírica"> <span class="header-section-number">1.2</span> Distribución acumulada empírica</a></li>
   <li><a href="#media-y-desviación-estándar" id="toc-media-y-desviación-estándar" class="nav-link" data-scroll-target="#media-y-desviación-estándar"> <span class="header-section-number">1.3</span> Media y desviación estándar</a></li>
-  <li><a href="#comparando-grupos-con-variables-numéricas" id="toc-comparando-grupos-con-variables-numéricas" class="nav-link" data-scroll-target="#comparando-grupos-con-variables-numéricas"> <span class="header-section-number">1.4</span> Comparando grupos con variables numéricas</a></li>
+  <li><a href="#distribuciones-sesgadas-y-atípicos" id="toc-distribuciones-sesgadas-y-atípicos" class="nav-link" data-scroll-target="#distribuciones-sesgadas-y-atípicos"> <span class="header-section-number">1.4</span> Distribuciones sesgadas y atípicos</a></li>
+  <li><a href="#comparando-grupos-con-variables-numéricas" id="toc-comparando-grupos-con-variables-numéricas" class="nav-link" data-scroll-target="#comparando-grupos-con-variables-numéricas"> <span class="header-section-number">1.5</span> Comparando grupos con variables numéricas</a>
+  <ul class="collapse">
   <li><a href="#ejemplo-precios-de-casas" id="toc-ejemplo-precios-de-casas" class="nav-link" data-scroll-target="#ejemplo-precios-de-casas">Ejemplo: precios de casas</a></li>
-  <li><a href="#distribuciones-sesgadas-y-atípicos" id="toc-distribuciones-sesgadas-y-atípicos" class="nav-link" data-scroll-target="#distribuciones-sesgadas-y-atípicos"> <span class="header-section-number">1.5</span> Distribuciones sesgadas y atípicos</a></li>
+  </ul></li>
   <li><a href="#factor-y-respuesta-numéricos-opcional" id="toc-factor-y-respuesta-numéricos-opcional" class="nav-link" data-scroll-target="#factor-y-respuesta-numéricos-opcional"> <span class="header-section-number">1.6</span> Factor y respuesta numéricos (opcional)</a></li>
   <li><a href="#ejemplo-cuenta-total-y-propina" id="toc-ejemplo-cuenta-total-y-propina" class="nav-link" data-scroll-target="#ejemplo-cuenta-total-y-propina">Ejemplo: cuenta total y propina</a></li>
   <li><a href="#suavizadores-locales" id="toc-suavizadores-locales" class="nav-link" data-scroll-target="#suavizadores-locales"> <span class="header-section-number">1.7</span> Suavizadores locales</a></li>
@@ -316,16 +318,16 @@ div.csl-indent {
 <pre><code># A tibble: 10 × 6
    cuenta_total propina fumador dia   momento num_personas
           &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;          &lt;dbl&gt;
- 1        24.3     2.03 Si      Sab   Cena               2
- 2        10.8     1.47 No      Sab   Cena               2
- 3        12.5     2.5  No      Dom   Cena               2
- 4        17.3     2.71 No      Jue   Comida             2
- 5        12.0     1.5  Si      Vie   Cena               2
- 6        45.4     3.5  Si      Dom   Cena               3
- 7        21.5     3.5  No      Dom   Cena               4
- 8         8.51    1.25 No      Jue   Comida             2
- 9        10.1     1.83 No      Jue   Comida             1
-10        20.9     3.5  Si      Dom   Cena               3</code></pre>
+ 1        17.3     3.5  No      Dom   Cena               2
+ 2        27.2     2    Si      Sab   Cena               2
+ 3         7.74    1.44 Si      Sab   Cena               2
+ 4        25       3.75 No      Dom   Cena               4
+ 5        15.8     2.23 No      Sab   Cena               2
+ 6        14.3     2.5  No      Jue   Comida             2
+ 7        13.9     3.06 No      Dom   Cena               2
+ 8        20.2     2.01 No      Sab   Cena               2
+ 9        11.2     1.76 Si      Sab   Cena               2
+10        24.1     3.6  No      Sab   Cena               3</code></pre>
 </div>
 </div>
 <p>Aquí la unidad de observación es una cuenta particular. Tenemos tres mediciones numéricas de cada cuenta: cúanto fue la cuenta total, la propina, y el número de personas asociadas a la cuenta. Los datos están separados según se fumó o no en la mesa, y temporalmente en dos partes: el día (Jueves, Viernes, Sábado o Domingo), cada uno separado por Cena y Comida.</p>
@@ -443,10 +445,7 @@ Cuantiles de datos numéricos
 <p><strong>Nota</strong>: si los datos originales son <span class="math inline">\(y_1, y_2, \ldots, y_n\)</span>, y los mismos datos ordenados son <span class="math inline">\(y_{(1)}, y_{(2)}, \ldots, y_{(n)}\)</span>, entonces si <span class="math inline">\(f= j/n\)</span>, <span class="math inline">\(q(f) = y_{(j)}\)</span>. Si <span class="math inline">\(f\)</span> toma un valor intermedio entre <span class="math inline">\((j-1)/n\)</span> y <span class="math inline">\(j/n\)</span>, entonces interpolamos <span class="math inline">\(y_{(j-1)}\)</span> y <span class="math inline">\(y_{(j)}\)</span> para encontrar <span class="math inline">\(q(f)\)</span>.</p>
 <p>Hay otras maneras de definir los cuantiles que pueden ser más convenientes. Los que estamos usando ahora son los cuantiles <em>tipo 4</em>:</p>
 <div class="cell">
-<details>
-<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(cuenta<span class="sc">$</span>cuenta_total, <span class="at">probs =</span> <span class="fu">c</span>(<span class="dv">6</span><span class="sc">/</span><span class="dv">244</span>, <span class="dv">239</span><span class="sc">/</span><span class="dv">244</span>), <span class="at">type =</span> <span class="dv">4</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>2.459016% 97.95082% 
      7.56     44.30 </code></pre>
@@ -531,7 +530,7 @@ Cuantiles de datos numéricos
 <p>En esta gráfica, vemos que proporción de los datos que son iguales o están por debajo de cada valor en el eje horizontal.</p>
 <ul>
 <li>En análisis de datos, es más frecuente utilizar la función de cuantiles pues existen versiones más generales que son útiles, por ejemplo, para evaluar ajuste de modelos probabilísticos</li>
-<li>En la teoría, generalmente es más común utilizar la fda empírica, que nos da una distribución de probabilidad acumulada.</li>
+<li>En la teoría, generalmente es más común utilizar la fda empírica, que tiene una única definición que veremos coincide con definiciones teóricas.</li>
 </ul>
 </section>
 <section id="media-y-desviación-estándar" class="level2" data-number="1.3">
@@ -541,10 +540,10 @@ Cuantiles de datos numéricos
 <p><span class="math display">\[\bar{x} = \frac{1}{n}\sum x_i\]</span></p>
 <p>y la desviación estándar es</p>
 <p><span class="math display">\[\hat{\sigma} =\sqrt{\frac{1}{n}\sum (x_i - \bar{x})^2}\]</span></p>
-<p>En general, no son muy apropiadas para iniciar el análisis exploratorio, pues:</p>
+<p>En general, no son muy apropiadas para iniciar el análisis exploratorio, y se requieren cuidados adicionales al utilizarlas, pues:</p>
 <ul>
-<li>Son medidas más difíciles de interpretar y explicar que los cuantiles. En este sentido, son medidas especializadas. Como ejercicio, intenta explicar intuitivamente qué es la media. Después prueba con la desviación estándar.</li>
-<li>No son resistentes a valores atípicos o erróneos. Su falta de resistencia los vuelve poco útiles en las primeras etapas de descripción.</li>
+<li>Son medidas más difíciles de interpretar y explicar que los cuantiles. En este sentido, son medidas especializadas. Como ejercicio, intenta explicar intuitivamente qué es la media. Después prueba con la desviación estándar. Sin embargo, la mediana o el rango intercuartílico son fáciles de explicar.</li>
+<li>No son resistentes a valores atípicos o erróneos. Su falta de resistencia los vuelve poco útiles en las primeras etapas de descripción, y muchas veces requieren transformaciones o cuidados adicionales/supuestos para evitar mal comportamiento por esa falta de resistencia.</li>
 </ul>
 <p>Sin embargo,</p>
 <ul>
@@ -552,101 +551,27 @@ Cuantiles de datos numéricos
 <li>Muchas veces, ya sea por tradición, porque así se ha hecho el análisis antes, conviene usar estas medidas conocidas.</li>
 </ul>
 </section>
-<section id="comparando-grupos-con-variables-numéricas" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="comparando-grupos-con-variables-numéricas"><span class="header-section-number">1.4</span> Comparando grupos con variables numéricas</h2>
-</section>
-<section id="ejemplo-precios-de-casas" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="ejemplo-precios-de-casas">Ejemplo: precios de casas</h2>
-<p>Consideramos <a href="https://www.kaggle.com/prevek18/ames-housing-dataset">datos de precios de ventas de la ciudad de Ames, Iowa</a>. Nos interesa entender la variación del precio de las casas.</p>
-<div class="cell">
-
-</div>
-<p>Calculamos primeros unos cuantiles de los precios de las casas:</p>
-<div class="cell">
-<details>
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(casas <span class="sc">|&gt;</span>  <span class="fu">pull</span>(precio_miles)) </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>   0%   25%   50%   75%  100% 
- 37.9 132.0 165.0 215.0 755.0 </code></pre>
-</div>
-</div>
-<p>Una primera comparación que podemos hacer es considerar las distintas zonas de la ciudad. Podemos usar diagramas de caja y brazos para <strong>comparar</strong> precios en distintas zonas de la ciudad:</p>
-<div class="cell">
-<details>
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(casas, <span class="fu">aes</span>(<span class="at">x =</span> nombre_zona, <span class="at">y =</span> precio_miles)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">coord_flip</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="analisis-resumenes-1_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>Nótese que de cada zona, los datos tienen una cola derecha más larga que la izquierda, e incluso hay valores extremos en la cola derecha que exceden el rango de variación usual. Una razón por la que puede suceder esto es que haya características particulares que agregan valor considerable a una casa, por ejemplo, el tamaño, una alberca, etc.</p>
-<p>En primer lugar, podemos considerar el área de las casas. En lugar de graficar el precio, graficamos el precio por metro cuadrado, por ejemplo:</p>
-<div class="cell">
-
-</div>
-<div class="cell">
-<details>
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(casas, <span class="fu">aes</span>(<span class="at">x =</span> nombre_zona, <span class="at">y =</span> precio_m2)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">coord_flip</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="analisis-resumenes-1_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>Nótese ahora que la variación alrededor de la media es mucho más simétrica, y ya no vemos tantos datos extremos. Aún más, la variación dentro de cada zona parece ser similar, y podríamos describir restos datos de la siguiente forma:</p>
-<p>Cuantificamos la variación que observamos de zona a zona y la variación que hay dentro de zonas. La variación que vemos entre las medianas de la zona es:</p>
-<div class="cell">
-<details>
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>casas <span class="sc">|&gt;</span> <span class="fu">group_by</span>(nombre_zona) <span class="sc">|&gt;</span> </span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mediana_zona =</span> <span class="fu">median</span>(precio_m2)) <span class="sc">|&gt;</span> </span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(mediana_zona) <span class="sc">|&gt;</span> <span class="fu">quantile</span>() <span class="sc">|&gt;</span> <span class="fu">round</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>  0%  25%  50%  75% 100% 
- 963 1219 1298 1420 1725 </code></pre>
-</div>
-</div>
-<p>Y las variaciones con respecto a las medianas <strong>dentro</strong> de cada zona, agrupadas, se resume como:</p>
-<div class="cell">
-<details>
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(casas <span class="sc">|&gt;</span> <span class="fu">group_by</span>(nombre_zona) <span class="sc">|&gt;</span> </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">residual =</span> precio_m2 <span class="sc">-</span> <span class="fu">median</span>(precio_m2)) <span class="sc">|&gt;</span> </span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(residual)) <span class="sc">|&gt;</span> <span class="fu">round</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>  0%  25%  50%  75% 100% 
--765 -166    0  172 1314 </code></pre>
-</div>
-</div>
-<p>Nótese que este último paso tiene sentido pues la variación dentro de las zonas, en términos de precio por metro cuadrado, es similar. Esto no lo podríamos hacer de manera efectiva si hubiéramos usado el precio de las casas sin ajustar por su tamaño.</p>
-<p>Y vemos que la mayor parte de la variación del precio por metro cuadrado ocurre dentro de cada zona, una vez que controlamos por el tamaño de las casas. La variación dentro de cada zona es aproximadamente simétrica, aunque la cola derecha es ligeramente más larga con algunos valores extremos.</p>
-</section>
-<section id="distribuciones-sesgadas-y-atípicos" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="distribuciones-sesgadas-y-atípicos"><span class="header-section-number">1.5</span> Distribuciones sesgadas y atípicos</h2>
+<section id="distribuciones-sesgadas-y-atípicos" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="distribuciones-sesgadas-y-atípicos"><span class="header-section-number">1.4</span> Distribuciones sesgadas y atípicos</h2>
 <p>En algunos casos tenemos que trabajar con mediciones que tienen una cola (usualmente la derecha) mucho más larga que la otra. Veamos cuáles son consecuencias típicas.</p>
 <p>Consideremos por ejemplos una muestra de los datos de ENIGH 2018</p>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>enigh <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"./datos/enigh-ejemplo.csv"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>enigh <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"./datos/enigh-ejemplo.csv"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Y los deciles de ingreso son</p>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>enigh <span class="ot">&lt;-</span> <span class="fu">mutate</span>(enigh, <span class="at">ingreso_mensual_miles =</span> INGTOT <span class="sc">/</span> <span class="dv">3000</span>)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>enigh <span class="sc">|&gt;</span> </span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">f =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.1</span>),</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">cuantiles_ingreso =</span>  <span class="fu">quantile</span>(ingreso_mensual_miles, <span class="at">probs =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.1</span>), <span class="at">type =</span> <span class="dv">4</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>enigh <span class="ot">&lt;-</span> <span class="fu">mutate</span>(enigh, <span class="at">ingreso_mensual_miles =</span> INGTOT <span class="sc">/</span> <span class="dv">3000</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>enigh <span class="sc">|&gt;</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">f =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.1</span>),</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">cuantiles_ingreso =</span>  <span class="fu">quantile</span>(ingreso_mensual_miles, <span class="at">probs =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.1</span>), <span class="at">type =</span> <span class="dv">4</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
@@ -711,38 +636,38 @@ Cuantiles de datos numéricos
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(enigh, <span class="fu">aes</span>(<span class="at">x =</span> ingreso_mensual_miles)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(enigh, <span class="fu">aes</span>(<span class="at">x =</span> ingreso_mensual_miles)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="analisis-resumenes-1_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="384"></p>
+<p><img src="analisis-resumenes-1_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="384"></p>
 </div>
 </div>
 <p>Si filtramos los valores muy grandes, de todas formas encontramos una forma similar con una cola larga a la derecha:</p>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(enigh <span class="sc">|&gt;</span> <span class="fu">filter</span>(ingreso_mensual_miles <span class="sc">&lt;</span> <span class="dv">90</span>), </span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> ingreso_mensual_miles)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(enigh <span class="sc">|&gt;</span> <span class="fu">filter</span>(ingreso_mensual_miles <span class="sc">&lt;</span> <span class="dv">90</span>), </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> ingreso_mensual_miles)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="analisis-resumenes-1_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="384"></p>
+<p><img src="analisis-resumenes-1_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="384"></p>
 </div>
 </div>
 <p>Nótese que la media de estos datos no es un resúmen muy útil, porque es difícil de interpretar. Por los valores grandes, la media es considerablemente más alta que la mediana:</p>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>enigh <span class="sc">|&gt;</span> </span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">media =</span> <span class="fu">mean</span>(ingreso_mensual_miles),</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mediana =</span>  <span class="fu">quantile</span>(ingreso_mensual_miles, <span class="at">probs =</span> <span class="fl">0.5</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>enigh <span class="sc">|&gt;</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">media =</span> <span class="fu">mean</span>(ingreso_mensual_miles),</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mediana =</span>  <span class="fu">quantile</span>(ingreso_mensual_miles, <span class="at">probs =</span> <span class="fl">0.5</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
@@ -767,11 +692,11 @@ Cuantiles de datos numéricos
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>enigh <span class="sc">|&gt;</span> </span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">f =</span> <span class="fu">c</span>(<span class="st">"min"</span>, <span class="fl">0.5</span>, <span class="st">"0.50"</span>,  <span class="fl">0.95</span>, <span class="st">"max"</span>),</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cuantiles_ingreso =</span>  <span class="fu">quantile</span>(ingreso_mensual_miles, <span class="at">probs =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.05</span>, <span class="fl">0.5</span>, <span class="fl">0.95</span>, <span class="dv">1</span>))) <span class="sc">|&gt;</span> </span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>enigh <span class="sc">|&gt;</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">f =</span> <span class="fu">c</span>(<span class="st">"min"</span>, <span class="fl">0.5</span>, <span class="st">"0.50"</span>,  <span class="fl">0.95</span>, <span class="st">"max"</span>),</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cuantiles_ingreso =</span>  <span class="fu">quantile</span>(ingreso_mensual_miles, <span class="at">probs =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.05</span>, <span class="fl">0.5</span>, <span class="fl">0.95</span>, <span class="dv">1</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
@@ -812,20 +737,20 @@ Cuantiles de datos numéricos
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(enigh, </span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> ingreso_mensual_miles)) <span class="sc">+</span> </span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.12</span>) <span class="sc">+</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">16</span>, <span class="dv">32</span>, <span class="dv">64</span>, <span class="dv">128</span>, <span class="dv">256</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(enigh, </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> ingreso_mensual_miles)) <span class="sc">+</span> </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.12</span>) <span class="sc">+</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">16</span>, <span class="dv">32</span>, <span class="dv">64</span>, <span class="dv">128</span>, <span class="dv">256</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="analisis-resumenes-1_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="384"></p>
+<p><img src="analisis-resumenes-1_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="384"></p>
 </div>
 </div>
 <p>Por las propiedades de los cuantiles, cualquier cantidad basada en cuantiles que se calcula en escala logarítmica puede pasarase a la escala original transformando</p>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(<span class="fu">log</span>(enigh<span class="sc">$</span>ingreso_mensual_miles)) <span class="sc">|&gt;</span> <span class="fu">exp</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(<span class="fu">log</span>(enigh<span class="sc">$</span>ingreso_mensual_miles)) <span class="sc">|&gt;</span> <span class="fu">exp</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>         0%         25%         50%         75%        100% 
@@ -833,7 +758,7 @@ Cuantiles de datos numéricos
 </div>
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(enigh<span class="sc">$</span>ingreso_mensual_miles) </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(enigh<span class="sc">$</span>ingreso_mensual_miles) </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>         0%         25%         50%         75%        100% 
@@ -841,6 +766,80 @@ Cuantiles de datos numéricos
 </div>
 </div>
 <p><strong>Nota</strong>: esto no sucede con medidas más complicadas como la media. El exponencial de la media de los logaritmos no es la media en la escala original.</p>
+</section>
+<section id="comparando-grupos-con-variables-numéricas" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="comparando-grupos-con-variables-numéricas"><span class="header-section-number">1.5</span> Comparando grupos con variables numéricas</h2>
+<section id="ejemplo-precios-de-casas" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="ejemplo-precios-de-casas">Ejemplo: precios de casas</h3>
+<p>Consideramos <a href="https://www.kaggle.com/prevek18/ames-housing-dataset">datos de precios de ventas de la ciudad de Ames, Iowa</a>. Nos interesa entender la variación del precio de las casas.</p>
+<div class="cell">
+
+</div>
+<p>Calculamos primeros unos cuantiles de los precios de las casas:</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(casas <span class="sc">|&gt;</span>  <span class="fu">pull</span>(precio_miles)) </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>   0%   25%   50%   75%  100% 
+ 37.9 132.0 165.0 215.0 755.0 </code></pre>
+</div>
+</div>
+<p>Una primera comparación que podemos hacer es considerar las distintas zonas de la ciudad. Podemos usar diagramas de caja y brazos para <strong>comparar</strong> precios en distintas zonas de la ciudad:</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(casas, <span class="fu">aes</span>(<span class="at">x =</span> nombre_zona, <span class="at">y =</span> precio_miles)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">coord_flip</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="analisis-resumenes-1_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Nótese que de cada zona, los datos tienen una cola derecha más larga que la izquierda, e incluso hay valores extremos en la cola derecha que exceden el rango de variación usual. Una razón por la que puede suceder esto es que haya características particulares que agregan valor considerable a una casa, por ejemplo, el tamaño, una alberca, etc.</p>
+<p>En primer lugar, podemos considerar el área de las casas. En lugar de graficar el precio, graficamos el precio por metro cuadrado, por ejemplo:</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(casas, <span class="fu">aes</span>(<span class="at">x =</span> nombre_zona, <span class="at">y =</span> precio_m2)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">coord_flip</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="analisis-resumenes-1_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Nótese ahora que la variación alrededor de la media es mucho más simétrica, y ya no vemos tantos datos extremos. Aún más, la variación dentro de cada zona parece ser similar, y podríamos describir restos datos de la siguiente forma:</p>
+<p>Cuantificamos la variación que observamos de zona a zona y la variación que hay dentro de zonas. La variación que vemos entre las medianas de la zona es:</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>casas <span class="sc">|&gt;</span> <span class="fu">group_by</span>(nombre_zona) <span class="sc">|&gt;</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mediana_zona =</span> <span class="fu">median</span>(precio_m2)) <span class="sc">|&gt;</span> </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(mediana_zona) <span class="sc">|&gt;</span> <span class="fu">quantile</span>() <span class="sc">|&gt;</span> <span class="fu">round</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  0%  25%  50%  75% 100% 
+ 963 1219 1298 1420 1725 </code></pre>
+</div>
+</div>
+<p>Y las variaciones con respecto a las medianas <strong>dentro</strong> de cada zona, agrupadas, se resume como:</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(casas <span class="sc">|&gt;</span> <span class="fu">group_by</span>(nombre_zona) <span class="sc">|&gt;</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">residual =</span> precio_m2 <span class="sc">-</span> <span class="fu">median</span>(precio_m2)) <span class="sc">|&gt;</span> </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(residual)) <span class="sc">|&gt;</span> <span class="fu">round</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  0%  25%  50%  75% 100% 
+-765 -166    0  172 1314 </code></pre>
+</div>
+</div>
+<p>Nótese que este último paso tiene sentido pues la variación dentro de las zonas, en términos de precio por metro cuadrado, es similar. Esto no lo podríamos hacer de manera efectiva si hubiéramos usado el precio de las casas sin ajustar por su tamaño.</p>
+<p>Y vemos que la mayor parte de la variación del precio por metro cuadrado ocurre dentro de cada zona, una vez que controlamos por el tamaño de las casas. La variación dentro de cada zona es aproximadamente simétrica, aunque la cola derecha es ligeramente más larga con algunos valores extremos.</p>
+</section>
 </section>
 <section id="factor-y-respuesta-numéricos-opcional" class="level2" data-number="1.6">
 <h2 data-number="1.6" class="anchored" data-anchor-id="factor-y-respuesta-numéricos-opcional"><span class="header-section-number">1.6</span> Factor y respuesta numéricos (opcional)</h2>
