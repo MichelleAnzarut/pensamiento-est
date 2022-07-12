@@ -87,7 +87,6 @@ que estamos usando ahora son los cuantiles *tipo 4*:
 
 ```{r}
 #| code-fold: false
-}
 quantile(cuenta$cuenta_total, probs = c(6/244, 239/244), type = 4)
 ```
 
