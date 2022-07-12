@@ -16,8 +16,8 @@ Empezaremos con ejemplos de inferencia causal y consideramos el ejemplo
 de (@box78).
 
 Supongamos que un jardinero aficionado tiene un fertilizante, y quiere ver
-si es efectivo agregarlo a sus plantes. Nuestro jardinero solamente tiene
-una línea donde caben 16 plantas.
+si tiene un efecto agregarlo a sus plantas. Nuestro jardinero solamente tiene
+una línea donde caben 20 plantas.
 
 Cuando las plantas crezcan, observaremos *variabilidad*, independientemente
 de si se usa fertilizante o no. Esta variabilidad proviene de muchos factores 
@@ -28,9 +28,9 @@ El jardinero escogió algunos lugares dónde poner el fertilizante y dónde no.
 El resultado que obtuvo es:
 
 ```{r}
-res_obs <- tibble(planta = 1:16,
-       T = c("nf", "nf", "f", "f", "nf", "f", "f", "f", "nf", "nf", "f", "nf", "f", "f", "nf", "f"),
-       y = c(16.9, 19.4, 27.6, 26.7, 20.3, 26.5, 18.2, 19.9, 14.5, 15.1, 29.1, 15.2, 23.5, 24.8, 20.5, 21.2) / 2) |> 
+res_obs <- tibble(planta = 1:20,
+       T = c("nf", "nf", "f", "f", "nf", "f", "f", "f", "nf", "nf", "f", "nf", "f", "f", "nf", "f", "f", "nf", "f", "nf"),
+       y = c(16.9, 19.4, 22.6, 26.7, 22.3, 26.5, 18.2, 19.9, 14.5, 15.1, 29.1, 15.2, 23.5, 24.8, 20.5, 21.2, 22.3, 20.1, 28.1, 21.2) / 2) |> 
   mutate(y_f = ifelse(T == "nf", y, NA),
          y_nf = ifelse(T == "f", y, NA))
 res_obs |> select(planta, T, y)
@@ -48,7 +48,8 @@ experimento, obtuvimos:
 
 ```{r}
 ggplot(res_obs, aes(y, colour = T)) +
-  stat_ecdf()
+  stat_ecdf() + 
+  geom_segment(x = 11.2, xend = 11.2, y = 0.362, yend = 0.636+0.362, colour = "black")
 ```
 La diferencia más grande en estas curvas es:
 
@@ -57,21 +58,21 @@ ks_est_2 <- function(datos, grupo){
   sep_tbl <- group_split(datos, {{ grupo }})
   invisible(ks.test(sep_tbl[[1]]$y, sep_tbl[[2]]$y))$statistic
 }
-```
-
-
-
-```{r}
 resumen <- res_obs |> 
   summarise(D = ks_est_2(res_obs, T)) 
 resumen
 ```
-Por lo que las plantas fertilizadas tuvieron un resultado mejor que las no fertilizadas.
+
+Parece ser que las plantas con fertilizante tuvieron mejores resultados
+(la distribución de las fertilizadas está recorrida hacia la derecha).
 El problema aquí es que las plantas tienen variabilidad, y la diferencia que observamos,
 que no es muy grande, podría deberse a esa variabilidad, y no tener qué ver con
 el fertilizante.
 
-Reescribimos nuestros datos como
+¿Cómo juzgamos si este resultado puede atribuirse a variabilidad en el crecimiento
+de cada planta?
+
+Reescribimos nuestros datos como:
 
 ```{r}
 res_obs
@@ -91,12 +92,18 @@ bajo_nula
 ```
 
 
+
 Bajo esta hipótesis, podemos calcular qué pasaría
 si hubiéramos escogido distintas plantas para el tratamiento de fertilizante.
-Simplemente consideramos todas las permutaciones
-de la columna $T$, y vemos el valor que tiene nuestra estadística en cada caso.
 
-Podemos simular una gran cantidad de permutaciones
+Simplemente consideramos todas las permutaciones
+de la columna $T$, y vemos el valor que tiene nuestra estadística $D$ en cada caso.
+La distribución resultante es construida bajo la hipótesis de que el fertilizante
+no tiene efecto, y muestra la variabilidad de nuestra estadística bajo
+esta hipótesis.
+
+Usualmente, en lugar de calcular todas las permutaciones, simulamos un
+número grande de ellas (de mil a 10 mil, por ejemplo). Abajo mostramos dos ejemplos:
 
 ```{r}
 permutar_est <- function(datos_tbl){
@@ -124,30 +131,36 @@ perms_dist <- map_df(1:1000, function(i){
 })
 ```
 
-```{r}
+```{r, fig.width = 5, fig.height = 4}
 ggplot(perms_dist, aes(sample = D)) +
   geom_qq(distribution = qunif) +
-  geom_hline(yintercept = resumen$D, colour = "red")
+  geom_hline(yintercept = resumen$D, colour = "red") +
+  xlab("f") + ylab("valor de D") +
+  labs(subtitle = "Distribución nula de referencia") +
+  annotate("text", x = 0.1 , y = 0.7, label = "Valor observado", colour = "red")
 ```
 
-Y aquí vemos **todos** los posibles resultados bajo distintas asignaciones del
-fertilizante, **bajo la hipótesis** del que el fertilizante no tiene ningún efecto.
+Y aquí vemos todos los posibles resultados bajo distintas asignaciones del
+fertilizante, *bajo la hipótesis* del que el fertilizante no tiene ningún efecto.
 Adicionalmente, marcamos el valor que observamos en el experimento. 
 
 Como vemos, el resultado que obtuvimos está en el lado alto de la destribución.
 Parece ser que el fertilizante tiene algún efecto.
 
-Sin embargo, hay un hueco en nuestro argumento. Por ejemplo, 
+Sin embargo, **hay un hueco en nuestro argumento**. Por ejemplo, 
 
 - ¿Qué pasaría si el jardinero decidió poner el fertilizante en plantas más grandes o
 que se veían más fuertes para "aprovechar mejor el fertilizante"?
 - ¿Qué pasaría si el jardinero decidió poner el fertilizante a las plantas que
-reciben más horas de sol?
+reciben menos horas de sol para "ayudarles"?
 
 Si esto es cierto, entonces nuestro argumento no es válido. Quizá la diferencia
-no es rande porque el fertilizante se aplicó a plantas con más potencial desde un principio.
+es grande porque el fertilizante se aplicó a plantas con más potencial desde un principio.
 
 Una solución simple es la siguiente:
+
+:::callout-tip
+# Aleatorización al rescate
 
 - Supongamos que le recomendamos al jardinero al principio escoger al azar una
 asignación del tratamiento.
@@ -155,13 +168,18 @@ asignación del tratamiento.
 **bajo la hipótesis de que el fertilizante no tiene efecto** es
 
 ```{r}
-mean(perms_dist$D >= resumen$D)
+2 * mean(perms_dist$D >= resumen$D)
 ```
+:::
+
+Llamamos a este valor-p de la prueba, y cuanto más chico es, mayor evidencia tenemos 
+contra la hipótesis nula.
+
 - Este valor es bajo, y da evidencia de que el fertilizante ayuda a las plantas. 
-Hay una probabilidad  muy baja de que por azar el jardinero haya escogido una
+Hay una probabilidad  baja de que por azar el jardinero haya escogido una
 asignación que produce una diferencia tan grande si el fertilizante no ayuda.
 
-- Sin embargo, este argumento no funciona si el jardinero intentó "optimizar" la aplicación
+- Este argumento no funciona si el jardinero intentó "optimizar" la aplicación
 del fertilizante. En ese caso, quizá activamente buscó una configuración que 
 favorece al fertilizante.
 
@@ -169,7 +187,12 @@ favorece al fertilizante.
 correctamente la probabilidad de obtener un resultado tan grande o mayor del que
 observamos si la hipótesis nula es cierta.
 
-Otra idea es hacer una prueba visual
+## Pruebas de hipótesis visuales
+
+Otra idea es hacer una prueba visual. Primero graficamos varias replicaciones
+de datos nulos, es decir, datos en donde hemos permutado al azar la columna
+de tratamiento. Entrenamos nuestra percepción a variaciones consistentes con la
+hipótesis nula:
 
 ```{r}
 library(nullabor)
@@ -178,16 +201,16 @@ set.seed(83814)
 # comenzamos con rorsach, viendo datos nulos
 reps_rorschach <- rorschach(method = null_permute("T"), n = 20, res_obs) |> 
   as_tibble()
-```
-
-
-```{r}
 ggplot(reps_rorschach, aes(sample = y, colour = T, group = T)) +
   stat_qq(distribution = stats::qunif) +
   stat_qq_line(distribution = stats::qunif, fullrange = TRUE, line_p = c(0.10, 0.90)) +
   facet_wrap(~ .sample) + theme(strip.background =element_rect(fill="gray85"))
 ```
-Y ahora hacemos nuestra prueba 
+
+Y ahora hacemos nuestra prueba. En la siguiente gráfica 19 cajas tienen datos
+nulos, y una caja tiene los datos verdaderos.
+
+¿Puedes identificar los datos verdaderos?
 
 
 ```{r}
@@ -199,9 +222,10 @@ ggplot(reps, aes(sample = y, colour = T, group = T)) +
   facet_wrap(~ .sample) + theme(strip.background =element_rect(fill="gray85"))
 ```
 
-- Otra vez, esta prueba es exacta: la probabilidad 
+- Esta prueba es exacta: la probabilidad 
 de identificar los datos correctamente cuando el fertilizante no tiene efecto es
-menor o igual a 0.05 (valor $p$).
+menor o igual a 0.05 (valor $p$). Esta es la probabilidad de equivocadamente
+declarar que tenemos evidencia de que la hipótesis nula no se cumple.
 
 
 

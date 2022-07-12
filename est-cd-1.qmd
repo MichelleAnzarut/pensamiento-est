@@ -93,9 +93,9 @@ La confirmación de estas hipótesis, dependiendo de su forma, puede ser relativ
 
 ## Procesos generadores de datos {.unnumbered}
 
-ótese que en todas estas preguntas hemos tenido que recurrir a conocimientos generales y de dominio para interpretar y hacer hipótesis acerca de lo que vemos en la gráfica. Una visión descontextualizada no tiene mucha utilidad. Las explicaciones son típicamente complejas e intervienen distintos aspectos del comportamiento de actores, sistemas, y métodos de recolección de datos involucrados.
+Nótese que en todas estas preguntas hemos tenido que recurrir a conocimientos generales y de dominio para interpretar y hacer hipótesis acerca de lo que vemos en la gráfica. Una visión descontextualizada no tiene mucha utilidad. Las explicaciones son típicamente complejas e intervienen distintos aspectos del comportamiento de actores, sistemas, y métodos de recolección de datos involucrados.
 
-::: callout-tip
+::: callout-note
 # El proceso generador de datos
 
 Al conjunto de esos aspectos que determinan los datos que finalmente observamos le llamamos el **proceso generador de datos**. Para datos que observamos "naturalmente" este proceso
@@ -103,10 +103,10 @@ generalmente es complicado.
 
 :::
 
-En la Ciencia de Datos buscamos entender las partes importantes del proceso que los generó:
+En la Ciencia de Datos buscamos entender las partes importantes del proceso generador
 
-- La descripición correcta de los datos se logra con ese entendimiento de dominio y del proceso generador.
-- La formulación y refinamiento de preguntas importantes y sus respuestas 
+- La **descripición** correcta de los datos se logra con ese entendimiento de dominio y del proceso generador.
+- La formulación y refinamiento de **preguntas** importantes y sus respuestas 
 acerca de estos datos requiere entendimiento de dominio y del proceso generador.
 - Más tarde, veremos que la inferencia estadística también depende de este entendimiento,
 junto con propuestas del *diseño estadístico* que nos permite obtener los datos
@@ -155,7 +155,7 @@ calculos_agregada |> pivot_wider(names_from = resultado, values_from = n) |>
    kable()
 ```
 
-Esta tabla descriptiva es una reescritura de los datos, y no hemos resumido nada todavía. Sin embargo, esta tabla es apropiada para empezar a contestar la pregunta:
+Esta tabla descriptiva es una reescritura de los datos, y no hemos resumido nada todavía. Pero es apropiada para empezar a contestar la pregunta:
 
 -   ¿Qué indican estos datos acerca de qué tratamiento es mejor? ¿Acerca del tamaño de cálculos grandes o chicos?
 

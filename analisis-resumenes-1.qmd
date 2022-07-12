@@ -86,6 +86,8 @@ Hay otras maneras de definir los cuantiles que pueden ser más convenientes. Los
 que estamos usando ahora son los cuantiles *tipo 4*:
 
 ```{r}
+#| code-fold: false
+}
 quantile(cuenta$cuenta_total, probs = c(6/244, 239/244), type = 4)
 ```
 
@@ -174,8 +176,8 @@ o están por debajo de cada valor en el eje horizontal.
 - En análisis de datos, es más frecuente utilizar la función de cuantiles pues
 existen versiones más generales que son útiles, por ejemplo, para evaluar ajuste
 de modelos probabilísticos
-- En la teoría, generalmente es más común utilizar la fda empírica, que nos
-da una distribución de probabilidad acumulada.
+- En la teoría, generalmente es más común utilizar la fda empírica, 
+que tiene una única definición que veremos coincide con definiciones teóricas.
 
 
 ## Media y desviación estándar
@@ -190,13 +192,16 @@ es
 $$\hat{\sigma} =\sqrt{\frac{1}{n}\sum (x_i - \bar{x})^2}$$
 
 En general, no son muy apropiadas para iniciar el análisis exploratorio,
+y se requieren cuidados adicionales al utilizarlas,
 pues:
 
 - Son medidas más difíciles de interpretar y explicar que los cuantiles. En
 este sentido, son medidas especializadas. Como ejercicio, intenta explicar
-intuitivamente qué es la media. Después prueba con la desviación estándar.
+intuitivamente qué es la media. Después prueba con la desviación estándar. Sin embargo, la mediana o el rango intercuartílico son 
+fáciles de explicar.
 - No son resistentes a valores atípicos o erróneos. Su falta de resistencia
-los vuelve poco útiles en las primeras etapas de descripción.
+los vuelve poco útiles en las primeras etapas de descripción, y 
+muchas veces requieren transformaciones o cuidados adicionales/supuestos para evitar mal comportamiento por esa falta de resistencia.
 
 
 Sin embargo,
@@ -209,86 +214,6 @@ que estudiemos modelos de probabilidad básicos.
 antes, conviene usar estas medidas conocidas. 
 
 
-## Comparando grupos con variables numéricas
-
-## Ejemplo: precios de casas {-}
-
-
-Consideramos [datos de precios de ventas de la ciudad de Ames, Iowa](https://www.kaggle.com/prevek18/ames-housing-dataset).
-Nos interesa entender la variación del precio de las casas.
-
-```{r, echo = FALSE, message = FALSE, warning = FALSE}
-source("R/casas_preprocesamiento.R")
-set.seed(21)
-casas_completo <- casas
-casas <- casas_completo |> sample_frac(0.9)
-casas_holdout <- casas_completo |> anti_join(casas)
-nombres <- casas |> group_by(nombre_zona) |> tally() |> pull(nombre_zona)
-zonas <- nombres[table(casas$nombre_zona) > 30]
-casas <- casas |> mutate(nombre_zona = fct_reorder(nombre_zona, precio_miles)) |> 
-  filter(nombre_zona %in% zonas) |> 
-  mutate(precio_m2 = precio_m2_miles * 1000)
-```
-
-Calculamos primeros unos cuantiles de los precios de las casas:
-
-```{r}
-quantile(casas |>  pull(precio_miles)) 
-```
-
-Una primera comparación que podemos hacer es considerar las distintas zonas de la ciudad.
-Podemos usar diagramas de caja y brazos para **comparar** precios en distintas zonas
-de la ciudad:
-
-```{r}
-ggplot(casas, aes(x = nombre_zona, y = precio_miles)) + geom_boxplot() + coord_flip()
-```
-Nótese que de cada zona, los datos tienen una cola derecha más larga que la izquierda, e incluso hay valores extremos en la cola derecha que exceden el 
-rango de variación usual. Una razón por la que puede suceder esto es
-que haya características particulares que agregan valor considerable a una
-casa, por ejemplo, el tamaño, una alberca, etc.
-
-En primer lugar, podemos considerar el área de las casas. En lugar
-de graficar el precio, graficamos el precio por metro cuadrado, por ejemplo:
-
-```{r, echo = FALSE}
-casas <- casas |> 
-  mutate(nombre_zona = fct_reorder(nombre_zona, precio_m2_miles)) |> 
-  filter(nombre_zona %in% zonas)
-```
-
-```{r}
-ggplot(casas, aes(x = nombre_zona, y = precio_m2)) + geom_boxplot() + coord_flip()
-```
-Nótese ahora que la variación alrededor de la media es mucho más simétrica,
-y ya no vemos tantos datos extremos. Aún más, la variación dentro de cada zona 
-parece ser similar, y podríamos describir restos datos de la siguiente forma:
-
-Cuantificamos la variación que observamos de zona a zona y la variación que hay dentro de zonas. La 
-variación que vemos entre las medianas de la zona es:
-
-```{r}
-casas |> group_by(nombre_zona) |> 
-  summarise(mediana_zona = median(precio_m2)) |> 
-  pull(mediana_zona) |> quantile() |> round()
-```
-
-Y las variaciones con respecto a las medianas **dentro** de cada zona, agrupadas, se resume como:
-
-```{r}
-quantile(casas |> group_by(nombre_zona) |> 
-  mutate(residual = precio_m2 - median(precio_m2)) |> 
-  pull(residual)) |> round()
-```
-
-Nótese que este último paso tiene sentido pues la variación dentro de las zonas, en términos de precio por metro
-cuadrado, es similar. Esto no lo podríamos hacer de manera efectiva si hubiéramos usado el precio de las casas sin
-ajustar por su tamaño.
-
-Y vemos que la mayor parte de la variación del precio por metro cuadrado ocurre dentro de cada
-zona, una vez que controlamos por el tamaño de las casas. La variación dentro de cada zona
-es aproximadamente simétrica, aunque la cola derecha es ligeramente más larga con algunos valores
-extremos.
 
 ## Distribuciones sesgadas y atípicos
 
@@ -369,6 +294,88 @@ quantile(enigh$ingreso_mensual_miles)
 ```
 **Nota**: esto no sucede con medidas más complicadas como la media. El exponencial
 de la media de los logaritmos no es la media en la escala original.
+
+## Comparando grupos con variables numéricas
+
+### Ejemplo: precios de casas {-}
+
+
+Consideramos [datos de precios de ventas de la ciudad de Ames, Iowa](https://www.kaggle.com/prevek18/ames-housing-dataset).
+Nos interesa entender la variación del precio de las casas.
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+source("R/casas_preprocesamiento.R")
+set.seed(21)
+casas_completo <- casas
+casas <- casas_completo |> sample_frac(0.9)
+casas_holdout <- casas_completo |> anti_join(casas)
+nombres <- casas |> group_by(nombre_zona) |> tally() |> pull(nombre_zona)
+zonas <- nombres[table(casas$nombre_zona) > 30]
+casas <- casas |> mutate(nombre_zona = fct_reorder(nombre_zona, precio_miles)) |> 
+  filter(nombre_zona %in% zonas) |> 
+  mutate(precio_m2 = precio_m2_miles * 1000)
+```
+
+Calculamos primeros unos cuantiles de los precios de las casas:
+
+```{r}
+quantile(casas |>  pull(precio_miles)) 
+```
+
+Una primera comparación que podemos hacer es considerar las distintas zonas de la ciudad.
+Podemos usar diagramas de caja y brazos para **comparar** precios en distintas zonas
+de la ciudad:
+
+```{r}
+ggplot(casas, aes(x = nombre_zona, y = precio_miles)) + geom_boxplot() + coord_flip()
+```
+Nótese que de cada zona, los datos tienen una cola derecha más larga que la izquierda, e incluso hay valores extremos en la cola derecha que exceden el 
+rango de variación usual. Una razón por la que puede suceder esto es
+que haya características particulares que agregan valor considerable a una
+casa, por ejemplo, el tamaño, una alberca, etc.
+
+En primer lugar, podemos considerar el área de las casas. En lugar
+de graficar el precio, graficamos el precio por metro cuadrado, por ejemplo:
+
+```{r, echo = FALSE}
+casas <- casas |> 
+  mutate(nombre_zona = fct_reorder(nombre_zona, precio_m2_miles)) |> 
+  filter(nombre_zona %in% zonas)
+```
+
+```{r}
+ggplot(casas, aes(x = nombre_zona, y = precio_m2)) + geom_boxplot() + coord_flip()
+```
+Nótese ahora que la variación alrededor de la media es mucho más simétrica,
+y ya no vemos tantos datos extremos. Aún más, la variación dentro de cada zona 
+parece ser similar, y podríamos describir restos datos de la siguiente forma:
+
+Cuantificamos la variación que observamos de zona a zona y la variación que hay dentro de zonas. La 
+variación que vemos entre las medianas de la zona es:
+
+```{r}
+casas |> group_by(nombre_zona) |> 
+  summarise(mediana_zona = median(precio_m2)) |> 
+  pull(mediana_zona) |> quantile() |> round()
+```
+
+Y las variaciones con respecto a las medianas **dentro** de cada zona, agrupadas, se resume como:
+
+```{r}
+quantile(casas |> group_by(nombre_zona) |> 
+  mutate(residual = precio_m2 - median(precio_m2)) |> 
+  pull(residual)) |> round()
+```
+
+Nótese que este último paso tiene sentido pues la variación dentro de las zonas, en términos de precio por metro
+cuadrado, es similar. Esto no lo podríamos hacer de manera efectiva si hubiéramos usado el precio de las casas sin
+ajustar por su tamaño.
+
+Y vemos que la mayor parte de la variación del precio por metro cuadrado ocurre dentro de cada
+zona, una vez que controlamos por el tamaño de las casas. La variación dentro de cada zona
+es aproximadamente simétrica, aunque la cola derecha es ligeramente más larga con algunos valores
+extremos.
+
 
 ## Factor y respuesta numéricos (opcional)
 
