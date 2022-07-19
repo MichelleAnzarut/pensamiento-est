@@ -1,0 +1,8 @@
+# Resúmenes y descripciones de datos
+
+En esta parte, que consideramos más como un repaso, recordaremos herramientas
+básicas para:
+
+- Describir conjuntos de datos numéricos y categóricos
+- Distintos resúmenes de datos que se pueden usar para esta descripción.
+

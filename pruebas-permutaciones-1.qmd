@@ -1,0 +1,14 @@
+# Pruebas de hipótesis {#pruebas1}
+
+
+```{r, message = FALSE, echo = FALSE}
+library(tidyverse)
+library(lubridate)
+library(ggthemes)
+library(nullabor)
+library(kableExtra)
+ggplot2::theme_set(ggplot2::theme_minimal())
+source("R/funciones_auxiliares_notas.R")
+```
+
+En esta parte detallaremos el uso de pruebas de hipótesis 

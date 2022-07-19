@@ -8,12 +8,15 @@ book:
   chapters:
     - index.qmd
     - part: est-cd-1.qmd
+    - part: resumenes.qmd
       chapters:
         - analisis-resumenes-1.qmd
         - analisis-resumenes-2.qmd
     - part: intro-inferencia.qmd
       chapters:
+        - intro-pruebas-hipotesis.qmd
         - pruebas-hipotesis-aleatorizacion.qmd
+        - pruebas-hipotesis-2.qmd
         - estimacion-aleatorizacion.qmd
     - part: probabilidad.qmd
       chapters:
