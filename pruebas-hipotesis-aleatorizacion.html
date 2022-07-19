@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Pensamiento estadístico - 3&nbsp; Aleatorización en inferencia causal</title>
+<title>Pensamiento estadístico - 4&nbsp; Aleatorización en inferencia causal</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -107,8 +107,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./estimacion-aleatorizacion.html" rel="next">
-<link href="./intro-inferencia.html" rel="prev">
+<link href="./pruebas-hipotesis-2.html" rel="next">
+<link href="./intro-pruebas-hipotesis.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -148,7 +148,7 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Aleatorización en inferencia causal</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Aleatorización en inferencia causal</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -173,17 +173,20 @@ div.csl-indent {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Introducción</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Acerca del curso</a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">Estadística y ciencia de datos</span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./est-cd-1.html" class="sidebar-item-text sidebar-link">Estadística y ciencia de datos</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a href="./resumenes.html" class="sidebar-item-text sidebar-link">Resúmenes y descripciones de datos</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./analisis-resumenes-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Resúmenes para datos numéricos</span></a>
@@ -199,26 +202,6 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./intro-inferencia.html" class="sidebar-item-text sidebar-link">Inferencia estadística</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./pruebas-hipotesis-aleatorizacion.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Aleatorización en inferencia causal</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./estimacion-aleatorizacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Inferencia por intervalos</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="./probabilidad.html" class="sidebar-item-text sidebar-link">Introducción a teoría de probabilidades</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -226,29 +209,29 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modelo-prob.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Básicos de probabilidad y simulación</span></a>
+  <a href="./intro-pruebas-hipotesis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introducción a pruebas de hipótesis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./prob-condicional.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Probabilidad condicional e independencia</span></a>
+  <a href="./pruebas-hipotesis-aleatorizacion.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Aleatorización en inferencia causal</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modelos-continuos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modelos probabilísticos para variables continuas</span></a>
+  <a href="./pruebas-hipotesis-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Más de pruebas de hipótesis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./inferencia-modelos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inferencia con modelos probabilísticos</span></a>
+  <a href="./estimacion-aleatorizacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Inferencia por intervalos</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./inferencia-bayesiana.html" class="sidebar-item-text sidebar-link">Estadística Bayesiana</a>
+            <a href="./probabilidad.html" class="sidebar-item-text sidebar-link">Introducción a teoría de probabilidades</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -256,7 +239,37 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modelos-bayesianos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Inferencia bayesiana</span></a>
+  <a href="./modelo-prob.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Básicos de probabilidad y simulación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prob-condicional.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probabilidad condicional e independencia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modelos-continuos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Modelos probabilísticos para variables continuas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inferencia-modelos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Inferencia con modelos probabilísticos</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./inferencia-bayesiana.html" class="sidebar-item-text sidebar-link">Estadística Bayesiana</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modelos-bayesianos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Inferencia bayesiana</span></a>
   </div>
 </li>
       </ul>
@@ -270,7 +283,7 @@ div.csl-indent {
     <h2 id="toc-title">Indice de contenidos</h2>
    
   <ul>
-  <li><a href="#pruebas-de-hipótesis-visuales" id="toc-pruebas-de-hipótesis-visuales" class="nav-link active" data-scroll-target="#pruebas-de-hipótesis-visuales"> <span class="header-section-number">3.1</span> Pruebas de hipótesis visuales</a></li>
+  <li><a href="#pruebas-de-hipótesis-visuales" id="toc-pruebas-de-hipótesis-visuales" class="nav-link active" data-scroll-target="#pruebas-de-hipótesis-visuales"> <span class="header-section-number">4.1</span> Pruebas de hipótesis visuales</a></li>
   </ul>
 </nav>
     </div>
@@ -279,7 +292,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Aleatorización en inferencia causal</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Aleatorización en inferencia causal</span></h1>
 </div>
 
 
@@ -543,8 +556,8 @@ Aleatorización al rescate
 <li><p>Este argumento no funciona si el jardinero intentó “optimizar” la aplicación del fertilizante. En ese caso, quizá activamente buscó una configuración que favorece al fertilizante.</p></li>
 <li><p>Esta prueba es exacta, en el sentido de que el valor-p que calculamos refleja correctamente la probabilidad de obtener un resultado tan grande o mayor del que observamos si la hipótesis nula es cierta.</p></li>
 </ul>
-<section id="pruebas-de-hipótesis-visuales" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="pruebas-de-hipótesis-visuales"><span class="header-section-number">3.1</span> Pruebas de hipótesis visuales</h2>
+<section id="pruebas-de-hipótesis-visuales" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="pruebas-de-hipótesis-visuales"><span class="header-section-number">4.1</span> Pruebas de hipótesis visuales</h2>
 <p>Otra idea es hacer una prueba visual. Primero graficamos varias replicaciones de datos nulos, es decir, datos en donde hemos permutado al azar la columna de tratamiento. Entrenamos nuestra percepción a variaciones consistentes con la hipótesis nula:</p>
 <div class="cell">
 <details>
@@ -573,7 +586,7 @@ Aleatorización al rescate
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>decrypt("GgME sxax n1 t8Snan81 Y9")</code></pre>
+<pre><code>decrypt("Rysq OI0I Yl M9HY0Y9l m3")</code></pre>
 </div>
 <details>
 <summary>Código</summary>
@@ -698,13 +711,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./intro-inferencia.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Inferencia estadística</span>
+      <a href="./intro-pruebas-hipotesis.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introducción a pruebas de hipótesis</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./estimacion-aleatorizacion.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Inferencia por intervalos</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./pruebas-hipotesis-2.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Más de pruebas de hipótesis</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

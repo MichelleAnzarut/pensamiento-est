@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Pensamiento estadístico - 5&nbsp; Más de pruebas de hipótesis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./estimacion-aleatorizacion.html" rel="next">
+<link href="./pruebas-hipotesis-aleatorizacion.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Sín resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la busqueda",
+    "search-hide-matches-text": "Esconder resultados adicionales",
+    "search-more-match-text": "hay más resultados en este documento",
+    "search-more-matches-text": "más resultados en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Eviar"
+  }
+}</script>
+
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Más de pruebas de hipótesis</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Pensamiento estadístico</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Acerca del curso</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">Estadística y ciencia de datos</span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./resumenes.html" class="sidebar-item-text sidebar-link">Resúmenes y descripciones de datos</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analisis-resumenes-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Resúmenes para datos numéricos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./analisis-resumenes-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Datos univariados categóricos</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./intro-inferencia.html" class="sidebar-item-text sidebar-link">Inferencia estadística</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro-pruebas-hipotesis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introducción a pruebas de hipótesis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pruebas-hipotesis-aleatorizacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Aleatorización en inferencia causal</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pruebas-hipotesis-2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Más de pruebas de hipótesis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./estimacion-aleatorizacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Inferencia por intervalos</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./probabilidad.html" class="sidebar-item-text sidebar-link">Introducción a teoría de probabilidades</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modelo-prob.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Básicos de probabilidad y simulación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prob-condicional.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probabilidad condicional e independencia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modelos-continuos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Modelos probabilísticos para variables continuas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inferencia-modelos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Inferencia con modelos probabilísticos</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./inferencia-bayesiana.html" class="sidebar-item-text sidebar-link">Estadística Bayesiana</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modelos-bayesianos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Inferencia bayesiana</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Indice de contenidos</h2>
+   
+  <ul>
+  <li><a href="#prueba-de-permutaciones-para-proporciones" id="toc-prueba-de-permutaciones-para-proporciones" class="nav-link active" data-scroll-target="#prueba-de-permutaciones-para-proporciones">Prueba de permutaciones para proporciones</a>
+  <ul class="collapse">
+  <li><a href="#valor-p" id="toc-valor-p" class="nav-link" data-scroll-target="#valor-p">Valor p</a></li>
+  </ul></li>
+  <li><a href="#tomadores-de-té-2" id="toc-tomadores-de-té-2" class="nav-link" data-scroll-target="#tomadores-de-té-2">Tomadores de té 2</a></li>
+  <li><a href="#ejemplo-tiempos-de-fusión" id="toc-ejemplo-tiempos-de-fusión" class="nav-link" data-scroll-target="#ejemplo-tiempos-de-fusión">Ejemplo: tiempos de fusión</a></li>
+  <li><a href="#ejemplo-tiempos-de-fusión-2" id="toc-ejemplo-tiempos-de-fusión-2" class="nav-link" data-scroll-target="#ejemplo-tiempos-de-fusión-2">Ejemplo: tiempos de fusión 2</a></li>
+  <li><a href="#ojo-otros-tipos-de-hipótesis-nulas" id="toc-ojo-otros-tipos-de-hipótesis-nulas" class="nav-link" data-scroll-target="#ojo-otros-tipos-de-hipótesis-nulas">Ojo: otros tipos de hipótesis nulas</a></li>
+  <li><a href="#comparando-distribuciones" id="toc-comparando-distribuciones" class="nav-link" data-scroll-target="#comparando-distribuciones">Comparando distribuciones</a></li>
+  <li><a href="#permutaciones-y-el-lineup" id="toc-permutaciones-y-el-lineup" class="nav-link" data-scroll-target="#permutaciones-y-el-lineup">Permutaciones y el lineup</a></li>
+  <li><a href="#comparaciones-con-lineup-2" id="toc-comparaciones-con-lineup-2" class="nav-link" data-scroll-target="#comparaciones-con-lineup-2">Comparaciones con lineup 2</a></li>
+  <li><a href="#la-crisis-de-replicabilidad" id="toc-la-crisis-de-replicabilidad" class="nav-link" data-scroll-target="#la-crisis-de-replicabilidad">La “crisis de replicabilidad”</a></li>
+  <li><a href="#el-jardín-de-los-senderos-que-se-bifurcan" id="toc-el-jardín-de-los-senderos-que-se-bifurcan" class="nav-link" data-scroll-target="#el-jardín-de-los-senderos-que-se-bifurcan">El jardín de los senderos que se bifurcan</a></li>
+  <li><a href="#ejemplo-decisiones-de-análisis-y-valores-p" id="toc-ejemplo-decisiones-de-análisis-y-valores-p" class="nav-link" data-scroll-target="#ejemplo-decisiones-de-análisis-y-valores-p">Ejemplo: decisiones de análisis y valores p</a></li>
+  <li><a href="#alternativas-o-soluciones" id="toc-alternativas-o-soluciones" class="nav-link" data-scroll-target="#alternativas-o-soluciones">Alternativas o soluciones</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Más de pruebas de hipótesis</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+
+</div>
+<section id="prueba-de-permutaciones-para-proporciones" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="prueba-de-permutaciones-para-proporciones">Prueba de permutaciones para proporciones</h2>
+<p>Veremos otro ejemplo donde podemos hacer más concreta la idea de <strong>distribución nula o de referencia</strong> usando pruebas de permutaciones. Supongamos que con nuestra muestra de tomadores de té, queremos probar la siguiente hipótesis nula:</p>
+<ul>
+<li>Los tomadores de té en bolsas exclusivamente usan azúcar más a tasas simillares que los tomadores de té suelto (que pueden o no también tomar té en bolsita).</li>
+</ul>
+<p>Los datos que obtuvimos en nuestra encuesta, en conteos, son:</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>te_azucar <span class="ot">&lt;-</span> tea <span class="sc">|&gt;</span> <span class="fu">select</span>(how, sugar) <span class="sc">|&gt;</span> </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">how =</span> <span class="fu">ifelse</span>(how <span class="sc">==</span> <span class="st">"tea bag"</span>, <span class="st">"bolsa_exclusivo"</span>, <span class="st">"suelto o bolsa"</span>))</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>te_azucar <span class="sc">|&gt;</span> <span class="fu">group_by</span>(how, sugar) <span class="sc">|&gt;</span> <span class="fu">tally</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(how, n) <span class="sc">|&gt;</span> </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">formatear_tabla</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+
+<table class="table table-striped table-hover table-condensed table-responsive" style="font-size: 15px; width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> sugar </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> bolsa_exclusivo </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> suelto o bolsa </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> No.sugar </td>
+   <td style="text-align:right;"> 81 </td>
+   <td style="text-align:right;"> 74 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> sugar </td>
+   <td style="text-align:right;"> 89 </td>
+   <td style="text-align:right;"> 56 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>Y en proporciones tenemos que:</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class="table table-striped table-hover table-condensed table-responsive" style="font-size: 15px; width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> how </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> prop_azucar </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> n </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> bolsa_exclusivo </td>
+   <td style="text-align:right;"> 0.52 </td>
+   <td style="text-align:right;"> 170 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> suelto o bolsa </td>
+   <td style="text-align:right;"> 0.43 </td>
+   <td style="text-align:right;"> 130 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>Pero distintas muestras podrían haber dado distintos resultados. Nos preguntamos que tan fuerte es la evidencia en contra de que en realidad los dos grupos de personas usan azúcar en proporciones similares, y la diferencia que vemos se puede atribuir a variación muestral.</p>
+<p>En este ejemplo, podemos usar una <strong>estádistica de prueba numérica</strong>, por ejemplo, la diferencia entre las dos proporciones:</p>
+<p><span class="math display">\[p_1 - p_2\]</span>.</p>
+<p>(tomadores de en bolsa solamente vs.&nbsp;suelto y bolsa). El proceso sería entonces:</p>
+<ul>
+<li>La hipótesis nula es que los dos grupos tienen distribuciones iguales, que este caso quiere decir que en la población, tomadores de té solo en bolsa usan azúcar a las mismas tasas que tomadores de suelto o bolsas.</li>
+<li>Bajo nuestra hipótesis nula (proporciones iguales), producimos una cantidad grande (por ejemplo 10 mil o más) de muestras permutando las etiquetas de los grupos.</li>
+<li>Evaluamos nuestra estadística de prueba en cada una de las muestras permutadas.</li>
+<li>El conjunto de valores obtenidos nos da nuestra <em>distribución de referencia</em> (ya no estamos limitados a 20 replicaciones como en las pruebas gráficas).</li>
+<li>Y la pregunta clave es: ¿el valor de la estadística en nuestra muestra es <em>extrema</em> en comparación a la distribución de referencia?</li>
+</ul>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ESta función calcula la diferencia entre grupos de interés</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>calc_diferencia <span class="ot">&lt;-</span> <span class="cf">function</span>(datos){</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  datos <span class="sc">|&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">usa_azucar =</span> <span class="fu">as.numeric</span>(sugar <span class="sc">==</span> <span class="st">"sugar"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(how) <span class="sc">|&gt;</span> </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">prop_azucar =</span> <span class="fu">mean</span>(usa_azucar)) <span class="sc">|&gt;</span> </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(how, prop_azucar) <span class="sc">|&gt;</span> </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">diferencia_prop =</span> bolsa_exclusivo <span class="sc">-</span> <span class="st">`</span><span class="at">suelto o bolsa</span><span class="st">`</span>) <span class="sc">|&gt;</span> <span class="fu">pull</span>(diferencia_prop)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># esta función hace permutaciones y calcula la diferencia para cada una</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>permutaciones_est <span class="ot">&lt;-</span> <span class="cf">function</span>(datos, variable, calc_diferencia, <span class="at">n =</span> <span class="dv">1000</span>){</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calcular estadística para cada grupo</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  permutar <span class="ot">&lt;-</span> <span class="cf">function</span>(variable){</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sample</span>(variable, <span class="fu">length</span>(variable))</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  tbl_perms <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">.sample =</span> <span class="fu">seq</span>(<span class="dv">1</span>, n<span class="dv">-1</span>, <span class="dv">1</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">diferencia =</span> <span class="fu">map_dbl</span>(.sample, </span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>              <span class="sc">~</span> datos <span class="sc">|&gt;</span> <span class="fu">mutate</span>({{variable}}<span class="sc">:</span><span class="er">=</span> <span class="fu">permutar</span>({{variable}})) <span class="sc">|&gt;</span> <span class="fu">calc_diferencia</span>()))</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(tbl_perms, <span class="fu">tibble</span>(<span class="at">.sample =</span> n, <span class="at">diferencia =</span> <span class="fu">calc_diferencia</span>(datos)))</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>La diferencia observada es:</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dif_obs <span class="ot">&lt;-</span> <span class="fu">calc_diferencia</span>(te_azucar)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dif_obs <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">3</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.093</code></pre>
+</div>
+</div>
+<p>Ahora construimos nuestra distribución nula o de referencia:</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>valores_ref <span class="ot">&lt;-</span> <span class="fu">permutaciones_est</span>(te_azucar, how, calc_diferencia, <span class="at">n =</span> <span class="dv">10000</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Y graficamos nuestros resultados (con un histograma y una gráfica de cuantiles, por ejemplo). la estadística evaluada un cada una de nuestras muestras permutadas:</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>g_1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(valores_ref, <span class="fu">aes</span>(<span class="at">sample =</span> diferencia)) <span class="sc">+</span> <span class="fu">geom_qq</span>(<span class="at">distribution =</span> stats<span class="sc">::</span>qunif)  <span class="sc">+</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">"f"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"diferencia"</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">"Distribución nula o de referencia"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>g_2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(valores_ref, <span class="fu">aes</span>(<span class="at">x =</span> diferencia)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.04</span>) <span class="sc">+</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>() <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">""</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">" "</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>gridExtra<span class="sc">::</span><span class="fu">grid.arrange</span>(g_1, g_2, <span class="at">ncol =</span> <span class="dv">2</span>) </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="pruebas-hipotesis-2_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="576"></p>
+</div>
+</div>
+<p>Este es el rango de fluctuación usual para nuestra estadística *bajo la hipótesis de que los dos grupos de tomadores de té consumen té a la misma tasa.</p>
+<p>El valor que obtuvimos en nuestros datos es 0.0927602, que no es un valor extremo en la distribución de referencia que vimos arriba: esta muestra no aporta mucha evidencia en contra de que los grupos tienen distribuciones similares.</p>
+<p>Podemos graficar otra vez marcando el valor de referencia:</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Función de distribución acumulada (inverso de función de cuantiles)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>dist_perm <span class="ot">&lt;-</span> <span class="fu">ecdf</span>(valores_ref<span class="sc">$</span>diferencia)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculamos el percentil del valor observado</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>percentil_obs <span class="ot">&lt;-</span> <span class="fu">dist_perm</span>(dif_obs)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>g_1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(valores_ref, <span class="fu">aes</span>(<span class="at">sample =</span> diferencia)) <span class="sc">+</span> <span class="fu">geom_qq</span>(<span class="at">distribution =</span> stats<span class="sc">::</span>qunif)  <span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">"f"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"diferencia"</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">"Distribución nula o de referencia"</span>) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> dif_obs, <span class="at">colour =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fl">0.3</span>, <span class="at">y =</span> dif_obs <span class="sc">-</span> <span class="fl">0.05</span>, <span class="at">label =</span> <span class="st">"diferencia observada"</span>, <span class="at">colour =</span> <span class="st">"red"</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>g_2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(valores_ref, <span class="fu">aes</span>(<span class="at">x =</span> diferencia)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.04</span>) <span class="sc">+</span> </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>() <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">""</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">" "</span>) <span class="sc">+</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> dif_obs, <span class="at">colour =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> dif_obs, <span class="at">y =</span> <span class="dv">2000</span>, <span class="at">label =</span> percentil_obs,<span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.2</span>, <span class="at">colour =</span> <span class="st">"red"</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>gridExtra<span class="sc">::</span><span class="fu">grid.arrange</span>(g_1, g_2, <span class="at">ncol =</span> <span class="dv">2</span>) </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="pruebas-hipotesis-2_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="576"></p>
+</div>
+</div>
+<p>Y vemos que es un valor algo (pero no muy) extremo en la distribución de referencia que vimos arriba: esta muestra no aporta una gran cantidad de evidencia en contra de que los grupos tienen distribuciones similares, que en este caso significa que los dos grupos usan azúcar a tasas similares.</p>
+<section id="valor-p" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="valor-p">Valor p</h3>
+<p>Nótese que calculamos una cantidad adicional, que es el percentil donde nuestra observación cae en la distribución generada por las permutación. Esta cantidad puede usarse para calcular un <strong>valor p</strong>. Podemos calcular, por ejemplo:</p>
+<ul>
+<li><strong>Valor p de dos colas</strong>: Si la hipótesis nula es cierta, ¿cuál es la <strong>probabilidad</strong> de observar una diferencia <strong>tan extrema o más extrema de lo que observamos</strong>?</li>
+</ul>
+<p>Considerando en este caso interpretamos <em>extrema</em> como que cae lejos de donde a mayoría de la distribución se concentra, podemos calcular el valor p como sigue. A partir de el valor observado, consideramos cuál dato es menor: la probabilidad bajo lo hipótesis nula de observar una diferencia mayor de a que observamos, o la probabilidad de observar una diferencia menor a la que observamos. Tomamos el mínimo y multiplicamos por dos (<span class="citation" data-cites="timboot14">Hesterberg (<a href="#ref-timboot14" role="doc-biblioref">2015</a>)</span>):</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">min</span>(<span class="fu">dist_perm</span>(dif_obs), (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">dist_perm</span>(dif_obs)))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.096</code></pre>
+</div>
+</div>
+<p>Este valor p se considera como evidencia “moderada” en contra de la hipótesis nula. Valores p más chicos (observaciones más extremas en comparación con la referencia) aportan más evidencia en contra de la hipótesis de que los grupos de tomadores de té , y valores más grandes aportan menos evidencia.</p>
+</section>
+</section>
+<section id="tomadores-de-té-2" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="tomadores-de-té-2">Tomadores de té 2</h2>
+<p>Ahora hacemos una prueba de permutaciones otro par de proporciones con el mismo método. La hipótesis nula ahora es:</p>
+<ul>
+<li>Los tomadores de té Earl Gray usan azúcar a una tasa similar a los tomadores de té negro</li>
+</ul>
+<p>Los datos que obtuvimos en nuestra encuesta, en conteos, son: ::: {.cell} ::: {.cell-output-display}</p>
+
+<table class="table table-striped table-hover table-condensed table-responsive" style="font-size: 15px; width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> sugar </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> black </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> Earl Grey </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> No.sugar </td>
+   <td style="text-align:right;"> 51 </td>
+   <td style="text-align:right;"> 84 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> sugar </td>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:right;"> 109 </td>
+  </tr>
+</tbody>
+</table>
+
+<p>::: :::</p>
+<p>Y en porcentajes tenemos que:</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>prop_azucar <span class="ot">&lt;-</span> te_azucar <span class="sc">|&gt;</span> <span class="fu">group_by</span>(Tea, sugar) <span class="sc">|&gt;</span> <span class="fu">tally</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Tea) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">prop =</span> <span class="dv">100</span> <span class="sc">*</span> n <span class="sc">/</span> <span class="fu">sum</span>(n), <span class="at">n =</span> <span class="fu">sum</span>(n)) <span class="sc">|&gt;</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sugar <span class="sc">==</span> <span class="st">"sugar"</span>) <span class="sc">|&gt;</span> <span class="fu">select</span>(Tea, <span class="at">prop_azucar =</span> prop, n) <span class="sc">|&gt;</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">'% usa azúcar'</span> <span class="ot">=</span> <span class="fu">round</span>(prop_azucar)) <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>prop_azucar)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>prop_azucar <span class="sc">|&gt;</span> <span class="fu">formatear_tabla</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+
+<table class="table table-striped table-hover table-condensed table-responsive" style="font-size: 15px; width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> Tea </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> n </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> % usa azúcar </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> black </td>
+   <td style="text-align:right;"> 74 </td>
+   <td style="text-align:right;"> 31 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Earl Grey </td>
+   <td style="text-align:right;"> 193 </td>
+   <td style="text-align:right;"> 56 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>Pero distintas muestras podrían haber dado distintos resultados. Nos preguntamos que tan fuerte es la evidencia en contra de que en realidad los dos grupos de personas usan azúcar en proporciones similares, y la diferencia que vemos se puede atribuir a variación muestral.</p>
+<p>Escribimos la función que calcula diferencias para cada muestra:</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>calc_diferencia_2 <span class="ot">&lt;-</span> <span class="cf">function</span>(datos){</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  datos <span class="sc">|&gt;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">usa_azucar =</span> <span class="fu">as.numeric</span>(sugar <span class="sc">==</span> <span class="st">"sugar"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Tea) <span class="sc">|&gt;</span> </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">prop_azucar =</span> <span class="fu">mean</span>(usa_azucar)) <span class="sc">|&gt;</span> </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(Tea, prop_azucar) <span class="sc">|&gt;</span> </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">diferencia_prop =</span> <span class="st">`</span><span class="at">Earl Grey</span><span class="st">`</span> <span class="sc">-</span> black) <span class="sc">|&gt;</span> <span class="fu">pull</span>(diferencia_prop)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>La diferencia observada es:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.254</code></pre>
+</div>
+</div>
+<p>Ahora construimos nuestra distribución nula o de referencia:</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>valores_ref <span class="ot">&lt;-</span> <span class="fu">permutaciones_est</span>(te_azucar, Tea, calc_diferencia_2, <span class="at">n =</span> <span class="dv">10000</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Y podemos graficar la distribución de referencia otra vez marcando el valor observado</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="pruebas-hipotesis-2_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="576"></p>
+</div>
+</div>
+<p>En este caso, la evidencia es muy fuerte en contra de la hipótesis nula, pues el resultado que obtuvimos es muy extremo en relación a la distribución de referencia. El valor p es cercano a 0.</p>
+</section>
+<section id="ejemplo-tiempos-de-fusión" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="ejemplo-tiempos-de-fusión">Ejemplo: tiempos de fusión</h2>
+<p>Consideremos el ejemplo de fusión de estereogramas que vimos anteriormente. Una pregunta que podríamos hacer es: considerando que hay mucha variación en el tiempo de fusión dentro de cada tratamiento, necesitamos calificar la evidencia de nuestra conclusión (el tiempo de fusión se reduce con información verbal).</p>
+<p>Podemos usar una prueba de permutaciones, esta vez justificándola por el hecho de que los tratamientos se asignan al azar: si los tratamientos son indistinguibles, entonces las etiquetas de los grupos son solo etiquetas, y permutarlas daría muestras igualmente verosímiles.</p>
+<p>En este caso, compararemos gráficas de cuantiles de los datos con los producidos por permutaciones:</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>
+── Column specification ────────────────────────────────────────────────────────
+cols(
+  n = col_double(),
+  time = col_double(),
+  nv.vv = col_character()
+)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>decrypt("Rysq OI0I Yl M9HY0Y9l mm")</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="pruebas-hipotesis-2_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<p><strong>Ejercicio</strong>: ¿Podemos identificar los datos? En general, muy frecuentemente las personas identifican los datos correctamente, lo que muestra evidencia considerable de que la instrucción verbal altera los tiempos de respuesta de los partipantes, y en este caso ayuda a reducir el tiempo de fusión de los estereogramas.</p>
+</section>
+<section id="ejemplo-tiempos-de-fusión-2" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="ejemplo-tiempos-de-fusión-2">Ejemplo: tiempos de fusión 2</h2>
+<p>Podemos usar las pruebas de permutaciones para distintos de tipos de estadísticas: medianas, medias, comparar dispersión usando rangos intercuartiles o varianzas, etc.</p>
+<p>Regresamos a los tiempos de fusión. Podemos hacer una prueba de permutaciones para la diferencia de las medias o medianas, por ejemplo. En este ejemplo usaremos una medida de centralidad un poco diferente, como ilustración: el promedio de los cuartiles superior e inferior de las dos distribuciones. Usaremos el cociente de estas dos cantidades para medir su diferencia</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>stat_fusion <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    (<span class="fu">quantile</span>(x, <span class="fl">0.75</span>) <span class="sc">+</span> <span class="fu">quantile</span>(x, <span class="fl">0.25</span>))<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>calc_fusion <span class="ot">&lt;-</span> <span class="cf">function</span>(stat_fusion){</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  fun <span class="ot">&lt;-</span> <span class="cf">function</span>(datos){</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    datos <span class="sc">|&gt;</span> </span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">group_by</span>(nv.vv) <span class="sc">|&gt;</span> </span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">summarise</span>(<span class="at">est =</span> <span class="fu">stat_fusion</span>(time)) <span class="sc">|&gt;</span> </span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">spread</span>(nv.vv, est) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">dif =</span> VV <span class="sc">/</span> NV ) <span class="sc">|&gt;</span> <span class="fu">pull</span>(dif)</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  fun</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>calc_cociente <span class="ot">&lt;-</span> <span class="fu">calc_fusion</span>(stat_fusion)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>dif_obs <span class="ot">&lt;-</span> <span class="fu">calc_cociente</span>(fusion)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># permutar</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>valores_ref <span class="ot">&lt;-</span> <span class="fu">permutaciones_est</span>(fusion, nv.vv, calc_cociente, <span class="at">n =</span> <span class="dv">10000</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>dist_perm_nv <span class="ot">&lt;-</span> <span class="fu">ecdf</span>(valores_ref<span class="sc">$</span>diferencia) </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>cuantil_obs <span class="ot">&lt;-</span> <span class="fu">dist_perm_nv</span>(dif_obs)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="pruebas-hipotesis-2_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="576"></p>
+</div>
+</div>
+<p>Y el valor p de dos colas es</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>dist_perm_nv <span class="ot">&lt;-</span> <span class="fu">ecdf</span>(valores_ref<span class="sc">$</span>diferencia)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">min</span>(<span class="fu">dist_perm_nv</span>(dif_obs), <span class="dv">1</span><span class="sc">-</span> <span class="fu">dist_perm_nv</span>(dif_obs))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0354</code></pre>
+</div>
+</div>
+<p>Lo que muestra evidencia considerable, aunque no muy fuerte, de que la instrucción verbal ayuda a reducir el tiempo de fusión de los estereogramas: la <em>caja</em> del diagrama de caja y brazos para el grupo VV está <em>encogida</em> por un factor menor a 1.</p>
+</section>
+<section id="ojo-otros-tipos-de-hipótesis-nulas" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="ojo-otros-tipos-de-hipótesis-nulas">Ojo: otros tipos de hipótesis nulas</h2>
+<p>La pruebas de permutaciones son más útiles cuando nuestra hipótesis nula se refiere que la distribución de los grupos son muy similares, o la independencia entre observaciones y grupo. Esto también aplica cuando queremos probar por ejemplo, que una variable numérica Y es independiente de X.</p>
+<ul>
+<li><p>Hay algunas hipótesis que no se pueden probar con este método, como por ejemplo, las que se refieren a una sola muestra: ¿los datos son consistentes con que su media es igual a 5?</p></li>
+<li><p>Adicionalmente, en algunas ocasiones queremos probar aspectos más específicos de las diferencias: como ¿son iguales las medias o medianas de dos grupos de datos? ¿Tienen dispersión similar?</p></li>
+</ul>
+<p>Las pruebas de permutaciones no están tan perfectamente adaptadas a este problema, pues prueban <em>todos</em> los aspectos de las distribuciones que se comparan, aún cuando escogamos una estadística particular que pretende medir, por ejemplo, diferencia de medias. Eso quiere decir que podemos rechazar igualdad de medias, por ejemplo, cuando en realidad otra característica de las distribuciones es la que difiere mucho en las poblaciones</p>
+<p>En algunas referencias (ver <span class="citation" data-cites="chitim">(<a href="#ref-chitim" role="doc-biblioref"><strong>chitim?</strong></a>)</span>, <span class="citation" data-cites="bootefron">Efron y Tibshirani (<a href="#ref-bootefron" role="doc-biblioref">1993</a>)</span>) se argumenta que de todas formas las pruebas de permutaciones son relativamente robustas a esta desadaptación. Un caso excepcional, por ejemplo, es cuando las poblaciones que comparamos resultan tener dispersión extremadamente distinta, y adicionalmente los tamaños de muestra de los grupos son muy desiguales (otra vez, ver ejemplos en <span class="citation" data-cites="chitim">(<a href="#ref-chitim" role="doc-biblioref"><strong>chitim?</strong></a>)</span>).</p>
+</section>
+<section id="comparando-distribuciones" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="comparando-distribuciones">Comparando distribuciones</h2>
+<p>Ahora intentamos un ejemplo más típico.</p>
+<p>Supongamos tenemos <em>muestras</em> para tres grupos a, b y c, que quiere decir que dentro de cada grupo, el proceso e selección de los elementos se hace de manera al azar y de manera simétrica (por ejemplo cada elemento tiene a misma probabiidad de ser seleccionado, y las extracciones se hacen de manera independiente.)</p>
+<p>Queremos comparar las distribuciones de los datos obtenidos para cada grupo. Quizá la pregunta detrás de esta comparación es: el grupo de clientes b recibió una promoción especial. ¿Están gastando más? La medición que comparamos es el gasto de los clientes.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="pruebas-hipotesis-2_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="480"></p>
+</div>
+</div>
+<p>En la muestra observamos diferencias entre los grupos. Pero notamos adicionalmente que hay mucha variación dentro de cada grupo. <strong>Nos podríamos preguntar entonces si las diferencias que observamos se deben variación muestral, por ejemplo.</strong></p>
+<p>Podemos construir ahora una <em>hipótesis nula</em>, que establece que las observaciones provienen de una población similar:</p>
+<ul>
+<li>Las tres poblaciones (a, b, c) son prácticamente indistiguibles. En este caso, la variación que observamos se debería a que tenemos información incompleta.</li>
+</ul>
+<p>Como en el ejemplo anterior <strong>necesitamos construir o obtener una distribución de referencia</strong> para comparar qué tan extremos o diferentes son los datos que observamos. Esa distribución de referencia debería estar basada en el supuesto de que los grupos producen datos de distribuciones similares.</p>
+<p>Si tuvieramos mediciones similares históricas de estos tres grupos, quizá podríamos extraer datos de referencia y comparar, como hicimos en el ejempo anterior. Pero esto es menos común en este tipo de ejemplos.</p>
+</section>
+<section id="permutaciones-y-el-lineup" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="permutaciones-y-el-lineup">Permutaciones y el lineup</h2>
+<p>Para abordar este problema podemos pensar en usar permutaciones de los grupos de la siguiente forma (<span class="citation" data-cites="box78">Box et&nbsp;al. (<a href="#ref-box78" role="doc-biblioref">1978</a>)</span>, <span class="citation" data-cites="timboot14">Hesterberg (<a href="#ref-timboot14" role="doc-biblioref">2015</a>)</span>):</p>
+<ul>
+<li>Si los grupos producen datos bajo procesos idénticos, entonces los grupos a, b, c solo son etiquetas que no contienen información.</li>
+<li>Podríamos <strong>permutar al azar</strong> las etiquetas y observar nuevamente la gráfica de caja y brazos por grupos.</li>
+<li>Si la hipótesis nula es cierta (grupos idénticos), esta es una muestra tan verosímil como la que obtuvimos.</li>
+<li>Así que podemos construir datos de referencia permutando las etiquetas de los grupos al azar, y observando la variación que ocurre.</li>
+<li>Si la hipótesis nula es cercana a ser cierta, no deberíamos de poder distinguir fácilmente los datos observados de los producidos con las permutaciones al azar.</li>
+</ul>
+<p>Vamos a intentar esto, por ejemplo usando una gráfica de cuantiles simplificada. Hacemos un <em>lineup</em>, o una <em>rueda de sospechosos</em> (usamos el paquete <span class="citation" data-cites="nullabor">H. Wickham, Chowdhury, y Cook (<a href="#ref-nullabor" role="doc-biblioref">2012</a>)</span>, ver <span class="citation" data-cites="lineup">Hadley Wickham et&nbsp;al. (<a href="#ref-lineup" role="doc-biblioref">2010</a>)</span>), donde 19 de los acusados <strong>son generados mediante permutaciones al azar</strong> de la variable del grupo, y el culpable (los verdaderos datos) están en una posición escogida al azar. ¿Podemos identificar los datos verdaderos? Para evitar sesgarnos, también ocultamos la etiqueta verdadera</p>
+<p>Usamos una gráfica que muestra los cuantes 0.10, 0.50, 0.90:</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">88</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="fu">lineup</span>(<span class="fu">null_permute</span>(<span class="st">"grupo"</span>), muestra_tab, <span class="at">n =</span> <span class="dv">20</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>decrypt("Rysq OI0I Yl M9HY0Y9l m3")</code></pre>
+</div>
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>reps_mezcla <span class="ot">&lt;-</span> reps <span class="sc">|&gt;</span>  <span class="fu">mutate</span>(<span class="at">grupo_1 =</span> <span class="fu">factor</span>(digest<span class="sc">::</span><span class="fu">digest2int</span>(grupo) <span class="sc">%%</span> <span class="dv">177</span>))</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grafica_cuantiles</span>(reps_mezcla, grupo_1, x) <span class="sc">+</span> </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>.sample, <span class="at">ncol =</span> <span class="dv">5</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"x"</span>) <span class="sc">+</span> </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">caption =</span> <span class="st">"Mediana y percentiles 10% y 90%"</span>)<span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> grupo_1))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'grupo_1'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="pruebas-hipotesis-2_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Y la pregunta que hacemos es <strong>podemos distinguir nuestra muestra entre todas las replicaciones producidas con permutaciones</strong>?</p>
+<p><strong>Ejercicio</strong>: ¿dónde están los datos observados? Según tu elección, ¿qué tan diferentes son los datos observados de los datos nulos?</p>
+<p>En este ejemplo, es difícil indicar cuáles son los datos. Los grupos tienen distribuciones similares y es factible que las diferencias que observamos se deban a variación muestral.</p>
+<ul>
+<li><p>Si la persona escoge los verdaderos datos, encontramos evidencia en contra de la hipótesis nula (los tres grupos son equivalentes). En algunos contextos, se dice que los datos son <em>significativamente diferentes</em> al nivel 0.05. Esto es evidencia en contra de que los datos se producen de manera homogénea, independientemente del grupo.</p></li>
+<li><p>Si la persona escoge uno de los datos permutados, no encontramos evidencia en contra de que los tres grupos producen datos con distribuciones similares.</p></li>
+</ul>
+</section>
+<section id="comparaciones-con-lineup-2" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="comparaciones-con-lineup-2">Comparaciones con lineup 2</h2>
+<p>Repitimos el ejemplo para otra muestra (en este ejemplo el proceso generador de datos es diferente para el grupo b):</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="pruebas-hipotesis-2_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="480"></p>
+</div>
+</div>
+<p>Hacemos primero la prueba del <em>lineup</em>:</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">121</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="fu">lineup</span>(<span class="fu">null_permute</span>(<span class="st">"grupo"</span>), muestra_tab, <span class="at">n =</span> <span class="dv">20</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>decrypt("Rysq OI0I Yl M9HY0Y9l mQ")</code></pre>
+</div>
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grafica_cuantiles</span>(reps <span class="sc">|&gt;</span>  <span class="fu">mutate</span>(<span class="at">grupo_escondido =</span> <span class="fu">factor</span>(digest<span class="sc">::</span><span class="fu">digest2int</span>(grupo) <span class="sc">%%</span> <span class="dv">177</span>)), </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>                             grupo_escondido, x) <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>.sample) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"x"</span>) <span class="sc">+</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>() <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> grupo_escondido))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'grupo_escondido'. You can override using
+the `.groups` argument.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="pruebas-hipotesis-2_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Podemos distinguir más o menos claramente que está localizada en valores más altos y tiene mayor dispersión. En este caso, como en general podemos identificar los datos, obtenemos evidencia en contra de que los tres grupos tienen distribuciones iguales.</p>
+</section>
+<section id="la-crisis-de-replicabilidad" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="la-crisis-de-replicabilidad">La “crisis de replicabilidad”</h2>
+<p>Recientemente (<span class="citation" data-cites="falsefindings">Ioannidis (<a href="#ref-falsefindings" role="doc-biblioref">2005</a>)</span>) se ha reconocido en campos como la sicología la <em>crisis de replicabilidad</em>. Varios estudios que recibieron mucha publicidad inicialmente no han podido ser replicados posteriormente por otros investigadores. Por ejemplo:</p>
+<ul>
+<li>Hacer <a href="https://www.sciencedaily.com/releases/2017/09/170911095932.htm">poses poderosas</a> produce cambios fisiológicos que mejoran nuestro desempeño en ciertas tareas</li>
+<li>Mostrar palabras relacionadas con “viejo” hacen que las personas caminen más lento (efectos de <a href="https://www.nature.com/news/nobel-laureate-challenges-psychologists-to-clean-up-their-act-1.11535">priming</a>)</li>
+</ul>
+<p>En todos estos casos, el argumento de la evidencia de estos efectos fue respaldada por una prueba de hipótesis nula con un valor p menor a 0.05. La razón es que ese es el estándar de publicación seguido por varias áreas y revistas. La tasa de no replicabilidad parece ser mucho más alta (al menos la mitad o más según algunas fuentes, como la señalada arriba) que lo sugeriría la tasa de falsos positivos (menos de 5%)</p>
+<p>Este problema de replicabilidad parece ser más frecuente cuando:</p>
+<ol type="1">
+<li>Se trata de estudios de potencia baja: mediciones ruidosas y tamaños de muestra chicos.</li>
+<li>El plan de análisis no está claramente definido desde un principio (lo cual es difícil cuando se están investigando “fenómenos no estudiados antes”)</li>
+</ol>
+<p>¿A qué se atribuye esta crisis de replicabilidad?</p>
+</section>
+<section id="el-jardín-de-los-senderos-que-se-bifurcan" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="el-jardín-de-los-senderos-que-se-bifurcan">El jardín de los senderos que se bifurcan</h2>
+<p>Aunque haya algunos ejemplos de manipulaciones conscientes –e incluso, en menos casos, malintencionadas– para obtener resultados publicables o significativos (<a href="https://en.wikipedia.org/wiki/Data_dredging">p-hacking</a>), como vimos en ejemplos anteriores, hay varias decisiones, todas razonables, que podemos tomar cuando estamos buscando las comparaciones correctas. Algunas pueden ser:</p>
+<ul>
+<li>Transformar los datos (tomar o no logaritmos, u otra transformación)</li>
+<li>Editar datos atípicos (razonable si los equipos pueden fallar, o hay errores de captura, por ejemplo)</li>
+<li>Distintas maneras de interpretar los criterios de inclusión de un estudio (por ejemplo, algunos participantes mostraron tener gripa, o revelaron que durmieron muy poco la noche anterior, etc. ¿los dejamos o los quitamos?)</li>
+</ul>
+<p>Dado un conjunto de datos, las justificaciones de las decisiones que se toman en cada paso son razonables, pero con datos distintos las decisiones podrían ser diferentes. Este es el <strong>jardín de los senderos que se bifurcan</strong> <a href="http://www.stat.columbia.edu/~gelman/research/published/incrementalism_3.pdf">Gelman</a>, que <strong>invalida en parte el uso valores p como criterio de evidencia contra la hipótesis nula</strong>.</p>
+<p>Esto es exacerbado por:</p>
+<ul>
+<li>Tamaños de muestra chicos y efectos “inestables” que se quieren medir (por ejemplo en sicología)</li>
+<li>El hecho de que el criterio de publicación es obtener un valor p &lt; 0.05, y la presión fuerte sobre los investigadores para producir resultados publicables (p &lt; 0.05)</li>
+<li>El que estudios o resultados similares que no obtuvieron valores <span class="math inline">\(p\)</span> por debajo del umbral no son publicados o reportados.</li>
+</ul>
+<p>Ver por ejemplo el <a href="https://www.amstat.org/asa/files/pdfs/P-ValueStatement.pdf">comunicado de la ASA</a>.</p>
+<p><strong>Ojo</strong>: esas presiones de publicación no sólo ocurre para investigadores en sicología. Cuando trabajamos en problemas de análisis de datos en problemas que son de importancia, es común que existan intereses de algunas partes o personas involucradas por algunos resultados u otros (por ejemplo, nuestros clientes de consultoría o clientes internos). Eso puede dañar nuestro trabajo como analistas, y el avance de nuestro equipo. Aunque esas presiones son inevitables, se vuelven manejables cuando hay una relación de confianza entre las partes involucradas.</p>
+</section>
+<section id="ejemplo-decisiones-de-análisis-y-valores-p" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="ejemplo-decisiones-de-análisis-y-valores-p">Ejemplo: decisiones de análisis y valores p</h2>
+<p>En el ejemplo de datos de fusión, decidimos probar, por ejemplo, el promedio de los cuartiles inferior y superior, lo cual no es una decisión típica pero usamos como ilustración. Ahora intentamos usar distintas mediciones de la diferencia entre los grupos, usando distintas medidas resumen y transformaciones (por ejemplo, con o sin logaritmo). Aquí hay unas 12 combinaciones distintas para hacer el análisis (multiplicadas por criterios de “aceptación de datos en la muestra”, que simulamos tomando una submuestra al azar):</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>calc_fusion <span class="ot">&lt;-</span> <span class="cf">function</span>(stat_fusion, trans, comparacion){</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  fun <span class="ot">&lt;-</span> <span class="cf">function</span>(datos){</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    datos <span class="sc">|&gt;</span> </span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">group_by</span>(nv.vv) <span class="sc">|&gt;</span> </span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">summarise</span>(<span class="at">est =</span> <span class="fu">stat_fusion</span>({{ trans }}(time))) <span class="sc">|&gt;</span> </span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">spread</span>(nv.vv, est) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">dif =</span> {{ comparacion }}) <span class="sc">|&gt;</span> <span class="fu">pull</span>(dif)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>  fun</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>valor_p <span class="ot">&lt;-</span> <span class="cf">function</span>(datos, variable, calc_diferencia, <span class="at">n =</span> <span class="dv">1000</span>){</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calcular estadística para cada grupo</span></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>  permutar <span class="ot">&lt;-</span> <span class="cf">function</span>(variable){</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sample</span>(variable, <span class="fu">length</span>(variable))</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>  tbl_perms <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">.sample =</span> <span class="fu">seq</span>(<span class="dv">1</span>, n<span class="dv">-1</span>, <span class="dv">1</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">diferencia =</span> <span class="fu">map_dbl</span>(.sample, </span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>              <span class="sc">~</span> datos <span class="sc">|&gt;</span> <span class="fu">mutate</span>({{variable}} <span class="sc">:</span><span class="er">=</span> <span class="fu">permutar</span>({{variable}})) <span class="sc">|&gt;</span> <span class="fu">calc_diferencia</span>()))</span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>  perms <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(tbl_perms, <span class="fu">tibble</span>(<span class="at">.sample =</span> n, <span class="at">diferencia =</span> <span class="fu">calc_diferencia</span>(datos)))</span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>  perms_ecdf <span class="ot">&lt;-</span> <span class="fu">ecdf</span>(perms<span class="sc">$</span>diferencia)</span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>  dif <span class="ot">&lt;-</span> <span class="fu">calc_diferencia</span>(datos)</span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span> <span class="sc">*</span> <span class="fu">min</span>(<span class="fu">perms_ecdf</span>(dif), <span class="dv">1</span><span class="sc">-</span> <span class="fu">perms_ecdf</span>(dif))</span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">7272</span>)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>media_cuartiles <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    (<span class="fu">quantile</span>(x, <span class="fl">0.75</span>) <span class="sc">+</span> <span class="fu">quantile</span>(x, <span class="fl">0.25</span>))<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="co"># nota: usar n=10000 o más, esto solo es para demostración:</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>calc_dif <span class="ot">&lt;-</span> <span class="fu">calc_fusion</span>(mean, identity, VV <span class="sc">-</span> NV)</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="fu">valor_p</span>(fusion <span class="sc">|&gt;</span> <span class="fu">sample_frac</span>(<span class="fl">0.95</span>), nv.vv, calc_dif, <span class="at">n =</span> <span class="dv">1000</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.072</code></pre>
+</div>
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>calc_dif <span class="ot">&lt;-</span> <span class="fu">calc_fusion</span>(mean, log, VV <span class="sc">-</span> NV)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">valor_p</span>(fusion <span class="sc">|&gt;</span> <span class="fu">sample_frac</span>(<span class="fl">0.95</span>), nv.vv, calc_dif, <span class="at">n =</span> <span class="dv">1000</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.024</code></pre>
+</div>
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>calc_dif <span class="ot">&lt;-</span> <span class="fu">calc_fusion</span>(median, identity, VV <span class="sc">/</span> NV)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">valor_p</span>(fusion <span class="sc">|&gt;</span> <span class="fu">sample_frac</span>(<span class="fl">0.95</span>), nv.vv, calc_dif, <span class="at">n =</span> <span class="dv">1000</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.016</code></pre>
+</div>
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>calc_dif <span class="ot">&lt;-</span> <span class="fu">calc_fusion</span>(media_cuartiles, identity, VV <span class="sc">/</span> NV)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">valor_p</span>(fusion <span class="sc">|&gt;</span> <span class="fu">sample_frac</span>(<span class="fl">0.95</span>), nv.vv, calc_dif, <span class="at">n =</span> <span class="dv">1000</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.026</code></pre>
+</div>
+</div>
+<p>Si existen grados de libertad - muchas veces necesarios para hacer un análisis exitoso-, entonces los valores p pueden tener poco significado.</p>
+</section>
+<section id="alternativas-o-soluciones" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="alternativas-o-soluciones">Alternativas o soluciones</h2>
+<p>El primer punto importante es reconocer que la mayor parte de nuestro trabajo es <strong>exploratorio</strong> (recordemos el proceso complicado del análisis de datos de refinamiento de preguntas). En este tipo de trabajo, reportar valores p puede tener poco sentido, y mucho menos tiene sentido aceptar algo “verdadero” cuando pasa un umbral de significancia dado.</p>
+<p>Nuestro interés principal al hacer análisis es expresar correctamente y de manera útil la incertidumbre asociada a las conclusiones o patrones que mostramos (asociada a variación muestral, por ejemplo) para que el proceso de toma de decisiones sea informado. <strong>Un</strong> resumen de <strong>un número</strong> (valor p, o el que sea) no puede ser tomado como criterio para tomar una decisión que generalmente es compleja. En la siguiente sección veremos cómo podemos mostrar parte de esa incertidumbre de manera más útil.</p>
+<p>Por otra parte, los estudios confirmatorios (donde se reportan valores p) también tienen un lugar. En áreas como la sicología, existen ahora movimientos fuertes en favor de la repetición de estudios prometedores pero donde hay sospecha de grados de libertad del investigador. Este movimiento sugiere dar valor a los <strong>estudios exploratorios</strong> que no reportan valor p, y posteriormente, si el estudio es de interés, puede intentarse una <strong>replicación confirmatoria, con potencia más alta y con planes de análisis predefinidos</strong>.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-box78" class="csl-entry" role="doc-biblioentry">
+Box, George EP, William H Hunter, Stuart Hunter, et&nbsp;al. 1978. <em>Statistics for experimenters</em>. Vol. 664. John Wiley; sons New York.
+</div>
+<div id="ref-bootefron" class="csl-entry" role="doc-biblioentry">
+Efron, B., y R. Tibshirani. 1993. <span>«<span>An Introduction to the Bootstrap</span>»</span>. Miscellaneous. Macmillan Publishers Limited. All rights reserved.
+</div>
+<div id="ref-timboot14" class="csl-entry" role="doc-biblioentry">
+Hesterberg, Tim C. 2015. <span>«What teachers should know about the bootstrap: Resampling in the undergraduate statistics curriculum»</span>. <em>The American Statistician</em> 69 (4): 371-86.
+</div>
+<div id="ref-falsefindings" class="csl-entry" role="doc-biblioentry">
+Ioannidis, John PA. 2005. <span>«Why most published research findings are false»</span>. <em>PLoS medicine</em> 2 (8): e124.
+</div>
+<div id="ref-lineup" class="csl-entry" role="doc-biblioentry">
+Wickham, Hadley, Dianne Cook, Heike Hofmann, y Andreas Buja. 2010. <span>«Graphical inference for infovis»</span>. <em>IEEE Transactions on Visualization and Computer Graphics</em> 16 (6): 973-79.
+</div>
+<div id="ref-nullabor" class="csl-entry" role="doc-biblioentry">
+Wickham, H, NR Chowdhury, y D Cook. 2012. <span>«nullabor: Tools for graphical inference»</span>. <em>R package version 0.2</em> 1: 213.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiada");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./pruebas-hipotesis-aleatorizacion.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Aleatorización en inferencia causal</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./estimacion-aleatorizacion.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Inferencia por intervalos</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

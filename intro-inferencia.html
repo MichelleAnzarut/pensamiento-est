@@ -15,69 +15,6 @@ span.underline{text-decoration: underline;}
 div.column{display: inline-block; vertical-align: top; width: 50%;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -88,7 +25,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./pruebas-hipotesis-aleatorizacion.html" rel="next">
+<link href="./intro-pruebas-hipotesis.html" rel="next">
 <link href="./analisis-resumenes-2.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -118,9 +55,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-submit-button-title": "Eviar"
   }
 }</script>
-
-<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
 
 </head>
@@ -156,17 +90,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Introducción</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Acerca del curso</a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">Estadística y ciencia de datos</span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./est-cd-1.html" class="sidebar-item-text sidebar-link">Estadística y ciencia de datos</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a href="./resumenes.html" class="sidebar-item-text sidebar-link">Resúmenes y descripciones de datos</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./analisis-resumenes-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Resúmenes para datos numéricos</span></a>
@@ -182,26 +119,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./intro-inferencia.html" class="sidebar-item-text sidebar-link active">Inferencia estadística</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./pruebas-hipotesis-aleatorizacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Aleatorización en inferencia causal</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./estimacion-aleatorizacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Inferencia por intervalos</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="./probabilidad.html" class="sidebar-item-text sidebar-link">Introducción a teoría de probabilidades</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -209,29 +126,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modelo-prob.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Básicos de probabilidad y simulación</span></a>
+  <a href="./intro-pruebas-hipotesis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introducción a pruebas de hipótesis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./prob-condicional.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Probabilidad condicional e independencia</span></a>
+  <a href="./pruebas-hipotesis-aleatorizacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Aleatorización en inferencia causal</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modelos-continuos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modelos probabilísticos para variables continuas</span></a>
+  <a href="./pruebas-hipotesis-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Más de pruebas de hipótesis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./inferencia-modelos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Inferencia con modelos probabilísticos</span></a>
+  <a href="./estimacion-aleatorizacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Inferencia por intervalos</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./inferencia-bayesiana.html" class="sidebar-item-text sidebar-link">Estadística Bayesiana</a>
+            <a href="./probabilidad.html" class="sidebar-item-text sidebar-link">Introducción a teoría de probabilidades</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -239,7 +156,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modelos-bayesianos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Inferencia bayesiana</span></a>
+  <a href="./modelo-prob.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Básicos de probabilidad y simulación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prob-condicional.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probabilidad condicional e independencia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modelos-continuos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Modelos probabilísticos para variables continuas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inferencia-modelos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Inferencia con modelos probabilísticos</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./inferencia-bayesiana.html" class="sidebar-item-text sidebar-link">Estadística Bayesiana</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modelos-bayesianos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Inferencia bayesiana</span></a>
   </div>
 </li>
       </ul>
@@ -254,8 +201,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
   <li><a href="#proceso-de-selección-o-asignación" id="toc-proceso-de-selección-o-asignación" class="nav-link active" data-scroll-target="#proceso-de-selección-o-asignación">Proceso de selección o asignación</a></li>
-  <li><a href="#procesos-generadores-de-datos-e-inferencia-causal" id="toc-procesos-generadores-de-datos-e-inferencia-causal" class="nav-link" data-scroll-target="#procesos-generadores-de-datos-e-inferencia-causal">Procesos generadores de datos e inferencia causal</a></li>
-  <li><a href="#procesos-generadores-e-inferencia-a-poblaciones" id="toc-procesos-generadores-e-inferencia-a-poblaciones" class="nav-link" data-scroll-target="#procesos-generadores-e-inferencia-a-poblaciones">Procesos generadores e inferencia a poblaciones</a></li>
   </ul>
 </nav>
     </div>
@@ -287,12 +232,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="ugnpfaxxml" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="cppmdzrkax" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ugnpfaxxml .gt_table {
+#cppmdzrkax .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -317,7 +262,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-left-color: #D3D3D3;
 }
 
-#ugnpfaxxml .gt_heading {
+#cppmdzrkax .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -329,7 +274,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#ugnpfaxxml .gt_title {
+#cppmdzrkax .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -341,7 +286,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-width: 0;
 }
 
-#ugnpfaxxml .gt_subtitle {
+#cppmdzrkax .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -353,13 +298,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-width: 0;
 }
 
-#ugnpfaxxml .gt_bottom_border {
+#cppmdzrkax .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ugnpfaxxml .gt_col_headings {
+#cppmdzrkax .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -374,7 +319,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#ugnpfaxxml .gt_col_heading {
+#cppmdzrkax .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -394,7 +339,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#ugnpfaxxml .gt_column_spanner_outer {
+#cppmdzrkax .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -406,15 +351,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 4px;
 }
 
-#ugnpfaxxml .gt_column_spanner_outer:first-child {
+#cppmdzrkax .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ugnpfaxxml .gt_column_spanner_outer:last-child {
+#cppmdzrkax .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ugnpfaxxml .gt_column_spanner {
+#cppmdzrkax .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -426,7 +371,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   width: 100%;
 }
 
-#ugnpfaxxml .gt_group_heading {
+#cppmdzrkax .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -451,7 +396,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#ugnpfaxxml .gt_empty_group_heading {
+#cppmdzrkax .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -466,15 +411,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#ugnpfaxxml .gt_from_md > :first-child {
+#cppmdzrkax .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ugnpfaxxml .gt_from_md > :last-child {
+#cppmdzrkax .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ugnpfaxxml .gt_row {
+#cppmdzrkax .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -493,7 +438,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#ugnpfaxxml .gt_stub {
+#cppmdzrkax .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -506,7 +451,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#ugnpfaxxml .gt_stub_row_group {
+#cppmdzrkax .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -520,11 +465,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: top;
 }
 
-#ugnpfaxxml .gt_row_group_first td {
+#cppmdzrkax .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ugnpfaxxml .gt_summary_row {
+#cppmdzrkax .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -534,16 +479,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#ugnpfaxxml .gt_first_summary_row {
+#cppmdzrkax .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ugnpfaxxml .gt_first_summary_row.thick {
+#cppmdzrkax .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ugnpfaxxml .gt_last_summary_row {
+#cppmdzrkax .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -553,7 +498,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#ugnpfaxxml .gt_grand_summary_row {
+#cppmdzrkax .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -563,7 +508,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#ugnpfaxxml .gt_first_grand_summary_row {
+#cppmdzrkax .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -573,11 +518,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#ugnpfaxxml .gt_striped {
+#cppmdzrkax .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ugnpfaxxml .gt_table_body {
+#cppmdzrkax .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -586,7 +531,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#ugnpfaxxml .gt_footnotes {
+#cppmdzrkax .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -600,7 +545,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#ugnpfaxxml .gt_footnote {
+#cppmdzrkax .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -609,7 +554,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#ugnpfaxxml .gt_sourcenotes {
+#cppmdzrkax .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -623,7 +568,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#ugnpfaxxml .gt_sourcenote {
+#cppmdzrkax .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -631,36 +576,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#ugnpfaxxml .gt_left {
+#cppmdzrkax .gt_left {
   text-align: left;
 }
 
-#ugnpfaxxml .gt_center {
+#cppmdzrkax .gt_center {
   text-align: center;
 }
 
-#ugnpfaxxml .gt_right {
+#cppmdzrkax .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ugnpfaxxml .gt_font_normal {
+#cppmdzrkax .gt_font_normal {
   font-weight: normal;
 }
 
-#ugnpfaxxml .gt_font_bold {
+#cppmdzrkax .gt_font_bold {
   font-weight: bold;
 }
 
-#ugnpfaxxml .gt_font_italic {
+#cppmdzrkax .gt_font_italic {
   font-style: italic;
 }
 
-#ugnpfaxxml .gt_super {
+#cppmdzrkax .gt_super {
   font-size: 65%;
 }
 
-#ugnpfaxxml .gt_two_val_uncert {
+#cppmdzrkax .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -669,31 +614,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   margin-left: 0.1em;
 }
 
-#ugnpfaxxml .gt_footnote_marks {
+#cppmdzrkax .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#ugnpfaxxml .gt_asterisk {
+#cppmdzrkax .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ugnpfaxxml .gt_slash_mark {
+#cppmdzrkax .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#ugnpfaxxml .gt_fraction_numerator {
+#cppmdzrkax .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#ugnpfaxxml .gt_fraction_denominator {
+#cppmdzrkax .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -711,63 +656,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </thead>
   <tbody class="gt_table_body">
     <tr><td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">52</td>
+<td class="gt_row gt_right">47</td>
 <td class="gt_row gt_right">1.58</td>
 <td class="gt_row gt_right">60</td></tr>
     <tr><td class="gt_row gt_right">2</td>
-<td class="gt_row gt_right">60</td>
+<td class="gt_row gt_right">50</td>
 <td class="gt_row gt_right">1.72</td>
 <td class="gt_row gt_right">72</td></tr>
     <tr><td class="gt_row gt_right">3</td>
-<td class="gt_row gt_right">48</td>
+<td class="gt_row gt_right">61</td>
 <td class="gt_row gt_right">1.64</td>
 <td class="gt_row gt_right">56</td></tr>
     <tr><td class="gt_row gt_right">4</td>
-<td class="gt_row gt_right">29</td>
+<td class="gt_row gt_right">21</td>
 <td class="gt_row gt_right">1.50</td>
 <td class="gt_row gt_right">60</td></tr>
     <tr><td class="gt_row gt_right">5</td>
-<td class="gt_row gt_right">50</td>
+<td class="gt_row gt_right">51</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">NA</td></tr>
     <tr><td class="gt_row gt_right">6</td>
-<td class="gt_row gt_right">31</td>
+<td class="gt_row gt_right">56</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">NA</td></tr>
     <tr><td class="gt_row gt_right">7</td>
-<td class="gt_row gt_right">53</td>
+<td class="gt_row gt_right">22</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">NA</td></tr>
     <tr><td class="gt_row gt_right">8</td>
-<td class="gt_row gt_right">40</td>
+<td class="gt_row gt_right">29</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">NA</td></tr>
     <tr><td class="gt_row gt_right">9</td>
-<td class="gt_row gt_right">21</td>
+<td class="gt_row gt_right">28</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">NA</td></tr>
     <tr><td class="gt_row gt_right">10</td>
-<td class="gt_row gt_right">30</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td></tr>
-    <tr><td class="gt_row gt_right">11</td>
-<td class="gt_row gt_right">54</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td></tr>
-    <tr><td class="gt_row gt_right">12</td>
-<td class="gt_row gt_right">39</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">NA</td></tr>
-    <tr><td class="gt_row gt_right">13</td>
 <td class="gt_row gt_right">35</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">NA</td></tr>
-    <tr><td class="gt_row gt_right">14</td>
+    <tr><td class="gt_row gt_right">11</td>
+<td class="gt_row gt_right">37</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">NA</td></tr>
+    <tr><td class="gt_row gt_right">12</td>
 <td class="gt_row gt_right">41</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">NA</td></tr>
+    <tr><td class="gt_row gt_right">13</td>
+<td class="gt_row gt_right">65</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">NA</td></tr>
+    <tr><td class="gt_row gt_right">14</td>
+<td class="gt_row gt_right">62</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">NA</td></tr>
     <tr><td class="gt_row gt_right">15</td>
-<td class="gt_row gt_right">49</td>
+<td class="gt_row gt_right">45</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">NA</td></tr>
   </tbody>
@@ -785,12 +730,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="vdpwawpzlm" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="ifyigegzle" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#vdpwawpzlm .gt_table {
+#ifyigegzle .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -815,7 +760,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-left-color: #D3D3D3;
 }
 
-#vdpwawpzlm .gt_heading {
+#ifyigegzle .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -827,7 +772,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#vdpwawpzlm .gt_title {
+#ifyigegzle .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -839,7 +784,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-width: 0;
 }
 
-#vdpwawpzlm .gt_subtitle {
+#ifyigegzle .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -851,13 +796,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-width: 0;
 }
 
-#vdpwawpzlm .gt_bottom_border {
+#ifyigegzle .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vdpwawpzlm .gt_col_headings {
+#ifyigegzle .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -872,7 +817,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#vdpwawpzlm .gt_col_heading {
+#ifyigegzle .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -892,7 +837,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#vdpwawpzlm .gt_column_spanner_outer {
+#ifyigegzle .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -904,15 +849,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 4px;
 }
 
-#vdpwawpzlm .gt_column_spanner_outer:first-child {
+#ifyigegzle .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vdpwawpzlm .gt_column_spanner_outer:last-child {
+#ifyigegzle .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vdpwawpzlm .gt_column_spanner {
+#ifyigegzle .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -924,7 +869,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   width: 100%;
 }
 
-#vdpwawpzlm .gt_group_heading {
+#ifyigegzle .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -949,7 +894,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#vdpwawpzlm .gt_empty_group_heading {
+#ifyigegzle .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -964,15 +909,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: middle;
 }
 
-#vdpwawpzlm .gt_from_md > :first-child {
+#ifyigegzle .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vdpwawpzlm .gt_from_md > :last-child {
+#ifyigegzle .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vdpwawpzlm .gt_row {
+#ifyigegzle .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -991,7 +936,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   overflow-x: hidden;
 }
 
-#vdpwawpzlm .gt_stub {
+#ifyigegzle .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1004,7 +949,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#vdpwawpzlm .gt_stub_row_group {
+#ifyigegzle .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1018,11 +963,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   vertical-align: top;
 }
 
-#vdpwawpzlm .gt_row_group_first td {
+#ifyigegzle .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vdpwawpzlm .gt_summary_row {
+#ifyigegzle .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1032,16 +977,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#vdpwawpzlm .gt_first_summary_row {
+#ifyigegzle .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vdpwawpzlm .gt_first_summary_row.thick {
+#ifyigegzle .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vdpwawpzlm .gt_last_summary_row {
+#ifyigegzle .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1051,7 +996,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#vdpwawpzlm .gt_grand_summary_row {
+#ifyigegzle .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1061,7 +1006,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#vdpwawpzlm .gt_first_grand_summary_row {
+#ifyigegzle .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1071,11 +1016,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-top-color: #D3D3D3;
 }
 
-#vdpwawpzlm .gt_striped {
+#ifyigegzle .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vdpwawpzlm .gt_table_body {
+#ifyigegzle .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1084,7 +1029,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-bottom-color: #D3D3D3;
 }
 
-#vdpwawpzlm .gt_footnotes {
+#ifyigegzle .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1098,7 +1043,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#vdpwawpzlm .gt_footnote {
+#ifyigegzle .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1107,7 +1052,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#vdpwawpzlm .gt_sourcenotes {
+#ifyigegzle .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1121,7 +1066,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   border-right-color: #D3D3D3;
 }
 
-#vdpwawpzlm .gt_sourcenote {
+#ifyigegzle .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1129,36 +1074,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   padding-right: 5px;
 }
 
-#vdpwawpzlm .gt_left {
+#ifyigegzle .gt_left {
   text-align: left;
 }
 
-#vdpwawpzlm .gt_center {
+#ifyigegzle .gt_center {
   text-align: center;
 }
 
-#vdpwawpzlm .gt_right {
+#ifyigegzle .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vdpwawpzlm .gt_font_normal {
+#ifyigegzle .gt_font_normal {
   font-weight: normal;
 }
 
-#vdpwawpzlm .gt_font_bold {
+#ifyigegzle .gt_font_bold {
   font-weight: bold;
 }
 
-#vdpwawpzlm .gt_font_italic {
+#ifyigegzle .gt_font_italic {
   font-style: italic;
 }
 
-#vdpwawpzlm .gt_super {
+#ifyigegzle .gt_super {
   font-size: 65%;
 }
 
-#vdpwawpzlm .gt_two_val_uncert {
+#ifyigegzle .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -1167,31 +1112,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   margin-left: 0.1em;
 }
 
-#vdpwawpzlm .gt_footnote_marks {
+#ifyigegzle .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#vdpwawpzlm .gt_asterisk {
+#ifyigegzle .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vdpwawpzlm .gt_slash_mark {
+#ifyigegzle .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#vdpwawpzlm .gt_fraction_numerator {
+#ifyigegzle .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#vdpwawpzlm .gt_fraction_denominator {
+#ifyigegzle .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -1211,95 +1156,95 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </thead>
   <tbody class="gt_table_body">
     <tr><td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">27</td>
+<td class="gt_row gt_right">38</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">3</td>
 <td class="gt_row gt_right">0</td>
 <td class="gt_row gt_right">3</td></tr>
     <tr><td class="gt_row gt_right">2</td>
-<td class="gt_row gt_right">61</td>
+<td class="gt_row gt_right">27</td>
+<td class="gt_row gt_right">6</td>
 <td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">3</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">3</td></tr>
+<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_right">6</td></tr>
     <tr><td class="gt_row gt_right">3</td>
-<td class="gt_row gt_right">51</td>
+<td class="gt_row gt_right">36</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">3</td>
 <td class="gt_row gt_right">0</td>
 <td class="gt_row gt_right">3</td></tr>
     <tr><td class="gt_row gt_right">4</td>
-<td class="gt_row gt_right">32</td>
+<td class="gt_row gt_right">30</td>
 <td class="gt_row gt_right">6</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">1</td>
 <td class="gt_row gt_right">6</td></tr>
     <tr><td class="gt_row gt_right">5</td>
-<td class="gt_row gt_right">25</td>
+<td class="gt_row gt_right">20</td>
 <td class="gt_row gt_right">6</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">1</td>
 <td class="gt_row gt_right">6</td></tr>
     <tr><td class="gt_row gt_right">6</td>
 <td class="gt_row gt_right">43</td>
+<td class="gt_row gt_right">6</td>
 <td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">3</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">3</td></tr>
+<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_right">6</td></tr>
     <tr><td class="gt_row gt_right">7</td>
-<td class="gt_row gt_right">28</td>
+<td class="gt_row gt_right">44</td>
+<td class="gt_row gt_right">6</td>
 <td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">3</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">3</td></tr>
+<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_right">6</td></tr>
     <tr><td class="gt_row gt_right">8</td>
-<td class="gt_row gt_right">60</td>
-<td class="gt_row gt_right">6</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">6</td></tr>
-    <tr><td class="gt_row gt_right">9</td>
-<td class="gt_row gt_right">57</td>
+<td class="gt_row gt_right">62</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">3</td>
 <td class="gt_row gt_right">0</td>
 <td class="gt_row gt_right">3</td></tr>
+    <tr><td class="gt_row gt_right">9</td>
+<td class="gt_row gt_right">26</td>
+<td class="gt_row gt_right">6</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_right">6</td></tr>
     <tr><td class="gt_row gt_right">10</td>
-<td class="gt_row gt_right">33</td>
-<td class="gt_row gt_right">6</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">6</td></tr>
-    <tr><td class="gt_row gt_right">11</td>
-<td class="gt_row gt_right">20</td>
-<td class="gt_row gt_right">6</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">6</td></tr>
-    <tr><td class="gt_row gt_right">12</td>
-<td class="gt_row gt_right">29</td>
-<td class="gt_row gt_right">6</td>
-<td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">6</td></tr>
-    <tr><td class="gt_row gt_right">13</td>
 <td class="gt_row gt_right">58</td>
 <td class="gt_row gt_right">6</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">1</td>
 <td class="gt_row gt_right">6</td></tr>
+    <tr><td class="gt_row gt_right">11</td>
+<td class="gt_row gt_right">39</td>
+<td class="gt_row gt_right">6</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_right">6</td></tr>
+    <tr><td class="gt_row gt_right">12</td>
+<td class="gt_row gt_right">28</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">0</td>
+<td class="gt_row gt_right">3</td></tr>
+    <tr><td class="gt_row gt_right">13</td>
+<td class="gt_row gt_right">53</td>
+<td class="gt_row gt_right">6</td>
+<td class="gt_row gt_right">NA</td>
+<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_right">6</td></tr>
     <tr><td class="gt_row gt_right">14</td>
-<td class="gt_row gt_right">38</td>
+<td class="gt_row gt_right">57</td>
 <td class="gt_row gt_right">NA</td>
 <td class="gt_row gt_right">3</td>
 <td class="gt_row gt_right">0</td>
 <td class="gt_row gt_right">3</td></tr>
     <tr><td class="gt_row gt_right">15</td>
-<td class="gt_row gt_right">50</td>
-<td class="gt_row gt_right">6</td>
+<td class="gt_row gt_right">31</td>
 <td class="gt_row gt_right">NA</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">6</td></tr>
+<td class="gt_row gt_right">3</td>
+<td class="gt_row gt_right">0</td>
+<td class="gt_row gt_right">3</td></tr>
   </tbody>
   
   
@@ -1347,7 +1292,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Discute qué conclusiones podrías llegar en cada uno de estos escenarios.</p>
+<p>Discute qué conclusiones podrías llegar en cada uno de estos escenarios. Puedes usar diagramas como los de la sección anterior para explicar tus respuestas.</p>
 </div>
 </div>
 <p>Los casos 1 y 2 en ambas poblaciones son en general difíciles de resolver adecuadamente, y explicaremos con más ejemplos. Adicionalmente, es también más difícil cuantificar el nivel de incertidumbre de nuestras respuestas, pues dependen de muchos detalles del proceso de selección o asignación.</p>
@@ -1357,170 +1302,13 @@ Tip
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Proceso generador de datos
+Proceso generador de datos y selección/asignación
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>Cuando el proceso de selección de observaciones o asignación tiene relaciones complicadas con las cantidades de interés, puede ser muy difícil dar respuesta a preguntas inferenciales de manera adecuada, y es importante entender el <strong>proceso que genera los datos</strong>, muchas veces a un nivel muy detallado.</p>
 </div>
 </div>
-</section>
-<section id="procesos-generadores-de-datos-e-inferencia-causal" class="level2">
-<h2 class="anchored" data-anchor-id="procesos-generadores-de-datos-e-inferencia-causal">Procesos generadores de datos e inferencia causal</h2>
-<p>Consideramos los datos de ENLACE (2011), y en particular los resultados promedio de matemáticas en sexto grado por escuela. ENLACE era una prueba que se aplicaba en todas las escuelas, de forma que tenemos información de la población completa de interés.</p>
-<p>Nos interesa saber cómo varían los resultados en función de el tipo de primaria: pública o privada.</p>
-<p>El rango de la calificación de matemáticas para un alumno es de 0-800, y aproximadamente la mitad de los alumnos califica en el rengo de 450 a 550. Vemos dispersión considerable en las calificaciones de las escuelas, y diferencias considerables entre tipo de escuelas:</p>
-<div class="cell">
-
-</div>
-<div class="cell">
-<details>
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>enlace_tbl <span class="ot">&lt;-</span> enlace <span class="sc">|&gt;</span> <span class="fu">group_by</span>(tipo) <span class="sc">|&gt;</span> </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">n_escuelas =</span> <span class="fu">n</span>(),</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">cuantiles =</span> <span class="fu">list</span>(<span class="fu">cuantil</span>(mate_6, <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.95</span>)))) <span class="sc">|&gt;</span> </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unnest</span>(<span class="at">cols =</span> cuantiles) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">valor =</span> <span class="fu">round</span>(valor)) </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>enlace_tbl <span class="sc">|&gt;</span> <span class="fu">spread</span>(cuantil, valor) <span class="sc">|&gt;</span>  <span class="fu">formatear_tabla</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-
-<table class="table table-striped table-hover table-condensed table-responsive" style="font-size: 15px; width: auto !important; margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> tipo </th>
-   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> n_escuelas </th>
-   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> 0.05 </th>
-   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> 0.25 </th>
-   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> 0.5 </th>
-   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> 0.75 </th>
-   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> 0.95 </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> Indígena/Conafe </td>
-   <td style="text-align:right;"> 13599 </td>
-   <td style="text-align:right;"> 304 </td>
-   <td style="text-align:right;"> 358 </td>
-   <td style="text-align:right;"> 412 </td>
-   <td style="text-align:right;"> 478 </td>
-   <td style="text-align:right;"> 588 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> General </td>
-   <td style="text-align:right;"> 60166 </td>
-   <td style="text-align:right;"> 380 </td>
-   <td style="text-align:right;"> 454 </td>
-   <td style="text-align:right;"> 502 </td>
-   <td style="text-align:right;"> 548 </td>
-   <td style="text-align:right;"> 631 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Particular </td>
-   <td style="text-align:right;"> 6816 </td>
-   <td style="text-align:right;"> 479 </td>
-   <td style="text-align:right;"> 551 </td>
-   <td style="text-align:right;"> 593 </td>
-   <td style="text-align:right;"> 634 </td>
-   <td style="text-align:right;"> 703 </td>
-  </tr>
-</tbody>
-</table>
-
-</div>
-</div>
-<p>Podemos graficar de varias maneras, por ejemplo, mostrando los cuantiles 0.05, 0.25, 0.5, 0.75 y 0.95:</p>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="intro-inferencia_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="960"></p>
-</div>
-</div>
-<p>Y vemos que las escuelas privadas tienen mejor resultados que las públicas por un margen considerable. Ahora preguntamos: ¿la calidad de las escuelas es lo que <em>causa</em> estos resultados? Por ejemplo, ¿si cambiáramos un niño de una escuela pública a una privada su resultado sería mejor?</p>
-<p>Es dificil contestar esta pregunta, porque no entendemos el proceso generador de datos que asigna niños a escuelas. Una posible hipótesis de cómo se asigna el tratamiento y cómo se relaciona con la calificación en Enlace (nota: hya muchas más variables y estructuras causales que se pueden considerar, este es sólo un ejemplo que nos indica cómo podría ser problemática una comparación directa entre tipo de escuelas):</p>
-<div class="cell">
-<details>
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dagitty)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggdag)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'ggdag'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:stats':
-
-    filter</code></pre>
-</div>
-<details>
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dag_cafe <span class="ot">&lt;-</span> <span class="fu">dagitty</span>(<span class="st">'dag{"Escuela" [exposure,pos="-3,3"]</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="st">  "Calif" [outcome,pos="3,3"]</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="st">  "Marginación" [pos="0,1"]</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="st">  "Educación padres" [pos = "2,2"]</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="st">  "Recursos escolares" [pos = "0,4"]</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="st">  "Marginación"  -&gt; "Escuela"</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="st">    "Escuela" -&gt; "Calif"</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="st">    "Marginación" -&gt; "Educación padres" -&gt; "Calif"</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="st">    "Escuela" -&gt; "Recursos escolares" -&gt; "Calif"</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="st">  }'</span>)</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>dag_cafe_tidy <span class="ot">&lt;-</span> <span class="fu">tidy_dagitty</span>(dag_cafe) <span class="co">#|&gt; </span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="co">#mutate(tipo = ifelse(name == "Cafe" &amp; to == "Cancer", "dotted", "solid"))</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>dag_cafe_tidy <span class="sc">|&gt;</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">xend =</span> xend, <span class="at">yend =</span> yend )) <span class="sc">+</span> </span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dag_edges</span>() <span class="sc">+</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dag_point</span>(<span class="at">colour =</span> <span class="st">"salmon"</span>, <span class="at">size =</span> <span class="dv">20</span>) <span class="sc">+</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_dag_text</span>(<span class="at">colour =</span> <span class="st">"gray20"</span>) <span class="sc">+</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dag</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="intro-inferencia_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<ul>
-<li>El grado de marginación del hogar de un estudiante influye en el tipo de escuela al que asiste.</li>
-<li>Pero también influye en la calificación que obtiene el estudiante, por ejemplo actuando mediante el nivel de educación de los padres.</li>
-<li>Esto implica que cuando cruzamos tipo de escuela y calificación obtenida, en parte estamos viendo el efecto que la escuela tiene en los estudiantes, pero también un efecto común de la marginación.</li>
-<li>La comparación entre tipos de escuelas está sesgada si el propósito es estimar el efecto de tipo de escuela en los resultados de los estudiantes.</li>
-</ul>
-<div class="cell">
-<details>
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>enlace_tbl_marg <span class="ot">&lt;-</span> enlace <span class="sc">%&gt;%</span> </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(tipo, marginacion) <span class="sc">%&gt;%</span> </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">n_alumnos =</span> <span class="fu">sum</span>(num_evaluados_total),</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">cuantiles =</span> <span class="fu">list</span>(<span class="fu">cuantil</span>(mate_6, <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.95</span>)))) <span class="sc">%&gt;%</span> </span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unnest</span>(<span class="at">cols =</span> cuantiles) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">valor =</span> <span class="fu">round</span>(valor)) <span class="sc">%&gt;%</span> </span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>( n_alumnos <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>Podemos considerar el grado de marginación del municipio donde está cada escuela, y vemos la diferencia tan grande se debe en parte a las escuelas privadas tienden estar en municipios de baja marginación. Por ejemplo, los promedios no son tan diferentes para escuelas públicas en zonas de marginación muy baja comparado con escuelas privadas en zonas de marginación alta:</p>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="intro-inferencia_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="960"></p>
-</div>
-</div>
-<p>En esta nueva comparación, existen muchos otros factores que probablemente tenemos que pensar, algunos de ellos no estarán disponibles en los datos, y otros puede que se escapen de nuestra consideración.</p>
-<ul>
-<li>El problema central en este análisis es que el proceso generador de datos, en cuanto a como se selecciona cada escuela para cada alumno, es complejo.</li>
-<li>Hacer inferencia causal en este caso es retador y depende de varios supuestos <strong>que no son estadísticos</strong>.</li>
-</ul>
-</section>
-<section id="procesos-generadores-e-inferencia-a-poblaciones" class="level2">
-<h2 class="anchored" data-anchor-id="procesos-generadores-e-inferencia-a-poblaciones">Procesos generadores e inferencia a poblaciones</h2>
-<p>Supongamos que nos interesa estimar la prevalencia de anemia en menores de edad escolar en México (6 a 15 años). Si extraemos los registros de hospitalización del IMSS, por ejemplo, nos encontramos con que 47% de los niños registrados tiene anemia. ¿Por qué esta es una estimación dudosa (y demasiado alta) de la prevalencia en México de anemia en niños?</p>
-<ul>
-<li>La razón es que si un menor tienen una enfermedad grave es más probable que sea hospitalizado.</li>
-<li>Si un menor tiene una enfermedad grave, es más probable que tenga anemia.</li>
-<li>Si un menor tiene anemia, es más probable que sea hospitalizado.</li>
-<li>Adicionalmente, la probabilidad de hospitalización para cada tipo de enfermedad cambia con la edad.</li>
-</ul>
-<p>Concluimos que:</p>
-<ul>
-<li>La probabilidad de selección en la muestra cambia dependiendo si un menor tiene anemia o no.</li>
-</ul>
-<p>En conclusión, si no sabemos cómo es que otras enfermedades que llevan a la hospitalización influye en tener anemia en menores y cómo la edad está relacionada con casos de anemia, será difícil extraer conclusiones de estos datos.</p>
-<p>Este caso es muy claro por qué es difícil decir algo de la población general de menores con la muestra de menores hospitalizados, y en muchos casos este problema puede ser más sutil.</p>
 
 
 </section>
@@ -1630,8 +1418,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./pruebas-hipotesis-aleatorizacion.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Aleatorización en inferencia causal</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./intro-pruebas-hipotesis.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introducción a pruebas de hipótesis</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
