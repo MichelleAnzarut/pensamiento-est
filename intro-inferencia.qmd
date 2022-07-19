@@ -27,7 +27,7 @@ pob_1 |> gt()
 ```
 
 Para una muestra de ellos tenemos información acerca de su estatura y peso.
-¿Qué podríamos decir acerca de la estatura y el peso de la población general?
+¿Qué podríamos decir acerca de la estatura y el peso de la población general? 
 
 2. **Inferencia causal**: el proceso generador "asigna" tratamientos a una población o parte
 de ella, y quisiéramos saber cómo se comportarían las unidades tratadas si no recibieran
@@ -62,7 +62,7 @@ implica que una respuesta apropiada a la pregunta incorporará cierto
 grado de incertidumbre.
 
 Entender si es posible producir respuestas precisas a nuestras preguntas,
-y si es posible cuantificar correctamente la incertidumbre na la respuesta
+y si es posible cuantificar correctamente la incertidumbre en la respuesta
 es una tarea central en la estadística.
 
 :::
@@ -165,7 +165,9 @@ pública a una privada su resultado sería mejor?
 
 Es dificil contestar esta pregunta, porque no entendemos el proceso generador
 de datos que asigna niños a escuelas. Una posible hipótesis de cómo se asigna el 
-tratamiento y cómo se relaciona con la calificación en Enlace:
+tratamiento y cómo se relaciona con la calificación en Enlace (nota: hya muchas más
+variables y estructuras causales que se pueden considerar, este es sólo un ejemplo
+que nos indica cómo podría ser problemática una comparación directa entre tipo de escuelas):
 
 ```{r}
 library(dagitty)
@@ -236,11 +238,39 @@ pensar, algunos de ellos no estarán disponibles en los datos, y otros puede que
 de nuestra consideración. 
 
 - El problema central en este análisis es que el proceso generador de datos, en cuanto
-a quíen le toca ir a cada escuela, es complejo. 
+a como se selecciona cada escuela para cada alumno, es complejo. 
 - Hacer inferencia causal en este caso es retador y
 depende de varios supuestos **que no son estadísticos**.
 
 
+## Procesos generadores e inferencia a poblaciones
+
+Supongamos que nos interesa estimar la prevalencia de anemia en menores
+de edad escolar en México (6 a 15 años).
+Si extraemos los registros de hospitalización del IMSS, por ejemplo, nos
+encontramos con que 47% de los niños registrados tiene anemia. ¿Por qué esta
+es una estimación dudosa (y demasiado alta) de la prevalencia en México de anemia en niños?
+
+- La razón es que si un menor tienen una enfermedad grave es más probable
+que sea hospitalizado.
+- Si un menor tiene una enfermedad grave, es más probable que tenga anemia.
+- Si un menor tiene anemia, es más probable que sea hospitalizado.
+- Adicionalmente, la probabilidad de hospitalización para cada
+tipo de enfermedad cambia con la edad.
+
+Concluimos que:
+
+- La probabilidad de selección en la muestra cambia dependiendo si un menor
+tiene anemia o no. 
+
+En conclusión, si no sabemos cómo es que otras enfermedades 
+que llevan a la hospitalización influye en tener anemia en menores y cómo
+la edad está relacionada con casos de anemia, será difícil
+extraer conclusiones de estos datos. 
+
+Este caso es muy claro por qué es difícil decir algo de la población general
+de menores con la muestra de menores hospitalizados, y en muchos casos
+este problema puede ser más sutil.
 
 
 

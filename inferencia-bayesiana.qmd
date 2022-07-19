@@ -1,3 +1,2 @@
 # Estadística Bayesiana
 
-Introducción
