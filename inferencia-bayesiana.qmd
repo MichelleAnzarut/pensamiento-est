@@ -1,2 +1,5 @@
 # Estadística Bayesiana
 
+Hay dos corrientes principales de estadística, la estadística bayesiana y la frecuentista, la diferencia principal es su definición de la probabilidad. La probabilidad siempre viene asociada a la ocurrencia de un determinado suceso sobre un total de casos. Frecuentistamente, se define como la proporción de veces que ocurriría dicho suceso si se repitiese un experimento un número infinito de veces bajo condiciones similares. De forma bayesiana, la probabilidad es una cuantificación de niveles de creencia subjetiva, por lo tanto, la probabilidad de un determinado suceso puede verse modificada por la información previa de que dispongamos sobre el suceso en cuestión.
+
+La inferencia bayesiana es el proceso de ajustar un modelo de probabilidad a un conjunto de datos y resumir el resultado mediante una distribución de probabilidad sobre los parámetros del modelo y sobre cantidades no observadas, como predicciones para nuevas observaciones. En éste capítulo desarrollaremos con ejemplos sencillos las ideas básicas de la inferencia bayesiana.
