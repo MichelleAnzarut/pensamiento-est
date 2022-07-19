@@ -26,8 +26,8 @@ book:
         - inferencia-modelos.qmd
     - part: inferencia-bayesiana.qmd
       chapters:
-        - modelos-bayesianos.qmd
-
+        - intro-bayesiana-1.qmd
+        - intro-bayesiana-2.qmd
 bibliography: referencias.bib
 
 format:

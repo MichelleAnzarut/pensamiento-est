@@ -23,7 +23,7 @@ del experimento es el ángulo en grados final de la flecha. ¿Cómo podríamos p
 por ejemplo $P(X= 92.7)$? ¿Qué pasa si podemos medir con resultados
 con varios decimales de exactitud?
 
-![Ruleta](figuras/ruleta.jpeg)
+![Ruleta](imagenes/ruleta.jpeg)
 
 En estos casos, en lugar de considerar eventos de la forma $X=a$, podemos
 considerar eventos resultantes de la forma $a\leq X \leq b$, es decir,

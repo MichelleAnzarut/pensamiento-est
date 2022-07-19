@@ -501,7 +501,7 @@ datos, obtenemos evidencia en contra de que los tres grupos tienen distribucione
 ## La "crisis de replicabilidad" {-}
 
 Recientemente (@falsefindings) se ha reconocido
-en campos como la sicología la *crisis de replicabilidad*. Varios estudios que recibieron
+en campos de ciencias sociales y medicina la *crisis de replicabilidad*. Varios estudios que recibieron
 mucha publicidad inicialmente no han podido ser replicados
 posteriormente por otros investigadores. Por ejemplo:
 
