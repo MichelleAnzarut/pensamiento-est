@@ -1,3 +1,13 @@
 # Introducción a teoría de probabilidades
 
-Introducción
+La teoría de probabilidad es una rama de las matemáticas que
+se ocupa de la ocurrencia de un evento aleatorio. El objetivo 
+es expresar con cantidades numéricas entre 0 y 1 la posibilidad
+de que suceda dicho evento. 
+
+Hasta este punto del curso asumimos que el lector tiene un buen 
+grado de familiaridad con la teoría básica de la probabilidad, 
+pero dado que los usos de la probabilidad dentro de un marco 
+bayesiano son mucho más amplios, en este capítulo repasaremos 
+brevemente los fundamentos de la teoría de probabilidad.
+
