@@ -477,7 +477,7 @@ div.csl-indent {
 <section id="ejemplo-cálculos-renales" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="ejemplo-cálculos-renales">Ejemplo (cálculos renales)</h3>
 <p>Este es un estudio real acerca de tratamientos para cálculos renales (<span class="citation" data-cites="kidney94">Julious y Mullee (<a href="#ref-kidney94" role="doc-biblioref">1994</a>)</span>). Pacientes se asignaron de una forma no controlada a dos tipos de tratamientos para reducir cálculos renales. Para cada paciente, conocemos el tipo de ćalculos que tenía (grandes o chicos) y si el tratamiento tuvo éxito o no.</p>
-<p>La tabla original se ve como sigue (muestreamos algunos renglones):</p>
+<p>La tabla original tiene 700 renglones (cada renglón es un paciente)</p>
 <div class="cell">
 <details>
 <summary>Código</summary>
@@ -492,6 +492,9 @@ div.csl-indent {
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 700</code></pre>
 </div>
+</div>
+<p>y se ve como sigue (muestreamos algunos renglones):</p>
+<div class="cell">
 <details>
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>calculos <span class="sc">|&gt;</span> </span>
@@ -510,7 +513,42 @@ div.csl-indent {
  </thead>
 <tbody>
   <tr>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:left;"> grandes </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
    <td style="text-align:left;"> B </td>
+   <td style="text-align:left;"> chicos </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:left;"> grandes </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:left;"> grandes </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:left;"> chicos </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:left;"> grandes </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:left;"> chicos </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> A </td>
    <td style="text-align:left;"> grandes </td>
    <td style="text-align:left;"> mejora </td>
   </tr>
@@ -520,53 +558,8 @@ div.csl-indent {
    <td style="text-align:left;"> sin_mejora </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> grandes </td>
-   <td style="text-align:left;"> sin_mejora </td>
-  </tr>
-  <tr>
    <td style="text-align:left;"> A </td>
    <td style="text-align:left;"> grandes </td>
-   <td style="text-align:left;"> sin_mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> chicos </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> chicos </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> grandes </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> chicos </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> chicos </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> chicos </td>
-   <td style="text-align:left;"> sin_mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> grandes </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> chicos </td>
    <td style="text-align:left;"> mejora </td>
   </tr>
   <tr>
@@ -575,9 +568,29 @@ div.csl-indent {
    <td style="text-align:left;"> sin_mejora </td>
   </tr>
   <tr>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:left;"> grandes </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:left;"> grandes </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:left;"> grandes </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
    <td style="text-align:left;"> B </td>
    <td style="text-align:left;"> chicos </td>
    <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:left;"> chicos </td>
+   <td style="text-align:left;"> sin_mejora </td>
   </tr>
   <tr>
    <td style="text-align:left;"> A </td>
@@ -585,14 +598,9 @@ div.csl-indent {
    <td style="text-align:left;"> sin_mejora </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> chicos </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> B </td>
+   <td style="text-align:left;"> A </td>
    <td style="text-align:left;"> grandes </td>
-   <td style="text-align:left;"> sin_mejora </td>
+   <td style="text-align:left;"> mejora </td>
   </tr>
   <tr>
    <td style="text-align:left;"> B </td>
@@ -602,11 +610,6 @@ div.csl-indent {
   <tr>
    <td style="text-align:left;"> A </td>
    <td style="text-align:left;"> grandes </td>
-   <td style="text-align:left;"> sin_mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> chicos </td>
    <td style="text-align:left;"> mejora </td>
   </tr>
 </tbody>
@@ -614,7 +617,7 @@ div.csl-indent {
 
 </div>
 </div>
-<p>Aunque estos datos contienen información de 700 pacientes (cada renglón es un paciente), los datos pueden resumirse sin pérdida de información contando como sigue:</p>
+<p>Aunque estos datos contienen información de 700 pacientes, los datos pueden resumirse sin pérdida de información contando como sigue:</p>
 <div class="cell">
 <details>
 <summary>Código</summary>
@@ -948,7 +951,7 @@ div.csl-indent {
 <span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dag</span>() </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="est-cd-1_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+<p><img src="est-cd-1_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <ul>
@@ -977,7 +980,7 @@ div.csl-indent {
 <span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dag</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="est-cd-1_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+<p><img src="est-cd-1_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <ul>
@@ -1015,10 +1018,10 @@ div.csl-indent {
 <span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dag</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="est-cd-1_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+<p><img src="est-cd-1_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Este diagrama indica que puede ser difícil generalizar con las personas que han sido seleccionadas, porque tanto la selección como la variable de interés tienen una causa común: la existencia o no de una enfermedad en la persona. Será difícil genralizar para las personas no observadas en el estudio.</p>
+<p>Este diagrama indica que puede ser difícil generalizar con las personas que han sido seleccionadas, porque tanto la selección como la variable de interés tienen una causa común: la existencia o no de una enfermedad en la persona. Será difícil generalizar para las personas no observadas en el estudio.</p>
 </section>
 <section id="ejemplo-colisionadores-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="ejemplo-colisionadores-1">Ejemplo: colisionadores 1</h3>
@@ -1057,7 +1060,7 @@ div.csl-indent {
 <span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_dag</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="est-cd-1_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+<p><img src="est-cd-1_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>El código para simular es el siguiente: todas las variables toman valores 0 o 1, pero con diferentes probabilidades y dependiendo de las variables que son padres en la gráfica de arriba:</p>
@@ -1149,7 +1152,7 @@ div.csl-indent {
 <pre><code>`geom_smooth()` using formula 'y ~ x'</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="est-cd-1_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+<p><img src="est-cd-1_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
