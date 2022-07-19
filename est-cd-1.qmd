@@ -110,7 +110,7 @@ de nacimientos.
 
 Este es un estudio real acerca de tratamientos para cálculos renales (@kidney94). Pacientes se asignaron de una forma no controlada a dos tipos de tratamientos para reducir cálculos renales. Para cada paciente, conocemos el tipo de ćalculos que tenía (grandes o chicos) y si el tratamiento tuvo éxito o no.
 
-La tabla original se ve como sigue (muestreamos algunos renglones):
+La tabla original tiene 700 renglones (cada renglón es un paciente)
 
 ```{r, message = FALSE}
 calculos <- read_csv("./datos/kidney_stone_data.csv")
@@ -120,12 +120,17 @@ calculos <- calculos |>
    mutate(resultado = ifelse(éxito == 1, "mejora", "sin_mejora")) |> 
    select(tratamiento, tamaño, resultado)
 nrow(calculos)
+```
+
+y se ve como sigue (muestreamos algunos renglones):
+
+```{r, message = FALSE}
 calculos |> 
    sample_n(20) |> 
    kable()
 ```
 
-Aunque estos datos contienen información de 700 pacientes (cada renglón es un paciente), los datos pueden resumirse sin pérdida de información contando como sigue:
+Aunque estos datos contienen información de 700 pacientes, los datos pueden resumirse sin pérdida de información contando como sigue:
 
 ```{r}
 calculos_agregada <- calculos |> 
@@ -318,7 +323,7 @@ dag_1_tidy |>
 Este diagrama indica que puede ser difícil generalizar con las personas
 que han sido seleccionadas, porque tanto la selección como la variable de interés
 tienen una causa común: la existencia o no de una enfermedad en la persona. Será 
-difícil genralizar para las personas no observadas en el estudio.
+difícil generalizar para las personas no observadas en el estudio.
 
 ### Ejemplo: colisionadores 1 {.unnumbered}
 
