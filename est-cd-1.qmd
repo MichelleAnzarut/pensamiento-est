@@ -285,7 +285,7 @@ recopilados estos datos.
 
 ### Ejemplo: prevalencia de anemia {.unnumbered}
 
-En un estudio de hospitales Australia se registró que
+En un estudio de hospitales en Australia se registró que
 57% de una muestra pacientes tenían anemia cuando fueron ingresados. ¿Qué podemos decir
 acerca de la prevalencia de anemia en la población general de Australia? Con información
 básica acerca del proceso generador de esta muestra podemos concluir que
@@ -374,7 +374,14 @@ dag_1_tidy |>
 
 El código para simular es el siguiente: todas las variables toman
 valores 0 o 1, pero con diferentes probabilidades y dependiendo de las
-variables que son padres en la gráfica de arriba:
+variables que son padres en la gráfica de arriba. 
+
+1. Simulamos 100,000 personas de las cuales aproximadamente el 1% son trabajadores de salud.
+2. Suponemos que el 4% de los trabajadores de salud resultaron covid positivo y el 1% del resto de las personas resultaron covid positivo. 
+3. Suponemos que de las personas que tienen covid, el 50% tienen síntomas y de las personas que no tienen covid, el 1% tiene síntomas.
+4. Suponemos que de los trabadores de salud el 99% se hicieron prueba (sin importar si tenían o no síntomas) y el resto de las personas se divide en 2, de los no trabadores de salud con síntomas, el 60% se hicieron una prueba y de los no trabajdores de salud sin síntomas, el 1% se hizo una prueba
+5. De los trabajadores de salud, el 30% fuman, del resto de las personas el 10% fuman.
+
 
 ```{r}
 #| code-fold: show
