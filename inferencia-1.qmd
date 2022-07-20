@@ -76,8 +76,9 @@ para describir esa incertidumbre.
 ## Proceso de selección o asignación
 
 Las preguntas que planteamos arriba son difíciles de contestar cuando no
-conocemos bien el proceso de selección de individuos en la muestra o no
-conocemos el proceso de asignación del tratamiento. 
+conocemos bien el proceso de generador de datos,
+y en particular, cómo ocurre la **selección de individuos en la muestra o
+asignación del tratamiento.** 
 
 Por ejemplo, llegaríamos a conclusiones muy distintas si nos dijeran que:
 
@@ -93,7 +94,8 @@ Segunda población:
 2. Solo dimos aspirina a las personas que llegaron primero en una carrera de 100 metros.
 3. Dimos una aspirina exclusivamente a las personas cuyo día de nacimiento es par.
 
-Discute qué conclusiones podrías llegar en cada uno de estos escenarios.
+Discute qué conclusiones podrías llegar en cada uno de estos escenarios. Puedes
+hacer diagramas como los de la sección anterior para explicar tus respuestas.
 
 Los casos 1 y 2 en ambas poblaciones son en general más difíciles de resolver
 adecuadamente, y explicaremos con más ejemplos. Adicionalmente, es también más difícil

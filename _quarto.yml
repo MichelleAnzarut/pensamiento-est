@@ -8,13 +8,17 @@ book:
   chapters:
     - index.qmd
     - part: est-cd-1.qmd
+    - part: resumenes.qmd
       chapters:
         - analisis-resumenes-1.qmd
         - analisis-resumenes-2.qmd
     - part: intro-inferencia.qmd
       chapters:
+        - intro-pruebas-hipotesis.qmd
         - pruebas-hipotesis-aleatorizacion.qmd
+        - pruebas-hipotesis-2.qmd
         - estimacion-aleatorizacion.qmd
+        - remuestreo-bootstrap.qmd
     - part: probabilidad.qmd
       chapters:
         - modelo-prob.qmd
@@ -23,8 +27,8 @@ book:
         - inferencia-modelos.qmd
     - part: inferencia-bayesiana.qmd
       chapters:
-        - modelos-bayesianos.qmd
-
+        - intro-bayesiana-1.qmd
+        - intro-bayesiana-2.qmd
 bibliography: referencias.bib
 
 format:

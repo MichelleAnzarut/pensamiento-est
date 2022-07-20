@@ -1,4 +1,4 @@
-# Introducción {.unnumbered}
+# Acerca del curso {.unnumbered}
 
 En casi todas las soluciones basadas en datos, los científicos de datos ejercen el pensamiento estadístico al diseñar estrategias de recopilación de datos, obtener evidencia para la toma de decisiones y construir modelos para predecir tendencias futuras.
 
