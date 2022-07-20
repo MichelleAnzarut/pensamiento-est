@@ -272,7 +272,12 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modelos-bayesianos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Inferencia bayesiana</span></a>
+  <a href="./intro-bayesiana-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introducción a inferencia bayesiana</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro-bayesiana-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Calibración bayesiana y Regularización</span></a>
   </div>
 </li>
       </ul>
@@ -510,7 +515,7 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">min</span>(<span class="fu">dist_perm</span>(dif_obs), (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">dist_perm</span>(dif_obs)))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.096</code></pre>
+<pre><code>[1] 0.0842</code></pre>
 </div>
 </div>
 <p>Este valor p se considera como evidencia “moderada” en contra de la hipótesis nula. Valores p más chicos (observaciones más extremas en comparación con la referencia) aportan más evidencia en contra de la hipótesis de que los grupos de tomadores de té , y valores más grandes aportan menos evidencia.</p>
@@ -639,7 +644,7 @@ cols(
 )</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>decrypt("Rysq OI0I Yl M9HY0Y9l mm")</code></pre>
+<pre><code>decrypt("5yTk BCNC jw q9ljNj9w HH")</code></pre>
 </div>
 <div class="cell-output-display">
 <p><img src="pruebas-hipotesis-2_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="768"></p>
@@ -744,7 +749,7 @@ cols(
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="fu">lineup</span>(<span class="fu">null_permute</span>(<span class="st">"grupo"</span>), muestra_tab, <span class="at">n =</span> <span class="dv">20</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>decrypt("Rysq OI0I Yl M9HY0Y9l m3")</code></pre>
+<pre><code>decrypt("5yTk BCNC jw q9ljNj9w Hx")</code></pre>
 </div>
 <details>
 <summary>Código</summary>
@@ -785,7 +790,7 @@ cols(
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="fu">lineup</span>(<span class="fu">null_permute</span>(<span class="st">"grupo"</span>), muestra_tab, <span class="at">n =</span> <span class="dv">20</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>decrypt("Rysq OI0I Yl M9HY0Y9l mQ")</code></pre>
+<pre><code>decrypt("5yTk BCNC jw q9ljNj9w HS")</code></pre>
 </div>
 <details>
 <summary>Código</summary>
@@ -805,7 +810,7 @@ the `.groups` argument.</code></pre>
 </section>
 <section id="la-crisis-de-replicabilidad" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="la-crisis-de-replicabilidad">La “crisis de replicabilidad”</h2>
-<p>Recientemente (<span class="citation" data-cites="falsefindings">Ioannidis (<a href="#ref-falsefindings" role="doc-biblioref">2005</a>)</span>) se ha reconocido en campos como la sicología la <em>crisis de replicabilidad</em>. Varios estudios que recibieron mucha publicidad inicialmente no han podido ser replicados posteriormente por otros investigadores. Por ejemplo:</p>
+<p>Recientemente (<span class="citation" data-cites="falsefindings">Ioannidis (<a href="#ref-falsefindings" role="doc-biblioref">2005</a>)</span>) se ha reconocido en campos de ciencias sociales y medicina la <em>crisis de replicabilidad</em>. Varios estudios que recibieron mucha publicidad inicialmente no han podido ser replicados posteriormente por otros investigadores. Por ejemplo:</p>
 <ul>
 <li>Hacer <a href="https://www.sciencedaily.com/releases/2017/09/170911095932.htm">poses poderosas</a> produce cambios fisiológicos que mejoran nuestro desempeño en ciertas tareas</li>
 <li>Mostrar palabras relacionadas con “viejo” hacen que las personas caminen más lento (efectos de <a href="https://www.nature.com/news/nobel-laureate-challenges-psychologists-to-clean-up-their-act-1.11535">priming</a>)</li>
