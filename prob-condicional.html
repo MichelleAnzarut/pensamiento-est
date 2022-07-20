@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Pensamiento estadístico - 8&nbsp; Probabilidad condicional e independencia</title>
+<title>Pensamiento estadístico - 9&nbsp; Probabilidad condicional e independencia</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -148,7 +148,7 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probabilidad condicional e independencia</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probabilidad condicional e independencia</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -227,6 +227,11 @@ div.csl-indent {
   <a href="./estimacion-aleatorizacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Inferencia por intervalos</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./remuestreo-bootstrap.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Remuestreo: el bootstrap</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -239,22 +244,22 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modelo-prob.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Básicos de probabilidad y simulación</span></a>
+  <a href="./modelo-prob.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Básicos de probabilidad y simulación</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./prob-condicional.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probabilidad condicional e independencia</span></a>
+  <a href="./prob-condicional.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probabilidad condicional e independencia</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modelos-continuos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Modelos probabilísticos para variables continuas</span></a>
+  <a href="./modelos-continuos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modelos probabilísticos para variables continuas</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./inferencia-modelos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Inferencia con modelos probabilísticos</span></a>
+  <a href="./inferencia-modelos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Inferencia con modelos probabilísticos</span></a>
   </div>
 </li>
       </ul>
@@ -269,12 +274,12 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro-bayesiana-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introducción a inferencia bayesiana</span></a>
+  <a href="./intro-bayesiana-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Introducción a inferencia bayesiana</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro-bayesiana-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Calibración bayesiana y Regularización</span></a>
+  <a href="./intro-bayesiana-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Calibración bayesiana y Regularización</span></a>
   </div>
 </li>
       </ul>
@@ -288,49 +293,49 @@ div.csl-indent {
     <h2 id="toc-title">Indice de contenidos</h2>
    
   <ul>
-  <li><a href="#probabilidad-condicional-en-espacios-equiprobables." id="toc-probabilidad-condicional-en-espacios-equiprobables." class="nav-link active" data-scroll-target="#probabilidad-condicional-en-espacios-equiprobables."> <span class="header-section-number">8.1</span> Probabilidad condicional en espacios equiprobables.</a>
+  <li><a href="#probabilidad-condicional-en-espacios-equiprobables." id="toc-probabilidad-condicional-en-espacios-equiprobables." class="nav-link active" data-scroll-target="#probabilidad-condicional-en-espacios-equiprobables."> <span class="header-section-number">9.1</span> Probabilidad condicional en espacios equiprobables.</a>
   <ul class="collapse">
-  <li><a href="#ejemplo-dos-dados" id="toc-ejemplo-dos-dados" class="nav-link" data-scroll-target="#ejemplo-dos-dados"> <span class="header-section-number">8.1.1</span> Ejemplo: dos dados</a></li>
-  <li><a href="#ejemplo-dos-volados" id="toc-ejemplo-dos-volados" class="nav-link" data-scroll-target="#ejemplo-dos-volados"> <span class="header-section-number">8.1.2</span> Ejemplo: dos volados</a></li>
-  <li><a href="#ejemplo-tres-cartas" id="toc-ejemplo-tres-cartas" class="nav-link" data-scroll-target="#ejemplo-tres-cartas"> <span class="header-section-number">8.1.3</span> Ejemplo: tres cartas</a></li>
+  <li><a href="#ejemplo-dos-dados" id="toc-ejemplo-dos-dados" class="nav-link" data-scroll-target="#ejemplo-dos-dados"> <span class="header-section-number">9.1.1</span> Ejemplo: dos dados</a></li>
+  <li><a href="#ejemplo-dos-volados" id="toc-ejemplo-dos-volados" class="nav-link" data-scroll-target="#ejemplo-dos-volados"> <span class="header-section-number">9.1.2</span> Ejemplo: dos volados</a></li>
+  <li><a href="#ejemplo-tres-cartas" id="toc-ejemplo-tres-cartas" class="nav-link" data-scroll-target="#ejemplo-tres-cartas"> <span class="header-section-number">9.1.3</span> Ejemplo: tres cartas</a></li>
   </ul></li>
-  <li><a href="#simulación-y-probabilidad-condicional" id="toc-simulación-y-probabilidad-condicional" class="nav-link" data-scroll-target="#simulación-y-probabilidad-condicional"> <span class="header-section-number">8.2</span> Simulación y probabilidad condicional</a>
+  <li><a href="#simulación-y-probabilidad-condicional" id="toc-simulación-y-probabilidad-condicional" class="nav-link" data-scroll-target="#simulación-y-probabilidad-condicional"> <span class="header-section-number">9.2</span> Simulación y probabilidad condicional</a>
   <ul class="collapse">
   <li><a href="#ejemplo-simulación-tres-cartas" id="toc-ejemplo-simulación-tres-cartas" class="nav-link" data-scroll-target="#ejemplo-simulación-tres-cartas">Ejemplo: simulación tres cartas</a></li>
   </ul></li>
-  <li><a href="#regla-de-la-multiplicación" id="toc-regla-de-la-multiplicación" class="nav-link" data-scroll-target="#regla-de-la-multiplicación"> <span class="header-section-number">8.3</span> Regla de la multiplicación</a>
+  <li><a href="#regla-de-la-multiplicación" id="toc-regla-de-la-multiplicación" class="nav-link" data-scroll-target="#regla-de-la-multiplicación"> <span class="header-section-number">9.3</span> Regla de la multiplicación</a>
   <ul class="collapse">
   <li><a href="#ejercicio" id="toc-ejercicio" class="nav-link" data-scroll-target="#ejercicio">Ejercicio</a></li>
   </ul></li>
-  <li><a href="#nota-falacias-probabilísticas" id="toc-nota-falacias-probabilísticas" class="nav-link" data-scroll-target="#nota-falacias-probabilísticas"> <span class="header-section-number">8.4</span> Nota: falacias probabilísticas</a></li>
-  <li><a href="#regla-de-probablilidad-total" id="toc-regla-de-probablilidad-total" class="nav-link" data-scroll-target="#regla-de-probablilidad-total"> <span class="header-section-number">8.5</span> Regla de probablilidad total</a>
+  <li><a href="#nota-falacias-probabilísticas" id="toc-nota-falacias-probabilísticas" class="nav-link" data-scroll-target="#nota-falacias-probabilísticas"> <span class="header-section-number">9.4</span> Nota: falacias probabilísticas</a></li>
+  <li><a href="#regla-de-probablilidad-total" id="toc-regla-de-probablilidad-total" class="nav-link" data-scroll-target="#regla-de-probablilidad-total"> <span class="header-section-number">9.5</span> Regla de probablilidad total</a>
   <ul class="collapse">
   <li><a href="#ejemplo" id="toc-ejemplo" class="nav-link" data-scroll-target="#ejemplo">Ejemplo</a></li>
   <li><a href="#ejemplo-1" id="toc-ejemplo-1" class="nav-link" data-scroll-target="#ejemplo-1">Ejemplo</a></li>
   </ul></li>
-  <li><a href="#ejercicio-dados-y-monedas" id="toc-ejercicio-dados-y-monedas" class="nav-link" data-scroll-target="#ejercicio-dados-y-monedas"> <span class="header-section-number">8.6</span> Ejercicio: dados y monedas</a></li>
-  <li><a href="#ejercicio-dados-y-monedas-simulación" id="toc-ejercicio-dados-y-monedas-simulación" class="nav-link" data-scroll-target="#ejercicio-dados-y-monedas-simulación"> <span class="header-section-number">8.7</span> Ejercicio: dados y monedas (simulación)</a></li>
-  <li><a href="#regla-de-bayes" id="toc-regla-de-bayes" class="nav-link" data-scroll-target="#regla-de-bayes"> <span class="header-section-number">8.8</span> Regla de Bayes</a>
+  <li><a href="#ejercicio-dados-y-monedas" id="toc-ejercicio-dados-y-monedas" class="nav-link" data-scroll-target="#ejercicio-dados-y-monedas"> <span class="header-section-number">9.6</span> Ejercicio: dados y monedas</a></li>
+  <li><a href="#ejercicio-dados-y-monedas-simulación" id="toc-ejercicio-dados-y-monedas-simulación" class="nav-link" data-scroll-target="#ejercicio-dados-y-monedas-simulación"> <span class="header-section-number">9.7</span> Ejercicio: dados y monedas (simulación)</a></li>
+  <li><a href="#regla-de-bayes" id="toc-regla-de-bayes" class="nav-link" data-scroll-target="#regla-de-bayes"> <span class="header-section-number">9.8</span> Regla de Bayes</a>
   <ul class="collapse">
   <li><a href="#ejemplo-2" id="toc-ejemplo-2" class="nav-link" data-scroll-target="#ejemplo-2">Ejemplo</a></li>
   <li><a href="#ejemplo-parte-1" id="toc-ejemplo-parte-1" class="nav-link" data-scroll-target="#ejemplo-parte-1">Ejemplo (parte 1)</a></li>
   <li><a href="#ejemplo-parte-2" id="toc-ejemplo-parte-2" class="nav-link" data-scroll-target="#ejemplo-parte-2">Ejemplo (parte 2)</a></li>
   <li><a href="#ejemplo-3" id="toc-ejemplo-3" class="nav-link" data-scroll-target="#ejemplo-3">Ejemplo</a></li>
   </ul></li>
-  <li><a href="#independencia" id="toc-independencia" class="nav-link" data-scroll-target="#independencia"> <span class="header-section-number">8.9</span> Independencia</a>
+  <li><a href="#independencia" id="toc-independencia" class="nav-link" data-scroll-target="#independencia"> <span class="header-section-number">9.9</span> Independencia</a>
   <ul class="collapse">
   <li><a href="#ejemplos" id="toc-ejemplos" class="nav-link" data-scroll-target="#ejemplos">Ejemplos</a></li>
   </ul></li>
-  <li><a href="#independencia-de-más-de-dos-eventos" id="toc-independencia-de-más-de-dos-eventos" class="nav-link" data-scroll-target="#independencia-de-más-de-dos-eventos"> <span class="header-section-number">8.10</span> Independencia de más de dos eventos</a>
+  <li><a href="#independencia-de-más-de-dos-eventos" id="toc-independencia-de-más-de-dos-eventos" class="nav-link" data-scroll-target="#independencia-de-más-de-dos-eventos"> <span class="header-section-number">9.10</span> Independencia de más de dos eventos</a>
   <ul class="collapse">
   <li><a href="#ejercicio-1" id="toc-ejercicio-1" class="nav-link" data-scroll-target="#ejercicio-1">Ejercicio</a></li>
   <li><a href="#ejemplo-número-de-seises" id="toc-ejemplo-número-de-seises" class="nav-link" data-scroll-target="#ejemplo-número-de-seises">Ejemplo: número de seises</a></li>
   </ul></li>
-  <li><a href="#intro-a-estimación-por-máxima-verosimilitud" id="toc-intro-a-estimación-por-máxima-verosimilitud" class="nav-link" data-scroll-target="#intro-a-estimación-por-máxima-verosimilitud"> <span class="header-section-number">8.11</span> Intro a estimación por máxima verosimilitud</a>
+  <li><a href="#intro-a-estimación-por-máxima-verosimilitud" id="toc-intro-a-estimación-por-máxima-verosimilitud" class="nav-link" data-scroll-target="#intro-a-estimación-por-máxima-verosimilitud"> <span class="header-section-number">9.11</span> Intro a estimación por máxima verosimilitud</a>
   <ul class="collapse">
   <li><a href="#ejemplo-1-1" id="toc-ejemplo-1-1" class="nav-link" data-scroll-target="#ejemplo-1-1">Ejemplo 1</a></li>
   <li><a href="#ejemplo-4" id="toc-ejemplo-4" class="nav-link" data-scroll-target="#ejemplo-4">Ejemplo</a></li>
-  <li><a href="#ejemplo-2-1" id="toc-ejemplo-2-1" class="nav-link" data-scroll-target="#ejemplo-2-1"> <span class="header-section-number">8.11.1</span> Ejemplo 2</a></li>
+  <li><a href="#ejemplo-2-1" id="toc-ejemplo-2-1" class="nav-link" data-scroll-target="#ejemplo-2-1"> <span class="header-section-number">9.11.1</span> Ejemplo 2</a></li>
   <li><a href="#aspectos-numéricos" id="toc-aspectos-numéricos" class="nav-link" data-scroll-target="#aspectos-numéricos">Aspectos numéricos</a></li>
   </ul></li>
   </ul>
@@ -341,7 +346,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probabilidad condicional e independencia</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probabilidad condicional e independencia</span></h1>
 </div>
 
 
@@ -361,12 +366,12 @@ div.csl-indent {
 <li>La probabilidad condicional nos permite modelar con probabilidad sistemas relativamente complejos a partir de componentes simples.</li>
 </ol>
 <p>Muchos de los problemas de esta sección son de (<span class="citation" data-cites="rossproba">Ross (<a href="#ref-rossproba" role="doc-biblioref">1998</a>)</span>).</p>
-<section id="probabilidad-condicional-en-espacios-equiprobables." class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="probabilidad-condicional-en-espacios-equiprobables."><span class="header-section-number">8.1</span> Probabilidad condicional en espacios equiprobables.</h2>
+<section id="probabilidad-condicional-en-espacios-equiprobables." class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="probabilidad-condicional-en-espacios-equiprobables."><span class="header-section-number">9.1</span> Probabilidad condicional en espacios equiprobables.</h2>
 <p>Supongamos que en un experimento simétro de <span class="math inline">\(n\)</span> posibles resultados, sabemos que ocurrió el evento <span class="math inline">\(F\)</span>, es decir, un conjunto de resultados fijo. ¿Cómo podemos calcular la probabilidad de que ocurra un evento <span class="math inline">\(E\)</span> dado que sabemos que <span class="math inline">\(F\)</span> ocurrió? Esta probabilidad se escribe</p>
 <p><span class="math display">\[P(E|F)\]</span></p>
-<section id="ejemplo-dos-dados" class="level3" data-number="8.1.1">
-<h3 data-number="8.1.1" class="anchored" data-anchor-id="ejemplo-dos-dados"><span class="header-section-number">8.1.1</span> Ejemplo: dos dados</h3>
+<section id="ejemplo-dos-dados" class="level3" data-number="9.1.1">
+<h3 data-number="9.1.1" class="anchored" data-anchor-id="ejemplo-dos-dados"><span class="header-section-number">9.1.1</span> Ejemplo: dos dados</h3>
 <p>Supongamos que tiramos dos dados, y nos dicen que la suma de los dos datos es igual a 6. ¿Cuál es la probablidad condicional de haber tirado al menos un cinco dado que la suma es 6?</p>
 <p>Solución: los resultados equiprobables que resultan en un tiro de suma 6 son <span class="math inline">\(F= \{ (5,1),(4,2),(3,3),(2,4),(1,5)\}\)</span>, que son 5 posibles resultados. En solamente 2 de ellos tiramos un cinco. Como estos resultados son equiprobables, si <span class="math inline">\(E\)</span> es el evento “tirar al menos un 5”,</p>
 <p><span class="math display">\[P(E|F) = 2/5\]</span></p>
@@ -384,21 +389,21 @@ es decir, dividimos el número de maneras en que pueden ocurrir <span class="mat
 </div>
 <p>Nótese que otra manera de ver esta definición es como sigue: una vez que sabemos que ocurrió <span class="math inline">\(F\)</span>, restringimos todo nuestro análisis a resultados dentro de <span class="math inline">\(F\)</span>, y proseguimos como si se tratara de una probabilidad usual.</p>
 </section>
-<section id="ejemplo-dos-volados" class="level3" data-number="8.1.2">
-<h3 data-number="8.1.2" class="anchored" data-anchor-id="ejemplo-dos-volados"><span class="header-section-number">8.1.2</span> Ejemplo: dos volados</h3>
+<section id="ejemplo-dos-volados" class="level3" data-number="9.1.2">
+<h3 data-number="9.1.2" class="anchored" data-anchor-id="ejemplo-dos-volados"><span class="header-section-number">9.1.2</span> Ejemplo: dos volados</h3>
 <p>Supongamos que tiramos dos volados. Cuál es la probabilidad condicional de que los dos volados sean sol (evento <span class="math inline">\(E\)</span>) dado que 1) El primer volado es sol? 2) Alguno de los dos volados es sol, 3) Los dos volados son águilas?</p>
 <p>Hay 2 resultados donde el primer volado es sol (enuméralos), así que la primer probabilidad es <span class="math inline">\(P(E|F_1)=1/2\)</span>. Explica por qué la segunda probabilidad condicional es igual a <span class="math inline">\(P(E|F_2)=1/3\)</span>. ¿Cuánto vale <span class="math inline">\(P(E|F_3)\)</span>?</p>
 </section>
-<section id="ejemplo-tres-cartas" class="level3" data-number="8.1.3">
-<h3 data-number="8.1.3" class="anchored" data-anchor-id="ejemplo-tres-cartas"><span class="header-section-number">8.1.3</span> Ejemplo: tres cartas</h3>
+<section id="ejemplo-tres-cartas" class="level3" data-number="9.1.3">
+<h3 data-number="9.1.3" class="anchored" data-anchor-id="ejemplo-tres-cartas"><span class="header-section-number">9.1.3</span> Ejemplo: tres cartas</h3>
 <p>Supongamos que extraemos tres cartas al azar de una baraja de 52 cartas (13 son corazones). Nos muestran que la segunda y la tercera carta son corazones. ¿Cuál es la probabilidad condicional de que la primera sea un corazón?</p>
 <p>Solución: como resultados para las primeras tres cartas seleccionadas tenemos <span class="math inline">\((x_1,x_2,x_3)\)</span>. Nos interesan solamente los resultados <span class="math inline">\((x_1, corazon_1, corazon_2)\)</span>. Existen <span class="math inline">\(13*12*11 + 39*13*12 = 7800\)</span> resultados posibles (primero contamos los que tienen un corazón al principio, y luego los que no tienen un corazón al principio, de modo que la probabilidad que buscamos es</p>
 <p><span class="math display">\[\frac{13(12)(11)}{13(12)(11) + 39(13)(12)} = \frac{11}{11 + 39} = 0.22\]</span></p>
 <p>Interpreta la simplificación de arriba para describir una manera más simple de calcular esta probabilidad condicional.</p>
 </section>
 </section>
-<section id="simulación-y-probabilidad-condicional" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="simulación-y-probabilidad-condicional"><span class="header-section-number">8.2</span> Simulación y probabilidad condicional</h2>
+<section id="simulación-y-probabilidad-condicional" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="simulación-y-probabilidad-condicional"><span class="header-section-number">9.2</span> Simulación y probabilidad condicional</h2>
 <p>Una manera de aproximar probabilidades condicionales es simulando el experimento que nos interesa, y calculando frecuencias relativas solamente sobre la información que sabemos que ocurrió: es decir, filtramos las simulaciones escogiendo sólo las que son consistentes con la información dada.</p>
 <section id="ejemplo-simulación-tres-cartas" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="ejemplo-simulación-tres-cartas">Ejemplo: simulación tres cartas</h3>
@@ -539,8 +544,8 @@ es decir, dividimos el número de maneras en que pueden ocurrir <span class="mat
 </div>
 </section>
 </section>
-<section id="regla-de-la-multiplicación" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="regla-de-la-multiplicación"><span class="header-section-number">8.3</span> Regla de la multiplicación</h2>
+<section id="regla-de-la-multiplicación" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="regla-de-la-multiplicación"><span class="header-section-number">9.3</span> Regla de la multiplicación</h2>
 <p>A veces nos interesa calcular la probabilidad de que dos eventos ocurran, y conocemos <span class="math inline">\(P(F)\)</span> y <span class="math inline">\(P(E|F)\)</span>. En ese caso podemos usar la definición de probabilidad condicional para escribir al <em>regla del producto</em>:</p>
 <p><span class="math display">\[P(EF) = P(F)P(E|F)\]</span></p>
 <p>Por ejemplo, si queremos calcular la probablidad de extraer dos corazones de una baraja usual, tenemos que <span class="math inline">\(P(C_1) = 13/52 = 1/4\)</span>. <span class="math inline">\(P(C_2|C_1)\)</span> es fácil de calcular, pues si la primera carta que sacamos es un corazón, entonces para la segunda extracción hay 51 cartas, de las cuales 12 son corazones, de forma que <span class="math inline">\(P(C_2|C_1) = 12/51\)</span>. Usando la regla del producto, quedamos con</p>
@@ -567,8 +572,8 @@ es decir, dividimos el número de maneras en que pueden ocurrir <span class="mat
 <p><span class="math display">\[P(E_1E_2E_3) = \frac{39(26)(13)}{51(50)(49)} \approx 0.105\]</span></p>
 </section>
 </section>
-<section id="nota-falacias-probabilísticas" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="nota-falacias-probabilísticas"><span class="header-section-number">8.4</span> Nota: falacias probabilísticas</h2>
+<section id="nota-falacias-probabilísticas" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="nota-falacias-probabilísticas"><span class="header-section-number">9.4</span> Nota: falacias probabilísticas</h2>
 <p>Una de las razones por las que es importante usar la teoría de probabilidad para manipular probabilidades es que las personas, naturalmente, tienden a hacer “cálculos mentales probabilísticos” incorrectos, lo cual a fin de cuentas lleva a decisiones mal informadas. Existe amplia evidencia de esto, ver por ejemplo el trabajo de: <a href="https://www.econlib.org/library/Enc/bios/Kahneman.html">Kahneman y Tversky</a></p>
 <p><em>“Before their work, economists had gotten far in their analyses of decision making under uncertainty by assuming that people correctly estimate probabilities of various outcomes or, at least, do not estimate these probabilities in a biased way […]. But Kahneman and Tversky found that this is not true: the vast majority of people misestimate probabilities in predictable ways.”</em></p>
 <p>Ahora podemos descutir una de ellas, la falacia de conjunción. Consideremos la siguiente pregunta:</p>
@@ -582,8 +587,8 @@ es decir, dividimos el número de maneras en que pueden ocurrir <span class="mat
 </ol>
 <p>¿Qué crees que tiende a escoger la mayoria de las personas como la más probable? ¿Qué regla de probabilidad puedes usar para demostrar que esto es una falacia?</p>
 </section>
-<section id="regla-de-probablilidad-total" class="level2" data-number="8.5">
-<h2 data-number="8.5" class="anchored" data-anchor-id="regla-de-probablilidad-total"><span class="header-section-number">8.5</span> Regla de probablilidad total</h2>
+<section id="regla-de-probablilidad-total" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="regla-de-probablilidad-total"><span class="header-section-number">9.5</span> Regla de probablilidad total</h2>
 <p>Una regla que usaremos varias veces es la regla de probabilidad total, que establece que</p>
 <p><span class="math display">\[P(E) = P(E|F)P(F) + P(E|F^c)P(F^c)\]</span></p>
 <p>donde el evento <span class="math inline">\(F^c\)</span> significa que <span class="math inline">\(F\)</span> <strong>no</strong> ocurrió.</p>
@@ -607,8 +612,8 @@ es decir, dividimos el número de maneras en que pueden ocurrir <span class="mat
 <p><span class="math display">\[ 0.90(0.20) + 0.15(0.80) = 0.3\]</span></p>
 </section>
 </section>
-<section id="ejercicio-dados-y-monedas" class="level2" data-number="8.6">
-<h2 data-number="8.6" class="anchored" data-anchor-id="ejercicio-dados-y-monedas"><span class="header-section-number">8.6</span> Ejercicio: dados y monedas</h2>
+<section id="ejercicio-dados-y-monedas" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="ejercicio-dados-y-monedas"><span class="header-section-number">9.6</span> Ejercicio: dados y monedas</h2>
 <p>Supongamos que tiramos un dado. Tiramos tantos volados como el número que salió en la tirada de dado, y registramos el número de soles. ¿Cuál es la probabilidad de que obtengamos cero soles?</p>
 <p>Sea <span class="math inline">\(X=\)</span> número que obtuvimos en la tirada de dado, y sea <span class="math inline">\(Y=\)</span> número de soles obtenidos.</p>
 <p>Calcular directamente <span class="math inline">\(P(Y=0)\)</span> puede hacerse de manera simple con la ley de probabilidad total, pues</p>
@@ -633,8 +638,8 @@ es decir, dividimos el número de maneras en que pueden ocurrir <span class="mat
 </div>
 <p>Checa usando simulación.</p>
 </section>
-<section id="ejercicio-dados-y-monedas-simulación" class="level2" data-number="8.7">
-<h2 data-number="8.7" class="anchored" data-anchor-id="ejercicio-dados-y-monedas-simulación"><span class="header-section-number">8.7</span> Ejercicio: dados y monedas (simulación)</h2>
+<section id="ejercicio-dados-y-monedas-simulación" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="ejercicio-dados-y-monedas-simulación"><span class="header-section-number">9.7</span> Ejercicio: dados y monedas (simulación)</h2>
 <p>Este es un experimento más interesante para simular:</p>
 <div class="cell">
 <details>
@@ -678,8 +683,8 @@ es decir, dividimos el número de maneras en que pueden ocurrir <span class="mat
 </div>
 <p>Calcula también la probabilidad de obtener 2 soles o más en este experimento (puedes usar la simulación).</p>
 </section>
-<section id="regla-de-bayes" class="level2" data-number="8.8">
-<h2 data-number="8.8" class="anchored" data-anchor-id="regla-de-bayes"><span class="header-section-number">8.8</span> Regla de Bayes</h2>
+<section id="regla-de-bayes" class="level2" data-number="9.8">
+<h2 data-number="9.8" class="anchored" data-anchor-id="regla-de-bayes"><span class="header-section-number">9.8</span> Regla de Bayes</h2>
 <p>La regla de Bayes es una fórmula que se utiliza para invertir probabilidades condicionales:</p>
 <p><span class="math display">\[P(E|F) = \frac{P(F|E)P(E)}{P(F)},\]</span></p>
 <p>que es una consecuencia fácil de la definición de probabilidad condicional. Es útil conocerla porque facilita resolver varios problemas de probabilidad que en un principio parecen difíciles.</p>
@@ -731,8 +736,8 @@ es decir, dividimos el número de maneras en que pueden ocurrir <span class="mat
 <p>Simula para verificar tus resultados.</p>
 </section>
 </section>
-<section id="independencia" class="level2" data-number="8.9">
-<h2 data-number="8.9" class="anchored" data-anchor-id="independencia"><span class="header-section-number">8.9</span> Independencia</h2>
+<section id="independencia" class="level2" data-number="9.9">
+<h2 data-number="9.9" class="anchored" data-anchor-id="independencia"><span class="header-section-number">9.9</span> Independencia</h2>
 <p>Cuando tenemos dos eventos, y tenemos que <span class="math inline">\(P(E|F) &gt; P(E)\)</span> o <span class="math inline">\(P(F|E) &gt; P(F)\)</span> (checa que una implica la otra), decimos que los eventos tienen dependencia positiva: cuando sabemos que uno ocurre, la probabiidad del otro aumenta.</p>
 <p>En algunos casos <span class="math inline">\(P(E|F) = P(E)\)</span> y <span class="math inline">\(P(F|E) = P(F)\)</span>, lo cual sucede cuando <span class="math inline">\(P(EF)=P(F)P(E)\)</span>. En este caso decimos que los eventos <span class="math inline">\(E\)</span> y <span class="math inline">\(F\)</span> son <em>independientes</em>. Nótese que esto no quiere decir que no haya ninguna conexión entre <span class="math inline">\(E\)</span> y <span class="math inline">\(F\)</span> (puede ser que la ocurrencia de <span class="math inline">\(F\)</span> cambie las maneras en que puede ocurrir <span class="math inline">\(E\)</span>), sólo que la probabilidad de uno no cambia al condicionar al otro.</p>
 <section id="ejemplos" class="level3 unnumbered">
@@ -744,8 +749,8 @@ es decir, dividimos el número de maneras en que pueden ocurrir <span class="mat
 </ol>
 </section>
 </section>
-<section id="independencia-de-más-de-dos-eventos" class="level2" data-number="8.10">
-<h2 data-number="8.10" class="anchored" data-anchor-id="independencia-de-más-de-dos-eventos"><span class="header-section-number">8.10</span> Independencia de más de dos eventos</h2>
+<section id="independencia-de-más-de-dos-eventos" class="level2" data-number="9.10">
+<h2 data-number="9.10" class="anchored" data-anchor-id="independencia-de-más-de-dos-eventos"><span class="header-section-number">9.10</span> Independencia de más de dos eventos</h2>
 <p>Nótese que cuando los eventos <span class="math inline">\(E\)</span> y <span class="math inline">\(F\)</span> son indpendientes, por definición</p>
 <p><span class="math display">\[P(E \,y\, F) = P(E) P(F)\]</span></p>
 <p>Decimos que los eventos <span class="math inline">\(E\)</span>, <span class="math inline">\(F\)</span> y <span class="math inline">\(G\)</span> son independientes cuando</p>
@@ -777,8 +782,8 @@ es decir, dividimos el número de maneras en que pueden ocurrir <span class="mat
 <p><strong>Observación</strong>: en muchos casos, <strong>la independencia se construye como un supuesto para construir modelos más complejos</strong>, cuando este supuesto es adecuado. Un ejemplo es cuando tomamos muestras de una población: si tomamos cada muestra independientemente de las otras, analizar los resultados es mucho más fácil que cuando hay esquemas complejos de dependencias entre los datos que xtraemos.</p>
 </section>
 </section>
-<section id="intro-a-estimación-por-máxima-verosimilitud" class="level2" data-number="8.11">
-<h2 data-number="8.11" class="anchored" data-anchor-id="intro-a-estimación-por-máxima-verosimilitud"><span class="header-section-number">8.11</span> Intro a estimación por máxima verosimilitud</h2>
+<section id="intro-a-estimación-por-máxima-verosimilitud" class="level2" data-number="9.11">
+<h2 data-number="9.11" class="anchored" data-anchor-id="intro-a-estimación-por-máxima-verosimilitud"><span class="header-section-number">9.11</span> Intro a estimación por máxima verosimilitud</h2>
 <p>Uno de los procedimientos más estándar para estimar cantidades desconocidas es el <strong>método de máxima verosimilitud</strong>. Los estimadores de máxima verosimilitud tienen propiedades convenientes, y dan en general resultados razonables siempre y cuando los supuestos sean razonables.</p>
 <p><strong>Máxima verosimilitud es un proceso intuitivo, y consiste en aprender o estimar valores de parámetros desconocidos suponiendo para los datos su explicación más probable</strong>. Para esto, usando supuestos y modelos requeriremos calcular la probabilidad de un conjunto de observaciones.</p>
 <section id="ejemplo-1-1" class="level3 unnumbered">
@@ -852,8 +857,8 @@ es decir, dividimos el número de maneras en que pueden ocurrir <span class="mat
 <p>y resolvimos el problema de estimación convirtiéndolo en uno de optimización.</p>
 <p>Probamos esta idea con un proceso más complejo:</p>
 </section>
-<section id="ejemplo-2-1" class="level3" data-number="8.11.1">
-<h3 data-number="8.11.1" class="anchored" data-anchor-id="ejemplo-2-1"><span class="header-section-number">8.11.1</span> Ejemplo 2</h3>
+<section id="ejemplo-2-1" class="level3" data-number="9.11.1">
+<h3 data-number="9.11.1" class="anchored" data-anchor-id="ejemplo-2-1"><span class="header-section-number">9.11.1</span> Ejemplo 2</h3>
 <p>Supongamos que una máquina puede estar funcionando correctamente o no en cada corrida. Cada corrida se producen 500 productos, y se muestrean 10 para detectar defectos. Cuando la máquina funciona correctamente, la tasa de defectos es de 3%. Cuando la máquina no está funcionando correctamente la tasa de defectos es de 10%</p>
 <p>Supongamos que escogemos al azar 11 corridas, y obervamos los siguientes datos de número de defectuosos:</p>
 <p><span class="math display">\[1, 0, 0, 3 ,0, 0, 0, 2, 1, 0, 0\]</span></p>
@@ -1042,12 +1047,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./modelo-prob.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Básicos de probabilidad y simulación</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Básicos de probabilidad y simulación</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./modelos-continuos.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Modelos probabilísticos para variables continuas</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modelos probabilísticos para variables continuas</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
