@@ -24,9 +24,9 @@ book:
         - modelo-prob.qmd
         - prob-condicional.qmd
         - modelos-continuos.qmd
-        - inferencia-modelos.qmd
-    - part: inferencia-bayesiana.qmd
+    - part: inferencia-modelos.qmd
       chapters:
+        - maxima-verosimilitud.qmd
         - intro-bayesiana-1.qmd
         - intro-bayesiana-2.qmd
 bibliography: referencias.bib
