@@ -171,7 +171,8 @@ calculos |> group_by(tratamiento, tamaño) |> count() |>
    kable()
 ```
 
-Nuestra hipótesis aquí es que la decisión de qué tratamiento usar depende del tamaño de los cálculos. En este caso, por alguna razón se prefiere utilizar el tratamiento $A$ para cálculos grandes, y $B$ para cálculos chicos. Esto quiere decir que en la tabla total *el tratamiento* $A$ está en desventaja porque se usa en casos más difíciles, pero el tratamiento $A$ parece ser en general mejor. 
+Nuestra hipótesis aquí es que la decisión de qué tratamiento usar depende del tamaño de los cálculos.  En este caso, hay una decisión pues A es una cirugía y B es un procedimiento
+menos invasivo, y se prefiere utilizar el tratamiento $A$ para cálculos grandes, y $B$ para cálculos chicos. Esto quiere decir que en la tabla total *el tratamiento* $A$ está en desventaja porque se usa en casos más difíciles, pero el tratamiento $A$ parece ser en general mejor. La razón es probablemente un proceso de optimización de recursos y riesgo que hacen los doctores.
 
 - Una mejor respuesta a la pregunta
 de qué tratamiento es mejor es la que presenta los datos desagregados

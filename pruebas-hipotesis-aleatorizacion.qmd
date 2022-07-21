@@ -216,6 +216,10 @@ nulos, y una caja tiene los datos verdaderos.
 ```{r}
 reps <- lineup(method = null_permute("T"), n = 20, res_obs) |> 
   as_tibble()
+```
+
+
+```{r}
 ggplot(reps, aes(sample = y, colour = T, group = T)) +
   stat_qq(distribution = stats::qunif) +
   stat_qq_line(distribution = stats::qunif, fullrange = TRUE) +
