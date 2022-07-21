@@ -1,5 +1,23 @@
 # Más de pruebas de hipótesis
 
+Otro escenario usual de pruebas de hipótesis ocurre cuando queremos comparar
+dos o más grupos de datos, aunque no neceariamente se trate de grupos formados
+por aplicación de un tratamiento al azar. Por ejemplo, quizá quiséramos probar
+con una muestra si los capturistas del centro A son más rápidos o más lentos
+que los del centro B. 
+
+En este caso, la hipótesis nula de la prueba de permutaciones es la siguiente:
+
+- Todos los grupos tienen el mismo proceso generador de datos.
+
+La explicación de usar pruebas de permutaciones es entonces como sigue:
+
+- Tenemos los datos del grupo A y el grupo B.
+- Bajo la hipótesis nula, si permutamos al azar las etqiuetas A y B en los datos,
+obtenemos datos que son igualmente verosímiles que la muestra original que obtuvimos.
+
+
+
 
 ```{r, message = FALSE, echo = FALSE}
 library(tidyverse)
@@ -57,7 +75,11 @@ $$p_1 - p_2$$.
 
 - La hipótesis nula es que los dos grupos tienen distribuciones iguales, que este caso quiere decir que
 en la población, tomadores de té solo en bolsa usan azúcar a las mismas tasas que tomadores de suelto o bolsas.
-- Bajo nuestra hipótesis nula (proporciones iguales), producimos una cantidad grande (por ejemplo 10 mil o más) de muestras permutando las etiquetas de los grupos.
+- Bajo nuestra hipótesis nula (proporciones iguales), la etiqueta del grupo no tiene
+información acerca de la probabilidad de observar que toma azúcar o no. De forma
+que podríamos 
+
+producimos una cantidad grande (por ejemplo 10 mil o más) de muestras permutando las etiquetas de los grupos.
 - Evaluamos nuestra estadística de prueba en cada una de las muestras permutadas.
 - El conjunto de valores obtenidos nos da nuestra *distribución de referencia* (ya no estamos limitados a 20 replicaciones como en las pruebas gráficas).
 - Y la pregunta clave es: ¿el valor de la estadística en nuestra muestra es *extrema* en comparación a la distribución de referencia?
@@ -146,16 +168,6 @@ evidencia en contra de que los grupos tienen distribuciones similares, que
 en este caso significa que los dos grupos usan azúcar a tasas similares.
 
 
-### Valor p {-}
-
-Nótese que calculamos una cantidad adicional, que es el percentil donde nuestra observación cae
-en la distribución generada por las permutación. Esta cantidad puede usarse para calcular un 
-**valor p**. Podemos calcular, por ejemplo:
-
-- **Valor p de dos colas**: Si la hipótesis nula es cierta, ¿cuál es la
-**probabilidad** de observar una diferencia **tan extrema o más extrema de lo que observamos**? 
-
-Considerando en este caso interpretamos *extrema* como que cae lejos de donde a mayoría de la distribución se concentra, podemos calcular el valor p como sigue. A partir de el valor observado, consideramos cuál dato es menor: la probabilidad bajo lo hipótesis nula de observar una diferencia mayor de a que observamos, o la probabilidad de observar una diferencia menor a la que observamos. Tomamos el mínimo y multiplicamos por dos (@timboot14):
 
 ```{r}
 2 * min(dist_perm(dif_obs), (1 - dist_perm(dif_obs)))
@@ -247,98 +259,6 @@ En este caso, la evidencia es muy fuerte en contra de la hipótesis nula, pues e
 resultado que obtuvimos es muy extremo en relación a la distribución de referencia.
 El valor p es cercano a 0.
 
-
-## Ejemplo: tiempos de fusión {-}
-
-Consideremos el ejemplo de fusión de estereogramas que vimos anteriormente. Una pregunta 
-que podríamos hacer es: considerando que hay mucha variación en el tiempo de fusión dentro
-de cada tratamiento, necesitamos calificar la evidencia de nuestra conclusión 
-(el tiempo de fusión se reduce con información verbal). 
-
-Podemos usar una prueba de permutaciones, esta vez justificándola por el hecho
-de que los tratamientos se asignan al azar: si los tratamientos son indistinguibles,
-entonces las etiquetas de los grupos son solo etiquetas, y permutarlas daría
-muestras igualmente verosímiles.
-
-En este caso, compararemos gráficas de cuantiles de los datos con los
-producidos por permutaciones:
-
-```{r, fig.width = 8, fig.height = 6, echo = FALSE}
-set.seed(113)
-fusion <- read_table("./datos/fusion_time.txt")
-reps <- lineup(null_permute("nv.vv"), fusion, 20)
-ggplot(reps, aes(sample = time, colour = nv.vv)) +
-    geom_qq(distribution = stats::qunif, size = 0.5) +
-    facet_wrap(~.sample) + scale_y_log10() +
-    scale_x_continuous(breaks = c(0, 0.5, 1))
-```
-
-**Ejercicio**: ¿Podemos identificar los datos? En general, muy frecuentemente las personas
-identifican los datos correctamente,
-lo que muestra evidencia considerable de que la instrucción verbal 
-altera los tiempos de respuesta de los partipantes, y en este caso 
-ayuda a reducir el tiempo de fusión de los estereogramas. 
-
-## Ejemplo: tiempos de fusión 2 {-}
-
-Podemos usar las pruebas de permutaciones para distintos de tipos de estadísticas: medianas, medias, comparar dispersión usando rangos intercuartiles o varianzas, etc.
-
-Regresamos a los tiempos de fusión. Podemos hacer una prueba de permutaciones para
-la diferencia de las medias o medianas, por ejemplo. En este ejemplo usaremos
-una medida de centralidad un poco diferente, como ilustración: el promedio de los cuartiles
-superior e inferior de las dos distribuciones. Usaremos el cociente de estas dos cantidades
-para medir su diferencia
-
-```{r, message = FALSE}
-stat_fusion <- function(x){
-    (quantile(x, 0.75) + quantile(x, 0.25))/2
-}
-calc_fusion <- function(stat_fusion){
-  fun <- function(datos){
-    datos |> 
-      group_by(nv.vv) |> 
-      summarise(est = stat_fusion(time)) |> 
-      spread(nv.vv, est) |> mutate(dif = VV / NV ) |> pull(dif)
-  }
-  fun
-}
-```
-
-```{r}
-calc_cociente <- calc_fusion(stat_fusion)
-dif_obs <- calc_cociente(fusion)
-# permutar
-valores_ref <- permutaciones_est(fusion, nv.vv, calc_cociente, n = 10000)
-dist_perm_nv <- ecdf(valores_ref$diferencia) 
-cuantil_obs <- dist_perm_nv(dif_obs)
-```
-
-
-```{r, fig.width = 6, fig.height = 3, echo = FALSE}
-g_1 <- ggplot(valores_ref, aes(sample = diferencia)) + 
-    geom_qq(distribution = stats::qunif)  +
-    xlab("f") + ylab("Cociente media intercuartil") + 
-    labs(subtitle = "Distribución nula o de referencia") +
-    geom_hline(yintercept = dif_obs, colour = "red") +
-    annotate("text", x = 0.3, y = dif_obs - 0.05, label = "diferencia observada", colour = "red")
-
-g_2 <- ggplot(valores_ref, aes(x = diferencia)) + geom_histogram(binwidth = 0.04) + 
-    coord_flip() + xlab("") + labs(subtitle = " ") +
-    geom_vline(xintercept = dif_obs, colour = "red") +
-    annotate("text", x = dif_obs, y = 700, label = cuantil_obs,vjust = 0, 
-             colour = "red")
-gridExtra::grid.arrange(g_1, g_2, ncol = 2) 
-```
-
-Y el valor p de dos colas es
-
-```{r}
-dist_perm_nv <- ecdf(valores_ref$diferencia)
-2 * min(dist_perm_nv(dif_obs), 1- dist_perm_nv(dif_obs))
-```
-
-Lo que muestra evidencia considerable, aunque no muy fuerte, de que la instrucción verbal ayuda a reducir el tiempo de fusión de los estereogramas: la *caja* del diagrama de caja y brazos
-para el grupo VV está *encogida* por un factor menor a 1.
 
 
 ## Ojo: otros tipos de hipótesis nulas {-}
@@ -572,6 +492,8 @@ de "aceptación de datos en la muestra", que simulamos tomando una submuestra al
 
 
 ```{r}
+fusion <- read_table("./datos/fusion_time.txt")
+
 calc_fusion <- function(stat_fusion, trans, comparacion){
   fun <- function(datos){
     datos |> 

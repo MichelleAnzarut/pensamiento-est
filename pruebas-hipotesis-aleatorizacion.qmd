@@ -30,9 +30,9 @@ El resultado que obtuvo es:
 ```{r}
 res_obs <- tibble(planta = 1:20,
        T = c("nf", "nf", "f", "f", "nf", "f", "f", "f", "nf", "nf", "f", "nf", "f", "f", "nf", "f", "f", "nf", "f", "nf"),
-       y = c(16.9, 19.4, 20.6, 23.7, 22.3, 26.5, 18.2, 19.9, 14.5, 15.1, 29.1, 15.2, 23.5, 24.8, 20.5, 21.2, 22.3, 20.1, 28.1, 21.2) / 2) |> 
-  mutate(y_f = ifelse(T == "nf", y, NA),
-         y_nf = ifelse(T == "f", y, NA))
+       y = c(16.9, 19.4, 22.6, 23.7, 22.3, 26.5, 18.2, 19.9, 14.5, 15.1, 29.1, 15.2, 23.5, 24.8, 20.5, 21.2, 22.3, 20.1, 28.1, 21.2) / 2) |> 
+  mutate(y_nf = ifelse(T == "nf", y, NA),
+         y_f = ifelse(T == "f", y, NA))
 res_obs |> select(planta, T, y)
 ```
 
@@ -98,8 +98,8 @@ si hubiéramos escogido distintas plantas para el tratamiento de fertilizante.
 
 Simplemente consideramos todas las permutaciones
 de la columna $T$, y vemos el valor que tiene nuestra estadística $D$ en cada caso.
-La distribución resultante es construida bajo la hipótesis de que el fertilizante
-no tiene efecto, y muestra la variabilidad de nuestra estadística bajo
+La distribución resultante es **la distribución de referencia bajo la hipótesis de que el fertilizante
+no tiene efecto**, y muestra la variabilidad de nuestra estadística bajo
 esta hipótesis.
 
 Usualmente, en lugar de calcular todas las permutaciones, simulamos un
@@ -164,15 +164,18 @@ Una solución simple es la siguiente:
 
 - Supongamos que le recomendamos al jardinero al principio escoger al azar una
 asignación del tratamiento.
-- En ese caso, la probabilidad de haber observado este resultado (o uno más grande)
+- En ese caso, la probabilidad de haber escogido esa configuración particular 
+con una estadística tan alta (o uno más grande)
 **bajo la hipótesis de que el fertilizante no tiene efecto** es
 
 ```{r}
 2 * mean(perms_dist$D >= resumen$D)
 ```
+- Es poco probable entonces que este resultado tan alto haya ocurrido al azar en el 
+momento de escoger tratamientos.
 :::
 
-Llamamos a este valor-p de la prueba, y cuanto más chico es, mayor evidencia tenemos 
+Llamamos a este **valor-p** de la prueba, y cuanto más chico es, mayor evidencia tenemos 
 contra la hipótesis nula.
 
 - Este valor es bajo, y da evidencia de que el fertilizante ayuda a las plantas. 
@@ -189,7 +192,7 @@ observamos si la hipótesis nula es cierta.
 
 ## Pruebas de hipótesis visuales
 
-Otra idea es hacer una prueba visual. Primero graficamos varias replicaciones
+Otra idea es hacer una prueba visual (ver por ejemplo (este artículo)[https://vita.had.co.nz/papers/inference-infovis.pdf]. Primero graficamos varias replicaciones
 de datos nulos, es decir, datos en donde hemos permutado al azar la columna
 de tratamiento. Entrenamos nuestra percepción a variaciones consistentes con la
 hipótesis nula:
@@ -230,6 +233,171 @@ ggplot(reps, aes(sample = y, colour = T, group = T)) +
 de identificar los datos correctamente cuando el fertilizante no tiene efecto es
 menor o igual a 0.05 (valor $p$). Esta es la probabilidad de equivocadamente
 declarar que tenemos evidencia de que la hipótesis nula no se cumple.
+
+## Ejemplo: poca evidencia en contra de la nula
+
+Como segundo ejemplo, imaginemos que hubiéramos obtenido los siguientes datos:
+
+```{r}
+res_obs <- tibble(planta = 1:20,
+       T = c("nf", "nf", "f", "f", "nf", "f", "f", "f", "nf", "nf", "f", "nf", "f", "f", "nf", "f", "f", "nf", "f", "nf"),
+       y = c(16.9, 19.4, 18.6, 12.7, 22.3, 23.5, 18.2, 19.9, 14.5, 15.1, 29.1, 15.2, 23.5, 24.8, 20.5, 21.2, 22.3, 19.4, 23.1, 21.2) / 2) |> 
+  mutate(y_nf = ifelse(T == "nf", y, NA),
+         y_f = ifelse(T == "f", y, NA))
+bajo_nula <- res_obs |> 
+  mutate(y_f = y, y_nf = y)
+res_obs |> select(planta, T, y)
+```
+
+```{r}
+ggplot(res_obs, aes(y, colour = T)) +
+  stat_ecdf() 
+```
+
+```{r, fig.width = 5, fig.height = 4}
+
+resumen <- res_obs |> 
+  summarise(D = ks_est_2(res_obs, T)) 
+perms_dist <- map_df(1:1000, function(i){
+  permutar_est(bajo_nula) |> 
+    mutate(rep = i)
+})
+
+ggplot(perms_dist, aes(sample = D)) +
+  geom_qq(distribution = qunif) +
+  geom_hline(yintercept = resumen$D, colour = "red") +
+  xlab("f") + ylab("valor de D") +
+  labs(subtitle = "Distribución nula de referencia") +
+  annotate("text", x = 0.1 , y = 0.5, label = "Valor observado", colour = "red")
+```
+
+```{r}
+2 * mean(perms_dist$D >= resumen$D)
+```
+Este valor $p$ es alto, y no es muy difícil que, *bajo la hipótesis de que el tratamiento
+no tiene efecto*, por azar el jardinero haya escogido una asignación con
+el valor observado de la estadística de prueba. En este caso, creemos que los
+datos son consistentes con la hipótesis nula.
+
+## Ejemplo: tiempos de fusión {-}
+
+Podemos utilizar la prueba de permutaciones con otras estadísticas
+de prueba (ver nota al final de estos ejemplos) como medias o medianas. 
+
+En el siguiente ejemplo (@cleveland93), investigadores se preguntaron si es posible que
+las personas reconozcan más fácilmente la imagen escondida en un 
+(estereograma)[https://en.wikipedia.org/wiki/Autostereogram] si se les da información verbal acerca de la imagen que tienen que encontrar.
+
+La medición que consideraron el el *tiempo de fusión* en segundo, es decir,
+cuánto tarda la persona en ver la imagen 3D escondida. Naturalmente, existe mucha
+variación en el tiempo que tardan las personas en reconocer esas imágenes (algunos
+lo hacen casi instantáneamente y otros pueden tardar hasta minutos).
+
+Este experimento se diseño aleatorizando el tratamiento entre los participantes
+del estudio, que son voluntarios, de forma que si encontramos evidencia de diferencias
+entre los dos grupos, tenemos evidencia de que el tratamiento cambia el tiempo de
+fusión entre los partipantes.
+
+Podemos hacer una prueba de permutaciones para
+la diferencia de las medias y otras estadísticas como la mediana o promedio
+del cuartiles superior e inferior (son versiones menos dependientes de datos atípticos), por ejemplo. En este ejemplo usaremos
+la diferencia de medias: 
+
+```{r, message = FALSE}
+fusion <- read_table("./datos/fusion_time.txt")
+# estadística de prueba
+stat_fusion <- function(x){
+    mean(x)
+    #(quantile(x, 0.75) + quantile(x, 0.25))/2
+}
+# calcular para cada grupo la estadística
+calc_fusion <- function(stat_fusion){
+  fun <- function(datos){
+    datos |> 
+      group_by(nv.vv) |> 
+      summarise(est = stat_fusion(time)) |> 
+      spread(nv.vv, est) |> mutate(dif = VV - NV ) |> pull(dif)
+  }
+  fun
+}
+# esta función hace permutaciones y calcula la diferencia para cada una
+permutaciones_est <- function(datos, variable, calc_diferencia, n = 1000){
+  # calcular estadística para cada grupo
+  permutar <- function(variable){
+    sample(variable, length(variable))
+  }
+  tbl_perms <- tibble(.sample = seq(1, n-1, 1)) |>
+    mutate(diferencia = map_dbl(.sample, 
+              ~ datos |> mutate({{variable}}:= permutar({{variable}})) |> calc_diferencia()))
+  bind_rows(tbl_perms, tibble(.sample = n, diferencia = calc_diferencia(datos)))
+}
+```
+
+```{r}
+calc_cociente <- calc_fusion(stat_fusion)
+dif_obs <- calc_cociente(fusion)
+# permutar
+valores_ref <- permutaciones_est(fusion, nv.vv, calc_cociente, n = 10000)
+dist_perm_nv <- ecdf(valores_ref$diferencia) 
+cuantil_obs <- dist_perm_nv(dif_obs)
+```
+
+
+```{r, fig.width = 7, fig.height = 4, echo = FALSE}
+g_1 <- ggplot(valores_ref, aes(sample = diferencia)) + 
+    geom_qq(distribution = stats::qunif)  +
+    xlab("f") + ylab("Diferencia de medias") + 
+    labs(subtitle = "Distribución nula o de referencia") +
+    geom_hline(yintercept = dif_obs, colour = "red") +
+    annotate("text", x = 0.3, y = dif_obs - 0.05, label = "diferencia observada", colour = "red")
+
+g_2 <- ggplot(valores_ref, aes(x = diferencia)) + geom_histogram(binwidth = 0.04) + 
+    coord_flip() + xlab("") + labs(subtitle = " ") +
+    geom_vline(xintercept = dif_obs, colour = "red") +
+    annotate("text", x = dif_obs, y = 700, label = cuantil_obs,vjust = 0, 
+             colour = "red")
+gridExtra::grid.arrange(g_1, g_2, ncol = 2) 
+```
+
+La observación es algo extrema, de manera que tenemos evidencia de que la información
+verbal ayuda. Para cuantificar esta evidencia, calcularemos el valor-p correspondiente
+
+### Valor p {-}
+
+Usualmente preferimos usar un valor $p$ de dos colas para cuantificar la evidencia
+contra la nula. Esto es porque podría ser que la diferencia fuera muy grande
+o muy positiva, y en ambos casos diríamos que los datos no son consistentes
+con la nula.
+
+::: callout-note
+## Valor p de dos colas
+
+Si la hipótesis nula es cierta, ¿cuál es la
+**probabilidad** de observar una diferencia **tan extrema o más extrema de lo que observamos**? Esto incluye valores muy grandes o muy chicos.
+
+El estándar usual para pruebas de hipótesis es hacer utilizar el valor-$p$ de dos
+colas.
+:::
+
+Considerando en este caso interpretamos *extrema* como que cae lejos de donde a mayoría de la distribución se concentra, podemos calcular el valor p como sigue. A partir de el valor observado, consideramos cuál dato es menor: la probabilidad bajo lo hipótesis nula de observar una diferencia mayor de a que observamos, o la probabilidad de observar una diferencia menor a la que observamos. Tomamos el mínimo y multiplicamos por dos (@timboot14):
+
+
+```{r}
+#| code-fold: show
+dist_perm_nv <- ecdf(valores_ref$diferencia)
+2 * min(dist_perm_nv(dif_obs), 1- dist_perm_nv(dif_obs))
+```
+
+Lo que muestra evidencia considerable, aunque no muy fuerte, de que la instrucción verbal ayuda a reducir el tiempo de fusión de los estereogramas. Los grupos gráficados 
+se ven como sigue:
+
+```{r, fig.width = 5, fig.height = 3}
+ggplot(fusion, aes(x = nv.vv, y = time)) +
+  geom_boxplot() + coord_flip()
+```
+
+
+
 
 
 
