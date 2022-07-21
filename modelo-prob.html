@@ -238,21 +238,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="./modelos-continuos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modelos probabilísticos para variables continuas</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./inferencia-modelos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Inferencia con modelos probabilísticos</span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./inferencia-bayesiana.html" class="sidebar-item-text sidebar-link">Estadística Bayesiana</a>
+            <a href="./inferencia-modelos.html" class="sidebar-item-text sidebar-link">Inferencia con modelos probabilísticos</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./maxima-verosimilitud.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Estimación por máxima verosimilitud</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro-bayesiana-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Introducción a inferencia bayesiana</span></a>
@@ -274,23 +274,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Indice de contenidos</h2>
    
   <ul>
-  <li><a href="#equiprobabilidad-y-simetría" id="toc-equiprobabilidad-y-simetría" class="nav-link active" data-scroll-target="#equiprobabilidad-y-simetría"> <span class="header-section-number">8.1</span> Equiprobabilidad y simetría</a></li>
-  <li><a href="#ejemplo-dados" id="toc-ejemplo-dados" class="nav-link" data-scroll-target="#ejemplo-dados">Ejemplo: dados</a></li>
-  <li><a href="#ejemplo-cartas" id="toc-ejemplo-cartas" class="nav-link" data-scroll-target="#ejemplo-cartas">Ejemplo: cartas</a></li>
+  <li><a href="#definición-de-probabilidad" id="toc-definición-de-probabilidad" class="nav-link active" data-scroll-target="#definición-de-probabilidad"> <span class="header-section-number">8.1</span> Definición de probabilidad</a></li>
   <li><a href="#probabilidad-y-frecuencias-relativas" id="toc-probabilidad-y-frecuencias-relativas" class="nav-link" data-scroll-target="#probabilidad-y-frecuencias-relativas"> <span class="header-section-number">8.2</span> Probabilidad y frecuencias relativas</a></li>
   <li><a href="#ejemplo-simulación-de-un-dado" id="toc-ejemplo-simulación-de-un-dado" class="nav-link" data-scroll-target="#ejemplo-simulación-de-un-dado">Ejemplo: simulación de un dado</a></li>
   <li><a href="#datos-y-modelos-de-probabilidad" id="toc-datos-y-modelos-de-probabilidad" class="nav-link" data-scroll-target="#datos-y-modelos-de-probabilidad"> <span class="header-section-number">8.3</span> Datos y modelos de probabilidad</a></li>
-  <li><a href="#espacios-no-equiprobables" id="toc-espacios-no-equiprobables" class="nav-link" data-scroll-target="#espacios-no-equiprobables"> <span class="header-section-number">8.4</span> Espacios no equiprobables</a></li>
-  <li><a href="#ejemplo-dos-dados" id="toc-ejemplo-dos-dados" class="nav-link" data-scroll-target="#ejemplo-dos-dados">Ejemplo: dos dados</a></li>
-  <li><a href="#reglas-básicas-de-probabilidad" id="toc-reglas-básicas-de-probabilidad" class="nav-link" data-scroll-target="#reglas-básicas-de-probabilidad"> <span class="header-section-number">8.5</span> Reglas básicas de probabilidad</a></li>
-  <li><a href="#simulación-y-probabilidad" id="toc-simulación-y-probabilidad" class="nav-link" data-scroll-target="#simulación-y-probabilidad"> <span class="header-section-number">8.6</span> Simulación y probabilidad</a>
+  <li><a href="#simulación-y-probabilidad" id="toc-simulación-y-probabilidad" class="nav-link" data-scroll-target="#simulación-y-probabilidad"> <span class="header-section-number">8.4</span> Simulación y probabilidad</a>
   <ul class="collapse">
   <li><a href="#ejemplo-simulando-dos-dados" id="toc-ejemplo-simulando-dos-dados" class="nav-link" data-scroll-target="#ejemplo-simulando-dos-dados">Ejemplo: simulando dos dados</a></li>
-  <li><a href="#ejemplo-problema-de-pelotas" id="toc-ejemplo-problema-de-pelotas" class="nav-link" data-scroll-target="#ejemplo-problema-de-pelotas">Ejemplo: problema de pelotas</a></li>
-  <li><a href="#ejemplo" id="toc-ejemplo" class="nav-link" data-scroll-target="#ejemplo"> <span class="header-section-number">8.6.1</span> Ejemplo:</a></li>
   </ul></li>
-  <li><a href="#probabilidad-subjetiva" id="toc-probabilidad-subjetiva" class="nav-link" data-scroll-target="#probabilidad-subjetiva"> <span class="header-section-number">8.7</span> Probabilidad subjetiva</a></li>
-  <li><a href="#probabilidad-subjetiva-y-calibración-frecuentista" id="toc-probabilidad-subjetiva-y-calibración-frecuentista" class="nav-link" data-scroll-target="#probabilidad-subjetiva-y-calibración-frecuentista"> <span class="header-section-number">8.8</span> Probabilidad subjetiva y calibración frecuentista</a></li>
   </ul>
 </nav>
     </div>
@@ -317,48 +308,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Hay distintas maneras de interpretar <em>probabilidad</em> e <em>incertidumbre</em>, y hay distintas maneras de usar información probabilística para tomar decisiones.</li>
 <li>Sin embargo, existe una teoría matemática que formaliza cómo debe operarse con probabilidades, independientemente de la interpretación.</li>
-<li>Podemos utilizar esta teoría matemática para construir <em>modelos</em> compactos o parsimoniosos que explican observaciones de datos reales.</li>
+<li>Podemos utilizar esta teoría matemática para construir <em>modelos</em> compactos o parsimoniosos que explican observaciones de datos reales que no son determinísticos.</li>
+<li>Cuando estos <em>parámetros</em> tienen una interpretación adecuada en nuestro problema, estos parámetros pueden ser el sujeto de nuestra inferencia.</li>
 </ul>
-<section id="equiprobabilidad-y-simetría" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="equiprobabilidad-y-simetría"><span class="header-section-number">8.1</span> Equiprobabilidad y simetría</h2>
-<p>Históricamente, el concepto de probabilidad nació en el contexto de juegos de azar, y cómo definir apuestas ajustas o equitativas. Por ejemplo:</p>
+<section id="definición-de-probabilidad" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="definición-de-probabilidad"><span class="header-section-number">8.1</span> Definición de probabilidad</h2>
+<p>Una medida de probabilidad <span class="math inline">\(P\)</span> es una función que asigna un número entre 0 y 1 a un evento <span class="math inline">\(E\)</span> que puede o no ocurrir, y que satisface los siguientes axiomas:</p>
 <ul>
-<li>Supongamos que nos cuesta 1 peso entrar a un juego de dados, y que ganamos si tiramos un 3. ¿Cuánto dinero deberíamos ganar si sale un 3 para que el costo de entrada sea justo?</li>
+<li>(Evento seguro) <span class="math inline">\(P(\Omega) = 1\)</span>, donde <span class="math inline">\(\Omega\)</span> es el evento que ocurre con certeza</li>
+<li>(Aditividad) Si <span class="math inline">\(E\)</span> y <span class="math inline">\(F\)</span> son eventos tales que no pueden ocurrir simultáneamente, entonces el evento <span class="math inline">\(E\cup F\)</span> que denota “al menos uno de los eventos <span class="math inline">\(E\)</span> o <span class="math inline">\(F\)</span> ocurre” satisface</li>
 </ul>
-<p>El argumento iría como sigue: existen 6 posibles resultados, y como el dado se tira bien y está bien hecho, entonces sería lo mismo apostar a cualquier número. Entonces, si seis personas entran al juego apostando a distintos números, cada uno pagando 1 peso, sería justo que el ganador se llevara 6 pesos.</p>
-<ul>
-<li>En este caso, definimos la <strong>probabilidad</strong> de obtener un 3 (o cualquier otro número) como 1/6, que es cociente entre la apuesta inicial entre la cantidad recibida si ganamos la apuesta justa.</li>
-</ul>
-<p>Nótese que el criterio de “justicia” proviene de simetrías del experimento: si el dado no fuera simétrico, por ejemplo, esta sería una manera mala de definir probabilidades.</p>
-<p>En general, una manera de difinir probabilidad es la siguiente:</p>
-<div class="cell" type="comentario">
-
-<div class="comentario">
-<p><strong>Espacios equiprobables</strong></p>
-<p>Si un evento <span class="math inline">\(A\)</span> puede ocurrir de <span class="math inline">\(k\)</span> maneras de <span class="math inline">\(n\)</span> posibles, y es indiferente apostar a cualquiera de los <span class="math inline">\(n\)</span> posibles resultados, entonces</p>
-<p><span class="math display">\[P(A) = \frac{k}{n}\]</span></p>
-</div>
-</div>
-<p>Con este enfoque podemos resolver diversos problemas de probabilidad, por ejemplo:</p>
-</section>
-<section id="ejemplo-dados" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="ejemplo-dados">Ejemplo: dados</h2>
-<p>¿Cuál es la probabilidad de que tiremos una suma de 9 con dos dados de seis lados?</p>
-<p>En este caso, los resultados son pares <span class="math inline">\((x, y)\)</span> donde <span class="math inline">\(x\)</span> es el resultado del dado 1 y <span class="math inline">\(y\)</span> es el resultado del dado 2. Existen 36 pares, y todos ellos son equivalentes. Para tirar un 9, tenemos que lograr alguna de las siguientes tiradas:</p>
-<p><span class="math display">\[(3, 6), (4, 5), (5, 4), (6, 3)\]</span></p>
-<p>De modo que la probabilidad de tirar una suma de 9 , que escribimos como <span class="math inline">\(S=9\)</span>, es</p>
-<p><span class="math display">\[P(S = 9) = 4/36 = 1/9\]</span></p>
-</section>
-<section id="ejemplo-cartas" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="ejemplo-cartas">Ejemplo: cartas</h2>
-<p>Sacamos dos cartas sucesivamente de una baraja de 52 cartas, donde 26 son negras y 26 rojas. ¿Cuál es la probabilidad de que la segunda carta que saquemos sea negra? Podemos denotar como <span class="math inline">\(N_2\)</span> el evento que sucede cuando la segunda carta que sacamos es negra. La segunda carta que sacamos puede ser cualquiera de las 52, y somos indiferentes en apostar a cualqueira de las cartas para salir en segundo lugar, así que</p>
-<p><span class="math display">\[P(N_2) = 26 / 52 = 1/2\]</span></p>
-<p>Estos espacios equiprobables nos dan nuestros modelos probabilísticos más simples. Están basados en simetrías del espacio de resultados.</p>
+<p><span class="math display">\[P(E\cup F) =  P(E) + P(F)\]</span></p>
+<p><strong>Nota</strong>: técnicamente, la aditividad debe cumplirse para cualquier colección numerable de eventos disjuntos.</p>
+<p>Es decir, la probabilidad asigna números entre 0 y uno a eventos, de forma aditiva y tal que el evento seguro tiene probabilidad 1.</p>
 </section>
 <section id="probabilidad-y-frecuencias-relativas" class="level2" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="probabilidad-y-frecuencias-relativas"><span class="header-section-number">8.2</span> Probabilidad y frecuencias relativas</h2>
-<p>La conexión entre experimentos reales y modelos de probabilidad, está en que si repetimos muchas veces el experimento, entonces las frecuencias relativas de ocurrencia de los eventos aproxima a las probabilidades teóricas. Por ejemplo, si tiramos muchos volados con una moneda bien balanceada, esperamos obtener alrededor de 1/2 de soles y 1/2 de águilas, y si tiramos un dado muchas veces esperamos obtener alrededor de 1/6 de las tiradas un 5, por ejemplo (bajo los modelos de resultados equiprobables correspondientes).</p>
-<p>En realidad, esta es otra <em>definición</em> de probabilidad en términos de repeticiones de experimentos.</p>
+<p>Aunque la probabilidad puede interpretarse como grados de creencia en la ocurrencia de un evento, es necesario que exista una conexión entre modelos de probabilidad y la ocurrencia de los eventos reales que nos interesa modelar. Esta conexión está dada como sigue:</p>
+<p>Si tenemos un experimento aleatorio (por ejemplo, tirar un dado), y lo repetimos muchas veces de manera independiente, entonces las frecuencias relativas de ocurrencia de los eventos aproxima a las probabilidades teóricas.</p>
+<p>Por ejemplo, si tiramos muchos volados con una moneda bien balanceada, al evento <span class="math inline">\(E\)</span> = “tiramos sol” le asignamos <span class="math inline">\(P(E)=1/2\)</span>. Entonces esperamos obtener alrededor de 1/2 de soles y 1/2 de águilas si tiramos una sucesión grande de volados.</p>
 <div class="cell" type="comentario">
 
 <div class="comentario">
@@ -389,8 +357,8 @@ es decir, <span class="math inline">\(P(A)\)</span> el la frecuencia al largo pl
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">199213</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">199652</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>sims_dado <span class="ot">&lt;-</span> <span class="fu">map_df</span>(<span class="dv">1</span><span class="sc">:</span>n, <span class="sc">~</span> <span class="fu">c</span>(<span class="at">n_sim =</span> .x, <span class="at">resultado =</span> <span class="fu">simular_dado</span>()))</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sims_dado) </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -398,12 +366,12 @@ es decir, <span class="math inline">\(P(A)\)</span> el la frecuencia al largo pl
 <pre><code># A tibble: 6 × 2
   n_sim resultado
   &lt;int&gt;     &lt;int&gt;
-1     1         3
-2     2         6
-3     3         3
-4     4         3
-5     5         6
-6     6         3</code></pre>
+1     1         5
+2     2         2
+3     3         2
+4     4         4
+5     5         4
+6     6         6</code></pre>
 </div>
 </div>
 <p>Esta es una variable numérica, pero como toma valores enteros del uno al seis, podemos resumir con frecuencias, como si fuera categórica:</p>
@@ -418,12 +386,12 @@ es decir, <span class="math inline">\(P(A)\)</span> el la frecuencia al largo pl
 <pre><code># A tibble: 6 × 3
   resultado     n frec_relativa
       &lt;int&gt; &lt;int&gt;         &lt;dbl&gt;
-1         1   806         0.161
-2         2   814         0.163
-3         3   857         0.171
-4         4   898         0.180
-5         5   856         0.171
-6         6   769         0.154</code></pre>
+1         1  1628         0.163
+2         2  1711         0.171
+3         3  1681         0.168
+4         4  1680         0.168
+5         5  1701         0.170
+6         6  1599         0.160</code></pre>
 </div>
 </div>
 <p>Y nuestro modelo teórico (resultados equiprobables) coincide razonablemente bien con las frecuencias observadas a largo plazo. Podemos ver cómo convergen las frecuencias relativas por ejemplo del resultado 1:</p>
@@ -433,16 +401,16 @@ es decir, <span class="math inline">\(P(A)\)</span> el la frecuencia al largo pl
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sims_dado <span class="sc">%&gt;%</span> </span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">no_unos =</span> <span class="fu">cumsum</span>(resultado <span class="sc">==</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">frec_uno =</span> no_unos <span class="sc">/</span> n_sim) <span class="sc">%&gt;%</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(n_sim <span class="sc">&lt;</span> <span class="dv">5000</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(n_sim <span class="sc">&lt;</span> <span class="dv">10000</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n_sim, <span class="at">y =</span> frec_uno)) <span class="sc">+</span></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>, <span class="at">colour =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Frecuencia relativa de unos"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="modelo-prob_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+<p><img src="modelo-prob_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Nótese que cuando hay pocas repeticiones podemos ver fluctuaciones considerablemente grandes de la frecuencia relativa observada de unos. Sin embargo, conforme aumentamos el tamaño de la meustra observada, esas fluctuaciones son más chicas.</p>
+<p>Nótese que cuando hay pocas repeticiones podemos ver fluctuaciones considerablemente grandes de la frecuencia relativa observada de unos. Sin embargo, conforme aumentamos el tamaño de la muesstra observada, esas fluctuaciones son más chicas.</p>
 <p>Veamos otra simulación:</p>
 <div class="cell">
 <details>
@@ -457,7 +425,7 @@ es decir, <span class="math inline">\(P(A)\)</span> el la frecuencia al largo pl
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Frecuencia relativa de unos"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="modelo-prob_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<p><img src="modelo-prob_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -465,9 +433,9 @@ es decir, <span class="math inline">\(P(A)\)</span> el la frecuencia al largo pl
 <h2 data-number="8.3" class="anchored" data-anchor-id="datos-y-modelos-de-probabilidad"><span class="header-section-number">8.3</span> Datos y modelos de probabilidad</h2>
 <p>¿Cómo podemos usar modelos de probablidad para describir datos observados? La idea (simplificada) es la siguiente:</p>
 <ul>
-<li>Hacemos una hipótesis acerca de cómo es el modelo de probabilidad asociado a un fenómeno</li>
-<li>Observamos una muestra de datos del fenómeno que nos interesa</li>
-<li>Evaluamos si las fluctuaciones observadas debidas a la información limitada que tenemos (una muestra) son consistentes con el modelo de probabilidad</li>
+<li>Hacemos una hipótesis acerca de cómo es el modelo de probabilidad asociado a un fenómeno.</li>
+<li>Observamos una muestra de datos del fenómeno que nos interesa.</li>
+<li>Evaluamos si las fluctuaciones observadas debidas a la información limitada que tenemos (una muestra) son consistentes con el modelo de probabilidad.</li>
 </ul>
 <p>Consideremos el ejemplo de los dados. Supongamos que lanzamos el dado un número no muy grande de veces, y observamos:</p>
 <div class="cell">
@@ -559,215 +527,15 @@ argument.</code></pre>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_wrap</span>(<span class="sc">~</span>rep)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="modelo-prob_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+<p><img src="modelo-prob_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>En este caso, no vemos ninguna característica de los datos observados que no sea consistente las fluctuaciones esperadas para un tamaño de muestra de <span class="math inline">\(n=40\)</span>.</p>
 <p><strong>Pregunta</strong>: ¿qué defecto le ves a esta gráfica que tiene los datos en la posición 20? ¿Cómo podríamos hacer una evaluación más apropiada de la calidad del ajuste?</p>
 <p><strong>Observación</strong>: como veremos, muchas veces proponemos modelos que tienen parámetros que deben ser estimados con la muestra. Este caso más común es más complejo que el explicado arriba, pero el proceso es similar.</p>
 </section>
-<section id="espacios-no-equiprobables" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="espacios-no-equiprobables"><span class="header-section-number">8.4</span> Espacios no equiprobables</h2>
-<p>Depende cómo planteemos nuestro experimento aleatorio, puede ser o no apropiado el modelo equiprobable. Veremos ahora algunos ejemplos donde construimos modelos no equiprobables</p>
-</section>
-<section id="ejemplo-dos-dados" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="ejemplo-dos-dados">Ejemplo: dos dados</h2>
-<p>Supongamos que nos interesa la suma de dos tiradas de dados. Comenzamos con un modelo equiprobable sobre los resultados de cada tirada, que denotamos como <span class="math inline">\((x,y)\)</span>. Cada resultado tiene probabilidad 1/36.</p>
-<p>Sin embargo, sólo nos interesa la suma. Contando posibles resultados podemos dar la probabilidad de cada resultado:</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Suma</th>
-<th>Resultados</th>
-<th>Prob</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>2</td>
-<td>(1,1)</td>
-<td>1/36</td>
-</tr>
-<tr class="even">
-<td>3</td>
-<td>(1,2),(2,1)</td>
-<td>2/36</td>
-</tr>
-<tr class="odd">
-<td>4</td>
-<td>(1,3),(2,2),(3,1)</td>
-<td>3/36</td>
-</tr>
-<tr class="even">
-<td>5</td>
-<td>(1,4),(2,3),(3,2),(4,1)</td>
-<td>4/36</td>
-</tr>
-<tr class="odd">
-<td>6</td>
-<td>(1,5),(2,4),(3,3),(4,2),(5,1)</td>
-<td>5/36</td>
-</tr>
-<tr class="even">
-<td>7</td>
-<td>(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)</td>
-<td>6/36</td>
-</tr>
-<tr class="odd">
-<td>8</td>
-<td>(2,6),(3,5),(4,4),(5,3),(6,2)</td>
-<td>5/35</td>
-</tr>
-<tr class="even">
-<td>9</td>
-<td>(3,6),(4,5),(5,4),(6,3)</td>
-<td>4/36</td>
-</tr>
-<tr class="odd">
-<td>10</td>
-<td>(4,6),(5,5),(6,4)</td>
-<td>3/36</td>
-</tr>
-<tr class="even">
-<td>11</td>
-<td>(5,6), (6,5)</td>
-<td>2/36</td>
-</tr>
-<tr class="odd">
-<td>12</td>
-<td>(6,6)</td>
-<td>1/36</td>
-</tr>
-</tbody>
-</table>
-<p>Y entonces terminamos con la siguiente distribución no equiprobable sobre las posibles sumas:</p>
-<div class="cell">
-<details>
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>probs_suma <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">suma =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">prob =</span> (<span class="dv">6</span> <span class="sc">-</span> <span class="fu">abs</span>(suma <span class="sc">-</span> <span class="dv">7</span>)) <span class="sc">/</span> <span class="dv">36</span>)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>probs_suma <span class="sc">%&gt;%</span> <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:right;"> suma </th>
-   <th style="text-align:right;"> prob </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 0.028 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 0.056 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 0.083 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 0.111 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 0.139 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:right;"> 0.167 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 8 </td>
-   <td style="text-align:right;"> 0.139 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 9 </td>
-   <td style="text-align:right;"> 0.111 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 10 </td>
-   <td style="text-align:right;"> 0.083 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 11 </td>
-   <td style="text-align:right;"> 0.056 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 12 </td>
-   <td style="text-align:right;"> 0.028 </td>
-  </tr>
-</tbody>
-</table>
-
-</div>
-</div>
-<p>Esta distribución la podemos graficar como sigue:</p>
-<div class="cell">
-<details>
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>g_teorica <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(probs_suma, <span class="fu">aes</span>(<span class="at">x =</span> suma, <span class="at">y =</span> prob)) <span class="sc">+</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>g_teorica</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="modelo-prob_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="384"></p>
-</div>
-</div>
-<p>Podríamos tirar dos dado un gran número de veces para verificar si este modelo da las probabilidades correctas (o más propiamente dicho, si estas observaciones son consistentes con el modelo de probabilidad mostrado arriba).</p>
-</section>
-<section id="reglas-básicas-de-probabilidad" class="level2" data-number="8.5">
-<h2 data-number="8.5" class="anchored" data-anchor-id="reglas-básicas-de-probabilidad"><span class="header-section-number">8.5</span> Reglas básicas de probabilidad</h2>
-<p>Tanto modelos equiprobables como la interpretación frecuentista de la probabilidad resultan en un conjunto de reglas útiles para operar con probabilidades. Estas son <strong>reglas generales</strong> que aplican independientemente de la interpretación particular de la probabilidad que utilicemos.</p>
-<ol type="1">
-<li><strong>La probabilidad del evento cierto es 1</strong> Si <span class="math inline">\(A\)</span> es el evento que cubre todos los posibles resultados, entonces <span class="math inline">\(P(A) = 1\)</span>.</li>
-</ol>
-<p>Asegúrate que puedes demostrar esto para un espacio equiprobable, por ejemplo.</p>
-<ol start="2" type="1">
-<li><strong>La probabilidad de que un evento <span class="math inline">\(A\)</span> no ocurra es <span class="math inline">\(1- P(A)\)</span></strong>.</li>
-</ol>
-<p>¿Por qué es cierto esto en espacios equiprobables? ¿Y según la definición frecuentista? Usa esta regla y el ejemplo anterior para calcular la probabilidad de tirar una suma menor a 12 cuando tiramos dos dados.</p>
-<p>Esto normalmente lo escribimos como <span class="math inline">\(P(A^c) = 1 - P(A)\)</span>.</p>
-<p>Decimos que dos eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son disjuntos cuando no pueden ocurrir simultánemente, o en otras palabras, el conjunto de resultados donde ocurre <span class="math inline">\(A\)</span> tiene intersección vacía con el conjunto de resultados donde ocurre <span class="math inline">\(B\)</span>.</p>
-<ol start="3" type="1">
-<li><strong>La probabilidad de que ocurra un resultado dentro de un conjunto de eventos disjuntos es igual a la suma de las probabilidades de dichos eventos</strong></li>
-</ol>
-<p>Esto lo podemos escribir como sigue: si <span class="math inline">\(A_1, A_2, \dots, A_n\)</span> son eventos disjuntos, entonces</p>
-<p><span class="math display">\[P(A_1\cup A_2\cup \cdots \cup A_n) = P(A_1) + P(A_2) + \cdots + P(A_n)\]</span></p>
-<p>Utiliza esta regla para</p>
-<ul>
-<li>Calcula la probabilidad de tirar una suma mayor a 9 en dos tiradas de dados.</li>
-<li>Calcula la probabilidad de obtener un par al sacar dos cartas de una baraja usual de póquer.</li>
-<li>Más difícil: hay una caja con <span class="math inline">\(100\)</span> pelotas, y una de ellas es dorada. Si sacamos al azar <span class="math inline">\(20\)</span> pelotas, una a la vez, ¿cuál es la probabilidad de que nos salga la pelota dorada? ¿ y si sacamos 57 pelotas?</li>
-</ul>
-<p>Soluciones:</p>
-<ul>
-<li>Para tirar más de 9, podemos tirar 10, 11 o 12, así que <span class="math inline">\(P(A) = P(A_{10}\cup A_{11} \cup A_{12})\)</span>. Estos útlimos tres eventos son mutuamente excluyentes, así que por la regla de la suma,</li>
-</ul>
-<p><span class="math display">\[P(A) = P(A_{10}) + P(A_{11}) + P(A_{12})\]</span> y consultando nuestra tabla de arriba,</p>
-<p><span class="math display">\[P(A) = \frac{3}{36} + \frac{2}{36} + \frac{1}{36} = 1/6\]</span></p>
-<ul>
-<li>Podemos sacar <span class="math inline">\(52(51)\)</span> pares distintos. Ahora calculamos la probabidad de sacar un par particular, por ejemplo de ases. Hay <span class="math inline">\(4(3)=12\)</span> distintos pares de ases (en el orden que los sacamos). Lo mismo podemos decir de pares de 2, 3, etc. Así que sumando sobre cada una de estas posibilidades obtenemos:</li>
-</ul>
-<p><span class="math display">\[P(A) = 13\frac{4(3)}{52(51)} \approx 0.0588\]</span></p>
-<p>También podríamos calcular de la siguiente forma: sacamos la primera carta y la vemos. La siguiente carta puede ser una de 51 restantes, y solo con tres de ellas completamos un par, de forma que</p>
-<p><span class="math display">\[P(A) = 3 / 51 \approx 0.0588\]</span></p>
-<ul>
-<li>Sea <span class="math inline">\(D\)</span> el evento donde en el proceso sacamos la pelota dorada, y sea <span class="math inline">\(D_1\)</span> el evento donde sacamos la pelota dorada en nuestra primera extracción, <span class="math inline">\(D_2\)</span> si la sacamos en la segunda, etc. Tenemos que</li>
-</ul>
-<p><span class="math display">\[D =D_1 \cup D_2 \cup\cdots \cup D_{20}\]</span></p>
-<p>(sacamos la dorada si y sólo si la sacamos en la extracción 1, 2 , etc. hasta 20) Además, solo hay una pelota dorada, de manera que <span class="math inline">\(D_i\cap D_j= \emptyset\)</span>, es decir, no pueden ocurrir juntos <span class="math inline">\(D_1\)</span> y <span class="math inline">\(D_2\)</span>, <span class="math inline">\(D_5\)</span> y <span class="math inline">\(D_11\)</span>, etc., así que por la regla de la suma</p>
-<p><span class="math display">\[P(D) = P(D_1) + P(D_2) + \dots + P(D_{20})\]</span></p>
-<p>Finalmente, <span class="math inline">\(P(D_1)= 1/100\)</span>, pues hay 100 pelotas y todas tienen igual probabilidad de aparecen en la primera extracción. Pero también <span class="math inline">\(P(D_2) = 1/100\)</span>, pues todas las pelotas tienen la misma probabilidad de aparecer en la segunda extracción. Se sigue entonces que, haciendo la suma de arriba, que: <span class="math inline">\(P(D) = 20(\frac{1}{100}) = 0.20\)</span></p>
-</section>
-<section id="simulación-y-probabilidad" class="level2" data-number="8.6">
-<h2 data-number="8.6" class="anchored" data-anchor-id="simulación-y-probabilidad"><span class="header-section-number">8.6</span> Simulación y probabilidad</h2>
+<section id="simulación-y-probabilidad" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="simulación-y-probabilidad"><span class="header-section-number">8.4</span> Simulación y probabilidad</h2>
 <p>Usando la interpetación frecuentista, también es posible resolver una variedad de problemas de probabilidad usando <em>simulación</em>. La idea es, si queremos aproximar la probabilidad <span class="math inline">\(P(E)\)</span> de un evento es:</p>
 <ol type="1">
 <li>Definimos el espacio de resultados del experimento aleatorio.</li>
@@ -781,12 +549,12 @@ argument.</code></pre>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>sim_dados <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">num_dados =</span> <span class="dv">2</span>, <span class="at">num_caras =</span> <span class="dv">6</span>){</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>   resultado <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>num_caras, num_dados, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">names</span>(resultado) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"dado_"</span>, <span class="dv">1</span><span class="sc">:</span>num_dados)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>   resultado</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sim_dados</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>sim_dados <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">num_dados =</span> <span class="dv">2</span>, <span class="at">num_caras =</span> <span class="dv">6</span>){</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>   resultado <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>num_caras, num_dados, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">names</span>(resultado) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"dado_"</span>, <span class="dv">1</span><span class="sc">:</span>num_dados)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>   resultado</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sim_dados</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>dado_1 dado_2 
@@ -797,9 +565,9 @@ argument.</code></pre>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2323</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>sims <span class="ot">&lt;-</span> <span class="fu">map_df</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>, <span class="sc">~</span> <span class="fu">sim_dados</span>())</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>sims</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2323</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>sims <span class="ot">&lt;-</span> <span class="fu">map_df</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>, <span class="sc">~</span> <span class="fu">sim_dados</span>())</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>sims</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10,000 × 2
@@ -822,11 +590,11 @@ argument.</code></pre>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>sims_e <span class="ot">&lt;-</span> </span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>   sims <span class="sc">%&gt;%</span> </span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">suma =</span> dado_1 <span class="sc">+</span> dado_2) <span class="sc">%&gt;%</span> </span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">evento_E =</span> (suma <span class="sc">&gt;</span> <span class="dv">9</span>)) </span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>sims_e</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>sims_e <span class="ot">&lt;-</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>   sims <span class="sc">%&gt;%</span> </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">suma =</span> dado_1 <span class="sc">+</span> dado_2) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">evento_E =</span> (suma <span class="sc">&gt;</span> <span class="dv">9</span>)) </span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>sims_e</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10,000 × 4
@@ -849,8 +617,8 @@ argument.</code></pre>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>sims_e <span class="sc">%&gt;%</span> </span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summarise</span>(<span class="at">frec_e =</span> <span class="fu">mean</span>(evento_E))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>sims_e <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summarise</span>(<span class="at">frec_e =</span> <span class="fu">mean</span>(evento_E))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
@@ -859,169 +627,17 @@ argument.</code></pre>
 1  0.169</code></pre>
 </div>
 </div>
-<p>Que confirma a dos decimales el resultado que obtuvimos arriba usando la regla de la suma (o contando resultados).</p>
-</section>
-<section id="ejemplo-problema-de-pelotas" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="ejemplo-problema-de-pelotas">Ejemplo: problema de pelotas</h3>
-<p>Extraemos al azar</p>
-<div class="cell">
-<details>
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">232</span>)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>pelotas <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"dorada"</span>, <span class="fu">rep</span>(<span class="st">"otra"</span>, <span class="dv">99</span>))</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>sim_extraccion <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sample</span>(pelotas, <span class="dv">20</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sim_extraccion</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "otra" "otra" "otra" "otra" "otra" "otra" "otra" "otra" "otra" "otra"
-[11] "otra" "otra" "otra" "otra" "otra" "otra" "otra" "otra" "otra" "otra"</code></pre>
-</div>
-</div>
-<p>Simulamos el experimento aleatorio:</p>
-<div class="cell">
-<details>
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>sims_pelotas <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>, <span class="sc">~</span> <span class="fu">sim_extraccion</span>())</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>sims_pelotas[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[1]]
- [1] "otra"   "otra"   "otra"   "otra"   "otra"   "otra"   "otra"   "otra"  
- [9] "dorada" "otra"   "otra"   "otra"   "otra"   "otra"   "otra"   "otra"  
-[17] "otra"   "otra"   "otra"   "otra"  
-
-[[2]]
- [1] "otra" "otra" "otra" "otra" "otra" "otra" "otra" "otra" "otra" "otra"
-[11] "otra" "otra" "otra" "otra" "otra" "otra" "otra" "otra" "otra" "otra"</code></pre>
-</div>
-</div>
-<p>Checamos si ocurre o no el evento <em>se extrajo la pelota dorada</em>:</p>
-<div class="cell">
-<details>
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>evento_dorada <span class="ot">&lt;-</span> <span class="fu">map_lgl</span>(sims_pelotas, <span class="sc">~</span> <span class="fu">any</span>(<span class="fu">str_detect</span>(.x, <span class="st">"dorada"</span>)))</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>evento_dorada[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]                   </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1]  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE  TRUE</code></pre>
-</div>
-</div>
-<p>Y calculamos la frecuencia relativa de ocurrencia del evento:</p>
-<div class="cell">
-<details>
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(evento_dorada)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.2007</code></pre>
-</div>
-</div>
-<p>Que es consistente con el resultado que obtuvimos arriba haciendo cálculos.</p>
+<p>Puedes confirmar el resultado que obtuvimos arriba usando la aditividad de la probabilidad</p>
 <div class="cell" type="comentario">
 
 <div class="comentario">
-<p>Para estimar probabilidades de ocurrencia de un evento usualmente es posible hacer simulaciones por computadora. Esto es especialmente importante cuando el experimento y evento que consideramos hace difícil (a veces imposible) hacer cálculos analíticos.</p>
+<p>Para estimar probabilidades de ocurrencia de un evento bajo un modelo de probabilidad usualmente es posible hacer simulaciones por computadora. Esto es especialmente importante cuando el experimento y evento que consideramos hace difícil (a veces imposible) hacer cálculos analíticos.</p>
 Este tipo de métodos basados en simulación se llaman en general <em>métodos de Monte Carlo</em>.
 </div>
 </div>
-</section>
-<section id="ejemplo" class="level3" data-number="8.6.1">
-<h3 data-number="8.6.1" class="anchored" data-anchor-id="ejemplo"><span class="header-section-number">8.6.1</span> Ejemplo:</h3>
-<p>Supongamos que ponemos 15 puntos igualmente espaciados en una circunferencia. Si escogemos tres puntos al azar, ¿cuál es la probabilidad de que formen un triángulo equilátero? Este problema se puede resolver contando los posibles resultados donde se forma un triángulo equilátero, pero no es trivial. Veamos cómo la haríamos simulando:</p>
-<div class="cell">
-<details>
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>simular_3_puntos <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>   puntos_angulo <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">14</span> <span class="sc">*</span> (<span class="dv">2</span>  <span class="sc">*</span>pi <span class="sc">/</span> <span class="dv">15</span>)</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">sample</span>(puntos_angulo, <span class="dv">3</span>)</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="fu">simular_3_puntos</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.769911 3.351032 1.675516</code></pre>
-</div>
-</div>
-<p>Calcular dado el resultado requiere algo de consideración, pero finalmente terminamos con (¿qué otra manera se te ocurre?):</p>
-<div class="cell">
-<details>
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>es_equilatero <span class="ot">&lt;-</span> <span class="cf">function</span>(tres_puntos){</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>   tol <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">^</span>(<span class="sc">-</span><span class="dv">6</span>)</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>   puntos_ord <span class="ot">&lt;-</span> <span class="fu">sort</span>(tres_puntos)</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>   dif_1 <span class="ot">&lt;-</span> puntos_ord[<span class="dv">3</span>] <span class="sc">-</span> puntos_ord[<span class="dv">2</span>]</span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>   dif_2 <span class="ot">&lt;-</span> puntos_ord[<span class="dv">2</span>] <span class="sc">-</span> puntos_ord[<span class="dv">1</span>]</span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>   dif_3 <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span>pi <span class="sc">+</span> puntos_ord[<span class="dv">1</span>] <span class="sc">-</span> puntos_ord[<span class="dv">3</span>]</span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span>(<span class="fu">abs</span>(dif_1 <span class="sc">-</span> dif_2) <span class="sc">&lt;</span> tol <span class="sc">&amp;</span> <span class="fu">abs</span>(dif_2 <span class="sc">-</span> dif_3) <span class="sc">&lt;</span> tol){</span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>      equilatero <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>   } <span class="cf">else</span> {</span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>      equilatero <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
-<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>   }</span>
-<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>   equilatero</span>
-<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>Simulamos:</p>
-<div class="cell">
-<details>
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>sims_puntos <span class="ot">&lt;-</span> <span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">50000</span>, <span class="sc">~</span> <span class="fu">simular_3_puntos</span>())</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>Calculamos la ocurrencia del evento de interés:</p>
-<div class="cell">
-<details>
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>evento <span class="ot">&lt;-</span> <span class="fu">map_lgl</span>(sims_puntos, <span class="sc">~</span> <span class="fu">es_equilatero</span>(.x))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>Y al frecuencia relativa es:</p>
-<div class="cell">
-<details>
-<summary>Código</summary>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(evento)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.01168</code></pre>
-</div>
-</div>
-<p>¿Puedes resolver este problema contando los posibles triángulos, y cuáles de ellos son equiláteros?</p>
-</section>
-</section>
-<section id="probabilidad-subjetiva" class="level2" data-number="8.7">
-<h2 data-number="8.7" class="anchored" data-anchor-id="probabilidad-subjetiva"><span class="header-section-number">8.7</span> Probabilidad subjetiva</h2>
-<p>Existe otra manera más flexible de interpretar la probabilidad que tiene que ver con un “grado de creencia” en que un evento va a ocurrir. Por ejemplo, el evento <span class="math inline">\(A\)</span> podría ser “va a llover mañana”, y según mi conocimiento establezco que <span class="math display">\[P(A) = 0.25\]</span></p>
-<p>Esta es una probablidad subjetiva pero no arbitraria. Para entender por qué es eso, pensemos en un juego de azar que consiste jugar una lotería de 100 boletos, donde podemos jugar con un número de boletos dado. Comparamos entonces dos alternativas:</p>
-<ol type="1">
-<li>Si <span class="math inline">\(A\)</span> ocurre, es decir, llueve mañana, entonces gano 1000 pesos.</li>
-<li>La lotería de 100 boletos tiene un único premio de 1000 pesos.</li>
-</ol>
-<p>Entonces me puedo preguntar:</p>
-<ul>
-<li>¿Qué prefiero, jugar 1 o jugar 2 con 5 boletos?</li>
-</ul>
-<p>Si prefiero 1, entonces creo que <span class="math inline">\(P(A)&gt;0.05\)</span>. Ahora puedo preguntarme:</p>
-<ul>
-<li>¿Qué prefiero, jugar 1 o jugar 2 con 20 boletos?</li>
-</ul>
-<p>Si prefiero 1, entonces creo que <span class="math inline">\(P(A)&gt;0.20\)</span> Sin embargo, probablemente si me pregunto si prefiero jugar 1 o jugar 2 con 90 boletos, prefería jugar la lotería, de modo yo creo que <span class="math inline">\(P(A)&lt;0.90.\)</span></p>
-<p>Con estos ejercicios de preferencias sobre apuestas comparando con juegos de azar simples, puedo ver cuál es la probabilidad que yo le asigno a cualquier evento. Es posible demostrar que una probabilidad definida de esta manera cumple todas las reglas de probabilidad que mostramos arriba (si mis decisiones son racionales). Es posible definir modelos de probabilidad con este enfoque subjetivo, y es posible operar con ellos de manera usual con la maquinaria matemática.</p>
-<p>Lo poderoso de este enfoque es que nos permite atacar problemas que 1) no está claro cómo podrían derivarse a partir de modelos equiprobables, y 2) no está claro que sea posible reproducir el experimento muchas veces para ver cual es la frecuencia relativa de ocurrencia del evento. Por ejemplo:</p>
-<ul>
-<li>¿Cuál es la probabilidad de que esta persona X contraiga una enfermedad particular?</li>
-<li>¿Cuál es la probabilidad de que un candidato Y gane una elección?</li>
-<li>¿Qué tan probable es que el próximo año el crecimiento del PIB sea mayor a 1%?</li>
-</ul>
-<p>En todos estos casos importantes donde tenemos que tomar decisiones, la única alternativa real es pensar en términos de probabilidad subjetiva.</p>
-<p>En la práctica, este tipo de enfoque se utiliza para poner probabilidades sobre cantidades o aspectos difíciles de medir directamente pero que son relativamente simples, y luego se utilizan modelos y reglas de probabilidad para producir otras probabilidades de interés más complicadas.</p>
-</section>
-<section id="probabilidad-subjetiva-y-calibración-frecuentista" class="level2" data-number="8.8">
-<h2 data-number="8.8" class="anchored" data-anchor-id="probabilidad-subjetiva-y-calibración-frecuentista"><span class="header-section-number">8.8</span> Probabilidad subjetiva y calibración frecuentista</h2>
-<p>Como podemos imaginarnos, para muchas decisiones importantes, el enfoque subjetivo por sí solo puede no ser suficiente. Por ejemplo, imaginemos que trabajamos en INEGI queremos estimar el ingreso total de los hogares en México. Sería difícil proponer para esta tarea un enfoque puramente subjetivo.</p>
-<p>En estos caso, podemos usar un enfoque donde utilizamos las probabilidades de manera subjetiva (por ejemplo elicitadas de un pánel de expertos), pero demostramos también que nuestro método tiene propiedades frecuentistas apropiadas: por ejemplo, que nuestros intervalos de 95% de estimación son realmente de 95%. Esto normalmente se cumple 1) Checando supuestos de nuestro modelo 2) Sometiendo nuestro método a distintos escenarios de estimación, y checando que se cumplen estimaciones frecuentistas apropiadas. En realidad, usualmente estos dos últimos pasos, 1 y 2, deben ser llevados a cabo no importa el enfoque de interpretación que utilicemos, pues cualquier método, frecuentista o subjetivo, tiene condiciones bajo las que puede fallar.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

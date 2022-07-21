@@ -89,7 +89,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./intro-bayesiana-2.html" rel="next">
-<link href="./inferencia-bayesiana.html" rel="prev">
+<link href="./maxima-verosimilitud.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -238,21 +238,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="./modelos-continuos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modelos probabilísticos para variables continuas</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./inferencia-modelos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Inferencia con modelos probabilísticos</span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./inferencia-bayesiana.html" class="sidebar-item-text sidebar-link">Estadística Bayesiana</a>
+            <a href="./inferencia-modelos.html" class="sidebar-item-text sidebar-link">Inferencia con modelos probabilísticos</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./maxima-verosimilitud.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Estimación por máxima verosimilitud</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro-bayesiana-1.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Introducción a inferencia bayesiana</span></a>
@@ -547,8 +547,8 @@ P({X}_{nv}=\mathsf{sol}\, | \, X=2) &amp; = \sum_{\theta \in \Theta} P({X}_{nv}=
 <pre><code># A tibble: 2 × 2
   dist      theta_hat
   &lt;chr&gt;         &lt;dbl&gt;
-1 inicial       0.498
-2 posterior     0.612</code></pre>
+1 inicial       0.499
+2 posterior     0.611</code></pre>
 </div>
 </div>
 <p>Nota que el estimador de máxima verosimilitud es <span class="math inline">\(\hat{p} = 19/30 = 0.63\)</span>, que es ligeramente diferente de la media posterior. ¿Por qué?</p>
@@ -1332,8 +1332,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./inferencia-bayesiana.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Estadística Bayesiana</span>
+      <a href="./maxima-verosimilitud.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Estimación por máxima verosimilitud</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

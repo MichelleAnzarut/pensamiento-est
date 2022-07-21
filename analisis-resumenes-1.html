@@ -257,21 +257,21 @@ div.csl-indent {
   <a href="./modelos-continuos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modelos probabilísticos para variables continuas</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./inferencia-modelos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Inferencia con modelos probabilísticos</span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./inferencia-bayesiana.html" class="sidebar-item-text sidebar-link">Estadística Bayesiana</a>
+            <a href="./inferencia-modelos.html" class="sidebar-item-text sidebar-link">Inferencia con modelos probabilísticos</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./maxima-verosimilitud.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Estimación por máxima verosimilitud</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro-bayesiana-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Introducción a inferencia bayesiana</span></a>
@@ -341,16 +341,16 @@ div.csl-indent {
 <pre><code># A tibble: 10 × 6
    cuenta_total propina fumador dia   momento num_personas
           &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;          &lt;dbl&gt;
- 1         9.78    1.73 No      Jue   Comida             2
- 2         8.77    2    No      Dom   Cena               2
- 3        17.3     2.74 No      Dom   Cena               3
- 4        21.5     3.5  No      Dom   Cena               4
- 5        31.3     5    No      Sab   Cena               3
- 6        29.8     4.2  No      Jue   Comida             6
- 7        15.5     2.02 Si      Jue   Comida             2
- 8        18.4     2.5  No      Sab   Cena               4
- 9        23.1     4    Si      Dom   Cena               3
-10        27.2     2    Si      Sab   Cena               2</code></pre>
+ 1         12.7    2    No      Sab   Cena               2
+ 2         12.9    1.1  Si      Sab   Cena               2
+ 3         17.0    3.5  No      Dom   Cena               3
+ 4         14.5    2    No      Jue   Comida             2
+ 5         16.2    2    No      Dom   Cena               3
+ 6         22.8    3    No      Jue   Comida             2
+ 7         26.6    3.41 Si      Sab   Cena               3
+ 8         10.1    2    Si      Vie   Comida             2
+ 9         10.1    1.25 No      Sab   Cena               2
+10         25.7    4    No      Dom   Cena               3</code></pre>
 </div>
 </div>
 <p>Aquí la unidad de observación es una cuenta particular. Tenemos tres mediciones numéricas de cada cuenta: cúanto fue la cuenta total, la propina, y el número de personas asociadas a la cuenta. Los datos están separados según se fumó o no en la mesa, y temporalmente en dos partes: el día (Jueves, Viernes, Sábado o Domingo), cada uno separado por Cena y Comida.</p>

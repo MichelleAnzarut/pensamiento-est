@@ -260,21 +260,21 @@ div.csl-indent {
   <a href="./modelos-continuos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Modelos probabilísticos para variables continuas</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./inferencia-modelos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Inferencia con modelos probabilísticos</span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./inferencia-bayesiana.html" class="sidebar-item-text sidebar-link">Estadística Bayesiana</a>
+            <a href="./inferencia-modelos.html" class="sidebar-item-text sidebar-link">Inferencia con modelos probabilísticos</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./maxima-verosimilitud.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Estimación por máxima verosimilitud</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro-bayesiana-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Introducción a inferencia bayesiana</span></a>
@@ -520,7 +520,7 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">min</span>(<span class="fu">dist_perm</span>(dif_obs), (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">dist_perm</span>(dif_obs)))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.09</code></pre>
+<pre><code>[1] 0.0826</code></pre>
 </div>
 </div>
 <p>Este valor p se considera como evidencia “moderada” en contra de la hipótesis nula. Valores p más chicos (observaciones más extremas en comparación con la referencia) aportan más evidencia en contra de la hipótesis de que los grupos de tomadores de té , y valores más grandes aportan menos evidencia.</p>
@@ -649,7 +649,7 @@ cols(
 )</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>decrypt("qVKA jQfQ ek Yhbefehk GG")</code></pre>
+<pre><code>decrypt("ZVEP Smam qh t1xqaq1h zz")</code></pre>
 </div>
 <div class="cell-output-display">
 <p><img src="pruebas-hipotesis-2_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="768"></p>
@@ -754,7 +754,7 @@ cols(
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="fu">lineup</span>(<span class="fu">null_permute</span>(<span class="st">"grupo"</span>), muestra_tab, <span class="at">n =</span> <span class="dv">20</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>decrypt("qVKA jQfQ ek Yhbefehk GB")</code></pre>
+<pre><code>decrypt("ZVEP Smam qh t1xqaq1h zD")</code></pre>
 </div>
 <details>
 <summary>Código</summary>
@@ -795,7 +795,7 @@ cols(
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">&lt;-</span> <span class="fu">lineup</span>(<span class="fu">null_permute</span>(<span class="st">"grupo"</span>), muestra_tab, <span class="at">n =</span> <span class="dv">20</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>decrypt("qVKA jQfQ ek Yhbefehk Ga")</code></pre>
+<pre><code>decrypt("ZVEP Smam qh t1xqaq1h zo")</code></pre>
 </div>
 <details>
 <summary>Código</summary>
