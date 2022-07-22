@@ -331,7 +331,6 @@ div.csl-indent {
 
 </header>
 
-<p>En esta parte establecemos las herramientas básicas que utilizaremos para describir y explorar conjuntos de datos. En esta parte veremos cómo analizar y comparar distintos <em>bonches</em> de datos numéricos.</p>
 <section id="cuantiles-o-percentiles-de-una-variable" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="cuantiles-o-percentiles-de-una-variable"><span class="header-section-number">1.1</span> Cuantiles o percentiles de una variable</h2>
 <p>El primer concepto se refiere a entender cómo se distribuyen los datos a los largo de su escala de medición. Comenzamos con un ejemplo: los siguientes datos fueron registrados en un restaurante durante cuatro días consecutivos.</p>
@@ -340,22 +339,105 @@ div.csl-indent {
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># usamos los datos tips del paquete reshape2</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>propinas <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"./datos/propinas.csv"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">slice_sample</span>(propinas, <span class="at">n =</span> <span class="dv">10</span>) </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">slice_sample</span>(propinas, <span class="at">n =</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span> <span class="fu">kable</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 10 × 6
-   cuenta_total propina fumador dia   momento num_personas
-          &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;          &lt;dbl&gt;
- 1        38.1     4    No      Dom   Cena               3
- 2        21.6     3.92 No      Dom   Cena               2
- 3        24.0     2    Si      Sab   Cena               4
- 4        20.9     4.08 No      Sab   Cena               2
- 5        20.7     5    No      Dom   Cena               5
- 6        16.0     3    No      Vie   Comida             3
- 7        24.0     2.55 No      Dom   Cena               2
- 8        32.4     6    No      Dom   Cena               4
- 9        16.5     2    No      Dom   Cena               4
-10         3.07    1    Si      Sab   Cena               1</code></pre>
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> cuenta_total </th>
+   <th style="text-align:right;"> propina </th>
+   <th style="text-align:left;"> fumador </th>
+   <th style="text-align:left;"> dia </th>
+   <th style="text-align:left;"> momento </th>
+   <th style="text-align:right;"> num_personas </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 18.28 </td>
+   <td style="text-align:right;"> 4.00 </td>
+   <td style="text-align:left;"> No </td>
+   <td style="text-align:left;"> Jue </td>
+   <td style="text-align:left;"> Comida </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 19.44 </td>
+   <td style="text-align:right;"> 3.00 </td>
+   <td style="text-align:left;"> Si </td>
+   <td style="text-align:left;"> Jue </td>
+   <td style="text-align:left;"> Comida </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7.25 </td>
+   <td style="text-align:right;"> 5.15 </td>
+   <td style="text-align:left;"> Si </td>
+   <td style="text-align:left;"> Dom </td>
+   <td style="text-align:left;"> Cena </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 17.46 </td>
+   <td style="text-align:right;"> 2.54 </td>
+   <td style="text-align:left;"> No </td>
+   <td style="text-align:left;"> Dom </td>
+   <td style="text-align:left;"> Cena </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 13.16 </td>
+   <td style="text-align:right;"> 2.75 </td>
+   <td style="text-align:left;"> No </td>
+   <td style="text-align:left;"> Jue </td>
+   <td style="text-align:left;"> Comida </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 8.51 </td>
+   <td style="text-align:right;"> 1.25 </td>
+   <td style="text-align:left;"> No </td>
+   <td style="text-align:left;"> Jue </td>
+   <td style="text-align:left;"> Comida </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 18.04 </td>
+   <td style="text-align:right;"> 3.00 </td>
+   <td style="text-align:left;"> No </td>
+   <td style="text-align:left;"> Dom </td>
+   <td style="text-align:left;"> Cena </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 12.74 </td>
+   <td style="text-align:right;"> 2.01 </td>
+   <td style="text-align:left;"> Si </td>
+   <td style="text-align:left;"> Jue </td>
+   <td style="text-align:left;"> Comida </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 23.68 </td>
+   <td style="text-align:right;"> 3.31 </td>
+   <td style="text-align:left;"> No </td>
+   <td style="text-align:left;"> Dom </td>
+   <td style="text-align:left;"> Cena </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 11.24 </td>
+   <td style="text-align:right;"> 1.76 </td>
+   <td style="text-align:left;"> Si </td>
+   <td style="text-align:left;"> Sab </td>
+   <td style="text-align:left;"> Cena </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
 </div>
 <p>Aquí la unidad de observación es una cuenta particular. Tenemos tres mediciones numéricas de cada cuenta: cúanto fue la cuenta total, la propina, y el número de personas asociadas a la cuenta. Los datos están separados según se fumó o no en la mesa, y temporalmente en dos partes: el día (Jueves, Viernes, Sábado o Domingo), cada uno separado por Cena y Comida.</p>
@@ -364,11 +446,11 @@ div.csl-indent {
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>propinas <span class="ot">&lt;-</span> propinas <span class="sc">|&gt;</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">orden_cuenta =</span> <span class="fu">rank</span>(cuenta_total, <span class="at">ties.method =</span> <span class="st">"first"</span>), </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">f =</span> orden_cuenta <span class="sc">/</span> <span class="fu">n</span>()) </span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>cuenta <span class="ot">&lt;-</span> propinas <span class="sc">|&gt;</span>  <span class="fu">select</span>(orden_cuenta, f, cuenta_total) <span class="sc">|&gt;</span>  <span class="fu">arrange</span>(f)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_rows</span>(<span class="fu">head</span>(cuenta), <span class="fu">tail</span>(cuenta)) <span class="sc">|&gt;</span>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>propinas <span class="ot">&lt;-</span> propinas <span class="sc">|&gt;</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">orden_cuenta =</span> <span class="fu">rank</span>(cuenta_total, <span class="at">ties.method =</span> <span class="st">"first"</span>), </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">f =</span> orden_cuenta <span class="sc">/</span> <span class="fu">n</span>()) </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>cuenta <span class="ot">&lt;-</span> propinas <span class="sc">|&gt;</span>  <span class="fu">select</span>(orden_cuenta, f, cuenta_total) <span class="sc">|&gt;</span>  <span class="fu">arrange</span>(f)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">bind_rows</span>(<span class="fu">head</span>(cuenta), <span class="fu">tail</span>(cuenta)) <span class="sc">|&gt;</span>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
@@ -473,7 +555,7 @@ Cuantiles de datos numéricos
 <p><strong>Nota</strong>: si los datos originales son <span class="math inline">\(y_1, y_2, \ldots, y_n\)</span>, y los mismos datos ordenados son <span class="math inline">\(y_{(1)}, y_{(2)}, \ldots, y_{(n)}\)</span>, entonces si <span class="math inline">\(f= j/n\)</span>, <span class="math inline">\(q(f) = y_{(j)}\)</span>. Si <span class="math inline">\(f\)</span> toma un valor intermedio entre <span class="math inline">\((j-1)/n\)</span> y <span class="math inline">\(j/n\)</span>, entonces interpolamos <span class="math inline">\(y_{(j-1)}\)</span> y <span class="math inline">\(y_{(j)}\)</span> para encontrar <span class="math inline">\(q(f)\)</span>.</p>
 <p>Hay otras maneras de definir los cuantiles que pueden ser más convenientes. Los que estamos usando ahora son los cuantiles <em>tipo 4</em>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(cuenta<span class="sc">$</span>cuenta_total, <span class="at">probs =</span> <span class="fu">c</span>(<span class="dv">6</span><span class="sc">/</span><span class="dv">244</span>, <span class="dv">239</span><span class="sc">/</span><span class="dv">244</span>), <span class="at">type =</span> <span class="dv">4</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(cuenta<span class="sc">$</span>cuenta_total, <span class="at">probs =</span> <span class="fu">c</span>(<span class="dv">6</span><span class="sc">/</span><span class="dv">244</span>, <span class="dv">239</span><span class="sc">/</span><span class="dv">244</span>), <span class="at">type =</span> <span class="dv">4</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>2.459016% 97.95082% 
      7.56     44.30 </code></pre>
@@ -500,8 +582,16 @@ Cuantiles de datos numéricos
 <ul>
 <li>La distribución de valores tiene asimetría: el 10% de las cuentas más altas tiene considerablemente más dispersión que el 10% de las cuentas más bajas. A veces decimos que la <strong>cola de la derecha</strong> es más larga que la <strong>cola de la izquierda</strong></li>
 </ul>
-<p>En algunos casos, es más natural hacer un <em>histograma</em>, donde dividimos el rango de la variable en cubetas o intervalos (en este caso de igual longitud), y graficamos cuántos datos caen en cada cubeta:</p>
+<p>En algunos casos, es más natural hacer un <em>histograma</em>, donde dividimos el rango de la variable en cubetas o intervalos (en este caso de igual longitud), y graficamos cuántos datos caen en cada cubeta. En la siguiente gráfica variamos el ancho de las cubetas:</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>binwidth_min <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>g_1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(propinas, <span class="fu">aes</span>(<span class="at">x =</span> cuenta_total)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> binwidth_min) </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>g_2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(propinas, <span class="fu">aes</span>(<span class="at">x =</span> cuenta_total)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> binwidth_min <span class="sc">*</span> <span class="dv">2</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>g_3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(propinas, <span class="fu">aes</span>(<span class="at">x =</span> cuenta_total)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> binwidth_min <span class="sc">*</span> <span class="dv">5</span>) </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>g_1 <span class="sc">+</span> g_2 <span class="sc">+</span> g_3</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <p><img src="analisis-resumenes-1_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="960"></p>
 </div>
@@ -872,7 +962,7 @@ Cuantiles de datos numéricos
 <section id="factor-y-respuesta-numéricos-opcional" class="level2" data-number="1.6">
 <h2 data-number="1.6" class="anchored" data-anchor-id="factor-y-respuesta-numéricos-opcional"><span class="header-section-number">1.6</span> Factor y respuesta numéricos (opcional)</h2>
 <p>En las secciones anteriores vimos cómo describir “bonches” de datos numéricos y categóricos. Adicionalmente, vimos cómo usar esas técnicas para comparar las descripciones a lo largo de varios subconjuntos de los datos.</p>
-<p>En estos casos, muchas veces llamamos <em>factor</em> a la variables que forma los grupos, y <em>respuesta</em> a la variable que estamos comparando. Por ejemplo, en el caso de tomadores de té comparamos uso de complementos (respuesta) a lo largo de consumidores de distintos tipos de té (factor) En el caso de los precios de las casas comparamos el precio de las casas (respuesta) dependiendo del vecindario (factor) dónde se encuentran.</p>
+<p>En estos casos, muchas veces llamamos <em>factor</em> a la variables que forma los grupos, y <em>respuesta</em> a la variable que estamos comparando. Por ejemplo, en el caso de los precios de las casas comparamos el precio de las casas (respuesta) dependiendo del vecindario (factor) dónde se encuentran.</p>
 <p>Cuando tenemos una factor numérico y una respuesta numérica podemos comenzar haciendo diagramas de dispersión. Por ejemplo,</p>
 </section>
 <section id="ejemplo-cuenta-total-y-propina" class="level2 unnumbered">
@@ -974,7 +1064,7 @@ Cuantiles de datos numéricos
 
 </div>
 </div>
-<p>Conde confirmamos que el nivel general de propinas es más alto alrededor de cuentas de total 30 que de total 15, y la dispersión también es mayor. Podríamos hacer un diagrama de caja y brazos también.</p>
+<p>Donde confirmamos que el nivel general de propinas es más alto alrededor de cuentas de total 30 que de total 15, y la dispersión también es mayor. Podríamos hacer un diagrama de caja y brazos también.</p>
 </section>
 <section id="suavizadores-locales" class="level2" data-number="1.7">
 <h2 data-number="1.7" class="anchored" data-anchor-id="suavizadores-locales"><span class="header-section-number">1.7</span> Suavizadores locales</h2>
@@ -998,66 +1088,54 @@ Cuantiles de datos numéricos
 <span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"loess"</span>, <span class="at">span =</span> <span class="fl">0.5</span>, <span class="at">degree=</span> <span class="dv">0</span>, </span>
 <span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">method.args =</span> <span class="fu">list</span>(<span class="at">family =</span> <span class="st">"symmetric"</span>), <span class="at">se =</span> <span class="cn">FALSE</span>) </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Ignoring unknown parameters: degree</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using formula 'y ~ x'</code></pre>
-</div>
 <div class="cell-output-display">
 <p><img src="analisis-resumenes-1_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># symmetric es un método robusto iterativo, que reduce el peso de atípicos</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># symmetric es un método robusto iterativo, que reduce el peso de atípicos</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>El parametro <em>span</em> controla el tamaño de la ventana de datos que se toma en cada punto. Nótese como alrededor de 15 y 30 los valores por donde pasa el suavizador son similares a las medianas que escribimos arriba.</p>
 <p>Podemos ajustar en cada ventana tambien rectas de minimos cuadrados, y obtener un suavizador de tipo lineal. En la siguiente gráfica mostramos cómo funciona este suavizador para distintos tamaños de ventanas (<em>span</em>)</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./figuras/loess-spans.gif" class="img-fluid figure-img"></p>
+<p><img src="./imagenes/loess-spans.gif" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Suavizador loess</figcaption><p></p>
 </figure>
 </div>
 <div class="cell" type="comentario">
 
 <div class="comentario">
-Los <strong>suavizadores loess</strong> tienen como fin mostrar alrededor de qué valor de distribuye la respuesta (eje vertical) para distintos valores del factor (eje horizontal). Se escoge <em>span</em> suficientemente baja de forma que mostremos patrones claros en los datos y casi no capturemos variación debida a los tamaños de muestra chicos.
+Los <strong>suavizadores loess</strong> tienen como fin mostrar alrededor de qué valor se distribuye la respuesta (eje vertical) para distintos valores del factor (eje horizontal). Se escoge <em>span</em> suficientemente baja de forma que mostremos patrones claros en los datos y casi no capturemos variación debida a los tamaños de muestra chicos.
 </div>
 </div>
-<p>En la animación anterior, un valor de span de 0.15 funciona aprpiadamente, y uno de 0.05 es demasiado bajo y uno de 1.0 es demasiado alto. Es importante explorar con el valor de span pues depende de cuántos datos tenemos y cómo es su dispersión.</p>
+<p>En la animación anterior, un valor de span de 0.15 funciona apropiadamente, uno de 0.05 es demasiado bajo y uno de 1.0 es demasiado alto. Es importante explorar con el valor de span pues depende de cuántos datos tenemos y cómo es su dispersión.</p>
 <p>Podemos también mostrar estimaciones de medianas y cuantiles de la siguiente forma (nota: es necesario escoger <em>lambda</em> con cuidado, cuanto más alto sea <em>lambda</em> más suave es la curva obtenida):</p>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(propinas, <span class="fu">aes</span>(<span class="at">x =</span> cuenta_total, <span class="at">y =</span> propina)) <span class="sc">+</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> <span class="dv">13</span>, <span class="at">xmax =</span> <span class="dv">17</span>), <span class="at">fill =</span> <span class="st">"salmon"</span>, <span class="at">alpha =</span> <span class="fl">0.15</span>) <span class="sc">+</span></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> <span class="dv">28</span>, <span class="at">xmax =</span> <span class="dv">32</span>), <span class="at">fill =</span> <span class="st">"salmon"</span>, <span class="at">alpha =</span> <span class="fl">0.15</span>) <span class="sc">+</span></span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_quantile</span>(<span class="at">method =</span> <span class="st">"rqss"</span>, <span class="at">lambda =</span> <span class="dv">15</span>, <span class="at">quantiles =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)) <span class="sc">+</span></span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(propinas, <span class="fu">aes</span>(<span class="at">x =</span> cuenta_total, <span class="at">y =</span> propina)) <span class="sc">+</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> <span class="dv">13</span>, <span class="at">xmax =</span> <span class="dv">17</span>), <span class="at">fill =</span> <span class="st">"salmon"</span>, <span class="at">alpha =</span> <span class="fl">0.15</span>) <span class="sc">+</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> <span class="dv">28</span>, <span class="at">xmax =</span> <span class="dv">32</span>), <span class="at">fill =</span> <span class="st">"salmon"</span>, <span class="at">alpha =</span> <span class="fl">0.15</span>) <span class="sc">+</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_quantile</span>(<span class="at">method =</span> <span class="st">"rqss"</span>, <span class="at">lambda =</span> <span class="dv">15</span>, <span class="at">quantiles =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)) <span class="sc">+</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Smoothing formula not specified. Using: y ~ qss(x, lambda = 15)</code></pre>
-</div>
 <div class="cell-output-display">
 <p><img src="analisis-resumenes-1_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Finalmente, entendimiento de los datos no permite también hacer gráficas más útiles. En este ejemplo particular podría por ejemplo calcular el porcentaje de la propina sobre la cuenta total:</p>
+<p>Finalmente, el entendimiento de los datos nos permite también hacer gráficas más útiles. En este caso particular podría, por ejemplo, calcular el porcentaje de la propina sobre la cuenta total:</p>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>propinas <span class="ot">&lt;-</span> <span class="fu">mutate</span>(propinas, <span class="at">pct_propina =</span> propina <span class="sc">/</span> cuenta_total)</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(propinas, <span class="fu">aes</span>(<span class="at">x =</span> cuenta_total, <span class="at">y =</span> pct_propina)) <span class="sc">+</span></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>, <span class="fl">0.05</span>)) <span class="sc">+</span></span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_quantile</span>(<span class="at">method =</span> <span class="st">"rqss"</span>, <span class="at">lambda =</span> <span class="dv">15</span>, <span class="at">quantiles =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>propinas <span class="ot">&lt;-</span> <span class="fu">mutate</span>(propinas, <span class="at">pct_propina =</span> propina <span class="sc">/</span> cuenta_total)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(propinas, <span class="fu">aes</span>(<span class="at">x =</span> cuenta_total, <span class="at">y =</span> pct_propina)) <span class="sc">+</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>, <span class="fl">0.05</span>)) <span class="sc">+</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_quantile</span>(<span class="at">method =</span> <span class="st">"rqss"</span>, <span class="at">lambda =</span> <span class="dv">15</span>, <span class="at">quantiles =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Smoothing formula not specified. Using: y ~ qss(x, lambda = 15)</code></pre>
-</div>
 <div class="cell-output-display">
 <p><img src="analisis-resumenes-1_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -1069,9 +1147,9 @@ Los <strong>suavizadores loess</strong> tienen como fin mostrar alrededor de qu�
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(propinas, pct_propina <span class="sc">&gt;</span> <span class="fl">0.30</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(pct_propina)) <span class="sc">|&gt;</span> </span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(propinas, pct_propina <span class="sc">&gt;</span> <span class="fl">0.30</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(pct_propina)) <span class="sc">|&gt;</span> </span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
