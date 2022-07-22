@@ -326,7 +326,55 @@ que han sido seleccionadas, porque tanto la selección como la variable de inter
 tienen una causa común: la existencia o no de una enfermedad en la persona. Será 
 difícil generalizar para las personas no observadas en el estudio.
 
-### Ejemplo: colisionadores 1 {.unnumbered}
+### Ejemplo: colisionador 1 {.unnumbered}
+
+- Supongamos que queremos entender la relación en desempeño en matemáticas y
+en español para estudiantes que entran a una universidad.
+- Encontramos una relación negativa entre las calificaciones de los dos exámenes:
+parece ser que habilidad verbal se contrapone a habilidad numérica.
+
+¿Por qué tenemos que tener cuidado al interpretar esta correlación? ¿Existe 
+esta correlación en la población general?
+
+```{r}
+library(dagitty)
+library(ggdag)
+dag_1 <- dagitty('dag{"Español" [exposure,pos="1,1"]
+  "Mate" [outcome,pos="1,-1"]
+  "Admisión" [pos="2,0"]
+  "Español"  -> "Admisión"
+    "Mate" -> "Admisión"
+  }')
+dag_1_tidy <- tidy_dagitty(dag_1) 
+dag_1_tidy |>
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend )) + 
+  geom_dag_edges() +
+  geom_dag_point(colour = "salmon", size = 20) +
+  geom_dag_text(colour = "gray20") +
+  theme_dag()
+```
+
+- Descubrimos que la universidad hace una calificación compuesta de español
+y matemáticas para que los alumnos sean aceptados en la universidad
+- Esto quiere decir que para entrar es necesario al menos desempeñarse bien en alguna
+de las dos
+
+Ahora observamos que aunque en la población general no hay tal relación,
+al seleccionar sólo a los alumnos de la universidad "activamos" una correlación
+debido al proceso de selección:
+
+```{r}
+set.seed(823)
+tibble(x = rnorm(2000), y = rnorm(2000)) |> 
+  mutate(aceptados = x + y > 1.5 ) |> 
+ggplot(aes(x, y, colour = aceptados)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+
+
+### Ejemplo: colisionadores 2 {.unnumbered}
 
 Algunos estudios fueron publicados en la primera mitad de 2020
 que notaban que el porcentaje fumadores
@@ -432,43 +480,6 @@ por lo tanto, mayor probabilidad de ser fumador.
 que se hicieron pruebas, entonces los trabajadores de salud están sobrerrepresantados
 en la muestra.
 
-
-
-### Ejemplo: colisionador 2 {.unnumbered}
-
-- Supongamos que queremos entender la relación en desempeño en matemáticas y
-en español para estudiantes que entran a una universidad.
-- Encontramos una relación negativa entre las calificaciones de los dos exámenes:
-parece ser que habilidad verbal se contrapone a habilidad numérica.
-
-¿Por qué tenemos que tener cuidado al interpretar esta correlación? ¿Existe 
-esta correlación en la población general?
-
-- Descubrimos que la universidad hace una calificación compuesta de español
-y matemáticas para que los alumnos sean aceptados en la universidad
-- Esto quiere decir que para entrar es necesario al menos desempeñarse bien en alguna
-de las dos
-
-Ahora observamos que aunque en la población general no hay tal relación,
-al seleccionar sólo a los alumnos de la universidad "activamos" una correlación
-debido al proceso de selección:
-
-```{r}
-set.seed(823)
-tibble(x = rnorm(2000), y = rnorm(2000)) |> 
-  mutate(aceptados = x + y > 1.5 ) |> 
-ggplot(aes(x, y, colour = aceptados)) +
-  geom_point(alpha = 0.5) +
-  geom_smooth(method = "lm", se = FALSE)
-```
-
-
-
-
-
-
-
-
 ## Procesos generadores de datos {.unnumbered}
 
 Nótese que en todas estas preguntas hemos tenido que recurrir a conocimientos generales y de dominio para interpretar y hacer hipótesis acerca de lo que vemos en la gráfica. Una visión descontextualizada no tiene mucha utilidad. Las explicaciones son típicamente complejas e intervienen distintos aspectos del comportamiento de actores, sistemas, y métodos de recolección de datos involucrados.
@@ -531,6 +542,7 @@ adm_original |> group_by(Dept) |>
    kable()
 ```
 
+-   Dibuja el diagrama causal
 -   ¿Qué observas acerca de las tasas de admisión en cada departamento, diferenciadas por género? ¿Qué tiene qué ver con el número de personas que solicitan en cada departamento?
 -   Esta es una tabla *descriptiva*. Sin embargo, tiene que ser entendida en el contexto de los datos y su generación. ¿Qué hipótesis importantes sugieren estos datos? ¿Por qué hay tanta diferencia de género de solicitudes en algunos departamentos? ¿Por qué es sorprendente o no las variaciones en tasas de aceptación de estudiantes de cada género?
 
