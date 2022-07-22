@@ -22,9 +22,9 @@ Supongamos que tenemos la siguiente datos, que sólo son parte de la población:
 
 ```{r}
 set.seed(6622)
-muestra <- datos_casas |> slice_sample(n = 20)
-muestra
-ggplot(muestra, aes(sample = precio_miles ) ) +
+muestra_casas <- datos_casas |> slice_sample(n = 20)
+muestra_casas
+ggplot(muestra_casas, aes(sample = precio_miles ) ) +
   geom_qq(distribution = stats::qunif)
 ```
 
@@ -34,8 +34,8 @@ tiene la propiedad de que separa a los datos en dos grupos de tamaño igual.
 
 :::callout-tip
 
-Estimar en este caso significa dar un rango donde creemos creíble que
-el valor poblacional está. No tiene sentido dar un sólo valor pues no conocemos
+Estimar en este caso significa dar un rango donde es creíble que
+está el valor poblacional. No tiene sentido dar un sólo valor pues no conocemos
 la población total, así que tendremos incertidumbre de dónde está la mediana verdadera
 
 ::: 
@@ -76,11 +76,11 @@ $y_{(1)}$
 de la muestra es $(1/2)^n$, pues todos los valores de la muestra tienen
 que caer por arriba de la mediana. La probabilidad de que la mediana esté
 por arriba del máximo $y_{(1)}$ es también $(1/2)^n$. Así que la probabilidad
-de el verdadero valor de la mediana esté en este intervalo es de $ 2(1/2)^n$
+de el verdadero valor de la mediana esté en este intervalo es de $2(1/2)^n$.
  
 Esta es la probabilidad de tirar solamente soles o solamente águilas en $n$
 tiradas de una moneda, Si $X$ denota el número de soles obtenidos en $n$
-tiradas de dados, buscamos calcular la probabilidad de que la mediana esté en 
+tiradas de moneda, buscamos calcular la probabilidad de que la mediana esté en 
 intervalo como
 
 $$1 - P(X > n - 1) - P(X \leq 0) = 1 - 2(1/2)^n$$
@@ -107,7 +107,7 @@ alto <- n - bajo + 1
 ```
 Esto también es altamente probable. Sin embargo, la 
 probabilidad de la mediana poblacional esté entre 
-$[y_{6}, y_{15}]$ es
+$[y_{7}, y_{14}]$ es al menos
 
 ```{r}
 #! code-fold: false
@@ -126,7 +126,7 @@ datos. Es altamente probable que este intervalo *cubra* al verdadero valor.
 Ahora extraemos el intervalo correspondiente:
 
 ```{r}
-intervalo <- muestra |> mutate(pos = dense_rank(precio_miles)) |> 
+intervalo <- muestra_casas |> mutate(pos = dense_rank(precio_miles)) |> 
   arrange(pos) |> 
   filter(pos %in% c(7, 14))
 intervalo |> select(pos, precio_miles)
@@ -157,45 +157,114 @@ muestra_2 |>
 Esto intervalos tienen la garantía inferencial, y no es necesario hacer
 ningún supuesto, excepto en que la muestra se escoge al azar.
 
-## Remuestreo
+## Motivación de remuestreo
 
-Podemos pensar en este procedimiento de una manera diferente. 
+Podemos pensar en este procedimiento de una manera diferente, sin tener
+que hacer los cálculos de probabilidades para las estadísticas de orden. 
 
-Si la muestra completa se seleccionó al azar, entonces, si escogemos un
-valor no observado en la muestra, tenemos que $y$ tiene la misma 
-probabilidad de caer en cualquiera de los intervalos 
-$$I_1 = (0, y_1), I_2 = [y_1, y_2), I_3 = [y_2, y_3),\ldots, I_{n} = [y_{n}, \infty ]$$
+Supongamos que escogemos la muestra de casas al azar de manera independiente.
+Nuestra pregunta es:
 
-La razón es que si consideramos la muestra original con el nuevo dato agregado
-tomado al azar,
-todos los ordenamientos de $y_1, y_2, \ldots, y_n, y_{n+1}$ son igualmente
+**Dada la información de la muestra, qué podemos decir de los valores 
+que no observamos?**
+
+Nótese en primer lugar, igual que antes,
+que no podemos decir algo definitivo acerca de la
+muestra particular que obtuvimos. Sin embargo, es posible decir algo más informativo
+de la población dado que extraímos una muestra de "típica" de probabilidad alta.
+
+Nuestra muestro ordenada la escribimos como $y_{(1)}\leq y_{(2)}\leq \cdots \leq y_{(n)}$.
+Podemos considerar los intervalos aleatorios:
+
+$$I_1 = (0, y_{(1)}), I_2 = [y_{(1)}, y_{(2)}), I_3 = [y_{(2)}, y_{(3)}),\ldots, I_{n+1} = [y_{(n)}, \infty ]$$
+que cubren todos los valores posibles que puede haber en la población.
+
+Ahora consideramos un dato $y$ extraído también al azar de la población. Entonces
+es igualmente probable que $y$ caiga en cualquiera de los intervalos $I$. Para
+demostrar esto, considera que pasaría si tomaras una muestra de tamaño $n+1$.
+Todos los ordenamientos de $y_1, y_2, \ldots, y_n, y_{n+1}$ son igualmente
 probables: esto implica que es igualmente probable que $y_{n+1}$ 
 caiga en cualquiera de estos intervalos (probabilidad $1/{n+1}$).
 
 1. Podemos imputar nuestra población entera tomando escogiendo para cada valor
-no observado un intervalo, 
-2. Podemos entonces muestrear de esta población otra vez para obtener una muestra nueva.
+no observado un intervalo al azar de manera equiprobable. 
+2. Calculamos dónde puede estar la mediana para esta población.
 3. Repetimos los dos anteriores una gran cantidad de veces para ver todos los
-posibles valores de medianas que podemos obtener.
+posibles valores que podría tomar la mediana dada la información que tenemos
+de la muestra.
 
+Veamos un ejemplo chico ilustrado para entender la idea. Supongamos que
+tenemos una población de tamaño 20, y que tomamos una muestra de 8 elementos al azar. Los valores obtenidos, ordenados, son 12, 15, 16, 17, 18, 20, 23, 30, 32. Tenemos entonces 5 intervalos que considerar
 
-Cada muestra es una sucesión de intervalos. 
-Acumulamos para obtener una distribución sobre estos
-intervalos. La probabilidad de uqe la mediana salga en alguno de los intervalos
-extremos es igual a
+Haciendo el paso 1, por ejemplo, que la población ordenada de chica a grande es:
 
-$$(1/n)^{n/2},$$
-que es un número del orden de $$10^{-5}$$, que es chico aún cuando $n=10$. Para valores más grandes, 
-esta probabilidad es astronómicamente chica. Como el intervalo final
-consistirá de datos observados en nuestra muestra, en el resto de los intervalos
-no importa donde están los verdaderos poblacionales, y nos basta con saber
-si están o no en cada intervalo.
+```{r}
+set.seed(72112)
+muestra <- c(12, 15, 16, 17, 18, 20, 23, 30, 32)
+graficar_pob <- function(muestra, n_pob){
+  n_muestra <- length(muestra)
+  intervalos <- sample(1:(n_muestra + 1), n_pob - n_muestra, replace = TRUE) |> sort()
+  muestra_ord <- sort(muestra)
+  tab_muestra <- tibble(pos = 1:length(muestra), valor = as.character(muestra_ord))
+  tab_graf <- bind_rows(tab_muestra, tibble(pos = intervalos - 0.5, valor = "*")) |> 
+    arrange(pos)
+  tab_graf$valor 
+}
+graficar_pob(muestra, 20) |> paste(collapse = " ")
+```
+En este caso, la mediana debería estar entre 20 y 30. Hagamos otra repetición:
 
-Este proceso se llama remuestreo, y lo hacemos a continuación
+```{r}
+graficar_pob(muestra, 20) |> paste(collapse = " ")
+```
+Y en este ejemplo, la mediana sería 17. Podemos repetir este
+proceso varias veces y examinar los resultados:
+
+```{r}
+set.seed(12)
+pob_imputadas <- tibble(rep = 1:10) |> 
+  mutate(poblacion = map_chr(rep, ~ graficar_pob(muestra, 20) |> paste(collapse = " ")))
+pob_imputadas
+```
+
+Nótese que como al final vamos a dar un intervalo con extremos en los datos,
+en realidad no importa mucho qué valor esté representado por las estrellas (excluyendo
+el caso extremo de que la todos más de la mitad de las estrellas estén por abajo/arriba
+de todos los datos, lo cual es poco probable). Podemos contar las estrellas
+en cada posición como un valor en los datos, y ver entre qué valores cae la
+mediana. De esta forma podríamos encontrar un intervalo que contenga con probabilidad
+alta a la mediana poblacional.
+
+Una manera más simple de hacer esto es la siguiente:
+
+1. Tomamos una muestra **con reemplazo** de tamaño 8  de la muestra $12,15,16,17,20,23,30,32$. 
+2. Calculamos la mediana de esta nueva remuestra.
+3. Repetimos los dos anteriores una gran cantidad de veces para ver todos los
+posibles valores que podría tomar la mediana dada la información que tenemos
+de la muestra.
+
+```{r}
+remuestreo_med <- map_df(1:1000, function(rep){
+  remuestra <- sample(muestra, length(muestra), replace = TRUE)
+  tibble(rep = rep, mediana = median(remuestra))
+})
+ggplot(remuestreo_med, aes(x = mediana)) + geom_histogram(breaks = muestra) +
+  geom_rug(data = tibble(muestra = muestra), aes(x= muestra),colour = "red")
+```
+Y podemos calcular un intervalo de 80% tomando cuantiles *de las medias remuestreadas*:
+
+```{r}
+quantile(remuestreo_med$mediana, c(0.1, 0.9))
+```
+
+## Ejemplo: precios de casas
+
+Este proceso se llama remuestreo, y lo hacemos a continuación para nuestro ejemplo
+de la mediana de los precios de casas:
 
 ```{r}
 remuestrear <- function(muestra){
-  slice_sample(muestra, prop = 1, replace = TRUE) |> 
+  slice_sample(muestra_casas, prop = 1, replace = TRUE) |> 
   summarise(mediana = median(precio_miles))
 }
 remuestras <- map_df(1:10000, ~ remuestrear(muestra))
@@ -204,8 +273,8 @@ remuestras <- map_df(1:10000, ~ remuestrear(muestra))
 
 ```{r}
 ggplot(remuestras, aes(x = mediana)) +
-  geom_histogram(breaks = muestra |> pull(precio_miles)) +
-  geom_rug()
+  geom_histogram(breaks = muestra_casas |> pull(precio_miles)) +
+  geom_rug(data = muestra_casas, aes(x = precio_miles), colour = "red")
 ```
 
 ```{r}
@@ -217,9 +286,8 @@ distribución, gracias a que estamos usando la mediana.
 
 ## Remuestreo para otras estadísticas
 
-Podemos repetir este método para otras estadísticas como la media. Sin embargo,
-en este caso no podemos dar garantías independientes de la distribución poblacional.
-La razón es que las colas pueden ser muy extremas. 
+Podemos repetir este método para otras estadísticas como la media. Para el ejemplo de
+casas:
 
 ```{r}
 #| code-fold: false
@@ -227,18 +295,30 @@ remuestrear_media <- function(muestra){
   slice_sample(muestra, prop = 1, replace = TRUE) |> 
   summarise(media = mean(precio_miles))
 }
-remuestras_media <- map_df(1:10000, ~ remuestrear_media(muestra))
+remuestras_media <- map_df(1:10000, ~ remuestrear_media(muestra_casas))
 
 ```
 
 ```{r}
 ggplot(remuestras_media) +
-  geom_histogram(aes(x = media), binwidth = 1.5) +
-  geom_rug(data = muestra, aes(x = precio_miles))
+  geom_histogram(aes(x = media), binwidth = 1.5) 
 ```
+Podemos obtener un intervalo del 90% para la media obteniendo los cuantiles
+de estas simulaciones:
 
-Y nuestro problema en este caso es que la media sí cambia dependiendo de cómo
-es la distribución dentro de cada intervalo, incluyendo los intervalos izquierdo
-y derecho.
+```{r}
+quantile(remuestras_media$media, c(0.05, 0.95)) |> round(1)
+```
+:::{.callout-note}
+## Intervalos de bootstrap
+
+Motivamos el remuestreo (bootstrap) usando el ejemplo de estimación de
+la mediana población, donde es posible encontrar un intervalo exacto. El remuestreo
+se puede usar para muchas otras estadísticas difíciles de tratar teóricamente, y en general su comportamiento es bueno en relación a la cobertura.
+
+Sin embargo, para estadísticas arbitrarias es difícil cumplir de manera exacta
+las garantías inferenciales (por ejemplo, cuando la distribución
+tiene una cola muy larga). Veremos como tratar este problema más adelante.
+:::
 
 

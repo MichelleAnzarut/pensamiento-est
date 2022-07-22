@@ -141,7 +141,7 @@ Sin embargo, quizá es aceptable cambiar al material B si tiene otras ventajas.
 
 
 :::callout-tip
-#Bloqueo y aleatorización
+## Bloqueo y aleatorización
 
 De @box78, en el diseño de experimentos:
 

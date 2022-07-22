@@ -14,6 +14,10 @@ las probabilidades que queremos calcular son *condicionadas* a cierto tipo de in
 2. La probabilidad condicional nos permite modelar con probabilidad sistemas relativamente
 complejos a partir de componentes simples.
 
+En particular, si nuestro modelo incluye partes del proceso generador de datos,
+nos interesará calcular probabilidades condicionales de eventos *condicionados* 
+a que hemos observado ciertos datos.
+
 Muchos de los problemas de esta sección son de (@rossproba).
 
 ## Probabilidad condicional en espacios equiprobables.
