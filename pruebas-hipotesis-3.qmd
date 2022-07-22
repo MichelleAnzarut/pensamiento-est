@@ -1,0 +1,183 @@
+# Más acerca de pruebas de hipótesis
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+library(tidyverse)
+library(gt)
+library(kableExtra)
+theme_set(theme_minimal())
+source("R/funciones_auxiliares_notas.R")
+```
+
+Comenzamos con varias recomendaciones y comentarios
+acerca de lo métodos que hemos visto en esta parte:
+
+1. Las hipótesis nulas que hemos estado probando son útiles en algunos casos, pero generalmente son falsas por principio: casi cualquier 
+intervención o tratamiento que podamos pensar tiene *algún* efecto (quizá muy chico). Veremos en secciones anteriores que un
+enfoque más útil es la estimación de cantidades de interés con cuantificación de su incertidumbre. Por ejemplo, estimar directamente el tamaño del efecto del tratamiento o el procedimiento que estamos probando.
+
+2. Que una prueba de un tratamiento con salga con valor p muy bajo no quiere decir
+que es relevante o que nuestra decisión práctica debe cambiar. Igual que en el inciso anterior, es crucial entender el tamaño del efecto para entender costo-beneficio de distintas decisiones basadas en el análisis.
+
+3. Para los ejemplos que hemos visto, existe también la posibilidad de hacer pruebas
+basadas en supuestos distribucionales asintóticos que dan resultados muy similares a 
+las pruebas de permutaciones que hemos visto aquí y requieren menos cálculo (pruebas t,
+por ejemplo).
+
+4. En muchos casos, las pruebas de hipótesis también se utilizan para comparar grupos
+que no necesariamente son asignados al azar, por ejemplo cuando tenemos muestras de una 
+población. En ese caso, la justificación generalmente proviene de aleatorización en
+la selección de muestras. Estas ideas las veremos más adelante, pero otra vez nuestro punto de vista es que generalmente es mejor tomar el punto de vista de estimación de cantidades 
+de interés.
+
+5. Existen también pruebas paramétricas que se refieren a modelos probabilísticos
+para los datos. Estas pruebas tienen utilidad pues podemos probar hipótesis que
+se refieren específicamente a parámetros de interés (por ejemplo, medias o cocientes de varianzas, etc.). Más adelante regresaremos a este tema, en la sección de inferencia
+basada en modelos probabilísticos. Esto nos da un enfoque mucho más amplio de problemas 
+que podemos atacar, incluso cuando algunos supuestos de aleatoridad no se cumplen, por 
+ejemplo
+
+
+
+## La "crisis de replicabilidad" {-}
+
+Recientemente (@falsefindings) se ha reconocido
+en campos de ciencias sociales y medicina la *crisis de replicabilidad*. Varios estudios que recibieron
+mucha publicidad inicialmente no han podido ser replicados
+posteriormente por otros investigadores. Por ejemplo:
+
+- Hacer [poses poderosas](https://www.sciencedaily.com/releases/2017/09/170911095932.htm) produce cambios fisiológicos que mejoran nuestro desempeño en ciertas tareas
+- Mostrar palabras relacionadas con "viejo" hacen que las personas caminen más lento (efectos de [priming](https://www.nature.com/news/nobel-laureate-challenges-psychologists-to-clean-up-their-act-1.11535)) 
+
+En todos estos casos, el argumento de la evidencia de estos efectos fue respaldada 
+por una prueba de hipótesis nula con un valor p menor a 0.05. La razón es que ese es el estándar de publicación
+ seguido por varias áreas y revistas. La tasa de no replicabilidad parece ser mucho más alta (al menos la mitad o más
+ según algunas fuentes, como la señalada arriba) 
+ que lo sugeriría la tasa de falsos positivos (menos de 5\%) 
+
+Este problema de replicabilidad parece ser más frecuente cuando:
+
+1. Se trata de estudios de potencia baja: mediciones ruidosas y  tamaños de muestra chicos.
+2. El plan de análisis no está claramente definido desde un principio (lo cual es difícil cuando
+se están investigando "fenómenos no estudiados antes")
+
+¿A qué se atribuye esta crisis de replicabilidad?
+
+
+## El jardín de los senderos que se bifurcan {-}
+
+Aunque haya algunos ejemplos de manipulaciones conscientes --e incluso, en menos casos,
+malintencionadas-- para obtener resultados publicables o significativos
+([p-hacking](https://en.wikipedia.org/wiki/Data_dredging)), 
+ como vimos en ejemplos anteriores, hay varias decisiones, todas razonables, que podemos tomar cuando 
+estamos buscando las comparaciones correctas. Algunas pueden ser:
+
+- Transformar los datos (tomar o no logaritmos, u otra transformación)
+- Editar datos atípicos (razonable si los equipos pueden fallar, o hay errores de captura, por ejemplo)
+- Distintas maneras de interpretar los criterios de inclusión de un estudio (por ejemplo, algunos participantes
+mostraron tener gripa, o revelaron que durmieron muy poco la noche anterior, etc. ¿los dejamos o los quitamos?)
+
+Dado un conjunto de datos, las justificaciones de las decisiones que se toman 
+en cada paso son razonables, pero con datos distintos las decisiones podrían ser diferentes. 
+Este es el **jardín de los senderos que se bifurcan**  [Gelman](http://www.stat.columbia.edu/~gelman/research/published/incrementalism_3.pdf), 
+que **invalida en parte el uso valores p como criterio de evidencia contra la hipótesis nula**.
+
+Esto es exacerbado por:
+
+- Tamaños de muestra chicos y efectos "inestables" que se quieren medir (por ejemplo en sicología)
+- El hecho de que el criterio de publicación es obtener un
+valor p < 0.05, y la presión fuerte sobre los investigadores
+para producir resultados publicables (p < 0.05)
+- El que estudios o resultados similares que no obtuvieron valores $p$ por debajo del umbral no son 
+publicados o reportados.
+
+Ver por ejemplo el [comunicado de la ASA](https://www.amstat.org/asa/files/pdfs/P-ValueStatement.pdf).
+
+**Ojo**: esas presiones de publicación no sólo ocurre para investigadores en sicología. Cuando
+trabajamos en problemas de análisis de datos en problemas que son de importancia, es común que
+existan intereses de algunas partes o personas involucradas por algunos resultados u otros (por
+ejemplo, nuestros clientes de consultoría o clientes internos). Eso puede dañar nuestro trabajo
+como analistas, y el avance de nuestro equipo. Aunque esas presiones son inevitables, se vuelven
+manejables cuando hay una relación de confianza entre las partes involucradas.
+
+
+## Ejemplo: decisiones de análisis y valores p {-}
+
+En el ejemplo de datos de fusión, decidimos probar, por ejemplo, el promedio de
+los cuartiles inferior y superior, lo cual no es una decisión típica pero usamos como
+ilustración. Ahora intentamos usar distintas mediciones de la diferencia entre los grupos,
+usando distintas medidas resumen y transformaciones (por ejemplo, con o sin logaritmo). Aquí hay
+unas 12 combinaciones distintas para hacer el análisis (multiplicadas por criterios
+de "aceptación de datos en la muestra", que simulamos tomando una submuestra al azar):
+
+
+
+```{r}
+fusion <- read_table("./datos/fusion_time.txt")
+
+calc_fusion <- function(stat_fusion, trans, comparacion){
+  fun <- function(datos){
+    datos |> 
+      group_by(nv.vv) |> 
+      summarise(est = stat_fusion({{ trans }}(time))) |> 
+      spread(nv.vv, est) |> mutate(dif = {{ comparacion }}) |> pull(dif)
+  }
+  fun
+}
+valor_p <- function(datos, variable, calc_diferencia, n = 1000){
+  # calcular estadística para cada grupo
+  permutar <- function(variable){
+    sample(variable, length(variable))
+  }
+  tbl_perms <- tibble(.sample = seq(1, n-1, 1)) |>
+    mutate(diferencia = map_dbl(.sample, 
+              ~ datos |> mutate({{variable}} := permutar({{variable}})) |> calc_diferencia()))
+  perms <- bind_rows(tbl_perms, tibble(.sample = n, diferencia = calc_diferencia(datos)))
+  perms_ecdf <- ecdf(perms$diferencia)
+  dif <- calc_diferencia(datos)
+  2 * min(perms_ecdf(dif), 1- perms_ecdf(dif))
+}
+```
+
+```{r}
+set.seed(7272)
+media_cuartiles <- function(x){
+    (quantile(x, 0.75) + quantile(x, 0.25))/2
+}
+# nota: usar n=10000 o más, esto solo es para demostración:
+calc_dif <- calc_fusion(mean, identity, VV - NV)
+valor_p(fusion |> sample_frac(0.95), nv.vv, calc_dif, n = 1000)
+calc_dif <- calc_fusion(mean, log, VV - NV)
+valor_p(fusion |> sample_frac(0.95), nv.vv, calc_dif, n = 1000)
+calc_dif <- calc_fusion(median, identity, VV / NV)
+valor_p(fusion |> sample_frac(0.95), nv.vv, calc_dif, n = 1000)
+calc_dif <- calc_fusion(media_cuartiles, identity, VV / NV)
+valor_p(fusion |> sample_frac(0.95), nv.vv, calc_dif, n = 1000)
+```
+
+Si existen grados de libertad - muchas veces necesarios para hacer un análisis exitoso-, entonces
+los valores p pueden tener poco significado.
+
+## Alternativas o soluciones {-}
+
+El primer punto importante es reconocer que la mayor parte de nuestro trabajo
+es **exploratorio** (recordemos el proceso complicado del análisis de datos de refinamiento de preguntas). 
+En este tipo de trabajo, reportar valores p puede tener poco sentido,
+y mucho menos tiene sentido aceptar algo "verdadero" cuando pasa un umbral de significancia dado.
+
+Nuestro interés principal al hacer análisis es expresar correctamente y de manera útil la incertidumbre 
+asociada a las conclusiones o patrones que mostramos
+(asociada a variación muestral, por ejemplo) para que el proceso de toma de decisiones sea informado. **Un** resumen de **un número** (valor p, o el que sea) no puede ser tomado como criterio para tomar una decisión que generalmente es compleja.
+En la siguiente sección veremos cómo podemos mostrar parte de esa incertidumbre de manera más útil.
+
+Por otra parte, los estudios confirmatorios (donde se reportan valores p) 
+también tienen un lugar. En áreas como la sicología, existen ahora movimientos fuertes en 
+favor de la repetición de estudios prometedores pero donde hay sospecha
+de grados de libertad del investigador. Este movimiento
+sugiere dar valor a los **estudios exploratorios** que no reportan valor p, 
+y posteriormente, si el estudio
+es de interés, puede intentarse una **replicación confirmatoria, con potencia más alta y con planes de análisis predefinidos**.
+
+
