@@ -294,6 +294,11 @@ div.csl-indent {
    
   <ul>
   <li><a href="#pruebas-de-hipótesis-visuales" id="toc-pruebas-de-hipótesis-visuales" class="nav-link active" data-scroll-target="#pruebas-de-hipótesis-visuales"> <span class="header-section-number">4.1</span> Pruebas de hipótesis visuales</a></li>
+  <li><a href="#ejemplo-poca-evidencia-en-contra-de-la-nula" id="toc-ejemplo-poca-evidencia-en-contra-de-la-nula" class="nav-link" data-scroll-target="#ejemplo-poca-evidencia-en-contra-de-la-nula"> <span class="header-section-number">4.2</span> Ejemplo: poca evidencia en contra de la nula</a></li>
+  <li><a href="#ejemplo-tiempos-de-fusión" id="toc-ejemplo-tiempos-de-fusión" class="nav-link" data-scroll-target="#ejemplo-tiempos-de-fusión">Ejemplo: tiempos de fusión</a>
+  <ul class="collapse">
+  <li><a href="#valor-p" id="toc-valor-p" class="nav-link" data-scroll-target="#valor-p">Valor p</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -328,9 +333,9 @@ div.csl-indent {
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>res_obs <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">planta =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">T =</span> <span class="fu">c</span>(<span class="st">"nf"</span>, <span class="st">"nf"</span>, <span class="st">"f"</span>, <span class="st">"f"</span>, <span class="st">"nf"</span>, <span class="st">"f"</span>, <span class="st">"f"</span>, <span class="st">"f"</span>, <span class="st">"nf"</span>, <span class="st">"nf"</span>, <span class="st">"f"</span>, <span class="st">"nf"</span>, <span class="st">"f"</span>, <span class="st">"f"</span>, <span class="st">"nf"</span>, <span class="st">"f"</span>, <span class="st">"f"</span>, <span class="st">"nf"</span>, <span class="st">"f"</span>, <span class="st">"nf"</span>),</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="fu">c</span>(<span class="fl">16.9</span>, <span class="fl">19.4</span>, <span class="fl">20.6</span>, <span class="fl">23.7</span>, <span class="fl">22.3</span>, <span class="fl">26.5</span>, <span class="fl">18.2</span>, <span class="fl">19.9</span>, <span class="fl">14.5</span>, <span class="fl">15.1</span>, <span class="fl">29.1</span>, <span class="fl">15.2</span>, <span class="fl">23.5</span>, <span class="fl">24.8</span>, <span class="fl">20.5</span>, <span class="fl">21.2</span>, <span class="fl">22.3</span>, <span class="fl">20.1</span>, <span class="fl">28.1</span>, <span class="fl">21.2</span>) <span class="sc">/</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">y_f =</span> <span class="fu">ifelse</span>(T <span class="sc">==</span> <span class="st">"nf"</span>, y, <span class="cn">NA</span>),</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">y_nf =</span> <span class="fu">ifelse</span>(T <span class="sc">==</span> <span class="st">"f"</span>, y, <span class="cn">NA</span>))</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="fu">c</span>(<span class="fl">16.9</span>, <span class="fl">19.4</span>, <span class="fl">22.6</span>, <span class="fl">23.7</span>, <span class="fl">22.3</span>, <span class="fl">26.5</span>, <span class="fl">18.2</span>, <span class="fl">19.9</span>, <span class="fl">14.5</span>, <span class="fl">15.1</span>, <span class="fl">29.1</span>, <span class="fl">15.2</span>, <span class="fl">23.5</span>, <span class="fl">24.8</span>, <span class="fl">20.5</span>, <span class="fl">21.2</span>, <span class="fl">22.3</span>, <span class="fl">20.1</span>, <span class="fl">28.1</span>, <span class="fl">21.2</span>) <span class="sc">/</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">y_nf =</span> <span class="fu">ifelse</span>(T <span class="sc">==</span> <span class="st">"nf"</span>, y, <span class="cn">NA</span>),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">y_f =</span> <span class="fu">ifelse</span>(T <span class="sc">==</span> <span class="st">"f"</span>, y, <span class="cn">NA</span>))</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>res_obs <span class="sc">|&gt;</span> <span class="fu">select</span>(planta, T, y)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
@@ -339,7 +344,7 @@ div.csl-indent {
     &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;
  1      1 nf     8.45
  2      2 nf     9.7 
- 3      3 f     10.3 
+ 3      3 f     11.3 
  4      4 f     11.8 
  5      5 nf    11.2 
  6      6 f     13.2 
@@ -392,7 +397,7 @@ div.csl-indent {
 <pre><code># A tibble: 1 × 1
       D
   &lt;dbl&gt;
-1 0.596</code></pre>
+1 0.636</code></pre>
 </div>
 </div>
 <p>Parece ser que las plantas con fertilizante tuvieron mejores resultados (la distribución de las fertilizadas está recorrida hacia la derecha). El problema aquí es que las plantas tienen variabilidad, y la diferencia que observamos, que no es muy grande, podría deberse a esa variabilidad, y no tener qué ver con el fertilizante.</p>
@@ -405,11 +410,11 @@ div.csl-indent {
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 20 × 5
-   planta T         y   y_f  y_nf
+   planta T         y  y_nf   y_f
     &lt;int&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
  1      1 nf     8.45  8.45 NA   
  2      2 nf     9.7   9.7  NA   
- 3      3 f     10.3  NA    10.3 
+ 3      3 f     11.3  NA    11.3 
  4      4 f     11.8  NA    11.8 
  5      5 nf    11.2  11.2  NA   
  6      6 f     13.2  NA    13.2 
@@ -440,11 +445,11 @@ div.csl-indent {
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 20 × 5
-   planta T         y   y_f  y_nf
+   planta T         y  y_nf   y_f
     &lt;int&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
  1      1 nf     8.45  8.45  8.45
  2      2 nf     9.7   9.7   9.7 
- 3      3 f     10.3  10.3  10.3 
+ 3      3 f     11.3  11.3  11.3 
  4      4 f     11.8  11.8  11.8 
  5      5 nf    11.2  11.2  11.2 
  6      6 f     13.2  13.2  13.2 
@@ -465,7 +470,7 @@ div.csl-indent {
 </div>
 </div>
 <p>Bajo esta hipótesis, podemos calcular qué pasaría si hubiéramos escogido distintas plantas para el tratamiento de fertilizante.</p>
-<p>Simplemente consideramos todas las permutaciones de la columna <span class="math inline">\(T\)</span>, y vemos el valor que tiene nuestra estadística <span class="math inline">\(D\)</span> en cada caso. La distribución resultante es construida bajo la hipótesis de que el fertilizante no tiene efecto, y muestra la variabilidad de nuestra estadística bajo esta hipótesis.</p>
+<p>Simplemente consideramos todas las permutaciones de la columna <span class="math inline">\(T\)</span>, y vemos el valor que tiene nuestra estadística <span class="math inline">\(D\)</span> en cada caso. La distribución resultante es <strong>la distribución de referencia bajo la hipótesis de que el fertilizante no tiene efecto</strong>, y muestra la variabilidad de nuestra estadística bajo esta hipótesis.</p>
 <p>Usualmente, en lugar de calcular todas las permutaciones, simulamos un número grande de ellas (de mil a 10 mil, por ejemplo). Abajo mostramos dos ejemplos:</p>
 <div class="cell">
 <details>
@@ -547,7 +552,7 @@ Aleatorización al rescate
 <div class="callout-body-container callout-body">
 <ul>
 <li>Supongamos que le recomendamos al jardinero al principio escoger al azar una asignación del tratamiento.</li>
-<li>En ese caso, la probabilidad de haber observado este resultado (o uno más grande) <strong>bajo la hipótesis de que el fertilizante no tiene efecto</strong> es</li>
+<li>En ese caso, la probabilidad de haber escogido esa configuración particular con una estadística tan alta (o uno más grande) <strong>bajo la hipótesis de que el fertilizante no tiene efecto</strong> es</li>
 </ul>
 <div class="cell">
 <details>
@@ -555,12 +560,15 @@ Aleatorización al rescate
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">mean</span>(perms_dist<span class="sc">$</span>D <span class="sc">&gt;=</span> resumen<span class="sc">$</span>D)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.052</code></pre>
+<pre><code>[1] 0.018</code></pre>
 </div>
 </div>
+<ul>
+<li>Es poco probable entonces que este resultado tan alto haya ocurrido al azar en el momento de escoger tratamientos.</li>
+</ul>
 </div>
 </div>
-<p>Llamamos a este valor-p de la prueba, y cuanto más chico es, mayor evidencia tenemos contra la hipótesis nula.</p>
+<p>Llamamos a este <strong>valor-p</strong> de la prueba, y cuanto más chico es, mayor evidencia tenemos contra la hipótesis nula.</p>
 <ul>
 <li><p>Este valor es bajo, y da evidencia de que el fertilizante ayuda a las plantas. Hay una probabilidad baja de que por azar el jardinero haya escogido una asignación que produce una diferencia tan grande si el fertilizante no ayuda.</p></li>
 <li><p>Este argumento no funciona si el jardinero intentó “optimizar” la aplicación del fertilizante. En ese caso, quizá activamente buscó una configuración que favorece al fertilizante.</p></li>
@@ -568,7 +576,7 @@ Aleatorización al rescate
 </ul>
 <section id="pruebas-de-hipótesis-visuales" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="pruebas-de-hipótesis-visuales"><span class="header-section-number">4.1</span> Pruebas de hipótesis visuales</h2>
-<p>Otra idea es hacer una prueba visual. Primero graficamos varias replicaciones de datos nulos, es decir, datos en donde hemos permutado al azar la columna de tratamiento. Entrenamos nuestra percepción a variaciones consistentes con la hipótesis nula:</p>
+<p>Otra idea es hacer una prueba visual (ver por ejemplo (este artículo)[https://vita.had.co.nz/papers/inference-infovis.pdf]. Primero graficamos varias replicaciones de datos nulos, es decir, datos en donde hemos permutado al azar la columna de tratamiento. Entrenamos nuestra percepción a variaciones consistentes con la hipótesis nula:</p>
 <div class="cell">
 <details>
 <summary>Código</summary>
@@ -596,7 +604,7 @@ Aleatorización al rescate
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>decrypt("ZVEP Smam qh t1xqaq1h zD")</code></pre>
+<pre><code>decrypt("pDYC Jf1f MR VQaM1MQR Nh")</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -614,13 +622,199 @@ Aleatorización al rescate
 <ul>
 <li>Esta prueba es exacta: la probabilidad de identificar los datos correctamente cuando el fertilizante no tiene efecto es menor o igual a 0.05 (valor <span class="math inline">\(p\)</span>). Esta es la probabilidad de equivocadamente declarar que tenemos evidencia de que la hipótesis nula no se cumple.</li>
 </ul>
+</section>
+<section id="ejemplo-poca-evidencia-en-contra-de-la-nula" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="ejemplo-poca-evidencia-en-contra-de-la-nula"><span class="header-section-number">4.2</span> Ejemplo: poca evidencia en contra de la nula</h2>
+<p>Como segundo ejemplo, imaginemos que hubiéramos obtenido los siguientes datos:</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>res_obs <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">planta =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">T =</span> <span class="fu">c</span>(<span class="st">"nf"</span>, <span class="st">"nf"</span>, <span class="st">"f"</span>, <span class="st">"f"</span>, <span class="st">"nf"</span>, <span class="st">"f"</span>, <span class="st">"f"</span>, <span class="st">"f"</span>, <span class="st">"nf"</span>, <span class="st">"nf"</span>, <span class="st">"f"</span>, <span class="st">"nf"</span>, <span class="st">"f"</span>, <span class="st">"f"</span>, <span class="st">"nf"</span>, <span class="st">"f"</span>, <span class="st">"f"</span>, <span class="st">"nf"</span>, <span class="st">"f"</span>, <span class="st">"nf"</span>),</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="fu">c</span>(<span class="fl">16.9</span>, <span class="fl">19.4</span>, <span class="fl">18.6</span>, <span class="fl">12.7</span>, <span class="fl">22.3</span>, <span class="fl">23.5</span>, <span class="fl">18.2</span>, <span class="fl">19.9</span>, <span class="fl">14.5</span>, <span class="fl">15.1</span>, <span class="fl">29.1</span>, <span class="fl">15.2</span>, <span class="fl">23.5</span>, <span class="fl">24.8</span>, <span class="fl">20.5</span>, <span class="fl">21.2</span>, <span class="fl">22.3</span>, <span class="fl">19.4</span>, <span class="fl">23.1</span>, <span class="fl">21.2</span>) <span class="sc">/</span> <span class="dv">2</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">y_nf =</span> <span class="fu">ifelse</span>(T <span class="sc">==</span> <span class="st">"nf"</span>, y, <span class="cn">NA</span>),</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">y_f =</span> <span class="fu">ifelse</span>(T <span class="sc">==</span> <span class="st">"f"</span>, y, <span class="cn">NA</span>))</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>bajo_nula <span class="ot">&lt;-</span> res_obs <span class="sc">|&gt;</span> </span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">y_f =</span> y, <span class="at">y_nf =</span> y)</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>res_obs <span class="sc">|&gt;</span> <span class="fu">select</span>(planta, T, y)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 20 × 3
+   planta T         y
+    &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;
+ 1      1 nf     8.45
+ 2      2 nf     9.7 
+ 3      3 f      9.3 
+ 4      4 f      6.35
+ 5      5 nf    11.2 
+ 6      6 f     11.8 
+ 7      7 f      9.1 
+ 8      8 f      9.95
+ 9      9 nf     7.25
+10     10 nf     7.55
+11     11 f     14.6 
+12     12 nf     7.6 
+13     13 f     11.8 
+14     14 f     12.4 
+15     15 nf    10.2 
+16     16 f     10.6 
+17     17 f     11.2 
+18     18 nf     9.7 
+19     19 f     11.6 
+20     20 nf    10.6 </code></pre>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(res_obs, <span class="fu">aes</span>(y, <span class="at">colour =</span> T)) <span class="sc">+</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_ecdf</span>() </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="pruebas-hipotesis-aleatorizacion_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>resumen <span class="ot">&lt;-</span> res_obs <span class="sc">|&gt;</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">D =</span> <span class="fu">ks_est_2</span>(res_obs, T)) </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>perms_dist <span class="ot">&lt;-</span> <span class="fu">map_df</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>, <span class="cf">function</span>(i){</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">permutar_est</span>(bajo_nula) <span class="sc">|&gt;</span> </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">rep =</span> i)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(perms_dist, <span class="fu">aes</span>(<span class="at">sample =</span> D)) <span class="sc">+</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq</span>(<span class="at">distribution =</span> qunif) <span class="sc">+</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> resumen<span class="sc">$</span>D, <span class="at">colour =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"f"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"valor de D"</span>) <span class="sc">+</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">"Distribución nula de referencia"</span>) <span class="sc">+</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fl">0.1</span> , <span class="at">y =</span> <span class="fl">0.5</span>, <span class="at">label =</span> <span class="st">"Valor observado"</span>, <span class="at">colour =</span> <span class="st">"red"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="pruebas-hipotesis-aleatorizacion_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="480"></p>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">mean</span>(perms_dist<span class="sc">$</span>D <span class="sc">&gt;=</span> resumen<span class="sc">$</span>D)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.288</code></pre>
+</div>
+</div>
+<p>Este valor <span class="math inline">\(p\)</span> es alto, y no es muy difícil que, <em>bajo la hipótesis de que el tratamiento no tiene efecto</em>, por azar el jardinero haya escogido una asignación con el valor observado de la estadística de prueba. En este caso, creemos que los datos son consistentes con la hipótesis nula.</p>
+</section>
+<section id="ejemplo-tiempos-de-fusión" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="ejemplo-tiempos-de-fusión">Ejemplo: tiempos de fusión</h2>
+<p>Podemos utilizar la prueba de permutaciones con otras estadísticas de prueba (ver nota al final de estos ejemplos) como medias o medianas.</p>
+<p>En el siguiente ejemplo (<span class="citation" data-cites="cleveland93">Cleveland (<a href="#ref-cleveland93" role="doc-biblioref">1993</a>)</span>), investigadores se preguntaron si es posible que las personas reconozcan más fácilmente la imagen escondida en un (estereograma)[https://en.wikipedia.org/wiki/Autostereogram] si se les da información verbal acerca de la imagen que tienen que encontrar.</p>
+<p>La medición que consideraron el el <em>tiempo de fusión</em> en segundo, es decir, cuánto tarda la persona en ver la imagen 3D escondida. Naturalmente, existe mucha variación en el tiempo que tardan las personas en reconocer esas imágenes (algunos lo hacen casi instantáneamente y otros pueden tardar hasta minutos).</p>
+<p>Este experimento se diseño aleatorizando el tratamiento entre los participantes del estudio, que son voluntarios, de forma que si encontramos evidencia de diferencias entre los dos grupos, tenemos evidencia de que el tratamiento cambia el tiempo de fusión entre los partipantes.</p>
+<p>Podemos hacer una prueba de permutaciones para la diferencia de las medias y otras estadísticas como la mediana o promedio del cuartiles superior e inferior (son versiones menos dependientes de datos atípticos), por ejemplo. En este ejemplo usaremos la diferencia de medias:</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>fusion <span class="ot">&lt;-</span> <span class="fu">read_table</span>(<span class="st">"./datos/fusion_time.txt"</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># estadística de prueba</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>stat_fusion <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mean</span>(x)</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#(quantile(x, 0.75) + quantile(x, 0.25))/2</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co"># calcular para cada grupo la estadística</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>calc_fusion <span class="ot">&lt;-</span> <span class="cf">function</span>(stat_fusion){</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>  fun <span class="ot">&lt;-</span> <span class="cf">function</span>(datos){</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    datos <span class="sc">|&gt;</span> </span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">group_by</span>(nv.vv) <span class="sc">|&gt;</span> </span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">summarise</span>(<span class="at">est =</span> <span class="fu">stat_fusion</span>(time)) <span class="sc">|&gt;</span> </span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">spread</span>(nv.vv, est) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">dif =</span> VV <span class="sc">-</span> NV ) <span class="sc">|&gt;</span> <span class="fu">pull</span>(dif)</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>  fun</span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a><span class="co"># esta función hace permutaciones y calcula la diferencia para cada una</span></span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>permutaciones_est <span class="ot">&lt;-</span> <span class="cf">function</span>(datos, variable, calc_diferencia, <span class="at">n =</span> <span class="dv">1000</span>){</span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calcular estadística para cada grupo</span></span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>  permutar <span class="ot">&lt;-</span> <span class="cf">function</span>(variable){</span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sample</span>(variable, <span class="fu">length</span>(variable))</span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>  tbl_perms <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">.sample =</span> <span class="fu">seq</span>(<span class="dv">1</span>, n<span class="dv">-1</span>, <span class="dv">1</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">diferencia =</span> <span class="fu">map_dbl</span>(.sample, </span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a>              <span class="sc">~</span> datos <span class="sc">|&gt;</span> <span class="fu">mutate</span>({{variable}}<span class="sc">:</span><span class="er">=</span> <span class="fu">permutar</span>({{variable}})) <span class="sc">|&gt;</span> <span class="fu">calc_diferencia</span>()))</span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(tbl_perms, <span class="fu">tibble</span>(<span class="at">.sample =</span> n, <span class="at">diferencia =</span> <span class="fu">calc_diferencia</span>(datos)))</span>
+<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>calc_cociente <span class="ot">&lt;-</span> <span class="fu">calc_fusion</span>(stat_fusion)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>dif_obs <span class="ot">&lt;-</span> <span class="fu">calc_cociente</span>(fusion)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># permutar</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>valores_ref <span class="ot">&lt;-</span> <span class="fu">permutaciones_est</span>(fusion, nv.vv, calc_cociente, <span class="at">n =</span> <span class="dv">10000</span>)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>dist_perm_nv <span class="ot">&lt;-</span> <span class="fu">ecdf</span>(valores_ref<span class="sc">$</span>diferencia) </span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>cuantil_obs <span class="ot">&lt;-</span> <span class="fu">dist_perm_nv</span>(dif_obs)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="pruebas-hipotesis-aleatorizacion_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>La observación es algo extrema, de manera que tenemos evidencia de que la información verbal ayuda. Para cuantificar esta evidencia, calcularemos el valor-p correspondiente</p>
+<section id="valor-p" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="valor-p">Valor p</h3>
+<p>Usualmente preferimos usar un valor <span class="math inline">\(p\)</span> de dos colas para cuantificar la evidencia contra la nula. Esto es porque podría ser que la diferencia fuera muy grande o muy positiva, y en ambos casos diríamos que los datos no son consistentes con la nula.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Valor p de dos colas
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si la hipótesis nula es cierta, ¿cuál es la <strong>probabilidad</strong> de observar una diferencia <strong>tan extrema o más extrema de lo que observamos</strong>? Esto incluye valores muy grandes o muy chicos.</p>
+<p>El estándar usual para pruebas de hipótesis es hacer utilizar el valor-<span class="math inline">\(p\)</span> de dos colas.</p>
+</div>
+</div>
+<p>Considerando en este caso interpretamos <em>extrema</em> como que cae lejos de donde a mayoría de la distribución se concentra, podemos calcular el valor p como sigue. A partir de el valor observado, consideramos cuál dato es menor: la probabilidad bajo lo hipótesis nula de observar una diferencia mayor de a que observamos, o la probabilidad de observar una diferencia menor a la que observamos. Tomamos el mínimo y multiplicamos por dos (<span class="citation" data-cites="timboot14">Hesterberg (<a href="#ref-timboot14" role="doc-biblioref">2015</a>)</span>):</p>
+<div class="cell">
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>dist_perm_nv <span class="ot">&lt;-</span> <span class="fu">ecdf</span>(valores_ref<span class="sc">$</span>diferencia)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">min</span>(<span class="fu">dist_perm_nv</span>(dif_obs), <span class="dv">1</span><span class="sc">-</span> <span class="fu">dist_perm_nv</span>(dif_obs))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0412</code></pre>
+</div>
+</div>
+<p>Lo que muestra evidencia considerable, aunque no muy fuerte, de que la instrucción verbal ayuda a reducir el tiempo de fusión de los estereogramas. Los grupos gráficados se ven como sigue:</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fusion, <span class="fu">aes</span>(<span class="at">x =</span> nv.vv, <span class="at">y =</span> time)) <span class="sc">+</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">coord_flip</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="pruebas-hipotesis-aleatorizacion_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="480"></p>
+</div>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
 <div id="ref-box78" class="csl-entry" role="doc-biblioentry">
 Box, George EP, William H Hunter, Stuart Hunter, et&nbsp;al. 1978. <em>Statistics for experimenters</em>. Vol. 664. John Wiley; sons New York.
 </div>
+<div id="ref-cleveland93" class="csl-entry" role="doc-biblioentry">
+Cleveland, William S. 1993. <em>Visualizing Data</em>. Hobart Press.
 </div>
+<div id="ref-timboot14" class="csl-entry" role="doc-biblioentry">
+Hesterberg, Tim C. 2015. <span>«What teachers should know about the bootstrap: Resampling in the undergraduate statistics curriculum»</span>. <em>The American Statistician</em> 69 (4): 371-86.
+</div>
+</div>
+</section>
 </section>
 
 </main> <!-- /main -->
