@@ -11,9 +11,6 @@ library(kableExtra)
 ggplot2::theme_set(ggplot2::theme_light())
 ```
 
-En esta parte establecemos las herramientas básicas que utilizaremos para
-describir y explorar conjuntos de datos. En esta parte veremos cómo analizar
-y comparar distintos *bonches* de datos numéricos.
 
 ## Cuantiles o percentiles de una variable
 
@@ -24,7 +21,7 @@ cuatro días consecutivos.
 ```{r, message = FALSE}
 # usamos los datos tips del paquete reshape2
 propinas <- read_csv("./datos/propinas.csv")
-slice_sample(propinas, n = 10) 
+slice_sample(propinas, n = 10) %>% kable()
 ```
 
 
@@ -121,9 +118,9 @@ decimos que la **cola de la derecha** es más larga que la **cola de la izquierd
 
 En algunos casos, es más natural hacer un *histograma*, donde dividimos el rango de la variable
 en cubetas o intervalos (en este caso de igual longitud), y graficamos cuántos datos caen en cada
-cubeta:
+cubeta. En la siguiente gráfica variamos el ancho de las cubetas:
 
-```{r, fig.width = 10, fig.height = 4, echo = FALSE}
+```{r, fig.width = 10, fig.height = 4}
 binwidth_min = 1
 g_1 <- ggplot(propinas, aes(x = cuenta_total)) + geom_histogram(binwidth = binwidth_min) 
 g_2 <- ggplot(propinas, aes(x = cuenta_total)) + geom_histogram(binwidth = binwidth_min * 2)
@@ -384,10 +381,8 @@ las descripciones a lo largo de varios subconjuntos de los datos.
 
 En estos casos, muchas veces llamamos *factor* a la variables que forma
 los grupos, y *respuesta* a la variable que estamos comparando. Por ejemplo,
-en el caso de tomadores de té comparamos uso de complementos (respuesta) a lo largo
-de consumidores de distintos tipos de té (factor) En el caso
-de los precios de las casas comparamos el precio de las casas (respuesta) dependiendo
-del vecindario (factor) dónde se encuentran.
+en el caso de los precios de las casas comparamos el precio de las casas 
+(respuesta) dependiendo del vecindario (factor) dónde se encuentran.
 
 Cuando tenemos una factor numérico y una respuesta numérica podemos comenzar
 haciendo diagramas de dispersión. Por ejemplo, 
@@ -447,7 +442,7 @@ propinas |>
    kable(digits = 2)
 ```
 
-Conde confirmamos que el nivel general de propinas es más alto alrededor de cuentas
+Donde confirmamos que el nivel general de propinas es más alto alrededor de cuentas
 de total 30 que de total 15, y la dispersión también es mayor. Podríamos hacer un diagrama
 de caja y brazos también.
 
@@ -471,7 +466,7 @@ Este tipo de suavizadores se llaman a veces *suavizadores loess* (ver [@Clevelan
 
 Por ejemplo,
 
-```{r}
+```{r, message = FALSE, warning = FALSE}
 ggplot(propinas, aes(x = cuenta_total, y = propina)) +
    geom_ribbon(aes(xmin = 13, xmax = 17), fill = "salmon", alpha = 0.15) +
    geom_ribbon(aes(xmin = 28, xmax = 32), fill = "salmon", alpha = 0.15) +
@@ -490,16 +485,16 @@ Podemos ajustar en cada ventana tambien rectas de minimos cuadrados, y obtener
 un suavizador de tipo lineal. En la siguiente gráfica mostramos cómo funciona este
 suavizador para distintos tamaños de ventanas (*span*)
 
-![Suavizador loess](./figuras/loess-spans.gif)
+![Suavizador loess](./imagenes/loess-spans.gif)
 
 ```{block2 ,type="comentario"}
-Los **suavizadores loess** tienen como fin mostrar alrededor de qué valor de distribuye
+Los **suavizadores loess** tienen como fin mostrar alrededor de qué valor se distribuye
 la respuesta (eje vertical) para distintos valores del factor (eje horizontal). Se escoge
 *span* suficientemente baja de forma que mostremos patrones claros en los datos y casi no
 capturemos variación debida a los tamaños de muestra chicos.
 ```
 
-En la animación anterior, un valor de span de 0.15 funciona aprpiadamente, y uno de 0.05
+En la animación anterior, un valor de span de 0.15 funciona apropiadamente, uno de 0.05
 es demasiado bajo y uno de 1.0 es demasiado alto. Es importante explorar con el valor
 de span pues depende de cuántos datos tenemos y cómo es su dispersión.
 
@@ -507,7 +502,7 @@ Podemos también mostrar estimaciones de medianas y cuantiles de la siguiente
 forma (nota: es necesario escoger *lambda* con cuidado, cuanto más alto
 sea *lambda* más suave es la curva obtenida):
 
-```{r}
+```{r, message = FALSE, warning = FALSE}
 ggplot(propinas, aes(x = cuenta_total, y = propina)) +
    geom_ribbon(aes(xmin = 13, xmax = 17), fill = "salmon", alpha = 0.15) +
    geom_ribbon(aes(xmin = 28, xmax = 32), fill = "salmon", alpha = 0.15) +
@@ -516,11 +511,11 @@ ggplot(propinas, aes(x = cuenta_total, y = propina)) +
    scale_y_continuous(breaks = seq(0, 10, 1))
 ```
 
-Finalmente, entendimiento de los datos no permite también hacer gráficas más
-útiles. En este ejemplo particular podría por ejemplo calcular el porcentaje de
+Finalmente, el entendimiento de los datos nos permite también hacer gráficas más
+útiles. En este caso particular podría, por ejemplo, calcular el porcentaje de
 la propina sobre la cuenta total:
 
-```{r}
+```{r, message = FALSE, warning = FALSE}
 propinas <- mutate(propinas, pct_propina = propina / cuenta_total)
 ggplot(propinas, aes(x = cuenta_total, y = pct_propina)) +
    geom_point() +
