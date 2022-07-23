@@ -331,7 +331,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 data-number="9.2" class="anchored" data-anchor-id="probabilidad-y-frecuencias-relativas"><span class="header-section-number">9.2</span> Probabilidad y frecuencias relativas</h2>
 <p>Aunque la probabilidad puede interpretarse como grados de creencia en la ocurrencia de un evento, es necesario que exista una conexión entre modelos de probabilidad y la ocurrencia de los eventos reales que nos interesa modelar. Esta conexión está dada como sigue:</p>
 <p>Si tenemos un experimento aleatorio (por ejemplo, tirar un dado), y lo repetimos muchas veces de manera independiente, entonces las frecuencias relativas de ocurrencia de los eventos aproxima a las probabilidades teóricas.</p>
-<p>Por ejemplo, si tiramos muchos volados con una moneda bien balanceada, al evento <span class="math inline">\(E\)</span> = “tiramos sol” le asignamos <span class="math inline">\(P(E)=1/2\)</span>. Entonces esperamos obtener alrededor de 1/2 de soles y 1/2 de águilas si tiramos una sucesión grande de volados.</p>
+<p>Por ejemplo, si tiramos muchos volados con una moneda bien balanceada, al evento <span class="math inline">\(E\)</span> = “tiramos sol” le asignamos <span class="math inline">\(P(E)=1/2\)</span> según nuestro modelo. Entonces esperamos obtener alrededor de 1/2 de soles y 1/2 de águilas si tiramos una sucesión grande de volados.</p>
 <div class="cell" type="comentario">
 
 <div class="comentario">
@@ -355,7 +355,7 @@ es decir, <span class="math inline">\(P(A)\)</span> el la frecuencia al largo pl
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">simular_dado</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
+<pre><code>[1] 5</code></pre>
 </div>
 </div>
 <p>Ahora simulamos una gran cantidad de tiradas de dado:</p>
@@ -442,7 +442,7 @@ es decir, <span class="math inline">\(P(A)\)</span> el la frecuencia al largo pl
 <li>Observamos una muestra de datos del fenómeno que nos interesa.</li>
 <li>Evaluamos si las fluctuaciones observadas debidas a la información limitada que tenemos (una muestra) son consistentes con el modelo de probabilidad.</li>
 </ul>
-<p>Consideremos el ejemplo de los dados. Supongamos que lanzamos el dado un número no muy grande de veces, y observamos:</p>
+<p>Consideremos el ejemplo de los dados. Supongamos que lanzamos el dado un número no muy grande de veces, de manera independendiente y observamos:</p>
 <div class="cell">
 <details>
 <summary>Código</summary>
@@ -497,7 +497,7 @@ es decir, <span class="math inline">\(P(A)\)</span> el la frecuencia al largo pl
 
 </div>
 </div>
-<p>Y nos preguntamos si este resultado podría ser observado bajo los supuestos de nuestro modelo de probabilidad, que en este caso, es el de resultados equiprobables. Podemos por ejemplo graficar los datos junto con simulaciones del modelo, en búsqueda de desajustes:</p>
+<p>Nos preguntamos si este resultado podría ser observado bajo los supuestos de nuestro modelo de probabilidad, que en este caso, es el de resultados equiprobables, es decir 1/6 para cada cara. Podemos por ejemplo graficar los datos junto con simulaciones del modelo, en búsqueda de desajustes:</p>
 <div class="cell">
 <details>
 <summary>Código</summary>
@@ -536,7 +536,6 @@ argument.</code></pre>
 </div>
 </div>
 <p>En este caso, no vemos ninguna característica de los datos observados que no sea consistente las fluctuaciones esperadas para un tamaño de muestra de <span class="math inline">\(n=40\)</span>.</p>
-<p><strong>Pregunta</strong>: ¿qué defecto le ves a esta gráfica que tiene los datos en la posición 20? ¿Cómo podríamos hacer una evaluación más apropiada de la calidad del ajuste?</p>
 <p><strong>Observación</strong>: como veremos, muchas veces proponemos modelos que tienen parámetros que deben ser estimados con la muestra. Este caso más común es más complejo que el explicado arriba, pero el proceso es similar.</p>
 </section>
 <section id="simulación-y-probabilidad" class="level2" data-number="9.4">
