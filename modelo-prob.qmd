@@ -48,7 +48,7 @@ repetimos muchas veces de manera independiente, entonces las frecuencias relativ
 de ocurrencia de los eventos aproxima a las probabilidades teóricas. 
 
 Por ejemplo, si tiramos
-muchos volados con una moneda bien balanceada, al evento $E$ = "tiramos sol" le asignamos $P(E)=1/2$. Entonces esperamos obtener alrededor de 1/2 de soles
+muchos volados con una moneda bien balanceada, al evento $E$ = "tiramos sol" le asignamos $P(E)=1/2$ según nuestro modelo. Entonces esperamos obtener alrededor de 1/2 de soles
 y 1/2 de águilas si tiramos una sucesión grande de volados. 
 
 ```{block2, type="comentario"}
@@ -136,7 +136,7 @@ a un fenómeno.
 (una muestra) son consistentes con el modelo de probabilidad.
 
 Consideremos el ejemplo de los dados. Supongamos que lanzamos el dado un número
-no muy grande de veces, y observamos:
+no muy grande de veces, de manera independendiente y observamos:
 
 ```{r}
 frecs_obs <- tibble(resultado = 1:6,
@@ -145,8 +145,9 @@ frecs_obs <- tibble(resultado = 1:6,
 frecs_obs %>% kable(digits = 2)
 ```
 
-Y nos preguntamos si este resultado podría ser observado bajo los supuestos
-de nuestro modelo de probabilidad, que en este caso, es el de resultados equiprobables.
+Nos preguntamos si este resultado podría ser observado bajo los supuestos
+de nuestro modelo de probabilidad, que en este caso, es el de resultados equiprobables, 
+es decir 1/6 para cada cara.
 Podemos por ejemplo graficar los datos junto con simulaciones del modelo, en búsqueda
 de desajustes:
 
@@ -176,12 +177,10 @@ ggplot(obs_sims_tbl, aes(x = resultado, y = frec)) +
 En este caso, no vemos ninguna característica de los datos observados que no sea
 consistente las fluctuaciones esperadas para un tamaño de muestra de $n=40$.
 
-**Pregunta**: ¿qué defecto le ves a esta gráfica que tiene los datos en la posición
-20? ¿Cómo podríamos hacer una evaluación más apropiada de la calidad del ajuste?
-
 **Observación**: como veremos, muchas veces proponemos modelos que tienen parámetros
 que deben ser estimados con la muestra. Este caso más común es más complejo
 que el explicado arriba, pero el proceso es similar.
+
 
 
 ## Simulación y probabilidad

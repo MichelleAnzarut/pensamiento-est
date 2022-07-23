@@ -16,8 +16,11 @@ casas <- casas_completo |> sample_frac(0.9)
 
 ## Ejemplo: estimación e intervalos de confianza {-}
 
-Regresamos a nuestro ejemplo anterior donde muestreamos 3 grupos, y nos preguntábamos
-acerca de la diferencia de sus medianas. En lugar de hacer pruebas de permutaciones (con gráficas o numéricas), podríamos considerar qué tan precisa es cada una de nuestras estimacione
+Supongamos que obtenemos una muestra aleatoria simple de tres grupos (por ejemplo,
+tres centros de capturistas, y medimos que tan rápidamente completan la tarea).
+Nos preguntamos si las medianas d
+acerca de la diferencia de sus medianas. En lugar de hacer pruebas de permutaciones (con gráficas o numéricas), que se pueden justificar en este caso porque la 
+muestra es aleatoria, podríamos considerar qué tan precisa es cada una de nuestras estimaciones
 para las medianas de los grupos, por ejemplo.
 
 Nuestros resultados podríamos presentarlos como sigue:
