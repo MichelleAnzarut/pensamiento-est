@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Felipe González y Michelle Anzarut">
 
-<title>Pensamiento estadístico</title>
+<title>Pensamiento estadístico - Introducción a teoría de probabilidades</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -26,7 +25,8 @@ ul.task-list{list-style: none;}
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01-est-cd-1.html" rel="next">
+<link href="./05-prob-modelos.html" rel="next">
+<link href="./04-estimacion-remuestreo.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -65,7 +65,7 @@ ul.task-list{list-style: none;}
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Pensamiento estadístico</h1>
+      <h1 class="quarto-secondary-nav-title">Introducción a teoría de probabilidades</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -90,7 +90,7 @@ ul.task-list{list-style: none;}
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">Acerca del curso</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Acerca del curso</a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -168,7 +168,7 @@ ul.task-list{list-style: none;}
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./05-probabilidad.html" class="sidebar-item-text sidebar-link">Introducción a teoría de probabilidades</a>
+            <a href="./05-probabilidad.html" class="sidebar-item-text sidebar-link active">Introducción a teoría de probabilidades</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -221,82 +221,31 @@ ul.task-list{list-style: none;}
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
-    <h2 id="toc-title">Indice de contenidos</h2>
-   
-  <ul>
-  <li><a href="#acerca-del-curso" id="toc-acerca-del-curso" class="nav-link active" data-scroll-target="#acerca-del-curso">Acerca del curso</a>
-  <ul class="collapse">
-  <li><a href="#temario" id="toc-temario" class="nav-link" data-scroll-target="#temario">Temario</a>
-  <ul class="collapse">
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
-  </ul></li>
-  </ul></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Pensamiento estadístico</h1>
+<h1 class="title d-none d-lg-block">Introducción a teoría de probabilidades</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Autor</div>
-    <div class="quarto-title-meta-contents">
-             <p>Felipe González y Michelle Anzarut </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Fecha de Publicación</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">25 de julio de 2022</p>
-    </div>
-  </div>
     
   </div>
   
 
 </header>
 
-<section id="acerca-del-curso" class="level1 unnumbered">
-<h1 class="unnumbered">Acerca del curso</h1>
-<p>En casi todas las soluciones basadas en datos, los científicos de datos ejercen el pensamiento estadístico al diseñar estrategias de recopilación de datos, obtener evidencia para la toma de decisiones y construir modelos para predecir tendencias futuras.</p>
-<p>Este curso busca explicar los principios básicos de la estadística y su papel en el análisis de datos. Nuestro punto de vista es uno de fundamentos, con menos énfasis en recetas o técnicas particulares.</p>
-<p>En particular, estudiaremos básicos de probabilidad, métodos basados en remuestreo, y en la parte final la filosofía de la inferencia bayesiana y las técnicas de modelado bayesiano utilizando estudios de casos ilustrativos.</p>
-<section id="temario" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="temario">Temario</h2>
-<ol type="1">
-<li>Ciencia de datos y estadística. Intepretando datos y su proceso generador</li>
-<li>Resúmenes y descripción para variables numéricas y categóricas</li>
-<li>Pruebas de hipótesis</li>
-<li>Estimación por remuestreo (bootstrap)</li>
-<li>Introducción a modelos de probabilidad</li>
-<li>Estimación por máxima verosimilitud y el bootstrap paramétrico</li>
-<li>Introducción a inferencia bayesiana</li>
-</ol>
-<section id="section" class="level3">
-<h3 class="anchored" data-anchor-id="section"></h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="http://creativecommons.org/licenses/by/4.0/"><img src="https://files.cdn.thinkific.com/file_uploads/416308/images/ed2/9ce/c19/1623612457643.jpg" class="img-fluid figure-img" alt="Licencia Creative Commons"></a></p>
-<p></p><figcaption class="figure-caption">Licencia Creative Commons</figcaption><p></p>
-</figure>
-</div>
-<p>Este trabajo está bajo una licencia: <a href="https://creativecommons.org/licenses/by-nc/4.0/">Attribution-NonCommercial 4.0 International</a></p>
-<p>Eres libre de adaptarlo para propósitos no comerciales otorgando el crédito correspondiente.</p>
+<p>La teoría de probabilidad es una rama de las matemáticas que se ocupa de la ocurrencia de un evento aleatorio. El objetivo es expresar con cantidades numéricas entre 0 y 1 la posibilidad de que suceda dicho evento.</p>
+<p>Hasta este punto del curso asumimos que el lector tiene un buen grado de familiaridad con la teoría básica de la probabilidad, pero dado que los usos de la probabilidad dentro de un marco bayesiano son mucho más amplios, en este capítulo repasaremos brevemente los fundamentos de la teoría de probabilidad.</p>
 
 
-</section>
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -398,10 +347,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./04-estimacion-remuestreo.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Remuestreo: el bootstrap</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01-est-cd-1.html" class="pagination-link">
-        <span class="nav-page-text">Estadística y ciencia de datos</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./05-prob-modelos.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Básicos de probabilidad y simulación</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
