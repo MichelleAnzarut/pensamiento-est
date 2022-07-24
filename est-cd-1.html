@@ -204,7 +204,7 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./intro-inferencia.html" class="sidebar-item-text sidebar-link">Inferencia estadística</a>
+            <a href="./intro-inferencia.html" class="sidebar-item-text sidebar-link">Inferencia estadística: pruebas de hipótesis</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -230,6 +230,16 @@ div.csl-indent {
   <a href="./pruebas-hipotesis-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Más acerca de pruebas de hipótesis</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">estimacion.qmd</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./estimacion-aleatorizacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Inferencia por intervalos</span></a>
@@ -245,11 +255,11 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./probabilidad.html" class="sidebar-item-text sidebar-link">Introducción a teoría de probabilidades</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./modelo-prob.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Básicos de probabilidad y simulación</span></a>
@@ -270,11 +280,11 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./inferencia-modelos.html" class="sidebar-item-text sidebar-link">Inferencia con modelos probabilísticos</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./maxima-verosimilitud.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Estimación por máxima verosimilitud</span></a>
@@ -310,8 +320,8 @@ div.csl-indent {
   <li><a href="#diagramas-causales" id="toc-diagramas-causales" class="nav-link" data-scroll-target="#diagramas-causales">Diagramas causales</a>
   <ul class="collapse">
   <li><a href="#ejemplo-prevalencia-de-anemia" id="toc-ejemplo-prevalencia-de-anemia" class="nav-link" data-scroll-target="#ejemplo-prevalencia-de-anemia">Ejemplo: prevalencia de anemia</a></li>
-  <li><a href="#ejemplo-colisionador-1" id="toc-ejemplo-colisionador-1" class="nav-link" data-scroll-target="#ejemplo-colisionador-1">Ejemplo: colisionador 1</a></li>
-  <li><a href="#ejemplo-colisionadores-2" id="toc-ejemplo-colisionadores-2" class="nav-link" data-scroll-target="#ejemplo-colisionadores-2">Ejemplo: colisionadores 2</a></li>
+  <li><a href="#ejemplo-colisionadores-y-sesgo-de-selección" id="toc-ejemplo-colisionadores-y-sesgo-de-selección" class="nav-link" data-scroll-target="#ejemplo-colisionadores-y-sesgo-de-selección">Ejemplo: colisionadores y sesgo de selección</a></li>
+  <li><a href="#ejemplo-sesgo-de-berkson" id="toc-ejemplo-sesgo-de-berkson" class="nav-link" data-scroll-target="#ejemplo-sesgo-de-berkson">Ejemplo: sesgo de Berkson</a></li>
   </ul></li>
   <li><a href="#procesos-generadores-de-datos" id="toc-procesos-generadores-de-datos" class="nav-link" data-scroll-target="#procesos-generadores-de-datos">Procesos generadores de datos</a></li>
   <li><a href="#ejercicio-admisiones-de-berkeley" id="toc-ejercicio-admisiones-de-berkeley" class="nav-link" data-scroll-target="#ejercicio-admisiones-de-berkeley">Ejercicio: admisiones de Berkeley</a></li>
@@ -364,9 +374,10 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>nacimientos <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"datos/nacimientos/natalidad.rds"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(<span class="fu">year</span>(fecha) <span class="sc">==</span> <span class="dv">2016</span>, <span class="fu">month</span>(fecha) <span class="sc">&lt;=</span> <span class="dv">3</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">theme_set</span>(ggplot2<span class="sc">::</span><span class="fu">theme_light</span>())</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>nacimientos <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"datos/nacimientos/natalidad.rds"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(<span class="fu">year</span>(fecha) <span class="sc">==</span> <span class="dv">2016</span>, <span class="fu">month</span>(fecha) <span class="sc">&lt;=</span> <span class="dv">3</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Examinamos partes del contenido de la tabla:</p>
@@ -526,12 +537,12 @@ div.csl-indent {
 <details>
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>calculos <span class="sc">|&gt;</span> </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">sample_n</span>(<span class="dv">20</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">kable</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">sample_n</span>(<span class="dv">20</span>) <span class="sc">|&gt;</span> <span class="fu">kable</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">kable_paper</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
-<table>
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
  <thead>
   <tr>
    <th style="text-align:left;"> tratamiento </th>
@@ -546,6 +557,56 @@ div.csl-indent {
    <td style="text-align:left;"> mejora </td>
   </tr>
   <tr>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:left;"> chicos </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:left;"> chicos </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:left;"> grandes </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:left;"> grandes </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:left;"> grandes </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:left;"> chicos </td>
+   <td style="text-align:left;"> sin_mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:left;"> grandes </td>
+   <td style="text-align:left;"> sin_mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:left;"> grandes </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:left;"> chicos </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> B </td>
+   <td style="text-align:left;"> chicos </td>
+   <td style="text-align:left;"> mejora </td>
+  </tr>
+  <tr>
    <td style="text-align:left;"> A </td>
    <td style="text-align:left;"> grandes </td>
    <td style="text-align:left;"> mejora </td>
@@ -567,11 +628,6 @@ div.csl-indent {
   </tr>
   <tr>
    <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> grandes </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> B </td>
    <td style="text-align:left;"> chicos </td>
    <td style="text-align:left;"> mejora </td>
   </tr>
@@ -581,19 +637,9 @@ div.csl-indent {
    <td style="text-align:left;"> mejora </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> chicos </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
    <td style="text-align:left;"> A </td>
    <td style="text-align:left;"> chicos </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> chicos </td>
-   <td style="text-align:left;"> mejora </td>
+   <td style="text-align:left;"> sin_mejora </td>
   </tr>
   <tr>
    <td style="text-align:left;"> A </td>
@@ -603,41 +649,6 @@ div.csl-indent {
   <tr>
    <td style="text-align:left;"> B </td>
    <td style="text-align:left;"> grandes </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> chicos </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> chicos </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> grandes </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> chicos </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> chicos </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:left;"> chicos </td>
-   <td style="text-align:left;"> mejora </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:left;"> chicos </td>
    <td style="text-align:left;"> mejora </td>
   </tr>
 </tbody>
@@ -652,11 +663,12 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>calculos_agregada <span class="ot">&lt;-</span> calculos <span class="sc">|&gt;</span> </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span>(tratamiento, tamaño, resultado) <span class="sc">|&gt;</span> </span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">count</span>()</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>calculos_agregada <span class="sc">|&gt;</span> <span class="fu">kable</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>calculos_agregada <span class="sc">|&gt;</span> <span class="fu">kable</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">kable_paper</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
-<table>
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
  <thead>
   <tr>
    <th style="text-align:left;"> tratamiento </th>
@@ -728,11 +740,12 @@ div.csl-indent {
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">prop_mejora =</span> <span class="fu">round</span>(mejora <span class="sc">/</span> total, <span class="dv">2</span>)) <span class="sc">|&gt;</span> </span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(tratamiento, tamaño, total, prop_mejora) <span class="sc">|&gt;</span> </span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">arrange</span>(tamaño) <span class="sc">|&gt;</span> </span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">kable</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">kable</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">kable_paper</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
-<table>
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
  <thead>
   <tr>
    <th style="text-align:left;"> tratamiento </th>
@@ -781,11 +794,12 @@ div.csl-indent {
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>calculos <span class="sc">|&gt;</span> <span class="fu">group_by</span>(tratamiento) <span class="sc">|&gt;</span> </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summarise</span>(<span class="at">prop_mejora =</span> <span class="fu">mean</span>(resultado <span class="sc">==</span> <span class="st">"mejora"</span>) <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">2</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">kable</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">kable</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">kable_paper</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
-<table>
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
  <thead>
   <tr>
    <th style="text-align:left;"> tratamiento </th>
@@ -874,11 +888,12 @@ div.csl-indent {
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">prop_mejora =</span> <span class="fu">round</span>(mejora <span class="sc">/</span> total, <span class="dv">2</span>)) <span class="sc">|&gt;</span> </span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(tratamiento, presión, total, prop_mejora) <span class="sc">|&gt;</span> </span>
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">arrange</span>(presión) <span class="sc">|&gt;</span> </span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">kable</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">kable</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>   <span class="fu">kable_paper</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
-<table>
+<table class=" lightable-paper" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
  <thead>
   <tr>
    <th style="text-align:left;"> tratamiento </th>
@@ -1051,8 +1066,10 @@ div.csl-indent {
 </div>
 <p>Este diagrama indica que puede ser difícil generalizar con las personas que han sido seleccionadas, porque tanto la selección como la variable de interés tienen una causa común: la existencia o no de una enfermedad en la persona. Será difícil generalizar para las personas no observadas en el estudio.</p>
 </section>
-<section id="ejemplo-colisionador-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="ejemplo-colisionador-1">Ejemplo: colisionador 1</h3>
+<section id="ejemplo-colisionadores-y-sesgo-de-selección" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="ejemplo-colisionadores-y-sesgo-de-selección">Ejemplo: colisionadores y sesgo de selección</h3>
+<p>En los ejemplos anteriores vimos dos estructuras causales importantes para entender cómo interpretar datos: vimos variables <em>confusoras</em> que afectan a tratamiento y resultado (como el ejemplo de anemia), y vimos <em>cadenas</em> (como en el ejemplo de presión alta).</p>
+<p>Una tercera estructura importante es la de colisionador: una variable que tiene como causa tratamiento y resultado. La interpretación de los datos cambia dependiendo si están condicionados a un valor del colisionador o no. Por ejemplo:</p>
 <ul>
 <li>Supongamos que queremos entender la relación en desempeño en matemáticas y en español para estudiantes que entran a una universidad.</li>
 <li>Encontramos una relación negativa entre las calificaciones de los dos exámenes: parece ser que habilidad verbal se contrapone a habilidad numérica.</li>
@@ -1104,10 +1121,10 @@ div.csl-indent {
 </div>
 </div>
 </section>
-<section id="ejemplo-colisionadores-2" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="ejemplo-colisionadores-2">Ejemplo: colisionadores 2</h3>
+<section id="ejemplo-sesgo-de-berkson" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="ejemplo-sesgo-de-berkson">Ejemplo: sesgo de Berkson</h3>
 <p>Algunos estudios fueron publicados en la primera mitad de 2020 que notaban que el porcentaje fumadores entre los casos positivos de COVID era menor que en la población general, y se hicieron algunas interpretaciones acerca de este hecho. Estos estudios se hicieron con personas que se hicieron una prueba.</p>
-<p>En este ejemplo replicaremos cómo es que podemos encontrar esta asociación en este tipo de estudios aún cuando no exista tal asociación en la población general. Usaremos datos sintéticos (simulados).</p>
+<p>En este ejemplo replicaremos cómo es que podemos encontrar esta asociación en este tipo de estudios aún cuando no exista tal asociación en la población general (ver <a href="https://www.nature.com/articles/s41467-020-19478-2">este artículo</a>). Usaremos datos sintéticos (simulados).</p>
 <p>Primero vamos a razonar acerca del proceso generador de datos y a hacer algunos supuestos:</p>
 <ol type="1">
 <li>En primer lugar, ¿cuándo decide hacerse alguien una prueba? A principios de 2020, son principalmente personas que tienen síntomas considerables, y trabajadores de salud (tengan o no síntomas).</li>
