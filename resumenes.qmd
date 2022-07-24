@@ -1,7 +1,10 @@
 # Resúmenes y descripciones de datos
 
-En esta parte, que consideramos más como un repaso:
+En esta parte, que consideramos más como un repaso, recordaremos herramientas básicas para describir conjuntos de datos numéricos y categóricos que utilizaremos más tarde.
+Este es un tema amplio e importante, y aquí sólo veremos una parte pequeña necesaria
+para entender después algunos conceptos estadísticos.
 
-- Recordaremos herramientas básicas para describir conjuntos de datos numéricos y categóricos
-- Analizaremos distintos resúmenes de datos que se pueden usar para esta descripción.
+Una buena referencia para esta parte, que se enfoca principalmente en visualización
+bajo principios estadísticos, es (cleveland93) por ejemplo.
+
 

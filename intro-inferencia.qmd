@@ -1,4 +1,4 @@
-# Inferencia estadística
+# Inferencia estadística: pruebas de hipótesis
 
 A grandes rasgos, en la inferencia estadística buscamos hacer afirmaciones acerca 
 de una colección de datos de la cual sólo tenemos información parcial.
@@ -99,7 +99,7 @@ adecuadamente, y explicaremos con más ejemplos. Adicionalmente, es también má
 cuantificar el nivel de incertidumbre de nuestras respuestas, pues dependen de muchos
 detalles del proceso de selección o asignación.
 
-::: callout-tip
+::: callout-note
 ## Proceso generador de datos y selección/asignación
 
 Cuando el proceso de selección de observaciones o asignación tiene relaciones complicadas

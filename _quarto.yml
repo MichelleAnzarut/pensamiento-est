@@ -18,6 +18,8 @@ book:
         - pruebas-hipotesis-aleatorizacion.qmd
         - pruebas-hipotesis-2.qmd
         - pruebas-hipotesis-3.qmd
+    - part: estimacion.qmd
+      chapters:
         - estimacion-aleatorizacion.qmd
         - remuestreo-bootstrap.qmd
     - part: probabilidad.qmd

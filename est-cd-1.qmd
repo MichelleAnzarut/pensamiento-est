@@ -52,6 +52,7 @@ Consideremos una parte de los datos de nacimientos por día del INEGI de 1999 a 
 library(tidyverse)
 library(lubridate)
 library(kableExtra)
+ggplot2::theme_set(ggplot2::theme_light())
 nacimientos <- read_rds("datos/nacimientos/natalidad.rds") |>
    ungroup() |> 
    filter(year(fecha) == 2016, month(fecha) <= 3)
@@ -126,8 +127,8 @@ y se ve como sigue (muestreamos algunos renglones):
 
 ```{r, message = FALSE}
 calculos |> 
-   sample_n(20) |> 
-   kable()
+   sample_n(20) |> kable() |> 
+   kable_paper(full_width = FALSE)
 ```
 
 Aunque estos datos contienen información de 700 pacientes, los datos pueden resumirse sin pérdida de información contando como sigue:
@@ -136,7 +137,8 @@ Aunque estos datos contienen información de 700 pacientes, los datos pueden res
 calculos_agregada <- calculos |> 
    group_by(tratamiento, tamaño, resultado) |> 
    count()
-calculos_agregada |> kable()
+calculos_agregada |> kable() |> 
+   kable_paper(full_width = FALSE)
 ```
 
 Este resumen no es muy informativo, pero al menos vemos qué valores aparecen en cada columna de la tabla. Como en este caso nos interesa principalmente la tasa de éxito de cada tratamiento, podemos mejorar mostrando como sigue:
@@ -147,7 +149,8 @@ calculos_agregada |> pivot_wider(names_from = resultado, values_from = n) |>
    mutate(prop_mejora = round(mejora / total, 2)) |> 
    select(tratamiento, tamaño, total, prop_mejora) |> 
    arrange(tamaño) |> 
-   kable()
+   kable() |> 
+   kable_paper(full_width = FALSE)
 ```
 
 Esta tabla descriptiva es una reescritura de los datos, y no hemos resumido nada todavía. Pero es apropiada para empezar a contestar la pregunta:
@@ -159,7 +162,8 @@ Supongamos que otro analista decide comparar los pacientes que recibieron cada t
 ```{r}
 calculos |> group_by(tratamiento) |> 
    summarise(prop_mejora = mean(resultado == "mejora") |> round(2)) |> 
-   kable()
+   kable() |> 
+   kable_paper(full_width = FALSE)
 ```
 
 y parece ser que el tratamiento $B$ es mejor que el $A$. Esta es una paradoja (un ejemplo de la [paradoja de Simpson](https://es.wikipedia.org/wiki/Paradoja_de_Simpson)) . Si un médico no sabe que tipo de cálculos tiene el paciente, ¿entonces debería recetar $B$? ¿Si sabe debería recetar $A$? Esta discusión parece no tener mucho sentido.
@@ -202,7 +206,8 @@ corazon_agregada |> pivot_wider(names_from = resultado, values_from = n) |>
    mutate(prop_mejora = round(mejora / total, 2)) |> 
    select(tratamiento, presión, total, prop_mejora) |> 
    arrange(presión) |> 
-   kable()
+   kable() |> 
+   kable_paper(full_width = FALSE)
 ```
 
 ```{r}
@@ -326,7 +331,17 @@ que han sido seleccionadas, porque tanto la selección como la variable de inter
 tienen una causa común: la existencia o no de una enfermedad en la persona. Será 
 difícil generalizar para las personas no observadas en el estudio.
 
-### Ejemplo: colisionador 1 {.unnumbered}
+### Ejemplo: colisionadores y sesgo de selección {.unnumbered}
+
+En los ejemplos anteriores vimos dos estructuras causales importantes
+para entender cómo interpretar datos: vimos variables
+*confusoras* que afectan a tratamiento y resultado (como el ejemplo
+de anemia), y vimos *cadenas* (como en el ejemplo de presión alta).
+
+Una tercera estructura importante es la de colisionador: una variable que
+tiene como causa tratamiento y resultado. La interpretación de los datos
+cambia dependiendo si están condicionados a un valor del colisionador o no.
+Por ejemplo:
 
 - Supongamos que queremos entender la relación en desempeño en matemáticas y
 en español para estudiantes que entran a una universidad.
@@ -374,7 +389,7 @@ ggplot(aes(x, y, colour = aceptados)) +
 
 
 
-### Ejemplo: colisionadores 2 {.unnumbered}
+### Ejemplo: sesgo de Berkson {.unnumbered}
 
 Algunos estudios fueron publicados en la primera mitad de 2020
 que notaban que el porcentaje fumadores
@@ -384,7 +399,8 @@ se hicieron con personas que se hicieron una prueba.
 
 En este ejemplo replicaremos cómo es que podemos encontrar esta asociación
 en este tipo de estudios aún cuando no exista tal asociación en la población 
-general. Usaremos datos sintéticos (simulados).
+general (ver [este artículo](https://www.nature.com/articles/s41467-020-19478-2)). 
+Usaremos datos sintéticos (simulados).
 
 Primero vamos a razonar acerca del proceso generador de datos y a hacer
 algunos supuestos:

@@ -9,6 +9,17 @@ recetas o técnicas particulares.
 En particular, estudiaremos básicos de probabilidad, métodos basados en remuestreo, y
 en la parte final la filosofía de la inferencia bayesiana y las técnicas de modelado bayesiano utilizando estudios de casos ilustrativos.
 
+## Temario {.unnumbered}
+
+1. Ciencia de datos y estadística. Intepretando datos y su proceso generador
+2. Resúmenes y descripción para variables numéricas y categóricas
+3. Pruebas de hipótesis
+4. Estimación por remuestreo (bootstrap)
+5. Introducción a modelos de probabilidad
+6. Estimación por máxima verosimilitud y el bootstrap paramétrico
+7. Introducción a inferencia bayesiana
+
+
 ### 
 
 [![Licencia Creative Commons](https://files.cdn.thinkific.com/file_uploads/416308/images/ed2/9ce/c19/1623612457643.jpg){alt="Licencia Creative Commons"}](http://creativecommons.org/licenses/by/4.0/)
