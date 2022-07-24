@@ -7,31 +7,31 @@ book:
   date: "7/25/2022"
   chapters:
     - index.qmd
-    - part: est-cd-1.qmd
-    - part: resumenes.qmd
+    - part: 01-est-cd-1.qmd
+    - part: 02-resumenes.qmd
       chapters:
-        - analisis-resumenes-1.qmd
-        - analisis-resumenes-2.qmd
-    - part: intro-inferencia.qmd
+        - 02-resumenes-analisis-1.qmd
+        - 02-resumenes-analisis-2.qmd
+    - part: 03-intro-inferencia.qmd
       chapters:
-        - intro-pruebas-hipotesis.qmd
-        - pruebas-hipotesis-aleatorizacion.qmd
-        - pruebas-hipotesis-2.qmd
-        - pruebas-hipotesis-3.qmd
-    - part: estimacion.qmd
+        - 03-intro-pruebas-hipotesis.qmd
+        - 03-pruebas-hipotesis-aleatorizacion.qmd
+        - 03-pruebas-hipotesis-2.qmd
+        - 03-pruebas-hipotesis-3.qmd
+    - part: 04-estimacion.qmd
       chapters:
-        - estimacion-aleatorizacion.qmd
-        - remuestreo-bootstrap.qmd
-    - part: probabilidad.qmd
+        - 04-estimacion-aleatorizacion.qmd
+        - 04-estimacion-remuestreo.qmd
+    - part: 05-probabilidad.qmd
       chapters:
-        - modelo-prob.qmd
-        - prob-condicional.qmd
-        - modelos-continuos.qmd
-    - part: inferencia-modelos.qmd
+        - 05-prob-modelos.qmd
+        - 05-prob-condicional.qmd
+        - 05-prob-modelos-continuos.qmd
+    - part: 06-inferencia-modelos.qmd
       chapters:
-        - maxima-verosimilitud.qmd
-        - intro-bayesiana-1.qmd
-        - intro-bayesiana-2.qmd
+        - 06-maxima-verosimilitud.qmd
+        - 06-intro-bayesiana-1.qmd
+        - 06-intro-bayesiana-2.qmd
 bibliography: referencias.bib
 
 format:
