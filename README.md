@@ -1,11 +1,9 @@
 # Pensamiento estadístico
 Notas del curso de Pensamiento Estadístico, Diálogos IIMAS
 
-##
-
 Sitio del curso: https://michelleanzarut.github.io/pensamiento-est/
 
-## Temario {.unnumbered}
+## Temario
 
 1. Ciencia de datos y estadística. Intepretando datos y su proceso generador
 2. Resúmenes y descripción para variables numéricas y categóricas
