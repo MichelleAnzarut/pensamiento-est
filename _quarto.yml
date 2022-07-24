@@ -16,22 +16,22 @@ book:
       chapters:
         - 03-intro-pruebas-hipotesis.qmd
         - 03-pruebas-hipotesis-aleatorizacion.qmd
-        - 03-pruebas-hipotesis-2.qmd
-        - 03-pruebas-hipotesis-3.qmd
-    - part: 04-estimacion.qmd
-      chapters:
-        - 04-estimacion-aleatorizacion.qmd
-        - 04-estimacion-remuestreo.qmd
-    - part: 05-probabilidad.qmd
-      chapters:
-        - 05-prob-modelos.qmd
-        - 05-prob-condicional.qmd
-        - 05-prob-modelos-continuos.qmd
-    - part: 06-inferencia-modelos.qmd
-      chapters:
-        - 06-maxima-verosimilitud.qmd
-        - 06-intro-bayesiana-1.qmd
-        - 06-intro-bayesiana-2.qmd
+#        - 03-pruebas-hipotesis-2.qmd
+#        - 03-pruebas-hipotesis-3.qmd
+#    - part: 04-estimacion.qmd
+#      chapters:
+#        - 04-estimacion-aleatorizacion.qmd
+#        - 04-estimacion-remuestreo.qmd
+#    - part: 05-probabilidad.qmd
+#      chapters:
+#        - 05-prob-modelos.qmd
+#        - 05-prob-condicional.qmd
+#        - 05-prob-modelos-continuos.qmd
+#    - part: 06-inferencia-modelos.qmd
+#      chapters:
+#        - 06-maxima-verosimilitud.qmd
+#        - 06-intro-bayesiana-1.qmd
+#        - 06-intro-bayesiana-2.qmd
 bibliography: referencias.bib
 
 format:
