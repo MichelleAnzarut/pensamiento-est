@@ -40,7 +40,8 @@ te_tbl <- read_csv("./datos/tea.csv") |>
           precio = recode(precio, p_upscale = "fino", p_branded = "de_marca",
                           p_private_label = "marca_propia", p_variable = "variable",
                           .default = "no_sabe"))
-sample_n(te_tbl, 10) |> kable()
+sample_n(te_tbl, 10) |> kable() |> 
+   kable_paper(full_width = FALSE)
 ```
 
 Mediciones como *tipo*, *presentación* o *azucar* son variables
@@ -51,7 +52,8 @@ ocurre cada categoría. Por ejemplo
 ```{r}
  tabla_1 <- te_tbl |> count(tipo) |> 
     arrange(desc(n))
- tabla_1 |> kable()
+ tabla_1 |> kable() |> 
+   kable_paper(full_width = FALSE)
 ```
 
 Usualmente es más útil reportar la porporción o porcentaje de casos por
@@ -64,7 +66,8 @@ categoría
     select(tipo, n_total, prop) |> 
     mutate(across(where(is.numeric), round, 2)) |> 
     arrange(desc(prop))
- tabla_2 |> kable()
+ tabla_2 |> kable() |> 
+   kable_paper(full_width = FALSE)
 ```
 
 Podemos hacer varias variables juntas de la siguiente manera:
@@ -99,7 +102,8 @@ perfiles_col_tbl <- te_tbl |> count(complementos, tipo) |>
    group_by(complementos) |> 
    select(-n) |> 
    pivot_wider(names_from = tipo, values_from = prop, values_fill = 0)
-perfiles_col_tbl |>  kable(digits = 2, caption = "Perfiles por columna")
+perfiles_col_tbl |>  kable(digits = 2, caption = "Perfiles por columna") |> 
+   kable_paper(full_width = FALSE)
 ```
 
 Comparando los **perfiles de las columnas** observamos variaciones
@@ -114,7 +118,8 @@ comp_tbl <- te_tbl |> count(complementos) |> mutate(total = n / sum(n))
 perfiles_col_tbl <- left_join(perfiles_col_tbl, comp_tbl) |> 
       arrange(desc(total)) |> 
       select(-n)
-perfiles_col_tbl |> kable(digits = 2)
+perfiles_col_tbl |> kable(digits = 2) |> 
+   kable_paper(full_width = FALSE)
 ```
 
 En este punto, vemos que hay coincidencias y diferencias entre los
@@ -125,7 +130,8 @@ calculando índices contra la columna de total:
 res_tbl <- perfiles_col_tbl |> 
    mutate(across(where(is.numeric), ~ .x / total)) |> 
    select(-total)
-res_tbl |> kable(digits = 2)
+res_tbl |> kable(digits = 2) |> 
+   kable_paper(full_width = FALSE)
 ```
 
 Valores por encima de 1 indican columnas por arriba de la población
@@ -137,7 +143,8 @@ se les llama **residuales crudos**:
 ```{r}
 res_tbl <- perfiles_col_tbl |> 
    mutate(across(where(is.numeric) & !total, ~ .x / total - 1)) 
-res_tbl |> kable(digits = 2)
+res_tbl |> kable(digits = 2) |> 
+   kable_paper(full_width = FALSE)
 ```
 
 Podemos finalmente marcar la tabla:
@@ -148,10 +155,11 @@ res_tbl |>  mutate(across(where(is.numeric), round, 2)) |>
                  ~ cell_spec(.x, color = ifelse(.x > 0.1, "black", 
                                          ifelse(.x < -0.1, "red", "gray"))))) |>
    arrange(desc(total)) |> 
-   kable(escape = FALSE) 
+   kable(escape = FALSE) |> 
+   kable_paper(full_width = FALSE)
 ```
 
-::: callout-tip
+::: callout-note
 # Perfiles
 
 A este tipo de análisis de tablas cruzadas a veces se le llama
@@ -180,7 +188,8 @@ res_tbl |>
                  ~ cell_spec(.x, color = ifelse(.x > 0.1, "black", 
                                          ifelse(.x < -0.1, "red", "gray"))))) |>
    arrange(desc(total)) |> 
-   kable(escape = FALSE) 
+   kable(escape = FALSE) |> 
+   kable_paper(full_width = FALSE)
 ```
 
 ## Observación: perfiles renglón y columna
@@ -261,7 +270,8 @@ variables ya están cruzadas:
 hurto_tbl <- read_csv("./datos/hurto.csv") |> 
    mutate(grupo = ifelse(grupo == "-12 h", "01-12 h", grupo),
           grupo = ifelse(grupo == "-12 m", "01-12 m", grupo))
-hurto_tbl |> kable()
+hurto_tbl |> kable() |> 
+   kable_paper()
 ```
 
 Esta tabla es más grande y difícil de entender tal cual está. Comenzamos
@@ -274,7 +284,8 @@ hurto_tbl |>
    summarise(n = sum(n)) |> 
    mutate(prop = n / sum(n)) |> 
    arrange(desc(prop)) |> 
-   kable(digits = 2)
+   kable(digits = 2) |> 
+   kable_paper()
 ```
 
 ```{r, message = FALSE}
@@ -284,7 +295,8 @@ grupos_tbl <- hurto_tbl |>
    summarise(n = sum(n)) |> 
    mutate(prop = n / sum(n)) |> 
    arrange(desc(prop))
-grupos_tbl |> kable(digits = 2)
+grupos_tbl |> kable(digits = 2) |> 
+   kable_paper()
 ```
 
 Intentamos análisis de correspondencias para comparar los perfiles

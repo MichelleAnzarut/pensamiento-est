@@ -21,7 +21,8 @@ cuatro días consecutivos.
 ```{r, message = FALSE}
 # usamos los datos tips del paquete reshape2
 propinas <- read_csv("./datos/propinas.csv")
-slice_sample(propinas, n = 10) %>% kable()
+slice_sample(propinas, n = 10) |> kable() |> 
+   kable_paper(full_width = FALSE)
 ```
 
 
@@ -43,7 +44,8 @@ propinas <- propinas |>
   mutate(orden_cuenta = rank(cuenta_total, ties.method = "first"), 
          f = orden_cuenta / n()) 
 cuenta <- propinas |>  select(orden_cuenta, f, cuenta_total) |>  arrange(f)
-bind_rows(head(cuenta), tail(cuenta)) |>  knitr::kable()
+bind_rows(head(cuenta), tail(cuenta)) |>  knitr::kable() |> 
+   kable_paper(full_width = FALSE)
 ```
 
 y graficamos los datos en orden, interpolando valores consecutivos.
@@ -63,7 +65,7 @@ A esta función le llamamos la **función de cuantiles** para la variable cuenta
 sirve para comparar directamente los distintos valores que observamos los datos
 según el orden que ocupan. 
 
-::: callout-tip
+::: callout-note
 # Cuantiles de datos numéricos
 
 El cuantil $f$ de un bonche de datos numéricos es el valor $q(f)$, en la
@@ -169,12 +171,13 @@ ggplot(cuenta, aes(x = cuenta_total)) +
 En esta gráfica, vemos que proporción de los datos que son iguales
 o están por debajo de cada valor en el eje horizontal.
 
+::: callout-note
 - En análisis de datos, es más frecuente utilizar la función de cuantiles pues
 existen versiones más generales que son útiles, por ejemplo, para evaluar ajuste
 de modelos probabilísticos
 - En la teoría, generalmente es más común utilizar la fda empírica, 
 que tiene una única definición que veremos coincide con definiciones teóricas.
-
+:::
 
 ## Media y desviación estándar
 
@@ -231,7 +234,8 @@ enigh |>
   summarise(
     f = seq(0, 1, 0.1),
     cuantiles_ingreso =  quantile(ingreso_mensual_miles, probs = seq(0, 1, 0.1), type = 4)) |> 
-  kable(digits = 2)
+  kable(digits = 2) |> 
+   kable_paper(full_width = FALSE)
 ```
 donde podemos ver cómo cuando nos movemos a deciles más altos, la dispersión aumenta.
 Existen algunos valores muy grandes. Un histograma no funciona muy bien con estos datos.
@@ -257,7 +261,8 @@ enigh |>
   summarise(
     media = mean(ingreso_mensual_miles),
     mediana =  quantile(ingreso_mensual_miles, probs = 0.5)) |> 
-  kable(digits = 2)
+  kable(digits = 2) |> 
+   kable_paper(full_width = FALSE)
 ```
 
 Esta es otra razón para incluir información de cuantiles en la etapa descriptiva. Por ejemplo,
@@ -268,7 +273,8 @@ enigh |>
   summarise(
     f = c("min", 0.5, "0.50",  0.95, "max"),
     cuantiles_ingreso =  quantile(ingreso_mensual_miles, probs = c(0, 0.05, 0.5, 0.95, 1))) |> 
-  kable(digits = 2)
+  kable(digits = 2) |> 
+   kable_paper(full_width = FALSE)
 ```
 
 Otra opción es utilizar una escala logarítmica. El 
@@ -439,7 +445,8 @@ propinas |>
       mediana = quantile(propina, 0.5),
       q90 = quantile(propina, 0.90),
       rango_cuartiles = quantile(propina, 0.75) - quantile(propina, 0.25)) |> 
-   kable(digits = 2)
+   kable(digits = 2) |> 
+   kable_paper(full_width = FALSE)
 ```
 
 Donde confirmamos que el nivel general de propinas es más alto alrededor de cuentas
@@ -531,7 +538,8 @@ la propina en sí no es tan grande):
 ```{r}
 filter(propinas, pct_propina > 0.30) |> 
   arrange(desc(pct_propina)) |> 
-  kable(digits = 2)
+  kable(digits = 2) |> 
+   kable_paper(full_width = FALSE)
 ```
 
 - Para cuentas relativamente chicas (10 dólares, el porcentaje de propina está por

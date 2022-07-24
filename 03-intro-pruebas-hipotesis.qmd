@@ -251,7 +251,7 @@ referencia_2 |>
 Que cuantifica que es muy poco probable observar el sistema en el estado actual si fuera cierto que no ha sufrido cambios.
 
 
-::: callout-tip
+::: callout-note
 # Estadísticas de prueba
 Una estadística de prueba es un resumen de datos, a partir del
 cual construimos una **distribución de referencia** bajo los supuestos

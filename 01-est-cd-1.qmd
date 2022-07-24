@@ -172,7 +172,8 @@ Podemos investigar por qué está pasando esto considerando la siguiente tabla, 
 
 ```{r}
 calculos |> group_by(tratamiento, tamaño) |> count() |> 
-   kable()
+   kable() |> 
+   kable_paper(full_width = FALSE)
 ```
 
 Nuestra hipótesis aquí es que la decisión de qué tratamiento usar depende del tamaño de los cálculos.  En este caso, hay una decisión pues A es una cirugía y B es un procedimiento
@@ -213,7 +214,8 @@ corazon_agregada |> pivot_wider(names_from = resultado, values_from = n) |>
 ```{r}
 corazon |> group_by(tratamiento) |> 
    summarise(prop_mejora = mean(resultado == "mejora") |> round(2)) |> 
-   kable()
+   kable() |> 
+   kable_paper(full_width = FALSE)
 ```
 
 ¿Cuál creemos que es el mejor tratamiento en este caso? ¿Deberíamos usar
@@ -529,7 +531,8 @@ Consideramos ahora los siguientes datos de admisión a distintos departamentos d
 data("UCBAdmissions")
 adm_original <- UCBAdmissions |> as_tibble() |> 
    pivot_wider(names_from = Admit, values_from = n) 
-adm_original |> knitr::kable()
+adm_original |> knitr::kable() |> 
+   kable_paper(full_width = FALSE)
 ```
 
 Con algo de manipulación podemos ver tasas de admisión para *Male* y *Female*, y los totales de cada grupo que solicitaron en cada Departamento.
@@ -539,7 +542,8 @@ adm_tbl <- adm_original |>
    mutate(prop_adm = round(Admitted / (Admitted + Rejected), 2), total = Admitted + Rejected) |> 
    select(Gender, Dept, prop_adm, total) |> 
    pivot_wider(names_from = Gender, values_from = prop_adm:total)
-adm_tbl |> knitr::kable()
+adm_tbl |> knitr::kable() |> 
+   kable_paper(full_width = FALSE)
 ```
 
 Y complementamos con las tasas de aceptación a total por género, y tasas de aceptación por departamento:
@@ -548,14 +552,16 @@ Y complementamos con las tasas de aceptación a total por género, y tasas de ac
 adm_original |> group_by(Gender) |> 
    summarise(Admitted = sum(Admitted), Rejected = sum(Rejected)) |> 
    mutate(prop_adm = round(Admitted / (Admitted + Rejected),2)) |> 
-   kable()
+   kable() |> 
+   kable_paper(full_width = FALSE)
 ```
 
 ```{r}
 adm_original |> group_by(Dept) |> 
    summarise(Admitted = sum(Admitted), Rejected = sum(Rejected)) |> 
    mutate(prop_adm = round(Admitted / (Admitted + Rejected),2)) |> 
-   kable()
+   kable() |> 
+   kable_paper(full_width = FALSE)
 ```
 
 -   Dibuja el diagrama causal

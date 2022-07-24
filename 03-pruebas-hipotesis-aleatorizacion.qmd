@@ -6,6 +6,7 @@
 #| message: false
 library(tidyverse)
 library(gt)
+library(kableExtra)
 theme_set(theme_minimal())
 source("R/funciones_auxiliares_notas.R")
 ```
@@ -33,7 +34,8 @@ res_obs <- tibble(planta = 1:20,
        y = c(16.9, 19.4, 22.6, 23.7, 22.3, 26.5, 18.2, 19.9, 14.5, 15.1, 29.1, 15.2, 23.5, 24.8, 20.5, 21.2, 22.3, 20.1, 28.1, 21.2) / 2) |> 
   mutate(y_nf = ifelse(T == "nf", y, NA),
          y_f = ifelse(T == "f", y, NA))
-res_obs |> select(planta, T, y)
+res_obs |> select(planta, T, y) |> kable() |> 
+   kable_paper(full_width = FALSE)
 ```
 
 Para decidir qué tan bueno es el nuevo fertilizante, el jardinero decide usar
@@ -49,7 +51,8 @@ experimento, obtuvimos:
 ```{r}
 ggplot(res_obs, aes(y, colour = T)) +
   stat_ecdf() + 
-  geom_segment(x = 11.2, xend = 11.2, y = 0.362, yend = 0.636+0.362, colour = "black")
+  geom_segment(x = 11.2, xend = 11.2, y = 0.362, yend = 0.636+0.362, colour = "black") +
+  ylab("Proporción acumulada")
 ```
 La diferencia más grande en estas curvas es:
 
@@ -75,7 +78,8 @@ de cada planta?
 Reescribimos nuestros datos como:
 
 ```{r}
-res_obs
+res_obs |> kable() |> 
+   kable_paper(full_width = FALSE)
 ```
 
 
@@ -88,7 +92,8 @@ en cada caso, el dato faltante lo conocemos, y es igual al valor observado para 
 ```{r}
 bajo_nula <- res_obs |> 
   mutate(y_f = y, y_nf = y)
-bajo_nula
+bajo_nula |> kable() |> 
+   kable_paper(full_width = FALSE)
 ```
 
 
@@ -159,7 +164,7 @@ es grande porque el fertilizante se aplicó a plantas con más potencial desde u
 
 Una solución simple es la siguiente:
 
-:::callout-tip
+:::callout-note
 # Aleatorización al rescate
 
 - Supongamos que le recomendamos al jardinero al principio escoger al azar una
@@ -246,12 +251,14 @@ res_obs <- tibble(planta = 1:20,
          y_f = ifelse(T == "f", y, NA))
 bajo_nula <- res_obs |> 
   mutate(y_f = y, y_nf = y)
-res_obs |> select(planta, T, y)
+res_obs |> select(planta, T, y) |> kable() |> 
+   kable_paper(full_width = FALSE)
 ```
 
 ```{r}
 ggplot(res_obs, aes(y, colour = T)) +
-  stat_ecdf() 
+  stat_ecdf() +
+  ylab("Proporción acumulada")
 ```
 
 ```{r, fig.width = 5, fig.height = 4}
