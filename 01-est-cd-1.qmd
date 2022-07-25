@@ -1,4 +1,4 @@
-# Estadística y ciencia de datos {.unnumbered}
+# Estadística y ciencia de datos {#estcd}
 
 El término "ciencia de datos" surgió recientemente, y hay discusión acerca de qué tan
 apropiado es el término, si es correcto llamarla "ciencia", y en general, en cómo

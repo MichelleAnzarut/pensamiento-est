@@ -5,3 +5,6 @@
 .DS_Store
 /_book
 /.quarto/
+admin-curso.md
+*_files/
+*_cache/
