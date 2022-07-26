@@ -7,7 +7,11 @@ book:
   date: "7/25/2022"
   chapters:
     - index.qmd
-    - part: 01-est-cd-1.qmd
+    - part: 01-intro-est-cd-1.qmd
+      chapters:
+        - 01-est-cd-1.qmd
+        - 01-diagramas-est-cd-1.qmd
+        - 01-proceso-est-cd-1.qmd
     - part: 02-resumenes.qmd
       chapters:
         - 02-resumenes-analisis-1.qmd

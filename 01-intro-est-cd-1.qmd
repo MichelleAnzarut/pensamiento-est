@@ -1,0 +1,30 @@
+# Estadística y ciencia de datos {#estcd}
+
+El término "ciencia de datos" surgió recientemente, y hay discusión acerca de qué tan
+apropiado es el término, si es correcto llamarla "ciencia", y en general, en cómo
+definirla exactamente. En este curso tomamos el punto de vista de que:
+
+
+- La ciencia de datos antes se llamaba análisis de datos. Esto quiere decir que
+no ocurre en un espacio teórico o matemático, sino en aplicaciones específicas donde
+buscamos tomar decisiones informadas. A su vez, algunas personas consideran
+el análisis de datos como "estadística aplicada".
+- La ciencia de datos, a diferencia del análisis de datos más tradicional,
+reconoce y adopta ideas de desarrollo de software
+e ingeniería que son relevantes para producir análisis y productos con buena
+calidad y desempeño.
+
+Desde este punto de vista, 
+el estándar de validez más importante en la ciencia de datos (@tukeyda) es su 
+funcionamiento en la práctica, y no la adherencia a argumentos teóricos, 
+matemáticos o estadísticos.
+
+Igualmente puede ser difícil definir qué es la estadística (algunos la ven como una
+parte o rama de las matemáticas, en un extremo, y otros la consideran algo más cercano
+al análisis de datos). En cualquier caso:
+
+- La estadística puede considerarse como parte de la ciencia de datos. Sus resultados 
+teóricos son guías y
+nos dan bases para juzgar y pensar en procedimientos para contestar 
+preguntas con datos (@tukeyda).
+

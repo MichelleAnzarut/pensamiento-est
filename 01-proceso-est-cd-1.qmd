@@ -1,0 +1,112 @@
+# Procesos generadores de datos
+
+```{r}
+#| message: false
+#| warning: false
+library(tidyverse)
+library(kableExtra)
+ggplot2::theme_set(ggplot2::theme_light())
+```
+
+Nótese que en todas estas preguntas hemos tenido que recurrir a conocimientos generales y de dominio para interpretar y hacer hipótesis acerca de lo que vemos en la gráfica. Una visión descontextualizada no tiene mucha utilidad. Las explicaciones son típicamente complejas e intervienen distintos aspectos del comportamiento de actores, sistemas, y métodos de recolección de datos involucrados.
+
+::: callout-note
+# El proceso generador de datos
+
+Al conjunto de esos aspectos que determinan los datos que finalmente observamos le llamamos el **proceso generador de datos**. Para datos que observamos "naturalmente" este proceso
+generalmente es complicado.
+
+:::
+
+En la Ciencia de Datos buscamos entender las partes importantes del proceso generador
+
+- La **descripción** correcta de los datos se logra con ese entendimiento de dominio y del proceso generador.
+- La formulación y refinamiento de **preguntas** importantes y sus respuestas 
+acerca de estos datos requiere entendimiento de dominio y del proceso generador.
+- Más tarde, veremos que la inferencia estadística también depende de este entendimiento,
+junto con propuestas del **diseño estadístico** que nos permite obtener los datos
+necesarios para simplificar y dar certeza en el proceso de contestar las preguntas de interés.
+
+Mucha parte de este trabajo no es estadístico, sino que es un esfuerzo
+por entender el dominio (como sugiere el título de artículo de David A. Friedman: [Statistical Models and Shoe Leather](https://psychology.okstate.edu/faculty/jgrice/psyc5314/Freedman_1991A.pdf)).
+
+
+## Ejercicio: admisiones de Berkeley {-}
+
+Consideramos ahora los siguientes datos de admisión a distintos departamentos de Berkeley en 1975:
+
+```{r}
+data("UCBAdmissions")
+adm_original <- UCBAdmissions |> as_tibble() |> 
+   pivot_wider(names_from = Admit, values_from = n) 
+adm_original |> knitr::kable() |> 
+   kable_paper(full_width = FALSE)
+```
+
+Con algo de manipulación podemos ver tasas de admisión para *Male* y *Female*, y los totales de cada grupo que solicitaron en cada Departamento.
+
+```{r}
+adm_tbl <- adm_original |> 
+   mutate(prop_adm = round(Admitted / (Admitted + Rejected), 2), total = Admitted + Rejected) |> 
+   select(Gender, Dept, prop_adm, total) |> 
+   pivot_wider(names_from = Gender, values_from = prop_adm:total)
+adm_tbl |> knitr::kable() |> 
+   kable_paper(full_width = FALSE)
+```
+
+Y complementamos con las tasas de aceptación a total por género, y tasas de aceptación por departamento:
+
+```{r}
+adm_original |> group_by(Gender) |> 
+   summarise(Admitted = sum(Admitted), Rejected = sum(Rejected)) |> 
+   mutate(prop_adm = round(Admitted / (Admitted + Rejected),2)) |> 
+   kable() |> 
+   kable_paper(full_width = FALSE)
+```
+
+```{r}
+adm_original |> group_by(Dept) |> 
+   summarise(Admitted = sum(Admitted), Rejected = sum(Rejected)) |> 
+   mutate(prop_adm = round(Admitted / (Admitted + Rejected),2)) |> 
+   kable() |> 
+   kable_paper(full_width = FALSE)
+```
+
+-   Dibuja el diagrama causal
+-   ¿Qué observas acerca de las tasas de admisión en cada departamento, diferenciadas por género? ¿Qué tiene qué ver con el número de personas que solicitan en cada departamento?
+-   Esta es una tabla *descriptiva*. Sin embargo, tiene que ser entendida en el contexto de los datos y su generación. ¿Qué hipótesis importantes sugieren estos datos? ¿Por qué hay tanta diferencia de género de solicitudes en algunos departamentos? ¿Por qué es sorprendente o no las variaciones en tasas de aceptación de estudiantes de cada género?
+
+# Diseño estadístico e inferencia
+
+Una primera contribución importante de la estadística al análisis de datos
+contesta la siguiente pregunta:
+
+- El análisis correcto depende del proceso generador de datos
+- Incluso cuando tenemos conocimiento detallado de dominio, es posible que algunos
+de nuestros supuestos sean cuestionables.
+
+Sin embargo,
+
+- Si pudiéramos alterar el proceso generador de datos de alguna manera
+razonable, ¿sería posible hacer un análisis que dependa de menos supuestos?
+- En lugar de usar los datos que tenemos a la mano, ¿podemos pensar en una
+manera de producir los datos que nos de más certeza acerca de las conclusiones 
+que extraemos de ellos, y que nos permita extraer la mayor información posible?
+
+El **diseño estadístico** (de experimentos, o de muestreo por ejemplo) nos guía
+a cómo modificar el proceso generador para simplificar el análisis, y en ese
+caso nos provee de herramientas para contestar preguntas de interés y cuantificar
+la incertidumbre ne las respuestas. Veremos
+más adelante por qué, pero por lo pronto señalamos alguna característica central:
+
+- En los ejemplos que vimos arriba, ocurren dificultades porque la aplicación
+del tratamiento o la selección de individuos depende de una variable relacionada
+también con la variable respuesta que nos interesa medir. Veremos que podemos usar
+*aleatorización* para cortar estas dependencias.
+- El diseño de muestras y experimentos también nos provee herramientas para decidir
+cuántos datos necesitamos y de qué tipo para dar respuestas con suficiente precisión para
+nuestros propósitos.
+
+
+
+
