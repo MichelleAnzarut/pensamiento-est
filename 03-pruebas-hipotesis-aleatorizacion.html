@@ -107,6 +107,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./03-pruebas-hipotesis-2.html" rel="next">
 <link href="./03-intro-pruebas-hipotesis.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -239,6 +240,16 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03-pruebas-hipotesis-aleatorizacion.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Aleatorización en inferencia causal</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-pruebas-hipotesis-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Diseño de experimentos e inferencia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-pruebas-hipotesis-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Más acerca de pruebas de hipótesis</span></a>
   </div>
 </li>
       </ul>
@@ -891,6 +902,7 @@ Aleatorización al rescate
 <li><p>Este valor es bajo, y da evidencia de que el fertilizante ayuda a las plantas. Hay una probabilidad baja de que por azar el jardinero haya escogido una asignación que produce una diferencia tan grande si el fertilizante no ayuda.</p></li>
 <li><p>Este argumento no funciona si el jardinero intentó “optimizar” la aplicación del fertilizante. En ese caso, quizá activamente buscó una configuración que favorece al fertilizante.</p></li>
 <li><p>Esta prueba es exacta, en el sentido de que el valor-p que calculamos refleja correctamente la probabilidad de obtener un resultado tan grande o mayor del que observamos si la hipótesis nula es cierta.</p></li>
+<li><p>Finalmente, nótese también que hicimos un supuesto adicional, que es que la asignación de tratamientos no influye en los dos resultados (observado y contrafactual). Por ejemplo, que haya asignado el tratamiento A o B a una unidad no afecta el resultado de otra unidad. Comunicación o asociación social entre personas puede romper este supuesto.</p></li>
 </ul>
 <section id="pruebas-de-hipótesis-visuales" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="pruebas-de-hipótesis-visuales"><span class="header-section-number">7.1</span> Pruebas de hipótesis visuales</h2>
@@ -922,7 +934,7 @@ Aleatorización al rescate
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>decrypt("ztYe Cufu ns JFUnfnFs lR")</code></pre>
+<pre><code>decrypt("gH6B Pqrq zT vyUzrzyT J1")</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -1119,7 +1131,7 @@ Aleatorización al rescate
 <section id="ejemplo-tiempos-de-fusión" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="ejemplo-tiempos-de-fusión">Ejemplo: tiempos de fusión</h2>
 <p>Podemos utilizar la prueba de permutaciones con otras estadísticas de prueba (ver nota al final de estos ejemplos) como medias o medianas.</p>
-<p>En el siguiente ejemplo (<span class="citation" data-cites="cleveland93">Cleveland (<a href="#ref-cleveland93" role="doc-biblioref">1993</a>)</span>), investigadores se preguntaron si es posible que las personas reconozcan más fácilmente la imagen escondida en un (estereograma)[https://en.wikipedia.org/wiki/Autostereogram] si se les da información verbal acerca de la imagen que tienen que encontrar.</p>
+<p>En el siguiente ejemplo (<span class="citation" data-cites="cleveland93">Cleveland (<a href="#ref-cleveland93" role="doc-biblioref">1993</a>)</span>), investigadores se preguntaron si es posible que las personas reconozcan más fácilmente la imagen escondida en un <a href="https://en.wikipedia.org/wiki/Autostereogram">estereograma</a> si se les da información verbal acerca de la imagen que tienen que encontrar.</p>
 <p>La medición que consideraron el el <em>tiempo de fusión</em> en segundo, es decir, cuánto tarda la persona en ver la imagen 3D escondida. Naturalmente, existe mucha variación en el tiempo que tardan las personas en reconocer esas imágenes (algunos lo hacen casi instantáneamente y otros pueden tardar hasta minutos).</p>
 <p>Este experimento se diseño aleatorizando el tratamiento entre los participantes del estudio, que son voluntarios, de forma que si encontramos evidencia de diferencias entre los dos grupos, tenemos evidencia de que el tratamiento cambia el tiempo de fusión entre los partipantes.</p>
 <p>Podemos hacer una prueba de permutaciones para la diferencia de las medias y otras estadísticas como la mediana o promedio del cuartiles superior e inferior (son versiones menos dependientes de datos atípticos), por ejemplo. En este ejemplo usaremos la diferencia de medias:</p>
@@ -1343,6 +1355,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./03-pruebas-hipotesis-2.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Diseño de experimentos e inferencia</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

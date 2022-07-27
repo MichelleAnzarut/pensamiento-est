@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Pensamiento estadístico - 9&nbsp; Más acerca de pruebas de hipótesis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./03-pruebas-hipotesis-2.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Sín resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la busqueda",
+    "search-hide-matches-text": "Esconder resultados adicionales",
+    "search-more-match-text": "hay más resultados en este documento",
+    "search-more-matches-text": "más resultados en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Eviar"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Más acerca de pruebas de hipótesis</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Pensamiento estadístico</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Acerca del curso</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./01-intro-est-cd-1.html" class="sidebar-item-text sidebar-link">Estadística y ciencia de datos</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-est-cd-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preguntas y datos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-diagramas-est-cd-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Diagramas causales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-proceso-est-cd-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Procesos generadores de datos</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./02-resumenes.html" class="sidebar-item-text sidebar-link">Resúmenes y descripciones de datos</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-resumenes-analisis-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Resúmenes para datos numéricos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-resumenes-analisis-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datos univariados categóricos</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./03-intro-inferencia.html" class="sidebar-item-text sidebar-link">Inferencia estadística: pruebas de hipótesis</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-intro-pruebas-hipotesis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introducción a pruebas de hipótesis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-pruebas-hipotesis-aleatorizacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Aleatorización en inferencia causal</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-pruebas-hipotesis-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Diseño de experimentos e inferencia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-pruebas-hipotesis-3.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Más acerca de pruebas de hipótesis</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Indice de contenidos</h2>
+   
+  <ul>
+  <li><a href="#la-crisis-de-replicabilidad" id="toc-la-crisis-de-replicabilidad" class="nav-link active" data-scroll-target="#la-crisis-de-replicabilidad">La “crisis de replicabilidad”</a></li>
+  <li><a href="#el-jardín-de-los-senderos-que-se-bifurcan" id="toc-el-jardín-de-los-senderos-que-se-bifurcan" class="nav-link" data-scroll-target="#el-jardín-de-los-senderos-que-se-bifurcan">El jardín de los senderos que se bifurcan</a></li>
+  <li><a href="#ejemplo-decisiones-de-análisis-y-valores-p" id="toc-ejemplo-decisiones-de-análisis-y-valores-p" class="nav-link" data-scroll-target="#ejemplo-decisiones-de-análisis-y-valores-p">Ejemplo: decisiones de análisis y valores p</a></li>
+  <li><a href="#alternativas-o-soluciones" id="toc-alternativas-o-soluciones" class="nav-link" data-scroll-target="#alternativas-o-soluciones">Alternativas o soluciones</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Más acerca de pruebas de hipótesis</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+
+</div>
+<p>Comenzamos con varias recomendaciones y comentarios acerca de lo métodos que hemos visto en esta parte:</p>
+<ol type="1">
+<li><p>Las hipótesis nulas que hemos estado probando son útiles en algunos casos, pero generalmente son falsas por principio: casi cualquier intervención o tratamiento que podamos pensar tiene <em>algún</em> efecto (quizá muy chico). Veremos en secciones anteriores que un enfoque más útil es la estimación de cantidades de interés con cuantificación de su incertidumbre. Por ejemplo, estimar directamente el tamaño del efecto del tratamiento o el procedimiento que estamos probando.</p></li>
+<li><p>Que una prueba de un tratamiento con salga con valor p muy bajo no quiere decir que es relevante o que nuestra decisión práctica debe cambiar. Igual que en el inciso anterior, es crucial entender el tamaño del efecto para entender costo-beneficio de distintas decisiones basadas en el análisis.</p></li>
+<li><p>Para los ejemplos que hemos visto, existe también la posibilidad de hacer pruebas basadas en supuestos distribucionales asintóticos que dan resultados muy similares a las pruebas de permutaciones que hemos visto aquí y requieren menos cálculo (pruebas t, por ejemplo).</p></li>
+<li><p>En muchos casos, las pruebas de hipótesis también se utilizan para comparar grupos que no necesariamente son asignados al azar, por ejemplo cuando tenemos muestras de una población. En ese caso, la justificación generalmente proviene de aleatorización en la selección de muestras. Estas ideas las veremos más adelante, pero otra vez nuestro punto de vista es que generalmente es mejor tomar el punto de vista de estimación de cantidades de interés.</p></li>
+<li><p>Existen también pruebas paramétricas que se refieren a modelos probabilísticos para los datos. Estas pruebas tienen utilidad pues podemos probar hipótesis que se refieren específicamente a parámetros de interés (por ejemplo, medias o cocientes de varianzas, etc.). Más adelante regresaremos a este tema, en la sección de inferencia basada en modelos probabilísticos. Esto nos da un enfoque mucho más amplio de problemas que podemos atacar, incluso cuando algunos supuestos de aleatoridad no se cumplen, por ejemplo</p></li>
+</ol>
+<section id="la-crisis-de-replicabilidad" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="la-crisis-de-replicabilidad">La “crisis de replicabilidad”</h2>
+<p>Recientemente (<span class="citation" data-cites="falsefindings">Ioannidis (<a href="#ref-falsefindings" role="doc-biblioref">2005</a>)</span>) se ha reconocido en campos de ciencias sociales y medicina la <em>crisis de replicabilidad</em>. Varios estudios que recibieron mucha publicidad inicialmente no han podido ser replicados posteriormente por otros investigadores. Por ejemplo:</p>
+<ul>
+<li>Hacer <a href="https://www.sciencedaily.com/releases/2017/09/170911095932.htm">poses poderosas</a> produce cambios fisiológicos que mejoran nuestro desempeño en ciertas tareas</li>
+<li>Mostrar palabras relacionadas con “viejo” hacen que las personas caminen más lento (efectos de <a href="https://www.nature.com/news/nobel-laureate-challenges-psychologists-to-clean-up-their-act-1.11535">priming</a>)</li>
+</ul>
+<p>En todos estos casos, el argumento de la evidencia de estos efectos fue respaldada por una prueba de hipótesis nula con un valor p menor a 0.05. La razón es que ese es el estándar de publicación seguido por varias áreas y revistas. La tasa de no replicabilidad parece ser mucho más alta (al menos la mitad o más según algunas fuentes, como la señalada arriba) que lo sugeriría la tasa de falsos positivos (menos de 5%)</p>
+<p>Este problema de replicabilidad parece ser más frecuente cuando:</p>
+<ol type="1">
+<li>Se trata de estudios de potencia baja: mediciones ruidosas y tamaños de muestra chicos.</li>
+<li>El plan de análisis no está claramente definido desde un principio (lo cual es difícil cuando se están investigando “fenómenos no estudiados antes”)</li>
+</ol>
+<p>¿A qué se atribuye esta crisis de replicabilidad?</p>
+</section>
+<section id="el-jardín-de-los-senderos-que-se-bifurcan" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="el-jardín-de-los-senderos-que-se-bifurcan">El jardín de los senderos que se bifurcan</h2>
+<p>Aunque haya algunos ejemplos de manipulaciones conscientes –e incluso, en menos casos, malintencionadas– para obtener resultados publicables o significativos (<a href="https://en.wikipedia.org/wiki/Data_dredging">p-hacking</a>), como vimos en ejemplos anteriores, hay varias decisiones, todas razonables, que podemos tomar cuando estamos buscando las comparaciones correctas. Algunas pueden ser:</p>
+<ul>
+<li>Transformar los datos (tomar o no logaritmos, u otra transformación)</li>
+<li>Editar datos atípicos (razonable si los equipos pueden fallar, o hay errores de captura, por ejemplo)</li>
+<li>Distintas maneras de interpretar los criterios de inclusión de un estudio (por ejemplo, algunos participantes mostraron tener gripa, o revelaron que durmieron muy poco la noche anterior, etc. ¿los dejamos o los quitamos?)</li>
+</ul>
+<p>Dado un conjunto de datos, las justificaciones de las decisiones que se toman en cada paso son razonables, pero con datos distintos las decisiones podrían ser diferentes. Este es el <strong>jardín de los senderos que se bifurcan</strong> <a href="http://www.stat.columbia.edu/~gelman/research/published/incrementalism_3.pdf">Gelman</a>, que <strong>invalida en parte el uso valores p como criterio de evidencia contra la hipótesis nula</strong>.</p>
+<p>Esto es exacerbado por:</p>
+<ul>
+<li>Tamaños de muestra chicos y efectos “inestables” que se quieren medir (por ejemplo en sicología)</li>
+<li>El hecho de que el criterio de publicación es obtener un valor p &lt; 0.05, y la presión fuerte sobre los investigadores para producir resultados publicables (p &lt; 0.05)</li>
+<li>El que estudios o resultados similares que no obtuvieron valores <span class="math inline">\(p\)</span> por debajo del umbral no son publicados o reportados.</li>
+</ul>
+<p>Ver por ejemplo el <a href="https://www.amstat.org/asa/files/pdfs/P-ValueStatement.pdf">comunicado de la ASA</a>.</p>
+<p><strong>Ojo</strong>: esas presiones de publicación no sólo ocurre para investigadores en sicología. Cuando trabajamos en problemas de análisis de datos en problemas que son de importancia, es común que existan intereses de algunas partes o personas involucradas por algunos resultados u otros (por ejemplo, nuestros clientes de consultoría o clientes internos). Eso puede dañar nuestro trabajo como analistas, y el avance de nuestro equipo. Aunque esas presiones son inevitables, se vuelven manejables cuando hay una relación de confianza entre las partes involucradas.</p>
+</section>
+<section id="ejemplo-decisiones-de-análisis-y-valores-p" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="ejemplo-decisiones-de-análisis-y-valores-p">Ejemplo: decisiones de análisis y valores p</h2>
+<p>En el ejemplo de datos de fusión, decidimos probar, por ejemplo, el promedio de los cuartiles inferior y superior, lo cual no es una decisión típica pero usamos como ilustración. Ahora intentamos usar distintas mediciones de la diferencia entre los grupos, usando distintas medidas resumen y transformaciones (por ejemplo, con o sin logaritmo). Aquí hay unas 12 combinaciones distintas para hacer el análisis (multiplicadas por criterios de “aceptación de datos en la muestra”, que simulamos tomando una submuestra al azar):</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>fusion <span class="ot">&lt;-</span> <span class="fu">read_table</span>(<span class="st">"./datos/fusion_time.txt"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+── Column specification ────────────────────────────────────────────────────────
+cols(
+  n = col_double(),
+  time = col_double(),
+  nv.vv = col_character()
+)</code></pre>
+</div>
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>calc_fusion <span class="ot">&lt;-</span> <span class="cf">function</span>(stat_fusion, trans, comparacion){</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  fun <span class="ot">&lt;-</span> <span class="cf">function</span>(datos){</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    datos <span class="sc">|&gt;</span> </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">group_by</span>(nv.vv) <span class="sc">|&gt;</span> </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">summarise</span>(<span class="at">est =</span> <span class="fu">stat_fusion</span>({{ trans }}(time))) <span class="sc">|&gt;</span> </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">spread</span>(nv.vv, est) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">dif =</span> {{ comparacion }}) <span class="sc">|&gt;</span> <span class="fu">pull</span>(dif)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  fun</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>valor_p <span class="ot">&lt;-</span> <span class="cf">function</span>(datos, variable, calc_diferencia, <span class="at">n =</span> <span class="dv">1000</span>){</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># calcular estadística para cada grupo</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  permutar <span class="ot">&lt;-</span> <span class="cf">function</span>(variable){</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sample</span>(variable, <span class="fu">length</span>(variable))</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  tbl_perms <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">.sample =</span> <span class="fu">seq</span>(<span class="dv">1</span>, n<span class="dv">-1</span>, <span class="dv">1</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">diferencia =</span> <span class="fu">map_dbl</span>(.sample, </span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>              <span class="sc">~</span> datos <span class="sc">|&gt;</span> <span class="fu">mutate</span>({{variable}} <span class="sc">:</span><span class="er">=</span> <span class="fu">permutar</span>({{variable}})) <span class="sc">|&gt;</span> <span class="fu">calc_diferencia</span>()))</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  perms <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(tbl_perms, <span class="fu">tibble</span>(<span class="at">.sample =</span> n, <span class="at">diferencia =</span> <span class="fu">calc_diferencia</span>(datos)))</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  perms_ecdf <span class="ot">&lt;-</span> <span class="fu">ecdf</span>(perms<span class="sc">$</span>diferencia)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  dif <span class="ot">&lt;-</span> <span class="fu">calc_diferencia</span>(datos)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span> <span class="sc">*</span> <span class="fu">min</span>(<span class="fu">perms_ecdf</span>(dif), <span class="dv">1</span><span class="sc">-</span> <span class="fu">perms_ecdf</span>(dif))</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">7272</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>media_cuartiles <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    (<span class="fu">quantile</span>(x, <span class="fl">0.75</span>) <span class="sc">+</span> <span class="fu">quantile</span>(x, <span class="fl">0.25</span>))<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># nota: usar n=10000 o más, esto solo es para demostración:</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>calc_dif <span class="ot">&lt;-</span> <span class="fu">calc_fusion</span>(mean, identity, VV <span class="sc">-</span> NV)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">valor_p</span>(fusion <span class="sc">|&gt;</span> <span class="fu">sample_frac</span>(<span class="fl">0.95</span>), nv.vv, calc_dif, <span class="at">n =</span> <span class="dv">1000</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.072</code></pre>
+</div>
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>calc_dif <span class="ot">&lt;-</span> <span class="fu">calc_fusion</span>(mean, log, VV <span class="sc">-</span> NV)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">valor_p</span>(fusion <span class="sc">|&gt;</span> <span class="fu">sample_frac</span>(<span class="fl">0.95</span>), nv.vv, calc_dif, <span class="at">n =</span> <span class="dv">1000</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.024</code></pre>
+</div>
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>calc_dif <span class="ot">&lt;-</span> <span class="fu">calc_fusion</span>(median, identity, VV <span class="sc">/</span> NV)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">valor_p</span>(fusion <span class="sc">|&gt;</span> <span class="fu">sample_frac</span>(<span class="fl">0.95</span>), nv.vv, calc_dif, <span class="at">n =</span> <span class="dv">1000</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.016</code></pre>
+</div>
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>calc_dif <span class="ot">&lt;-</span> <span class="fu">calc_fusion</span>(media_cuartiles, identity, VV <span class="sc">/</span> NV)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">valor_p</span>(fusion <span class="sc">|&gt;</span> <span class="fu">sample_frac</span>(<span class="fl">0.95</span>), nv.vv, calc_dif, <span class="at">n =</span> <span class="dv">1000</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.026</code></pre>
+</div>
+</div>
+<p>Si existen grados de libertad - muchas veces necesarios para hacer un análisis exitoso-, entonces los valores p pueden tener poco significado.</p>
+</section>
+<section id="alternativas-o-soluciones" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="alternativas-o-soluciones">Alternativas o soluciones</h2>
+<p>El primer punto importante es reconocer que la mayor parte de nuestro trabajo es <strong>exploratorio</strong> (recordemos el proceso complicado del análisis de datos de refinamiento de preguntas). En este tipo de trabajo, reportar valores p puede tener poco sentido, y mucho menos tiene sentido aceptar algo “verdadero” cuando pasa un umbral de significancia dado.</p>
+<p>Nuestro interés principal al hacer análisis es expresar correctamente y de manera útil la incertidumbre asociada a las conclusiones o patrones que mostramos (asociada a variación muestral, por ejemplo) para que el proceso de toma de decisiones sea informado. <strong>Un</strong> resumen de <strong>un número</strong> (valor p, o el que sea) no puede ser tomado como criterio para tomar una decisión que generalmente es compleja. En la siguiente sección veremos cómo podemos mostrar parte de esa incertidumbre de manera más útil.</p>
+<p>Por otra parte, los estudios confirmatorios (donde se reportan valores p) también tienen un lugar. En áreas como la sicología, existen ahora movimientos fuertes en favor de la repetición de estudios prometedores pero donde hay sospecha de grados de libertad del investigador. Este movimiento sugiere dar valor a los <strong>estudios exploratorios</strong> que no reportan valor p, y posteriormente, si el estudio es de interés, puede intentarse una <strong>replicación confirmatoria, con potencia más alta y con planes de análisis predefinidos</strong>.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-falsefindings" class="csl-entry" role="doc-biblioentry">
+Ioannidis, John PA. 2005. <span>«Why most published research findings are false»</span>. <em>PLoS medicine</em> 2 (8): e124.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiada");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./03-pruebas-hipotesis-2.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Diseño de experimentos e inferencia</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
