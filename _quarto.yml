@@ -20,8 +20,8 @@ book:
       chapters:
         - 03-intro-pruebas-hipotesis.qmd
         - 03-pruebas-hipotesis-aleatorizacion.qmd
-#        - 03-pruebas-hipotesis-2.qmd
-#        - 03-pruebas-hipotesis-3.qmd
+        - 03-pruebas-hipotesis-2.qmd
+        - 03-pruebas-hipotesis-3.qmd
 #    - part: 04-estimacion.qmd
 #      chapters:
 #        - 04-estimacion-aleatorizacion.qmd

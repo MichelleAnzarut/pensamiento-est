@@ -195,6 +195,9 @@ favorece al fertilizante.
 correctamente la probabilidad de obtener un resultado tan grande o mayor del que
 observamos si la hipótesis nula es cierta.
 
+- Finalmente, nótese también que hicimos un supuesto adicional, que es que la asignación de tratamientos no influye en los dos resultados (observado y contrafactual). Por ejemplo, que haya asignado el tratamiento A o B a una unidad 
+no afecta el resultado de otra unidad. Comunicación o asociación social entre personas puede romper este supuesto.
+
 ## Pruebas de hipótesis visuales
 
 Otra idea es hacer una prueba visual (ver por ejemplo (este artículo)[https://vita.had.co.nz/papers/inference-infovis.pdf]. Primero graficamos varias replicaciones
@@ -293,7 +296,7 @@ de prueba (ver nota al final de estos ejemplos) como medias o medianas.
 
 En el siguiente ejemplo (@cleveland93), investigadores se preguntaron si es posible que
 las personas reconozcan más fácilmente la imagen escondida en un 
-(estereograma)[https://en.wikipedia.org/wiki/Autostereogram] si se les da información verbal acerca de la imagen que tienen que encontrar.
+[estereograma](https://en.wikipedia.org/wiki/Autostereogram) si se les da información verbal acerca de la imagen que tienen que encontrar.
 
 La medición que consideraron el el *tiempo de fusión* en segundo, es decir,
 cuánto tarda la persona en ver la imagen 3D escondida. Naturalmente, existe mucha

@@ -22,7 +22,7 @@ esos grupos
 
 ## Ejemplo: zapatos de niños
 
-En el siguiente ejemplo de (@box78), nos interesa probar un material
+En el siguiente ejemplo clásico de (@box78), nos interesa probar un material
 nuevo para suela de zapatos (el material B) y ver si es comparable con 
 el material que se usa normalmente (el material A). 
 
