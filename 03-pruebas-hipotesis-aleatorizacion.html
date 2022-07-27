@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Pensamiento estadístico - 4&nbsp; Aleatorización en inferencia causal</title>
+<title>Pensamiento estadístico - 7&nbsp; Aleatorización en inferencia causal</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -150,7 +150,7 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Aleatorización en inferencia causal</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Aleatorización en inferencia causal</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -179,7 +179,29 @@ div.csl-indent {
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">Estadística y ciencia de datos</span>
+      <div class="sidebar-item-container"> 
+            <a href="./01-intro-est-cd-1.html" class="sidebar-item-text sidebar-link">Estadística y ciencia de datos</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-est-cd-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preguntas y datos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-diagramas-est-cd-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Diagramas causales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-proceso-est-cd-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Procesos generadores de datos</span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -191,12 +213,12 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-resumenes-analisis-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Resúmenes para datos numéricos</span></a>
+  <a href="./02-resumenes-analisis-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Resúmenes para datos numéricos</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-resumenes-analisis-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Datos univariados categóricos</span></a>
+  <a href="./02-resumenes-analisis-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datos univariados categóricos</span></a>
   </div>
 </li>
       </ul>
@@ -211,12 +233,12 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-intro-pruebas-hipotesis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introducción a pruebas de hipótesis</span></a>
+  <a href="./03-intro-pruebas-hipotesis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introducción a pruebas de hipótesis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-pruebas-hipotesis-aleatorizacion.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Aleatorización en inferencia causal</span></a>
+  <a href="./03-pruebas-hipotesis-aleatorizacion.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Aleatorización en inferencia causal</span></a>
   </div>
 </li>
       </ul>
@@ -230,8 +252,8 @@ div.csl-indent {
     <h2 id="toc-title">Indice de contenidos</h2>
    
   <ul>
-  <li><a href="#pruebas-de-hipótesis-visuales" id="toc-pruebas-de-hipótesis-visuales" class="nav-link active" data-scroll-target="#pruebas-de-hipótesis-visuales"> <span class="header-section-number">4.1</span> Pruebas de hipótesis visuales</a></li>
-  <li><a href="#ejemplo-poca-evidencia-en-contra-de-la-nula" id="toc-ejemplo-poca-evidencia-en-contra-de-la-nula" class="nav-link" data-scroll-target="#ejemplo-poca-evidencia-en-contra-de-la-nula"> <span class="header-section-number">4.2</span> Ejemplo: poca evidencia en contra de la nula</a></li>
+  <li><a href="#pruebas-de-hipótesis-visuales" id="toc-pruebas-de-hipótesis-visuales" class="nav-link active" data-scroll-target="#pruebas-de-hipótesis-visuales"> <span class="header-section-number">7.1</span> Pruebas de hipótesis visuales</a></li>
+  <li><a href="#ejemplo-poca-evidencia-en-contra-de-la-nula" id="toc-ejemplo-poca-evidencia-en-contra-de-la-nula" class="nav-link" data-scroll-target="#ejemplo-poca-evidencia-en-contra-de-la-nula"> <span class="header-section-number">7.2</span> Ejemplo: poca evidencia en contra de la nula</a></li>
   <li><a href="#ejemplo-tiempos-de-fusión" id="toc-ejemplo-tiempos-de-fusión" class="nav-link" data-scroll-target="#ejemplo-tiempos-de-fusión">Ejemplo: tiempos de fusión</a>
   <ul class="collapse">
   <li><a href="#valor-p" id="toc-valor-p" class="nav-link" data-scroll-target="#valor-p">Valor p</a></li>
@@ -245,7 +267,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Aleatorización en inferencia causal</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Aleatorización en inferencia causal</span></h1>
 </div>
 
 
@@ -870,8 +892,8 @@ Aleatorización al rescate
 <li><p>Este argumento no funciona si el jardinero intentó “optimizar” la aplicación del fertilizante. En ese caso, quizá activamente buscó una configuración que favorece al fertilizante.</p></li>
 <li><p>Esta prueba es exacta, en el sentido de que el valor-p que calculamos refleja correctamente la probabilidad de obtener un resultado tan grande o mayor del que observamos si la hipótesis nula es cierta.</p></li>
 </ul>
-<section id="pruebas-de-hipótesis-visuales" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="pruebas-de-hipótesis-visuales"><span class="header-section-number">4.1</span> Pruebas de hipótesis visuales</h2>
+<section id="pruebas-de-hipótesis-visuales" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="pruebas-de-hipótesis-visuales"><span class="header-section-number">7.1</span> Pruebas de hipótesis visuales</h2>
 <p>Otra idea es hacer una prueba visual (ver por ejemplo (este artículo)[https://vita.had.co.nz/papers/inference-infovis.pdf]. Primero graficamos varias replicaciones de datos nulos, es decir, datos en donde hemos permutado al azar la columna de tratamiento. Entrenamos nuestra percepción a variaciones consistentes con la hipótesis nula:</p>
 <div class="cell">
 <details>
@@ -900,7 +922,7 @@ Aleatorización al rescate
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>decrypt("ghC3 ZLoL EI 2fNEoEfI 41")</code></pre>
+<pre><code>decrypt("ztYe Cufu ns JFUnfnFs lR")</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -919,8 +941,8 @@ Aleatorización al rescate
 <li>Esta prueba es exacta: la probabilidad de identificar los datos correctamente cuando el fertilizante no tiene efecto es menor o igual a 0.05 (valor <span class="math inline">\(p\)</span>). Esta es la probabilidad de equivocadamente declarar que tenemos evidencia de que la hipótesis nula no se cumple.</li>
 </ul>
 </section>
-<section id="ejemplo-poca-evidencia-en-contra-de-la-nula" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="ejemplo-poca-evidencia-en-contra-de-la-nula"><span class="header-section-number">4.2</span> Ejemplo: poca evidencia en contra de la nula</h2>
+<section id="ejemplo-poca-evidencia-en-contra-de-la-nula" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="ejemplo-poca-evidencia-en-contra-de-la-nula"><span class="header-section-number">7.2</span> Ejemplo: poca evidencia en contra de la nula</h2>
 <p>Como segundo ejemplo, imaginemos que hubiéramos obtenido los siguientes datos:</p>
 <div class="cell">
 <details>
@@ -1317,7 +1339,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./03-intro-pruebas-hipotesis.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introducción a pruebas de hipótesis</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introducción a pruebas de hipótesis</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

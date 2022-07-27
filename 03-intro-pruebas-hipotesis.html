@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Pensamiento estadístico - 3&nbsp; Introducción a pruebas de hipótesis</title>
+<title>Pensamiento estadístico - 6&nbsp; Introducción a pruebas de hipótesis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -150,7 +150,7 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introducción a pruebas de hipótesis</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introducción a pruebas de hipótesis</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -179,7 +179,29 @@ div.csl-indent {
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">Estadística y ciencia de datos</span>
+      <div class="sidebar-item-container"> 
+            <a href="./01-intro-est-cd-1.html" class="sidebar-item-text sidebar-link">Estadística y ciencia de datos</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-est-cd-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preguntas y datos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-diagramas-est-cd-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Diagramas causales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-proceso-est-cd-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Procesos generadores de datos</span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -191,12 +213,12 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-resumenes-analisis-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Resúmenes para datos numéricos</span></a>
+  <a href="./02-resumenes-analisis-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Resúmenes para datos numéricos</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-resumenes-analisis-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Datos univariados categóricos</span></a>
+  <a href="./02-resumenes-analisis-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datos univariados categóricos</span></a>
   </div>
 </li>
       </ul>
@@ -211,12 +233,12 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-intro-pruebas-hipotesis.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introducción a pruebas de hipótesis</span></a>
+  <a href="./03-intro-pruebas-hipotesis.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introducción a pruebas de hipótesis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-pruebas-hipotesis-aleatorizacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Aleatorización en inferencia causal</span></a>
+  <a href="./03-pruebas-hipotesis-aleatorizacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Aleatorización en inferencia causal</span></a>
   </div>
 </li>
       </ul>
@@ -230,12 +252,12 @@ div.csl-indent {
     <h2 id="toc-title">Indice de contenidos</h2>
    
   <ul>
-  <li><a href="#variabilidad-y-patrones" id="toc-variabilidad-y-patrones" class="nav-link active" data-scroll-target="#variabilidad-y-patrones"> <span class="header-section-number">3.1</span> Variabilidad y patrones</a></li>
-  <li><a href="#comparación-con-poblaciones-de-referencia" id="toc-comparación-con-poblaciones-de-referencia" class="nav-link" data-scroll-target="#comparación-con-poblaciones-de-referencia"> <span class="header-section-number">3.2</span> Comparación con poblaciones de referencia</a>
+  <li><a href="#variabilidad-y-patrones" id="toc-variabilidad-y-patrones" class="nav-link active" data-scroll-target="#variabilidad-y-patrones"> <span class="header-section-number">6.1</span> Variabilidad y patrones</a></li>
+  <li><a href="#comparación-con-poblaciones-de-referencia" id="toc-comparación-con-poblaciones-de-referencia" class="nav-link" data-scroll-target="#comparación-con-poblaciones-de-referencia"> <span class="header-section-number">6.2</span> Comparación con poblaciones de referencia</a>
   <ul class="collapse">
   <li><a href="#ejemplo" id="toc-ejemplo" class="nav-link" data-scroll-target="#ejemplo">Ejemplo</a></li>
   </ul></li>
-  <li><a href="#cuantificando-la-distribución-de-referencia" id="toc-cuantificando-la-distribución-de-referencia" class="nav-link" data-scroll-target="#cuantificando-la-distribución-de-referencia"> <span class="header-section-number">3.3</span> Cuantificando la distribución de referencia</a></li>
+  <li><a href="#cuantificando-la-distribución-de-referencia" id="toc-cuantificando-la-distribución-de-referencia" class="nav-link" data-scroll-target="#cuantificando-la-distribución-de-referencia"> <span class="header-section-number">6.3</span> Cuantificando la distribución de referencia</a></li>
   </ul>
 </nav>
     </div>
@@ -244,7 +266,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introducción a pruebas de hipótesis</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introducción a pruebas de hipótesis</span></h1>
 </div>
 
 
@@ -258,8 +280,8 @@ div.csl-indent {
 
 </header>
 
-<section id="variabilidad-y-patrones" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="variabilidad-y-patrones"><span class="header-section-number">3.1</span> Variabilidad y patrones</h2>
+<section id="variabilidad-y-patrones" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="variabilidad-y-patrones"><span class="header-section-number">6.1</span> Variabilidad y patrones</h2>
 <div class="cell">
 
 </div>
@@ -273,8 +295,8 @@ div.csl-indent {
 <li>Observamos la última salida de nuestro sistema. Naturalmente, tiene fluctuaciones. ¿Esas fluctuaciones son consistentes con la operación usual del sistema? ¿Existe evidencia para pensar que algo en el sistema cambió?</li>
 </ul>
 </section>
-<section id="comparación-con-poblaciones-de-referencia" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="comparación-con-poblaciones-de-referencia"><span class="header-section-number">3.2</span> Comparación con poblaciones de referencia</h2>
+<section id="comparación-con-poblaciones-de-referencia" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="comparación-con-poblaciones-de-referencia"><span class="header-section-number">6.2</span> Comparación con poblaciones de referencia</h2>
 <p>En las prueba de hipótesis, tratamos de construir distribuciones de referencia para comparar resultados que obtengamos con un “estándar” de variación, y juzgar si nuestros resultados son consistentes con la referencia o no (<span class="citation" data-cites="box78">Box et&nbsp;al. (<a href="#ref-box78" role="doc-biblioref">1978</a>)</span>).</p>
 <p>En algunos casos, ese estándar de variación puede construirse con datos históricos.</p>
 <section id="ejemplo" class="level3 unnumbered">
@@ -362,8 +384,8 @@ Nota
 </div>
 </section>
 </section>
-<section id="cuantificando-la-distribución-de-referencia" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="cuantificando-la-distribución-de-referencia"><span class="header-section-number">3.3</span> Cuantificando la distribución de referencia</h2>
+<section id="cuantificando-la-distribución-de-referencia" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="cuantificando-la-distribución-de-referencia"><span class="header-section-number">6.3</span> Cuantificando la distribución de referencia</h2>
 <p>En el ejemplo anterior estamos intentando dectectar cualquier desviación del comportamiento normal del sistema de una manera rigurosa. Podemos hacerlo más cuantitativo creando estadísticas resumen de las series. Por ejemplo, podríamos utilizar la variabilidad que tienen las series alrededor de su nivel general.</p>
 <div class="cell">
 <details>
@@ -570,7 +592,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./03-pruebas-hipotesis-aleatorizacion.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Aleatorización en inferencia causal</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Aleatorización en inferencia causal</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
