@@ -174,7 +174,7 @@ con una estadística tan alta (o uno más grande)
 **bajo la hipótesis de que el fertilizante no tiene efecto** es
 
 ```{r}
-2 * mean(perms_dist$D >= resumen$D)
+mean(perms_dist$D >= resumen$D)
 ```
 - Es poco probable entonces que este resultado tan alto haya ocurrido al azar en el 
 momento de escoger tratamientos.
