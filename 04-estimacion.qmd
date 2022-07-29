@@ -1,2 +1,12 @@
 # Inferencia estadística: estimación
 
+En esta sección veremos cómo estimar cantidades poblacionales
+por medio de estimadores basados en muestras de esas poblaciones. 
+Aquí no hay una hipótesis nula, pero igual que en el caso de inferencia causal: 
+
+- Veremos que la aleatorización en la selección de la muestra nos permite simplificar el proceso de inferencia. 
+- Explotaremos la aleatorización para dar una distribución de posibles valores que donde puede estar el valor poblacional (nos informa de sus posibles valores)
+- Como estamos utilizando muestras, otra vez tendremos que dar nuestras respuestas con grados de incertidumbre.
+
+Este proceso también podemos aplicarlo en inferencia causal (suponiendo también aleatorización del tratamiento), para dar estimaciones de los *tamaños del efecto* de los tratamientos.
+
