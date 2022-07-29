@@ -70,8 +70,9 @@ se están investigando "fenómenos no estudiados antes")
 
 Aunque haya algunos ejemplos de manipulaciones conscientes --e incluso, en menos casos,
 malintencionadas-- para obtener resultados publicables o significativos
-([p-hacking](https://en.wikipedia.org/wiki/Data_dredging)), 
- como vimos en ejemplos anteriores, hay varias decisiones, todas razonables, que podemos tomar cuando 
+([p-hacking](https://en.wikipedia.org/wiki/Data_dredging)),
+también ocurre los experimentos no son perfectos en su
+aleatorizació y ejecución, y que hay varias decisiones posibles, muchas de ellas razonables, que podemos tomar cuando 
 estamos buscando las comparaciones correctas. Algunas pueden ser:
 
 - Transformar los datos (tomar o no logaritmos, u otra transformación)
@@ -95,7 +96,8 @@ publicados o reportados.
 
 Ver por ejemplo el [comunicado de la ASA](https://www.amstat.org/asa/files/pdfs/P-ValueStatement.pdf).
 
-**Ojo**: esas presiones de publicación no sólo ocurre para investigadores en sicología. Cuando
+**Ojo**: esas presiones de publicación no sólo ocurre para investigadores en las áreas mencionadas arriba, sino que
+son más generales. Cuando
 trabajamos en problemas de análisis de datos en problemas que son de importancia, es común que
 existan intereses de algunas partes o personas involucradas por algunos resultados u otros (por
 ejemplo, nuestros clientes de consultoría o clientes internos). Eso puede dañar nuestro trabajo
