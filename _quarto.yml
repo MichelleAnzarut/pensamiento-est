@@ -22,9 +22,9 @@ book:
         - 03-pruebas-hipotesis-aleatorizacion.qmd
         - 03-pruebas-hipotesis-2.qmd
         - 03-pruebas-hipotesis-3.qmd
-#    - part: 04-estimacion.qmd
-#      chapters:
-#        - 04-estimacion-aleatorizacion.qmd
+    - part: 04-estimacion.qmd
+      chapters:
+        - 04-estimacion-aleatorizacion.qmd
 #        - 04-estimacion-remuestreo.qmd
 #    - part: 05-probabilidad.qmd
 #      chapters:

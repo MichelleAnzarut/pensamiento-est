@@ -34,8 +34,8 @@ tiene la propiedad de que separa a los datos en dos grupos de tamaño igual.
 
 :::callout-tip
 
-Estimar en este caso significa dar un rango donde es creíble que
-está el valor poblacional. No tiene sentido dar un sólo valor pues no conocemos
+Estimar en este caso significa dar un *rango* donde es creíble que
+está el *valor poblacional*. No tiene sentido dar un sólo valor pues no conocemos
 la población total, así que tendremos incertidumbre de dónde está la mediana verdadera
 
 ::: 
@@ -64,12 +64,12 @@ la misma probabildad de ser seleccionado, por ejemplo seleccionando un número
 de una bolsa que corresponde a cada elemento de la población
 2. Repetimos 1, considerando que es posible sacar al mismo elemento más de una vez.
 
-A este proceso le llamamos *muestreo aleatorio simple con reemplazo*. Más adelante
-veremos cómo generalizar a procesos aleatorios diferentes.
+A este proceso le llamamos *muestreo aleatorio simple con reemplazo*, que cuando la población es grande y la muestra relativamente chica, prácticamente es igual que hacer el muestreo sin reemplazo. Más adelante
+discutiremos cómo generalizar a procesos aleatorios diferentes.
 
 Con esta idea básica, 
-podríamos por ejemplo calcular: ¿cuál es la probabilidad, de que
-la mediana esté entre los valores  el mínimo y el
+podríamos por ejemplo calcular: ¿cuál es la probabilidad de que
+la mediana esté entre   el mínimo y el
 máximo de la muestra?
  
 Denotemos por $y_1,y_2,\ldots, y_n$ la muestra observada. Denotaremos a la
@@ -79,7 +79,7 @@ $$y_{(1)}, y_{(2)}, \ldots, y_{(n)}$$
 Nuestra primera pregunta entonces es:
 
 - ¿Cuál es la probabilidad de el valor de la mediana verdadera esté en el
-intervalo $[y_{(1)}, y_{(n)}]$
+intervalo $[y_{(1)}, y_{(20)}]$?
 
 *Respuesta*: La probabilidad de que la mediana esté por debajo del mínimo
 $y_{(1)}$
@@ -172,11 +172,11 @@ ningún supuesto, excepto en que la muestra se escoge al azar.
 Podemos pensar en este procedimiento de una manera diferente, sin tener
 que hacer los cálculos de probabilidades para las estadísticas de orden. 
 
-Supongamos que escogemos la muestra de casas al azar de manera independiente.
+Supongamos que escogemos la muestra de casas al azar de manera independiente. 
 Nuestra pregunta es:
 
 **Dada la información de la muestra, qué podemos decir de los valores 
-que **no*** observamos?**
+que no observamos?**, y finalmente, ¿qué información nos da sobre la mediana poblacional?
 
 Nótese en primer lugar, igual que antes,
 que no podemos decir algo definitivo acerca de la
@@ -204,9 +204,9 @@ posibles valores que podría tomar la mediana dada la información que tenemos
 de la muestra.
 
 Veamos un ejemplo chico ilustrado para entender la idea. Supongamos que
-tenemos una población de tamaño 20, y que tomamos una muestra de 8 elementos al azar. Los valores obtenidos, ordenados, son 12, 15, 16, 17, 18, 20, 23, 30, 32. Tenemos entonces 5 intervalos que considerar
+tenemos una población de tamaño 20, y que tomamos una muestra de 8 elementos al azar. Los valores obtenidos, ordenados, son 12, 15, 16, 17, 18, 20, 23, 30, 32. Tenemos entonces 9 intervalos que considerar.
 
-Haciendo el paso 1, por ejemplo, que la población ordenada de chica a grande es:
+Hacemos ahora el paso el paso 1, y la población imputada ordenada de chica a grande es:
 
 ```{r}
 set.seed(72112)
@@ -222,7 +222,7 @@ graficar_pob <- function(muestra, n_pob){
 }
 graficar_pob(muestra, 20) |> paste(collapse = " ")
 ```
-En este caso, la mediana debería estar entre 20 y 30. Hagamos otra repetición:
+En este caso, contando casos encontramos que la mediana debería estar entre 20 y 30. Hagamos otra repetición:
 
 ```{r}
 graficar_pob(muestra, 20) |> paste(collapse = " ")
@@ -269,7 +269,7 @@ quantile(remuestreo_med$mediana, c(0.1, 0.9))
 
 ## Ejemplo: precios de casas
 
-Este proceso se llama remuestreo, y lo hacemos a continuación para nuestro ejemplo
+Este proceso se llama remuestreo, y consiste en que una vez que tenemos un estimador para una cantidad poblacional, podemos remuestrar la muestra original, calcular nuestro estimador en cada caso, y así obtener una distribución de posibles valores que puede tener la mediana poblacional. Lo hacemos a continuación para nuestro ejemplo
 de la mediana de los precios de casas:
 
 ```{r}
