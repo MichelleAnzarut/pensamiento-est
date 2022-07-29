@@ -282,7 +282,7 @@ ggplot(perms_dist, aes(sample = D)) +
 ```
 
 ```{r}
-2 * mean(perms_dist$D >= resumen$D)
+mean(perms_dist$D >= resumen$D)
 ```
 Este valor $p$ es alto, y no es muy difícil que, *bajo la hipótesis de que el tratamiento
 no tiene efecto*, por azar el jardinero haya escogido una asignación con
