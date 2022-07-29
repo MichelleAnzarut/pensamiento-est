@@ -102,9 +102,19 @@ dif_obs <- diferencias_tbl$dif |> mean()
 dif_obs
 ```
 
-Ahora podemos hacer una prueba de permutaciones. El proceso de permutación
-bajo la nula debe respetar el diseño que elegimos, así que en este caso debemos
-considerar permutar, para cada niño, los dos zapatos.
+Ahora podemos hacer una prueba de permutaciones. 
+
+:::callout-note
+# Diseño y pruebas de permutaciones
+El proceso de permutación
+bajo la nula en los datos debe seguir el diseño 
+de aleatorización que escogimos
+:::
+
+Así que en este caso, debemos
+considerar considerar las permutaciones 
+de los resultados de los dos zapatos, para cada niño (es decir,
+en cada niño consideramos las permutaciones ba o ab, y escogemos una de las dos para cada niño).
 
 ```{r}
 #! code-fold: false
