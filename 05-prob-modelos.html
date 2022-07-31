@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Pensamiento estadístico - 12&nbsp; Básicos de probabilidad y simulación</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./05-prob-condicional.html" rel="next">
+<link href="./05-probabilidad.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Sín resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la busqueda",
+    "search-hide-matches-text": "Esconder resultados adicionales",
+    "search-more-match-text": "hay más resultados en este documento",
+    "search-more-matches-text": "más resultados en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Eviar"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Básicos de probabilidad y simulación</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Pensamiento estadístico</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Acerca del curso</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./01-intro-est-cd-1.html" class="sidebar-item-text sidebar-link">Estadística y ciencia de datos</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-est-cd-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preguntas y datos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-diagramas-est-cd-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Diagramas causales</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-proceso-est-cd-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Procesos generadores de datos</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./02-resumenes.html" class="sidebar-item-text sidebar-link">Resúmenes y descripciones de datos</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-resumenes-analisis-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Resúmenes para datos numéricos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-resumenes-analisis-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datos univariados categóricos</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./03-intro-inferencia.html" class="sidebar-item-text sidebar-link">Inferencia estadística: pruebas de hipótesis</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-intro-pruebas-hipotesis.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introducción a pruebas de hipótesis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-pruebas-hipotesis-aleatorizacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Aleatorización en inferencia causal</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-pruebas-hipotesis-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Diseño de experimentos e inferencia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-pruebas-hipotesis-3.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Más acerca de pruebas de hipótesis</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./04-estimacion.html" class="sidebar-item-text sidebar-link">Inferencia estadística: estimación</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-estimacion-aleatorizacion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Inferencia por intervalos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-estimacion-remuestreo.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Remuestreo: el bootstrap</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./05-probabilidad.html" class="sidebar-item-text sidebar-link">Introducción a modelos probabilísticos</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-prob-modelos.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Básicos de probabilidad y simulación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-prob-condicional.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Probabilidad condicional e independencia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-maxima-verosimilitud-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Estimación por máxima verosimilitud</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-prob-modelos-continuos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Modelos probabilísticos para variables continuas</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Indice de contenidos</h2>
+   
+  <ul>
+  <li><a href="#definición-de-probabilidad" id="toc-definición-de-probabilidad" class="nav-link active" data-scroll-target="#definición-de-probabilidad"> <span class="header-section-number">12.1</span> Definición de probabilidad</a></li>
+  <li><a href="#probabilidad-y-frecuencias-relativas" id="toc-probabilidad-y-frecuencias-relativas" class="nav-link" data-scroll-target="#probabilidad-y-frecuencias-relativas"> <span class="header-section-number">12.2</span> Probabilidad y frecuencias relativas</a></li>
+  <li><a href="#ejemplo-simulación-de-un-dado" id="toc-ejemplo-simulación-de-un-dado" class="nav-link" data-scroll-target="#ejemplo-simulación-de-un-dado">Ejemplo: simulación de un dado</a></li>
+  <li><a href="#datos-y-modelos-de-probabilidad" id="toc-datos-y-modelos-de-probabilidad" class="nav-link" data-scroll-target="#datos-y-modelos-de-probabilidad"> <span class="header-section-number">12.3</span> Datos y modelos de probabilidad</a></li>
+  <li><a href="#simulación-y-modelos" id="toc-simulación-y-modelos" class="nav-link" data-scroll-target="#simulación-y-modelos"> <span class="header-section-number">12.4</span> Simulación y modelos</a>
+  <ul class="collapse">
+  <li><a href="#ejemplo-simulando-dos-dados" id="toc-ejemplo-simulando-dos-dados" class="nav-link" data-scroll-target="#ejemplo-simulando-dos-dados">Ejemplo: simulando dos dados</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Básicos de probabilidad y simulación</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p>En esta parte comenzaremos a tratar el concepto de <em>probabilidad</em> de ocurrencia de eventos acerca de los que tenemos incertidumbre. Veremos que:</p>
+<ul>
+<li>Hay distintas maneras de interpretar <em>probabilidad</em> e <em>incertidumbre</em>, y hay distintas maneras de usar información probabilística para tomar decisiones.</li>
+<li>Sin embargo, existe una teoría matemática que formaliza cómo debe operarse con probabilidades, independientemente de la interpretación.</li>
+<li>Podemos utilizar esta teoría matemática para construir <em>modelos</em> compactos o parsimoniosos que explican observaciones de datos reales que no son determinísticos.</li>
+<li>Cuando estos <em>parámetros</em> tienen una interpretación adecuada en nuestro problema, estos parámetros pueden ser el sujeto de nuestra inferencia.</li>
+</ul>
+<section id="definición-de-probabilidad" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="definición-de-probabilidad"><span class="header-section-number">12.1</span> Definición de probabilidad</h2>
+<p>Una medida de probabilidad <span class="math inline">\(P\)</span> es una función que asigna un número entre 0 y 1 a un evento <span class="math inline">\(E\)</span> que puede o no ocurrir, y que satisface los siguientes axiomas:</p>
+<ul>
+<li>(Evento seguro) <span class="math inline">\(P(\Omega) = 1\)</span>, donde <span class="math inline">\(\Omega\)</span> es el evento que ocurre con certeza</li>
+<li>(Aditividad) Si <span class="math inline">\(E\)</span> y <span class="math inline">\(F\)</span> son eventos tales que no pueden ocurrir simultáneamente, entonces el evento <span class="math inline">\(E\cup F\)</span> que denota “al menos uno de los eventos <span class="math inline">\(E\)</span> o <span class="math inline">\(F\)</span> ocurre” satisface</li>
+</ul>
+<p><span class="math display">\[P(E\cup F) =  P(E) + P(F)\]</span></p>
+<p><strong>Nota</strong>: técnicamente, la aditividad debe cumplirse para cualquier colección numerable de eventos disjuntos.</p>
+<p>Es decir, la probabilidad asigna números entre 0 y uno a eventos, de forma aditiva y tal que el evento seguro tiene probabilidad 1.</p>
+</section>
+<section id="probabilidad-y-frecuencias-relativas" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="probabilidad-y-frecuencias-relativas"><span class="header-section-number">12.2</span> Probabilidad y frecuencias relativas</h2>
+<p>Aunque la probabilidad puede interpretarse como grados de creencia en la ocurrencia de un evento, es necesario que exista una conexión entre modelos de probabilidad y la ocurrencia de los eventos reales que nos interesa modelar. Esta conexión está dada como sigue:</p>
+<p>Si tenemos un experimento aleatorio (por ejemplo, tirar un dado), y lo repetimos muchas veces de manera independiente, entonces las frecuencias relativas de ocurrencia de los eventos aproxima a las probabilidades teóricas.</p>
+<p>Por ejemplo, si tiramos muchos volados con una moneda bien balanceada, al evento <span class="math inline">\(E\)</span> = “tiramos sol” le asignamos <span class="math inline">\(P(E)=1/2\)</span> según nuestro modelo. Entonces esperamos obtener alrededor de 1/2 de soles y 1/2 de águilas si tiramos una sucesión grande de volados.</p>
+<div class="cell" type="comentario">
+
+<div class="comentario">
+<p><strong>Probabilidades y frecuencias</strong></p>
+<p>Supongamos que repetimos una gran cantidad <span class="math inline">\(n\)</span> de veces un experimento, y que registramos <span class="math inline">\(k_n\)</span> = cuántas veces ocurre un evento <span class="math inline">\(A\)</span>. La probabilidad de que ocurra <span class="math inline">\(A\)</span> es</p>
+<p><span class="math display">\[\lim_{n\to\infty} \frac{k_n}{n} \to P(A), \]</span></p>
+es decir, <span class="math inline">\(P(A)\)</span> el la frecuencia al largo plazo de ocurrencia de <span class="math inline">\(A\)</span>.
+</div>
+</div>
+<p>Aunque podríamos hacer algunos experimentos físicos más reales, para este curso podemos hacer simulaciones de computadora del experimento que nos interesa.</p>
+</section>
+<section id="ejemplo-simulación-de-un-dado" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="ejemplo-simulación-de-un-dado">Ejemplo: simulación de un dado</h2>
+<p>Consideremos modelar la tirada de un dado de 6 lados. En este caso, los eventos de interés son valores que puede tomar la tirada, por ejemplo, “Tirar un 6”, “tirar un número impar”, etc. Si en nuestro modelo consideramos que todos los lados tienen la misma probabilidad, podemos entonces definir</p>
+<p><span class="math display">\[P(E_i) = 1/6,\]</span></p>
+<p>para cada lado <span class="math inline">\(i=1,2,3,4,5,6\)</span>. A partir de estos valores podemos calcular la probabilidad de cualquier evento, por ejemplo, <span class="math inline">\(P(\textrm{tirar impar}) = =1/6 + 1/6 + 1/6 = 1/2\)</span>.</p>
+<p>Podemos simular una tirada de dado como:</p>
+<div class="cell">
+<details open="">
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>simular_dado <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">caras =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>){</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">sample</span>(caras, <span class="dv">1</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">simular_dado</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+</div>
+<p>Ahora simulamos una gran cantidad de tiradas de dado:</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">199652</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>sims_dado <span class="ot">&lt;-</span> <span class="fu">map_df</span>(<span class="dv">1</span><span class="sc">:</span>n, <span class="sc">~</span> <span class="fu">c</span>(<span class="at">n_sim =</span> .x, <span class="at">resultado =</span> <span class="fu">simular_dado</span>()))</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sims_dado) </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  n_sim resultado
+  &lt;int&gt;     &lt;int&gt;
+1     1         5
+2     2         2
+3     3         2
+4     4         4
+5     5         4
+6     6         6</code></pre>
+</div>
+</div>
+<p>Esta es una variable numérica, pero como toma valores enteros del uno al seis, podemos resumir con frecuencias, como si fuera categórica:</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sims_dado <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">count</span>(resultado) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">frec_relativa =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+  resultado     n frec_relativa
+      &lt;int&gt; &lt;int&gt;         &lt;dbl&gt;
+1         1  1628         0.163
+2         2  1711         0.171
+3         3  1681         0.168
+4         4  1680         0.168
+5         5  1701         0.170
+6         6  1599         0.160</code></pre>
+</div>
+</div>
+<p>Y nuestro modelo teórico (resultados equiprobables) coincide razonablemente bien con las frecuencias observadas a largo plazo. Podemos ver cómo convergen las frecuencias relativas por ejemplo del resultado 1:</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sims_dado <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">no_unos =</span> <span class="fu">cumsum</span>(resultado <span class="sc">==</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">frec_uno =</span> no_unos <span class="sc">/</span> n_sim) <span class="sc">%&gt;%</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(n_sim <span class="sc">&lt;</span> <span class="dv">10000</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n_sim, <span class="at">y =</span> frec_uno)) <span class="sc">+</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>, <span class="at">colour =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Frecuencia relativa de unos"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="05-prob-modelos_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Nótese que cuando hay pocas repeticiones podemos ver fluctuaciones considerablemente grandes de la frecuencia relativa observada de unos. Sin embargo, conforme aumentamos el tamaño de la muesstra observada, esas fluctuaciones son más chicas.</p>
+</section>
+<section id="datos-y-modelos-de-probabilidad" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="datos-y-modelos-de-probabilidad"><span class="header-section-number">12.3</span> Datos y modelos de probabilidad</h2>
+<p>¿Cómo podemos usar modelos de probablidad para describir datos observados? La idea (simplificada) es la siguiente:</p>
+<ul>
+<li>Hacemos una hipótesis acerca de cómo es el modelo de probabilidad asociado a un fenómeno.</li>
+<li>Observamos una muestra de datos del fenómeno que nos interesa.</li>
+<li>Evaluamos si las fluctuaciones observadas debidas a la información limitada que tenemos (una muestra) son consistentes con el modelo de probabilidad.</li>
+</ul>
+<p>Consideremos el ejemplo de los dados. Supongamos que lanzamos el dado un número no muy grande de veces, de manera independendiente y observamos:</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>frecs_obs <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">resultado =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">n =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">5</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">frec =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>frecs_obs <span class="sc">|&gt;</span>  <span class="fu">kable</span>(<span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> resultado </th>
+   <th style="text-align:right;"> n </th>
+   <th style="text-align:right;"> frec </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 0.12 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 0.17 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 0.12 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 0.25 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 0.20 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 0.12 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>Nos preguntamos si este resultado podría ser observado bajo los supuestos de nuestro modelo de probabilidad, que en este caso, es el de resultados equiprobables, es decir 1/6 para cada cara. Podemos por ejemplo graficar los datos junto con simulaciones del modelo, en búsqueda de desajustes:</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">8834</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># una vez</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>sim_exp <span class="ot">&lt;-</span> <span class="fu">map_df</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">40</span>, <span class="sc">~</span> <span class="fu">c</span>(<span class="at">id =</span> .x, <span class="at">resultado =</span> <span class="fu">simular_dado</span>()))</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 19 veces</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>sims_exp <span class="ot">&lt;-</span> <span class="fu">map_df</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">19</span>, <span class="cf">function</span>(x){</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>         sims <span class="ot">&lt;-</span> <span class="fu">map_df</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">40</span>, <span class="sc">~</span> <span class="fu">c</span>(<span class="at">id =</span> .x, <span class="at">resultado =</span> <span class="fu">simular_dado</span>()) )</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>         sims<span class="sc">$</span>rep <span class="ot">&lt;-</span> x</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>         sims</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>         })</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>frec_sims <span class="ot">&lt;-</span> sims_exp <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span>(rep, resultado) <span class="sc">|&gt;</span>   </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span> </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">frec =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'rep'. You can override using the `.groups`
+argument.</code></pre>
+</div>
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>obs_sims_tbl <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(frec_sims, frecs_obs <span class="sc">|&gt;</span>  <span class="fu">mutate</span>(<span class="at">rep =</span> <span class="dv">20</span>))</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(obs_sims_tbl, <span class="fu">aes</span>(<span class="at">x =</span> resultado, <span class="at">y =</span> frec)) <span class="sc">+</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_wrap</span>(<span class="sc">~</span>rep)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="05-prob-modelos_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>En este caso, no vemos ninguna característica de los datos observados que no sea consistente las fluctuaciones esperadas para un tamaño de muestra de <span class="math inline">\(n=40\)</span>.</p>
+<p><strong>Observación</strong>: como veremos, muchas veces proponemos modelos que tienen parámetros que deben ser estimados con la muestra. Este caso más común y, lo más simple es tener una muestra para estimar los parámetros, y después evaluar el ajuste con una nueva muestra de prueba. Si sólo tenemos una muestra para ajustar parámetros y ajustar, entonces debemos ser más cuidadosos en la evaluación.</p>
+</section>
+<section id="simulación-y-modelos" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="simulación-y-modelos"><span class="header-section-number">12.4</span> Simulación y modelos</h2>
+<p>Una vez que tenemos un modelo apropiado para los datos de interés, tenemos métodos analíticos que podemos utilizar para calcular propiedades de nuestro modelo aleatorio. Por ejemplo, el <em>valor esperado</em> de una tirada de dado se puede definir analíticamente, pero también podemos definirla como la media de una gran cantidad de tiradas de dado independientes.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Métodos Monte Carlo
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Los métodos montecarlo son métodos que utilizan simulación de un modelo probabilístico para calcular cantidades asociadas al modelo.</p>
+</div>
+</div>
+<section id="ejemplo-simulando-dos-dados" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="ejemplo-simulando-dos-dados">Ejemplo: simulando dos dados</h3>
+<p>Para dos dados, del modelo que consideraremos consiste en denotar cada tirada como <span class="math inline">\((x,y)\)</span>. Cada dado se tira de forma separada, y todos los resultados <span class="math inline">\((x,y)\)</span> tienen la misma probabilidad igual a 1/36. Definimos entonces:</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>sim_dados <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">num_dados =</span> <span class="dv">2</span>, <span class="at">num_caras =</span> <span class="dv">6</span>){</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>   resultado <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>num_caras, num_dados, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">names</span>(resultado) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"dado_"</span>, <span class="dv">1</span><span class="sc">:</span>num_dados)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>   resultado</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sim_dados</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>dado_1 dado_2 
+     5      3 </code></pre>
+</div>
+</div>
+<p>Ahora simulamos un número grande de veces el experimento:</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2323</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>sims <span class="ot">&lt;-</span> <span class="fu">map_df</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">50000</span>, <span class="sc">~</span> <span class="fu">sim_dados</span>())</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>sims</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 50,000 × 2
+   dado_1 dado_2
+    &lt;int&gt;  &lt;int&gt;
+ 1      5      6
+ 2      3      3
+ 3      2      5
+ 4      3      5
+ 5      6      4
+ 6      2      2
+ 7      3      6
+ 8      6      5
+ 9      3      4
+10      1      1
+# … with 49,990 more rows</code></pre>
+</div>
+</div>
+<p>Ahora que tenemos estas simulaciones, podemos estimar por ejemplo el valor esperado de la suma de dos tiradas de dados, o también el rango intercuartiles.</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>sims_media <span class="ot">&lt;-</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>   sims <span class="sc">|&gt;</span>  </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">suma =</span> dado_1 <span class="sc">+</span> dado_2) <span class="sc">|&gt;</span>  </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summarise</span>(<span class="at">media =</span> <span class="fu">mean</span>(suma), <span class="at">cuartil_inf =</span> <span class="fu">quantile</span>(suma, <span class="fl">0.25</span>), <span class="at">cuartil_sup =</span> <span class="fu">quantile</span>(suma, <span class="fl">0.75</span>)) </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>sims_media </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  media cuartil_inf cuartil_sup
+  &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
+1  7.00           5           9</code></pre>
+</div>
+</div>
+<p>Y podemos calcular otras cantidades que puedes ser de interés, por ejemplo, ¿ cuál es la probabilidad de tirar más de nueve con dos dados?. Primero calculamos en qué simulaciones ocurre <span class="math inline">\(E\)</span>:</p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>sims_e <span class="ot">&lt;-</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>   sims <span class="sc">|&gt;</span>  </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">suma =</span> dado_1 <span class="sc">+</span> dado_2) <span class="sc">|&gt;</span> </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">evento_E =</span> (suma <span class="sc">&gt;</span> <span class="dv">9</span>)) </span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>sims_e</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 50,000 × 4
+   dado_1 dado_2  suma evento_E
+    &lt;int&gt;  &lt;int&gt; &lt;int&gt; &lt;lgl&gt;   
+ 1      5      6    11 TRUE    
+ 2      3      3     6 FALSE   
+ 3      2      5     7 FALSE   
+ 4      3      5     8 FALSE   
+ 5      6      4    10 TRUE    
+ 6      2      2     4 FALSE   
+ 7      3      6     9 FALSE   
+ 8      6      5    11 TRUE    
+ 9      3      4     7 FALSE   
+10      1      1     2 FALSE   
+# … with 49,990 more rows</code></pre>
+</div>
+</div>
+<p>Y ahora calculamos la frecuencia relativa de ocurrencia de <span class="math inline">\(E\)</span></p>
+<div class="cell">
+<details>
+<summary>Código</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>sims_e <span class="sc">|&gt;</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summarise</span>(<span class="at">frec_e =</span> <span class="fu">mean</span>(evento_E))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  frec_e
+   &lt;dbl&gt;
+1  0.166</code></pre>
+</div>
+</div>
+<p>Puedes confirmar el resultado que obtuvimos arriba usando la aditividad de la probabilidad</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiada");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./05-probabilidad.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Introducción a modelos probabilísticos</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./05-prob-condicional.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Probabilidad condicional e independencia</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

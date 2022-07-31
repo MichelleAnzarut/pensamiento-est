@@ -88,6 +88,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./04-estimacion-remuestreo.html" rel="next">
 <link href="./04-estimacion.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -242,6 +243,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-estimacion-aleatorizacion.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Inferencia por intervalos</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-estimacion-remuestreo.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Remuestreo: el bootstrap</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./05-probabilidad.html" class="sidebar-item-text sidebar-link">Introducción a modelos probabilísticos</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-prob-modelos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Básicos de probabilidad y simulación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-prob-condicional.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Probabilidad condicional e independencia</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-maxima-verosimilitud-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Estimación por máxima verosimilitud</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-prob-modelos-continuos.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Modelos probabilísticos para variables continuas</span></a>
   </div>
 </li>
       </ul>
@@ -482,7 +518,7 @@ Aleatorización al rescate
 <p><strong>Dada la información de la muestra, qué podemos decir de los valores que no observamos?</strong>, y finalmente, ¿qué información nos da sobre la mediana poblacional?</p>
 <p>Nótese en primer lugar, igual que antes, que no podemos decir algo definitivo acerca de la muestra particular que obtuvimos. Sin embargo, podemos decir qué puede pasar con alta probabilidad, quitando casos excepcionalmente raros, y basar nuestra inferencia en los casos con la mayor parte de la probabilidad.</p>
 <p>Nuestra muestro ordenada la escribimos como <span class="math inline">\(y_{(1)}\leq y_{(2)}\leq \cdots \leq y_{(n)}\)</span>. Podemos considerar los intervalos aleatorios:</p>
-<p><span class="math display">\[I_1 = (0, y_{(1)}), I_2 = [y_{(1)}, y_{(2)}), I_3 = [y_{(2)}, y_{(3)}),\ldots, I_{n+1} = [y_{(n)}, \infty ]\]</span></p>
+<p><span class="math display">\[I_1 = [0, y_{(1)}), I_2 = [y_{(1)}, y_{(2)}), I_3 = [y_{(2)}, y_{(3)}),\ldots, I_{n+1} = [y_{(n)}, \infty ]\]</span></p>
 <p>que cubren todos los valores posibles que puede haber en la población.</p>
 <p>Ahora consideramos un dato <span class="math inline">\(y\)</span> extraído también al azar de la población. Es igualmente probable que <span class="math inline">\(y\)</span> caiga en cualquiera de los intervalos <span class="math inline">\(I\)</span>. Para demostrar esto, considera que pasaría si tomaras una muestra de tamaño <span class="math inline">\(n+1\)</span>. Todos los ordenamientos de <span class="math inline">\(y_1, y_2, \ldots, y_n, y_{n+1}\)</span> son igualmente probables: esto implica que es igualmente probable que <span class="math inline">\(y_{n+1}\)</span> caiga en cualquiera de estos intervalos (probabilidad <span class="math inline">\(1/{(n+1)}\)</span>).</p>
 <ol type="1">
@@ -490,12 +526,12 @@ Aleatorización al rescate
 <li>Calculamos dónde puede estar la mediana para esta población.</li>
 <li>Repetimos los dos anteriores una gran cantidad de veces para ver todos los posibles valores que podría tomar la mediana dada la información que tenemos de la muestra.</li>
 </ol>
-<p>Veamos un ejemplo chico ilustrado para entender la idea. Supongamos que tenemos una población de tamaño 20, y que tomamos una muestra de 8 elementos al azar. Los valores obtenidos, ordenados, son 12, 15, 16, 17, 18, 20, 23, 30, 32. Tenemos entonces 9 intervalos que considerar.</p>
+<p>Veamos un ejemplo chico ilustrado para entender la idea. Supongamos que tenemos una población de tamaño 25, y que tomamos una muestra de 8 elementos al azar. Los valores obtenidos, ordenados, son 12, 15, 16, 17, 18, 20, 23, 30, 32. Tenemos entonces 9 intervalos que considerar.</p>
 <p>Hacemos ahora el paso el paso 1, y la población imputada ordenada de chica a grande es:</p>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">72112</span>)</span>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">7212</span>)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>muestra <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">17</span>, <span class="dv">18</span>, <span class="dv">20</span>, <span class="dv">23</span>, <span class="dv">30</span>, <span class="dv">32</span>)</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>graficar_pob <span class="ot">&lt;-</span> <span class="cf">function</span>(muestra, n_pob){</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  n_muestra <span class="ot">&lt;-</span> <span class="fu">length</span>(muestra)</span>
@@ -506,23 +542,23 @@ Aleatorización al rescate
 <span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrange</span>(pos)</span>
 <span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  tab_graf<span class="sc">$</span>valor </span>
 <span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="fu">graficar_pob</span>(muestra, <span class="dv">20</span>) <span class="sc">|&gt;</span> <span class="fu">paste</span>(<span class="at">collapse =</span> <span class="st">" "</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="fu">graficar_pob</span>(muestra, <span class="dv">25</span>) <span class="sc">|&gt;</span> <span class="fu">paste</span>(<span class="at">collapse =</span> <span class="st">" "</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "* 12 * * 15 * 16 * * 17 * * 18 * 20 23 30 * 32 *"</code></pre>
+<pre><code>[1] "* 12 * * * 15 * * 16 * * 17 * * 18 * 20 * * 23 30 * 32 * *"</code></pre>
 </div>
 </div>
-<p>En este caso, contando casos encontramos que la mediana debería estar entre 20 y 30. Hagamos otra repetición:</p>
+<p>En este caso, contando casos encontramos que la mediana está entre 17 y 18, por ejemplo podríamos aproximar con 17.5. Hagamos otra repetición:</p>
 <div class="cell">
 <details>
 <summary>Código</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">graficar_pob</span>(muestra, <span class="dv">20</span>) <span class="sc">|&gt;</span> <span class="fu">paste</span>(<span class="at">collapse =</span> <span class="st">" "</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">graficar_pob</span>(muestra, <span class="dv">25</span>) <span class="sc">|&gt;</span> <span class="fu">paste</span>(<span class="at">collapse =</span> <span class="st">" "</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "12 * 15 * 16 17 * * * 18 * 20 * * 23 * 30 * 32 *"</code></pre>
+<pre><code>[1] "* 12 15 16 * * * 17 * * * 18 * 20 * 23 * * * 30 * * * 32 *"</code></pre>
 </div>
 </div>
-<p>Y en este ejemplo, la mediana sería 17. Podemos repetir este proceso varias veces y examinar los resultados:</p>
+<p>Y en este ejemplo, la mediana está entre 18 y 20. Podríamos aproximar a 19.5. Repetimos este proceso varias veces y examinamos los resultados:</p>
 <div class="cell">
 <details>
 <summary>Código</summary>
@@ -548,7 +584,7 @@ Aleatorización al rescate
 </div>
 </div>
 <p>Nótese que como al final vamos a dar un intervalo con extremos en los datos, en realidad no importa mucho qué valor esté representado por las estrellas (excluyendo el caso extremo de que la todos más de la mitad de las estrellas estén por abajo/arriba de todos los datos, lo cual es poco probable). Podemos contar las estrellas en cada posición como un valor en los datos, y ver entre qué valores cae la mediana. De esta forma podríamos encontrar un intervalo que contenga con probabilidad alta a la mediana poblacional.</p>
-<p>Una manera más simple de hacer esto es la siguiente:</p>
+<p>Aunque arriba <em>imputamos</em> la población completa, una manera más simple de hacer esto es la siguiente, de forma aproximada:</p>
 <ol type="1">
 <li>Tomamos una muestra <strong>con reemplazo</strong> de tamaño 8 de la muestra <span class="math inline">\(12,15,16,17,20,23,30,32\)</span>.</li>
 <li>Calculamos la mediana de esta nueva remuestra.</li>
@@ -568,7 +604,7 @@ Aleatorización al rescate
 <p><img src="04-estimacion-aleatorizacion_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Y podemos calcular un intervalo de 80% tomando cuantiles <em>de las medias remuestreadas</em>:</p>
+<p>Y podemos calcular por ejemplo intervalo de 80% tomando cuantiles <em>de las medias remuestreadas</em>:</p>
 <div class="cell">
 <details>
 <summary>Código</summary>
@@ -614,7 +650,7 @@ Aleatorización al rescate
   146   235 </code></pre>
 </div>
 </div>
-<p>y obtenemos un resultado idéntico al argumento de arriba. La cobertura es prácticamente exacta, y no afecta al resultado lo que sucede en las colas de la distribución, gracias a que estamos usando la mediana.</p>
+<p>y obtenemos un resultado idéntico al primer argumento de arriba. La cobertura es cercana ser exacta, y no afecta al resultado lo que sucede en las colas de la distribución, gracias a que estamos usando la mediana.</p>
 </section>
 <section id="remuestreo-para-otras-estadísticas" class="level2" data-number="10.3">
 <h2 data-number="10.3" class="anchored" data-anchor-id="remuestreo-para-otras-estadísticas"><span class="header-section-number">10.3</span> Remuestreo para otras estadísticas</h2>
@@ -636,7 +672,7 @@ Aleatorización al rescate
 <p><img src="04-estimacion-aleatorizacion_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Podemos obtener un intervalo del 90% para la media obteniendo los cuantiles de estas simulaciones:</p>
+<p>Obtenemos un intervalo del 90% para la media obteniendo los cuantiles de estas simulaciones:</p>
 <div class="cell">
 <details>
 <summary>Código</summary>
@@ -770,6 +806,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./04-estimacion-remuestreo.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Remuestreo: el bootstrap</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
