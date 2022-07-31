@@ -7,7 +7,7 @@ library(patchwork)
 library(kableExtra)
 ```
 
-En la parte anterior consideramos un númeroo fijo de resultados numéricos de experimentos aleatorios,
+En la parte anterior consideramos un número fijo de resultados numéricos de experimentos aleatorios,
 por ejemplo, cuando $X$ el resultado de una tirada de dado. En este caso, un modelo
 de probabilidad para $X$ asigna una probabilidad dada a cada posible resultado,
 por ejemplo
@@ -38,7 +38,7 @@ $$P(Y < 180).$$
 
 ## Modelo equiprobable o uniforme
 
-Los modelos más simple para una medición continua $X$ son los modelos uniforme. 
+Los modelos más simple para una medición continua $X$ son los modelos uniformes. 
 
 Para 
 nuestra ruleta, por ejemplo, $X$ puede tomar valores en el intervalo $[0, 360)$.
@@ -47,7 +47,7 @@ la flecha caiga en cualquier sector $[a,b]$ debe ser igual. Una manera
 de lograr esto usar como probabilidad la proporción de la 
 longitud de $[a,b]$ con respecto al total de $[0, 360)$:
 
-$P(X\in [a,b]) = \frac{b-a}{360}.$
+$$P(X\in [a,b]) = \frac{b-a}{360}.$$
 
 - Discute por qué esta asignación de probabilidades satisface las tres
 reglas básicas de probabilidad (axiomas) que presentamos anteriormente.
@@ -345,7 +345,7 @@ de los 40 dados deberían de dar 6, lo cual otra vez es muy poco probable. Esto 
 
 Los dados podrían ser diferentes (por ejemplo, un poco cargados a 1 o 6, o más cargados
 a valores centrales), y los argumentos de arriba también se cumplirían. Lo 
-que **es sorprendente** es que, independientemente de cómo sean las particularidades
+que es sorprendente es que, independientemente de cómo sean las particularidades
 de los dados, la forma analítica de esta distribución que acabamos de mostrar
 **es la misma**.
 
@@ -581,285 +581,168 @@ distribución normal.
 Otras consideraciones teóricas sugieren otro tipo formas
 útiles de densidades. 
 
-## Modelos conjuntos de probabilidad (opcional)
+## Máxima verosimilitud: modelos continuos
 
+Supongamos que queremos queremos modelar la estatura de cantantes tenores y sopranos en
+una población, y tomamos una muestra aleatoria. Nuestro primer supuesto será
+que los datos de ambas poblaciones se distribuyen de manera aproximadamente normal,
+con medias distintas pero la misma dispersión.
 
-Usualmente no nos interesa una sola variable aleatoria, sino varias. Nos
-interesa entender cómo están relacionadas o cómo depende una de otra.
+Nuestro modelo es entonces:
 
-Por ejemplo, ¿cuál es la mediana de peso para un infante de 2 meses, y qué tan diferente es de la mediana de peso para un infante de 5 meses? ¿qué relación hay
-entre temperatura y presión atmosférica? ¿qué relación hay entre creencias religiosas y afiliación política? En todos estos casos quisiéramos describir
-de distintas formas cómo ser relaciona una cantidad aleatoria con otra.
+- Para sopranos, $y~ N(\mu_s, \sigma)$,
+- Para tenores, $y ~ N(\mu_t, \sigma)$.
 
-Al principio de este curso, vimos algunas técnicas descriptivas para
-mostrar y explorar estas relaciones. Por ejemplo:
+Si tomamos muestras aleatorias independientes de estos dos grupos, y denotaremos las
+estaturas registradas como: 
 
-- ¿Cómo cambian las preferencias de forma de tomar té dependiendo
-del tipo de té una persona acostumbra tomar? ¿Qué tan probable es que
-alguien que toma té negro use azúcar vs alguien que toma té verde? (relación entre dos variables categóricas o discretas)
-- ¿Cómo cambian los precios medios de las casas dependiendo del vecindario
-donde se ubican? (describir la dependencia de una variable numérica
-si sabemos el valor de una variable categórica)
-- ¿Cómo cambia la mediana y los cuartiles de peso de un infante dependiendo de los meses desde que nació (describir cómo depende una variable numérica de otra variable numérica)
+$$y_1, y_2, \ldots, y_n$$
 
-En esta parte veremos una introducción cómo se formalizan estos 
-conceptos en modelos probabilísticos.
+y la tesitura del cantante como
+$$s_1,s_2,\ldots, s_n$$
+donde $s_i=1$ indica soprano y $s_i=0$ indica tenor. Escribimos nuestra verosimilitud,
+que en este caso consiste en multipicar las funciones de densidad normal correspondientes. Por ejemplo, si tenemos $n=3$, $y_1 = 160, s_1=0$ y $y_2 = 150, y_3 = 162, s_2=1, s_3 = 1,$ y
+$f$ es la distribución normal estándar, podríamos escribir la verosimilitud como
 
-## Estaturas: modelando relaciones de dependencia
-
-Supongamos que $X$ es la edad de una persona entre 4 y 15 años.
-y $Y$ es su estatura. La relación entre $X$ y $Y$ no es determinística,
-pues existe variación en el crecimiento para las personas por distintas razones. Por esta razón, no tiene mucho sentido dar una relación como
-$Y = 80 + 5.5 X$, por ejemplo, pues esta relación no se cumple para prácticamente ninguna persona.
-
-Tiene más sentido, sin embargo, decir cómo es **la distribución
-condicional** de $Y$ dado que conocemos $X$. Por ejemplo, podríamos
-hacer la hipótesis de que la mediana de estatura para una persona
-de edad $X$ está dada por
-$$med(Y|X) = 80 + 5.5 X$$
-Nótese que escribimos la mediana condicional de $Y$ dado que conocemos el valor de $X$. También podríamos escribir la media condicional de $Y$ dada $X$ como
-
-$$E(Y|X) = 80 + 5.5 X$$
-Y estas dos cantidades tienen sentido.
-
-Estas cantidades claramente no determinan la variabilidad que hay de la estatura cuando conocemos $X$. Podríamos entonces también especificar
-por ejemplo la desviación estándar condicional:
-
-$$\sigma(Y|X) = 3\sqrt{X} $$
-Generalmente estas relaciones se estiman empíricamente con datos
-observados, pero para este ejemplo utilizaremos estos modelos fijos.
-
-Simulamos algunos datos con estas propiedades:
-
-```{r, fig.width = 5, fig.height=4}
-edades <- runif(800, 2, 15) # edad distribuida uniforme, o grupos de edad del mismo tamaño
-datos_tbl <- 
-   tibble(edad = edades) %>% 
-   mutate(media = 80 + 5.5*edad, desv_est = 3 * sqrt(edad)) %>% 
-   # para este ejemplo, simulamos con la distribución normal.
-   mutate(estatura_cm = rnorm(n(), mean = media, sd = desv_est))
-ggplot(datos_tbl, aes(x = edad, y = estatura_cm)) +
-   geom_point()
-```
-
-- Obsérvese cómo en efecto la estatura esperada aumenta con la edad
-(condicional a la edad), y que la dispersión de estatura aumenta conforme
-la edad aumenta.
-
-Nótese que si usamos un suavizador, podemos estimar la media
-condicional de nuestro modelo, que en este caso está cercana a la
-fórmula que establecimos en nuestro modelo:
-
-```{r, fig.width = 5, fig.height=4}
-ggplot(datos_tbl, aes(x = edad, y = estatura_cm)) +
-   geom_point() +
-   geom_smooth(se = FALSE)
-```
-
-Podemos estimar cuantiles también como vimos en secciones anteriores:
-
-
-```{r, fig.width = 5, fig.height=4, warning = FALSE}
-ggplot(datos_tbl, aes(x = edad, y = estatura_cm)) +
-   geom_point() +
-   geom_quantile(method = "rqss", lambda = 20, quantiles = c(0.10, 0.5, 0.90)) 
-```
-
-Y observamos igualmente que la dispersión para el grupo de 15 años
-es cercana al doble que la dispersión para el grupo de 4 años.
-
-
-## Distribuciones condicionales
-
-Todo el trabajo de arriba de modelación teórica consiste entonces
-en definir **distribuciones condicionales**. En el ejemplo anterior,
-
-- Dimos una distribución para $X$, que en este caso la tomamos uniforme en [4, 15], pues suponemos que esta es la estructura de nuestra población (hay el aproximadamente el mismo número de personas de cada edad)
-- Dimos una distribución para $Y$ *condicionada* a $X$. En este caso,
-establecimos que $Y|X$ es normal con media $80 + 5.5X$ y desviación estándar $3 * sqrt(X)$.
-
-Estas dos partes dan un *modelo conjunto* para $X$ y $Y$: sabemos que
-está completamente determinado pues pudimos simular del modelo. Otra manera de entender esto es que cualquier probabilidad que involucra
-a $X$ y $Y$ puede ser calculada con la regla del producto. Aunque no
-entraremos en detalles, la *densidad conjunta* de $X$ y $Y$ puede definirse
-en este caso como
-$$f(x,y) = f_X(x)f_{Y|X}(y|x)$$
-Sabemos que $f_X(x) = 1/(15- 3)$ para $x$ entre 4 y 15 años, y
-la forma de $f_{Y|X}(y|x)$ sabemos que es normal con media y varianza
-conocida (en términos de x). Esta conjunta puede ser integrada sobre cualquier región (al menos en teoría) para calcular la probabilidad de interés
-
-
-## Estaturas: variación gamma
-
-Podemos juntar estos bloques de densidades condicionales
-para construir otro tipo de modelos. Por ejemplo, supondremos
-que la estatura dada la edad es una distribución gamma $(k,\lambda)$ y la misma media y desviación estándar que vimos arriba.
-Como la media de una gamma de este tipo es $\mu = k/\lambda$ y su 
-desviación estándar es $\sigma = \sqrt{k}/\lambda$, podemos despejar
-$k$ y $lambda$ y hacer:
-
-```{r, fig.width = 5, fig.height=4, warning = FALSE}
-datos_tbl <- 
-   tibble(edad = edades) %>% 
-   mutate(media = 80 + 5.5*edad, desv_est = 3 * sqrt(edad)) %>%
-   mutate(k = (media/desv_est)^2, lambda = media / desv_est^2) %>% 
-   # para este ejemplo, simulamos con la distribución normal.
-   mutate(estatura_cm = rgamma(n(), shape = k, rate = lambda))
-ggplot(datos_tbl, aes(x = edad, y = estatura_cm)) +
-   geom_point() +
-   geom_quantile(method = "rqss", lambda = 10, 
-                 quantiles = c(0.10, 0.5, 0.9))
-```
-
-Este modelo es muy similar al normal. Sin embargo, podríamos
-intentar otras variaciones si cambiamos la magnitud de
-la desviación estándar en relación a la media, por ejemplo:
-
-```{r, fig.width = 5, fig.height=4, warning = FALSE}
-datos_tbl <- 
-   tibble(edad = edades) %>% 
-   mutate(media = 30 + 10*edad, desv_est = 7 * (edad)) %>%
-   mutate(k = (media/desv_est)^2, lambda = media / desv_est^2) %>% 
-   # para este ejemplo, simulamos con la distribución normal.
-   mutate(medicion_y = rgamma(n(), shape = k, rate = lambda))
-ggplot(datos_tbl, aes(x = edad, y = medicion_y)) +
-   geom_point() +
-   geom_quantile(method = "rqss", lambda = 10, 
-                 quantiles = c(0.10, 0.5, 0.9))
-```
-
-Este caso claramente no serviría para modelar estaturas, pero podemos ver cómo introdujimos asimetría considerable en las distribuciones condicionales de y dado x una vez que especificamos la media y la varianza condicionales.
-
-
-## Modelos conjuntos para factor categórico
-
-Supongamos ahora que la variable $Y$ es numérica y la variable $X$ es
-categórica. En este caso, un modelo conjunto está definido por las 
-probabilidades $P(X=x)$ junto con densidades condicionales $Y|X$.
-
-### Ejemplo: cuentas y propinas
-
-Supongamos que $X$ es la hora del día (comida y cena) y que $Y$
-es el tamaño de la cuenta.
-
-Podríamos establecer por ejemplo, que $Y|X=comida$ es Gamma
-con media 10 dólares y desviacion estándar 10 dólares. Sin embargo,
- $Y|X=cena$ es Gamma con media 25 dólares y desviación estándar 20 dólares. Simulamos y analizamos:
- 
-```{r}
-datos_tbl <- 
-   tibble(hora = sample(c("comida", "cena"), 1000, replace = TRUE)) %>% 
-   mutate(media = ifelse(hora == "comida", 10, 25),
-          desv_est = ifelse(hora == "comida", 10, 20)) %>% 
-   mutate(cuenta = rgamma(n(), shape = (media / desv_est)^2,
-                               rate = media / (desv_est^2)))
-ggplot(datos_tbl, aes(x = hora, y = cuenta)) +
-   geom_boxplot()
-```
- 
-Y esta gráfica busca mostrar una estimación de las distribuciones
-condicionales de cuenta dado el turno donde el cliente consumió.
-
-
-## Modelos multivariados
-
-Ahora consideremos que queremos construir un modelo conjunto para tres variables
-$X, Y$ y $Z$. La forma en que procedemos dependerá del problema particular, pero podemos usar la regla del producto como guía. Por ejemplo, podríamos dar una distribución para $Z$, luego una densidad
-condicional de Y dado $Z$, y finalmente una condicional de $Y$ dada
-tanto $X$ como $Z$. 
-
-```{r, fig.width=4, fig.height=3}
-library(dagitty)
-g <- dagitty('dag {
-    Z [pos="0,1"]
-    X [pos="1,0"]
-    Y [pos="2,1"]
-    
-    Z -> X -> Y
-    Z -> Y
-}')
-plot(g)
-```
-En este caso, cada variable aleatorio es nodo, y representa
-una distribución condicional dado sus antecesores. Esta gráfica
-por ejemplo, muestra una manera de escribir con la regla del producto
-un modelo conjunto, pero podríamos cambiar de posición los nodos
-dependiendo de nuestro conocimiento y el problema que queremos resolver.
-
-En algunos casos, es posible simplificar la construcción del modelo
-eliminando algunas aristas. Supongamos por ejemplo que
-
-- X es la edad de la persona
-- Z es "M" of "F"
-- Y es su estatura
-
-En este caso, no es necesario especificar la condicional de $X$ dado $Z$, pues estas dos son variables independientes. Pondríamos entonces simplemente
-
-```{r, fig.width=4, fig.height=3}
-library(dagitty)
-g <- dagitty('dag {
-    Z [pos="0,1"]
-    X [pos="1,0"]
-    Y [pos="2,1"]
-    
-    X -> Y
-    Z -> Y
-}')
-plot(g)
-```
-Y solo necesitamos especificar las distribuciones de $X$, de $Z$, y la
-condicional de $Y$ dado $Z$. Siguiendo nuestro ejemplo anterior,
-consideraremos a 
-
-- $X$ como uniforme en $[4,15]$ (que es nuestro rango
-de edad de interés)
-- $Z$ es $M$ con probabilidad 0.5 y $F$ con probabilidad 0.5
-
-Y podríamos especificar ahora: la condicional de $Y$ (estatura) es normal con los siguientes parámetros:
-
-- Si $X$ es la edad y $Z="F"$, entonces la media es  $70 + 6.5 X$
-- Si $X$ es la edad y $Z="M"$, entonces la media es $80 + 4.5 X$
-- La desviación estándar sólo depende de $X$, y es igual a $4\sqrt{X}$.
-
-Simulamos ahora de este modelo probabilístico:
+$$L(\mu_1, \mu_2, \sigma; y) = f\left(160; \mu_t,\sigma\right)f\left(150;   \mu_s,\sigma\right)f\left(162; \mu_s, \sigma\right)$$
+En general, podemos escribir la log verosimilitud como (aunque con algo de trabajo
+puede simplificarse a una versión numéricamente más conveniente):
 
 ```{r}
-datos_tbl <- tibble(x = runif(1000, 4, 15)) %>%
-   # independientemente simulamos M o F
-   mutate(z = sample(c("m", "f"), 1000, replace = TRUE)) %>% 
-   mutate(media = ifelse(z=="f", 70 + 6.5 * x, 80 + 4.5 * x)) %>% 
-   mutate(desv_est = 4 * sqrt(x)) %>% 
-   mutate(estatura = rnorm(n(), media, desv_est))
-datos_tbl %>% head(20) %>% kable()
+crear_log_verosim <- function(y, s){
+  log_verosim <- function(pars){
+    mu_s <- pars[1]
+    mu_t <- pars[2]
+    sigma <- pars[3]
+    res <- sum(dnorm(y, mean = mu_s * s + mu_t * (1 - s), sigma, log = TRUE))
+    res
+  }
+  log_verosim
+}
 ```
 
-Y hacemos algunas gráficas descriptivas:
+Nuestra muestra es:
 
 ```{r}
-ggplot(datos_tbl, aes(x = x, y = estatura, colour = z)) +
-   geom_point()
+set.seed(32413)
+cantantes <- lattice::singer |>
+  mutate(estatura_cm = round(2.54 * height)) |>
+  filter(str_detect(voice.part, "Tenor|Soprano")) |>
+  group_by(voice.part) |> 
+  slice_sample(n = 20) |> 
+  ungroup() |> 
+  mutate(tesitura = ifelse(str_detect(voice.part, "Tenor"), "tenor", "soprano")) |> 
+  select(tesitura, estatura_cm)
+cantantes |> ggplot(aes(x = tesitura, y = estatura_cm)) + geom_boxplot()
 ```
-
-- Discute qué otras cosas podrías cambiar en este modelo probabilístico
-para que fuera más flexible o más simple. ¿Cómo ajustarías un modelo
-así a datos reales?
+Estimamos las medias y desviación estándar con máxima verosimilitud:
 
 ```{r}
-ggplot(datos_tbl, aes(x = x, y = estatura, colour = z)) +
-   geom_point() +
-   facet_wrap(~z) +
-   geom_quantile(method = "rqss", lambda = 10,
-                 quantiles = c(0.10, 0.5, 0.9))
+y <- cantantes$estatura_cm
+s <- (cantantes$tesitura == "soprano") |> as.numeric()
+log_vero <- crear_log_verosim(y, s)
+res_mv <- optim(par = c(150, 150, 30), log_vero,
+                control = list(fnscale = -1, maxit = 2000))
+est_mv <- res_mv$par
+est_mv |> round(2)
+```
+Y construimos intervalos de confianza utilizando el bootstrap paramétrico.
+Sin embargo, deberíamos checar nuestro modelo antes de proseguir. Si el ajuste
+del modelo es malo, es posible que nuestros intervalos no tengan una cobertura cercana
+a la nominal.
+
+::: callout-note
+# Checando modelos
+
+Una estrategia general para checar ajuste de modelos es generar datos a partir
+del modelo estimado. Así, estos datos generados por los modelos pueden ser
+contrastados con los datos reales para encontrar desviaciones importantes que
+puedan afectar la inferencia.
+
+La simulación debe incluir la incertidumbre que tenemos acerca de los parámetros
+del modelo, de forma que podemos usar el bootstrap paramétrico para incorporar esta
+incertidumbre.
+:::
+
+En nuestro caso, tenemos las siguentes funciones
+
+```{r}
+#| code-fold: false
+generar_muestra <- function(s, mu_s, mu_t, sigma){
+  y <- rnorm(length(s), mu_s * s + mu_t * (1 - s), sigma)
+  tibble(s = s, estatura_cm = y)
+}
+generar_muestra_boot <- function(s, est_mv){
+  # muestrear del modelo ajustado
+  muestra_boot <- generar_muestra(s, est_mv[1], est_mv[2], est_mv[3])
+  # reestimar parámetros
+  y <- muestra_boot$estatura_cm
+  s <- muestra_boot$s
+  log_boot_vero <- crear_log_verosim(y, s)
+  res_boot_mv <- optim(par = c(150, 150, 30), log_boot_vero,
+                control = list(fnscale = -1, maxit = 1000))
+  est_mv <- res_boot_mv$par
+  generar_muestra(s, est_mv[1], est_mv[2], est_mv[3])
+}
 ```
 
-```{block2, type="comentario"}
-En la modelación probabilística
-generalmente usamos estos mecanismos (dependencia condicional, independencia) y estos bloques (distribuciones de probabilidad dadas en términos de parámetros) para obtener estimaciones de parámetros de interés. 
+Y las utilizamos para generar muestras. Nótese que redondeamos para
+usar la misma precisión de los datos originales:
 
-Las decisiones de cómo usar estos mecanismos y bloques se desprenden
-de conocimiento de dominio, alcances del análisis, y siempre están
-sujetos a revisión dependiendo del tipo de desajustes que presenten
-frente a los datos reales.
-
+```{r}
+#| warning: false
+muestras_tbl <- map_df(1:19, function(rep) {
+  generar_muestra_boot(s, est_mv) |> 
+    mutate(estatura_cm = 2.54 * round(estatura_cm/2.54)) |> 
+    mutate(rep = rep)
+})
 ```
+
+
+```{r}
+muestras_tbl <- bind_rows(muestras_tbl, cantantes |> 
+                            mutate(rep = 20, s = ifelse(tesitura == "soprano",1, 0)))
+ggplot(muestras_tbl, aes(sample = estatura_cm, colour = factor(s))) +
+  geom_qq() + facet_wrap(~ rep)
+```
+Notamos que no hay desjustes grandes de nuestro modelo. En primer lugar,
+el supuesto de normalidad parece consistente con los datos a grandes rasgos. 
+Nuestra hipótesis de igualdad de varianzas parece sostenerse razonablemente bien, aunque es posible que la dispersión en los tenores sea un poco mayor que en las sopranos.
+
+:::callout-tip
+Prueba con un modelo que no suponga la misma varianza para los dos grupos, y discute
+ventajas y desventajas.
+:::
+
+Finalmente, construimos intervalos del 95% para cada uno de los parámetros:
+
+```{r}
+#| warning: false
+parametros_boot <- function(s, est_mv){
+  # muestrear del modelo ajustado
+  muestra_boot <- generar_muestra(s, est_mv[1], est_mv[2], est_mv[3])
+  # reestimar parámetros
+  y <- muestra_boot$estatura_cm
+  s <- muestra_boot$s
+  log_boot_vero <- crear_log_verosim(y, s)
+  res_boot_mv <- optim(par = c(150, 150, 30), log_boot_vero,
+                control = list(fnscale = -1, maxit = 1000))
+  est_boot_mv <- res_boot_mv$par
+  tibble(mu_s = est_boot_mv[1], mu_t = est_boot_mv[2], sigma = est_boot_mv[3])
+}
+remuestreo_tbl <- map_df(1:1000, ~ parametros_boot(s, est_mv))
+```
+
+```{r}
+remuestreo_tbl |> pivot_longer(mu_s:sigma, names_to = "parametro", values_to = "valor") |> 
+  group_by(parametro) |> 
+  summarise(inf_5 = quantile(valor, 0.05), inf_95 = quantile(valor, 0.95)) |> 
+  mutate(across(where(is.numeric), ~ round(.x, 1)))
+```
+
+
+
+
+
+
 

@@ -67,9 +67,21 @@ podemos hacer simulaciones de computadora del experimento que nos interesa.
 
 ## Ejemplo: simulación de un dado {-}
 
-Primero hacemos un dado. Podemos simular una tirada de dado como:
+Consideremos modelar la tirada de un dado de 6 lados. En este caso,
+los eventos de interés son valores que puede tomar la tirada, por ejemplo,
+"Tirar un 6", "tirar un número impar", etc. Si en nuestro modelo 
+consideramos que todos los lados tienen la misma probabilidad, podemos
+entonces definir
+
+$$P(E_i) = 1/6,$$
+
+para cada lado $i=1,2,3,4,5,6$. A partir de estos valores podemos calcular
+la probabilidad de cualquier evento, por ejemplo, $P(\textrm{tirar impar}) = =1/6 + 1/6 + 1/6 = 1/2$.
+
+Podemos simular una tirada de dado como:
 
 ```{r}
+#| code-fold: show
 simular_dado <- function(caras = 1:6){
    sample(caras, 1)
 }
@@ -109,21 +121,6 @@ Nótese que cuando hay pocas repeticiones podemos ver fluctuaciones considerable
 grandes de la frecuencia relativa observada de unos. Sin embargo, conforme aumentamos
 el tamaño de la muesstra observada, esas fluctuaciones son más chicas.
 
-Veamos otra simulación:
-
-```{r}
-sims_dado <- map_df(1:n, ~ c(n_sim = .x, resultado = simular_dado()))
-sims_dado %>% 
-   mutate(no_unos = cumsum(resultado == 1)) %>% 
-   mutate(frec_uno = no_unos / n_sim) %>%
-   filter(n_sim < 5000) %>% 
-ggplot(aes(x = n_sim, y = frec_uno)) +
-   geom_hline(yintercept = 1/6, colour = "red") +
-   geom_line() + ylab("Frecuencia relativa de unos")
-```
-
-
-
 ## Datos y modelos de probabilidad
 
 ¿Cómo podemos usar modelos de probablidad para describir datos observados? 
@@ -131,7 +128,7 @@ La idea (simplificada) es la siguiente:
 
 - Hacemos una hipótesis acerca de cómo es el modelo de probabilidad asociado
 a un fenómeno.
-- Observamos una muestra de datos del fenómeno que nos interesa.
+- Observamos una muestra de datos del fenómeno que nos interesa. 
 - Evaluamos si las fluctuaciones observadas debidas a la información limitada que tenemos
 (una muestra) son consistentes con el modelo de probabilidad.
 
@@ -140,9 +137,9 @@ no muy grande de veces, de manera independendiente y observamos:
 
 ```{r}
 frecs_obs <- tibble(resultado = 1:6,
-                    n = c(5, 7, 5, 10, 8, 5)) %>% 
+                    n = c(5, 7, 5, 10, 8, 5)) |> 
    mutate(frec = n / sum(n))
-frecs_obs %>% kable(digits = 2)
+frecs_obs |>  kable(digits = 2)
 ```
 
 Nos preguntamos si este resultado podría ser observado bajo los supuestos
@@ -164,11 +161,11 @@ sims_exp <- map_df(1:19, function(x){
 ```
 
 ```{r}
-frec_sims <- sims_exp %>% 
-   group_by(rep, resultado) %>% 
-   summarise(n = n()) %>% 
+frec_sims <- sims_exp |> 
+   group_by(rep, resultado) |>   
+   summarise(n = n()) |> 
    mutate(frec = n / sum(n))
-obs_sims_tbl <- bind_rows(frec_sims, frecs_obs %>% mutate(rep = 20))
+obs_sims_tbl <- bind_rows(frec_sims, frecs_obs |>  mutate(rep = 20))
 ggplot(obs_sims_tbl, aes(x = resultado, y = frec)) +
    geom_col() +
    facet_wrap(~rep)
@@ -178,28 +175,31 @@ En este caso, no vemos ninguna característica de los datos observados que no se
 consistente las fluctuaciones esperadas para un tamaño de muestra de $n=40$.
 
 **Observación**: como veremos, muchas veces proponemos modelos que tienen parámetros
-que deben ser estimados con la muestra. Este caso más común es más complejo
-que el explicado arriba, pero el proceso es similar.
+que deben ser estimados con la muestra. Este caso más común y, lo más simple es tener una muestra para estimar los parámetros, y después evaluar el ajuste con una nueva muestra de prueba. Si sólo tenemos una muestra para ajustar parámetros y ajustar, entonces debemos ser más cuidadosos en la evaluación.
 
 
+## Simulación y modelos
 
-## Simulación y probabilidad
+Una vez que tenemos un modelo apropiado para los datos de interés,
+tenemos métodos analíticos que podemos utilizar
+para calcular propiedades de nuestro modelo aleatorio. Por ejemplo,
+el *valor esperado* de una tirada de dado se puede definir analíticamente, 
+pero también podemos definirla como la media de una gran cantidad de tiradas
+de dado independientes.
 
-Usando la interpetación frecuentista, también es posible resolver una
-variedad de problemas de probabilidad usando *simulación*. La idea es,
-si queremos aproximar la probabilidad $P(E)$ de un evento es:
+::: callout-note
+# Métodos Monte Carlo
 
-1. Definimos el espacio de resultados del experimento aleatorio.
-2. Simulamos el experimento aleatorio un número grande de veces.
-3. Calculamos para cuáles de esas simulaciones se cumple el evento $E$
-4. Estimamos la frecuencia relativa de ocurrencia de $E$ a lo largo de todas las
-simulaciones.
+Los métodos montecarlo son métodos que utilizan simulación
+de un modelo probabilístico para calcular cantidades asociadas al modelo.
+
+:::
+
 
 ### Ejemplo: simulando dos dados {-}
 
-Para dos dados, el espacio de resultados podemos escribirlo como los
-resultados conjunto de dos tiradas: $(x,y)$. Cada dado se tira de forma separada,
-y los resultados son equiprobables. Definimos entonces:
+Para dos dados, del modelo que consideraremos consiste en denotar cada tirada como $(x,y)$. Cada dado se tira de forma separada,
+y todos los resultados $(x,y)$ tienen la misma probabilidad igual a 1/36. Definimos entonces:
 
 ```{r}
 sim_dados <- function(num_dados = 2, num_caras = 6){
@@ -213,18 +213,30 @@ Ahora simulamos un número grande de veces el experimento:
 
 ```{r}
 set.seed(2323)
-sims <- map_df(1:10000, ~ sim_dados())
+sims <- map_df(1:50000, ~ sim_dados())
 sims
 ```
 
-Ahora que tenemos estas simulaciones, podemos estimar por ejemplo la
-probabilidad de tirar más de nueve con dos dados. Primero calculamos
+Ahora que tenemos estas simulaciones, podemos estimar por ejemplo el valor
+esperado de la suma de dos tiradas de dados, o también el rango intercuartiles.
+
+```{r}
+sims_media <- 
+   sims |>  
+   mutate(suma = dado_1 + dado_2) |>  
+   summarise(media = mean(suma), cuartil_inf = quantile(suma, 0.25), cuartil_sup = quantile(suma, 0.75)) 
+sims_media 
+```
+
+
+Y podemos calcular otras cantidades que puedes ser de interés, por ejemplo,
+¿ cuál es la probabilidad de tirar más de nueve con dos dados?. Primero calculamos
 en qué simulaciones ocurre $E$:
 
 ```{r}
 sims_e <- 
-   sims %>% 
-   mutate(suma = dado_1 + dado_2) %>% 
+   sims |>  
+   mutate(suma = dado_1 + dado_2) |> 
    mutate(evento_E = (suma > 9)) 
 sims_e
 ```
@@ -232,23 +244,14 @@ sims_e
 Y ahora calculamos la frecuencia relativa de ocurrencia de $E$
 
 ```{r}
-sims_e %>% 
+sims_e |> 
    summarise(frec_e = mean(evento_E))
 ```
 
 Puedes confirmar el resultado que obtuvimos arriba usando la aditividad de la probabilidad
 
 
-```{block2, type="comentario"}
-Para estimar probabilidades de ocurrencia de un evento bajo un modelo de
-probabilidad usualmente es
-posible hacer simulaciones por computadora. Esto es especialmente importante
-cuando el experimento y evento que consideramos 
-hace difícil (a veces imposible) hacer cálculos analíticos.
 
-Este tipo de métodos basados en simulación se llaman en general 
-*métodos de Monte Carlo*.
-```
 
 
 

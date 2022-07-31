@@ -1,3 +1,2 @@
-# Inferencia con modelos probabilísticos
+# Inferencia con modelos bayesianos
 
-Intro

@@ -1,4 +1,4 @@
-# Introducción a teoría de probabilidades
+# Introducción a modelos probabilísticos
 
 La teoría de probabilidad es una rama de las matemáticas que
 se ocupa de la ocurrencia de un evento aleatorio. El objetivo 
@@ -7,7 +7,12 @@ de que suceda dicho evento.
 
 Hasta este punto del curso asumimos que el lector tiene un buen 
 grado de familiaridad con la teoría básica de la probabilidad, 
-pero dado que los usos de la probabilidad dentro de un marco 
-bayesiano son mucho más amplios, en este capítulo repasaremos 
+pero dado que los usos de la probabilidad para inferencia 
+son mucho más amplios, en este capítulo repasaremos 
 brevemente los fundamentos de la teoría de probabilidad.
+
+También veremos una introducción al
+método de máxima verosimilitud, que es el primer
+enfoque para producir
+inferencias basadas en modelos probabilísticos.
 

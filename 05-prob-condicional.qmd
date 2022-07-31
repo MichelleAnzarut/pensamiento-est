@@ -70,70 +70,6 @@ es igual a $P(E|F_2)=1/3$. ¿Cuánto vale $P(E|F_3)$?
 
 
 
-## Simulación y probabilidad condicional
-
-Una manera de aproximar probabilidades condicionales es simulando el experimento
-que nos interesa, y calculando frecuencias relativas solamente sobre
-la información que sabemos que ocurrió: es decir, filtramos las simulaciones
-escogiendo sólo las que son consistentes con la información dada.
-
-### Ejemplo: simulación tres cartas {-}
-
-Sacamos tres cartas de una baraja. ¿Cuál es la probabilidad condicional
-
-```{r}
-baraja <- tibble(numero = 1:13) %>% 
-   crossing(tibble(figura = c("C", "D", "T", "P"))) %>% 
-   mutate(carta = paste(numero, figura))
-nrow(baraja)
-baraja
-```
-
-```{r}
-cartas <- baraja$carta
-exp_3_cartas <- function(cartas){
-   sample(cartas, 3) 
-}
-set.seed(132185)
-exp_3_cartas(cartas)
-```
-Simulamos el experimento
-
-```{r}
-sims <- map(1:20000, ~ exp_3_cartas(cartas))
-sims[1:5]
-```
-
-Sin más información, la probabilidad de corazón en
-la primera extracción es:
-
-```{r}
-sims %>% 
-   map_lgl(~ str_detect(.x[1], "C")) %>% 
-   mean()
-```
-Que debe estar alrededor de 1/4. Ahora condicionamos a que
-las cartas 2 y 3 son corazones:
-
-
-```{r}
-sims_F <- sims %>%
-   keep(~ str_detect(.x[2], "C") & str_detect(.x[3], "C"))
-length(sims_F)
-sims_F[1:5]
-```
-Y sobre estas simulaciones hacemos **el mismo cálculo de arriba**:
-
-```{r}
-sims_F  %>% 
-   map_lgl(~ str_detect(.x[1], "C")) %>% 
-   mean()
-```
-Esto nos da una aproximación de $P(E|F)$. Nótese que si $F$ es un evento
-con probabilidad baja, entonces será necesario correr más veces el experimento,
-pues el número de veces que ocurre $F$ es relativamente bajo.
-
-
 
 ## Regla de la multiplicación
 
@@ -156,36 +92,6 @@ Podemos generalizar esto a
    
 $$P(E_1E_2E_3\cdots E_n) = P(E_1)P(E_2|E_1)P(E_3|E_1E_2)\cdots P(E_n|E_1\cdots E_{n-1}$$
 ```
-
-### Ejercicio {-} 
-Se divide al azar una baraja de 52 de cartas en 4 pilas
-iguales. Calcula la probabilidad de cada pila tenga exactamente un as.
-
-Podemos hacer el evento $E_1$ que el as de corazones y el de diamantes están
-en diferentes pilas, $E_2$ el evento de que el as de corazones, el de diamantes,
-y el de tréboles están en diferentes pilas, y finalmente
-$E_3$ el evento de que todos los ases están en diferentes pilas. Nótese
-que buscamos la probabilidad $P(E_3)$, pero será más fácil si escribimos:
-
-$$P(E_3) = P(E_3E_2E_1) = P(E_1)P(E_2|E_1)P(E_3|E_1E_2)$$
-
-Primero, el as de corazones está en alguna de las pilas. La probabilidad
-de el as de diamantes no esté en esa pila es $P(E_1) = 1 - 12/51 = 39/51$ (¿por qué?),
-pues la pila que tiene el as de corazones tiene otras 12 cartas de las 51 disponibles. La probabilidad de que el as de diamantes sea una de esas 12 cartas es 
-entonces 12/51.
-
-Si se cumple $E_1$, entonces el as de corazones y de diamantes están en pilas
-distintas. Entonces la probabilidad de que el as de tréboles caiga en una de esas
-dos pilas es $24/50$, así que
-$$P(E_2|E_1) = 1 -24/50 = 25/50$$
-
-Finalmente, si el as de corazones, diamantes y tréboles están en distintas pilas,
-entonces la probabilidad de que el de espadas caiga en la una de esas pilas es
-$36/49$, de modo que
-$$P(E_3|E_2E_1) = 1 - 36/49 = 13/49$$.
-
-Usando la reglal producto,
-$$P(E_1E_2E_3) = \frac{39(26)(13)}{51(50)(49)} \approx 0.105$$
 
 
 ## Regla de probablilidad total
