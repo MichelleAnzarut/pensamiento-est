@@ -174,7 +174,7 @@ histograma también:
 
 ```{r graf_1,  fig.width = 4, fig.height = 3, echo = FALSE, message=FALSE}
 g_1 <- ggplot(sims_dm, aes(x = mediana_precio)) + 
-    geom_histogram(binwidth = 5) +
+    geom_histogram(binwidth = 2.5) +
     geom_vline(xintercept = valor_poblacional, colour = "red")
 g_1
 ```
@@ -204,7 +204,12 @@ g_dist_muestreo
 
 Y como es de esperarse, vemos que muestras más grandes resultan en menos variablidad, y menor error de estimación.
 
-- Mejores distribuciones de muestreo: más concentradas alrededor del verdadero valor poblacional
+:::callout-note
+En estimación, cuando queremos estimar un valor poblacional $m$,
+mediante un estimador basado en una muestra, buscamos que su distribución
+de muestreo esté altamente concentrada alrededor del valor poblacional $m$, de
+manera que sea altamente probable obtener una estimación cercana a $m$
+:::
 
 
 ## Distribución de muestreo y distribución poblacional {-}
@@ -232,8 +237,8 @@ podemos hacer lo siguiente:
 
 1. Si tuviéramos la distribución poblacional, simulamos muestras para aproximar
 la distribución de muestreo de nuestro estimador, y así entender su variabilidad.
-2. Pero no tenemos la distribución poblacional
-3. **Sin embargo, podemos estimar la distribución poblacional con nuestros valores muestrales**
+2. Pero no tenemos la distribución poblacional.
+3. **Sin embargo, podemos estimar la distribución poblacional con nuestros valores muestrales**.
 
 **Mundo bootstrap**
 
@@ -425,10 +430,10 @@ de 90\%.
 
 En este caso, queremos hacer inferencia sobre la diferencia de tiempo de reconocimiento de los grupos. 
 Como discutimos antes, preferimos hacer comparaciones multiplicativas. En este caso particular,
-compararemos el cociente de las medias:
+compararemos el cociente de las medianas menos uno (variación porcentual):
 
 Podemos adaptar el bootstrap en este caso para dos grupos: hacemos remuestreo de cada grupo, comparamos
-diferencias, y repetimos
+diferencias, y repetimos. En primer lugar, nuestro estimador puntual es:
 
 ```{r, message = FALSE}
 fusion <- read_table("./datos/fusion_time.txt")
@@ -441,13 +446,20 @@ muestra_boot <- function(datos, grupo, medicion, fun_muestra, comparacion){
       pull(comp)
     est_boot
 }
-muestra_boot(fusion, nv.vv, time, median, VV / NV) |> round(2)
 ```
+
+
+```{r, message = FALSE}
+muestra_boot(fusion, nv.vv, time, median, VV / NV - 1) |> round(2)
+```
+
+Que implica una reducción de 30% en la mediana del tiempo de fusión para
+el grupo con información verbal. Ahora construimos un intervalo de confianza:
 
 La distribución de remuestreo es:
 
 ```{r, fig.width = 4, fig.height = 3}
-reps_boot <- map_dbl(1:2000, ~ muestra_boot(fusion, nv.vv, time, mean, VV / NV))
+reps_boot <- map_dbl(1:2000, ~ muestra_boot(fusion, nv.vv, time, mean, VV / NV - 1))
 ggplot(tibble(cociente_boot = reps_boot), aes(sample = reps_boot)) +
   geom_qq(distribution = stats::qunif) + xlab("f") + ylab("Cociente")
 ```
@@ -458,10 +470,14 @@ y un intervalo de 90\% sería:
 quantile(reps_boot, c(0.05, 0.95)) |> round(2)
 ```
 
-Y esta sería una forma de presentar nuestros resultados: hay probabilidad considerable de que el efecto
-de este tratamiento sea marginal (una reducción de 10\%), aunque lo más probables es que tenga un efecto
-consdierable (reducción alrededor de 60\% del tiempo de fusión).
+Y esta sería una forma de presentar nuestros resultados: 
 
+- Hay probabilidad considerable de que el efecto
+de este tratamiento sea marginal (una reducción de 10\%), aunque lo más probables es que tenga un efecto
+consdierable (reducción alrededor de 50\% del tiempo de fusión).
+
+Nótese que no hay una fórmula simple (?) para construir este intervalo para
+una estadística como el cociente de medianas.
 
 ## Ventajas y desventajas del bootstrap {-}
 
