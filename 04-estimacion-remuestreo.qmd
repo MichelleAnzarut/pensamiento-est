@@ -506,14 +506,9 @@ la cobertura, pues es posible que nuestros intervalos no tengan "cobertura simé
 y muestras no muy chicas, esté sesgo tiende a ser poco importante y no es necesario hacer correcciones.
 
 Podemos evaluar el sesgo
-comparando la media de nuestras replicaciones bootstrap con el valor muestral que obtuvimos (para estadísticas funcionales, ver @timboot14).
-Si el tamaño del sesgo es chico comparado con la dispersión de la distribución bootstrap (por ejemplo, menos de 20\% de la desviación estándar, @bootefron), no es muy importante
-hacer correcciones.
-
-En caso de que esta cantidad sea relativamente grande en relación a la dispersión de la distribución
-bootstrap, hay variantes los intervalos bootstrap de percentiles que 
-mejoran esta situación  (@bootefron).
-
+comparando la media de nuestras replicaciones bootstrap con el valor muestral que obtuvimos (ver @timboot14).
+Si el tamaño del sesgo es grande comparado con la dispersión de la distribución bootstrap (por ejemplo, más de 20\% de la desviación estándar, @bootefron), generalmente consideramos
+que bajo el diseño actual el estimador que estamos usando no es apropiado.
 
 
 ## Bootstrap y estimadores complejos: suavizadores {-}
