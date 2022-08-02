@@ -185,7 +185,7 @@ $$log(f(x_{max}))>log(f(x))$$ para cualquier $x$, pues el logaritmo respeta la d
 - Hay razónes teóricas y de interpretación por las que también es conveniente hacer esto.
 
 
-### Ejemplo 2
+## Ejemplo 2 {#sec-santaclara}
 
 En 2020 se hizo un estudio de seroprevalencia de COVID en Santa Clara, California.
 
@@ -208,7 +208,7 @@ seroprevalentes.
 La probabilidad de observar un resultado positivo es, por
 probabilidad total:
 
-$$ \theta_{pos} + (1-\theta_{neg})(1-p),$$
+$$ p\theta_{pos} + (1-p)(1-\theta_{neg}),$$
 
 es decir, podemos observar un verdadero positivo o un falso positivo. Escribimos la función
 de (log) verosimilitud:
