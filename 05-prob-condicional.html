@@ -362,7 +362,7 @@ div.csl-indent {
 <li>Muchas veces queremos calcular probabilidades dada cierta información parcial: es decir, las probabilidades que queremos calcular son <em>condicionadas</em> a cierto tipo de información.</li>
 <li>La probabilidad condicional nos permite modelar con probabilidad sistemas relativamente complejos a partir de componentes simples.</li>
 </ol>
-<p>En particular, si nuestro modelo incluye partes del proceso generador de datos, nos interesará calcular probabilidades condicionales de eventos <em>condicionados</em> a que hemos observado ciertos datos.</p>
+<p>En particular, si nuestro modelo incluye partes del proceso generador de datos, nos interesará calcular probabilidades de eventos <em>condicionadas</em> a que hemos observado ciertos datos.</p>
 <p>Muchos de los problemas de esta sección son de (<span class="citation" data-cites="rossproba">Ross (<a href="#ref-rossproba" role="doc-biblioref">1998</a>)</span>).</p>
 <section id="probabilidad-condicional-en-espacios-equiprobables." class="level2" data-number="13.1">
 <h2 data-number="13.1" class="anchored" data-anchor-id="probabilidad-condicional-en-espacios-equiprobables."><span class="header-section-number">13.1</span> Probabilidad condicional en espacios equiprobables.</h2>
@@ -371,16 +371,23 @@ div.csl-indent {
 <section id="ejemplo-dos-dados" class="level3" data-number="13.1.1">
 <h3 data-number="13.1.1" class="anchored" data-anchor-id="ejemplo-dos-dados"><span class="header-section-number">13.1.1</span> Ejemplo: dos dados</h3>
 <p>Supongamos que tiramos dos dados, y nos dicen que la suma de los dos datos es igual a 6. ¿Cuál es la probablidad condicional de haber tirado al menos un cinco dado que la suma es 6?</p>
-<p>Solución: los resultados equiprobables que resultan en un tiro de suma 6 son <span class="math inline">\(F= \{ (5,1),(4,2),(3,3),(2,4),(1,5)\}\)</span>, que son 5 posibles resultados. En solamente 2 de ellos tiramos un cinco. Como estos resultados son equiprobables, si <span class="math inline">\(E\)</span> es el evento “tirar al menos un 5”,</p>
+<p>Solución: los resultados equiprobables que resultan en un tiro de suma 6 son <span class="math inline">\(F= \{ (5,1),(4,2),(3,3),(2,4),(1,5)\}\)</span>, que son 5 posibles resultados. En solamente 2 de ellos tiramos un cinco. Como estos resultados son equiprobables, si <span class="math inline">\(E\)</span> es el evento “tirar al menos un 5”, entonces</p>
 <p><span class="math display">\[P(E|F) = 2/5\]</span></p>
 <p>Podemos formalizar de la siguiente manera: para calcular <span class="math inline">\(P(E|F)\)</span> contamos todos los resultados de <span class="math inline">\(F\)</span> donde también ocurre <span class="math inline">\(E\)</span> y dividimos entre las maneras en que puede ocurrir <span class="math inline">\(F\)</span>:</p>
 <ul>
 <li>En nuestro caso hay muchos resultados posibles donde tiramos al menos un 5, por ejemplo <span class="math inline">\((5,1), (5,2), (5,6)\)</span> y así sucesivamente. Sin embargo, solo en 2 de ellos la suma es 5.</li>
 </ul>
-<div class="cell" type="comentario">
-
-<div class="comentario">
-<p>En un espacio de probabilidad, si <span class="math inline">\(E\)</span> y <span class="math inline">\(F\)</span> son eventos, entonces definimos</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Probabilidad condicional
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>En un espacio de probabilidad, si <span class="math inline">\(E\)</span> y <span class="math inline">\(F\)</span> son eventos, definimos</p>
 <p><span class="math display">\[P(E|F) = \frac{P(E\cap F)}{P(F)}.\]</span></p>
 </div>
 </div>
@@ -456,13 +463,13 @@ div.csl-indent {
 <pre><code>[1] 0.1640625</code></pre>
 </div>
 </div>
-<p>Checa usando simulación.</p>
+<p>Podemos también checar este resultado usando simulación</p>
 </section>
 <section id="ejercicio-dados-y-monedas-simulación" class="level2" data-number="13.5">
 <h2 data-number="13.5" class="anchored" data-anchor-id="ejercicio-dados-y-monedas-simulación"><span class="header-section-number">13.5</span> Ejercicio: dados y monedas (simulación)</h2>
-<p>Este es un experimento más interesante para simular:</p>
+<p>Esta es la función que simula la tirada de dado y después las tiradas de monedas del ejemplo anterior:</p>
 <div class="cell">
-<details>
+<details open="">
 <summary>Código</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>simular_soles <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>   dado <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">1</span>)</span>
@@ -488,7 +495,7 @@ div.csl-indent {
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="05-prob-condicional_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<p><img src="05-prob-condicional_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>La frecuencia relativa de cero soles es:</p>
@@ -501,7 +508,7 @@ div.csl-indent {
 <pre><code>[1] 0.1655</code></pre>
 </div>
 </div>
-<p>Calcula también la probabilidad de obtener 2 soles o más en este experimento (puedes usar la simulación).</p>
+<p>que coincide con nuestro resultado analítico anterior.</p>
 </section>
 <section id="regla-de-bayes" class="level2" data-number="13.6">
 <h2 data-number="13.6" class="anchored" data-anchor-id="regla-de-bayes"><span class="header-section-number">13.6</span> Regla de Bayes</h2>

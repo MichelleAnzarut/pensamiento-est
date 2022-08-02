@@ -331,7 +331,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="unnumbered anchored" data-anchor-id="ejemplo-1">Ejemplo 1</h3>
 <p>Supongamos que una máquina produce dos tipos de bolsas de 25 galletas: la mitad de las veces produce una bolsa con 5 galletas de avena y 20 de chispas de chocolate, y la otra mitad produce galletas con 23 galletas de avena y 2 de chispas de chocolate.</p>
 <p>Tomamos una bolsa, y no sabemos qué tipo de bolsa es (parámetro desconocido). Extraemos al azar una de las galletas, y es de chispas de chocolate (observación).</p>
-<p>Por máxima verosimilitud, inferimos que la bolsa que estamos considerando tiene 5 galletas de avena. Esto es porque es más probable observar una galleta de chispas en las bolsas que contienen 5 galletas de avena que en las bolsas que contienen 23 galletas de avena. Podemos cuantificar la probabilidad que “acertemos” en nuestra inferencia.</p>
+<p>Por máxima verosimilitud, inferimos que la bolsa que estamos considerando tiene 5 galletas de avena. Esto es porque es más probable observar una galleta de chispas en las bolsas que contienen 5 galletas de avena que en las bolsas que contienen 23 galletas de avena.</p>
 </section>
 <section id="el-proceso-de-máxima-verosimilitud" class="level2" data-number="14.1">
 <h2 data-number="14.1" class="anchored" data-anchor-id="el-proceso-de-máxima-verosimilitud"><span class="header-section-number">14.1</span> El proceso de máxima verosimilitud</h2>
@@ -382,14 +382,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Nótese que esta gráfica:</p>
 <ul>
-<li>Depende de los datos, que pensamos fijos.</li>
+<li>La forma de esta función (verosimilitud) depende de los datos</li>
 <li>Cuando cambiamos la <span class="math inline">\(p\)</span>, la probabilidad de observar la muestra cambia. Nos interesa ver las regiones donde la probabilidad es relativamente alta.</li>
 <li>El máximo está en 0.25.</li>
 <li>Así que el estimador de máxima verosimilitud es <span class="math inline">\(\hat{p} = 0.25\)</span></li>
 </ul>
 <p>Obsérvese que para hacer esto usamos dos partes del proceso generador de datos:</p>
 <ul>
-<li>Un modelo teórico de cómo es la población con parámetros y</li>
+<li>Un modelo teórico con parámetros de cómo son las observaciones</li>
 <li>Información de como se extrajo la muestra,</li>
 </ul>
 <p>y resolvimos el problema de estimación convirtiéndolo en uno de optimización.</p>
@@ -469,13 +469,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Maximizar la verosimilitud <strong>es lo mismo</strong> que maximizar la log-verosimilitud, pues el logaritmo es una función creciente. Si <span class="math inline">\(x_{max}\)</span> es el máximo de <span class="math inline">\(f\)</span>, tenemos que <span class="math inline">\(f(x_{max})&gt;f(x)\)</span> para cualquier <span class="math inline">\(x\)</span>, entonces tomando logaritmo,</li>
 </ul>
-<p><span class="math display">\[log(f(x_{max}))&gt;log(f(x))\]</span> para cualquier <span class="math inline">\(x\)</span>, pues el logaritmo respeta la desigualdad por ser creciente. - Usualmente usamos la log verosimilitud para encontrar estimador de máxima verosimilitud - Hay razónes teóricas y de interpretación por las que también es conveniente hacer esto.</p>
+<p><span class="math display">\[log(f(x_{max}))&gt;log(f(x))\]</span> para cualquier <span class="math inline">\(x\)</span>, pues el logaritmo respeta la desigualdad por ser creciente.</p>
+<ul>
+<li>Usualmente usamos la log verosimilitud para encontrar estimador de máxima verosimilitud</li>
+<li>Hay razónes teóricas y de interpretación por las que también es conveniente hacer esto.</li>
+</ul>
 </section>
 <section id="ejemplo-2" class="level3" data-number="14.1.1">
 <h3 data-number="14.1.1" class="anchored" data-anchor-id="ejemplo-2"><span class="header-section-number">14.1.1</span> Ejemplo 2</h3>
 <p>En 2020 se hizo un estudio de seroprevalencia de COVID en Santa Clara, California.</p>
 <p>Se tomó una muestra de individuos (ver los detalles en <a href="https://www.medrxiv.org/content/10.1101/2020.04.14.20062463v2.full.pdf">el artículo original</a>). Para propósitos de este análisis supondremos que la muestra puede considerarse como aleatoria simple.</p>
-<p>Se obtuvieron 3,300 individuos, y 50 de ellos resultaron con prueba positiva (1.5%). Sin embargo, el kit de prueba que estaban utilizando tenía una especificidad de 99.5% (probabilidad de dar negativo para una persona que no está infectada) y una sensibilidad de 83%. Estas cantidades también fueron con estimadas con muestras <em>gold standard</em> no muy grandes, y reportan un intervalo de 99.2% a 99.7% para la primera cantidad y de 76% a 88.4%. Por el momento usaremos las estimaciones puntuales.</p>
+<p>Se obtuvieron 3,300 individuos, y 50 de ellos resultaron con prueba positiva (1.5%). Sin embargo, el kit de prueba que estaban utilizando tenía una especificidad de 99.5% (probabilidad de dar negativo para una persona que no está infectada) y una sensibilidad de 83%. Estas cantidades también fueron con estimadas con muestras <em>gold standard</em> no muy grandes, y reportan un intervalo de 99.2% a 99.7% para la primera cantidad y de 76% a 88.4% para la segunda. Por el momento usaremos las estimaciones puntuales.</p>
 <p>Construiremos una estimación de máxima verosimilitud para el % de personas <span class="math inline">\(\theta\)</span> que ha tenido COVID en Santa Clara al momento del estudio.</p>
 <p>El parámetro de interés principal <span class="math inline">\(p\)</span>, la proporción de personas seroprevalentes.</p>
 <p>La probabilidad de observar un resultado positivo es, por probabilidad total:</p>
@@ -560,7 +564,7 @@ Bootstrap paramétrico
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="fu">simular_muestra</span>(<span class="dv">3300</span>, <span class="fl">0.01</span>, <span class="fl">0.83</span>, <span class="fl">0.995</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 41</code></pre>
+<pre><code>[1] 54</code></pre>
 </div>
 </div>
 <p>Y ahora podemos escribir una iteración del bootstrap paramétrico:</p>
@@ -577,7 +581,7 @@ Bootstrap paramétrico
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">simular_boot</span>(est_mv, <span class="fl">0.83</span>, <span class="fl">0.995</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.01083913</code></pre>
+<pre><code>[1] 0.01047203</code></pre>
 </div>
 </div>
 <p>Repetimos un número grande de veces (de mil a 10 mil por ejemplo):</p>
@@ -601,7 +605,7 @@ Bootstrap paramétrico
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   5%   95% 
-0.007 0.017 </code></pre>
+0.008 0.017 </code></pre>
 </div>
 </div>
 <p>Y este sería nuestro intervalo de confianza para la prevalencia bajo los supuestos que hicimos. Sin embargo, también tenemos que considerar la incertidumbre en las cantidades de sensibilidad y especificidad como veremos a continuación.</p>
