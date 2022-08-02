@@ -237,9 +237,12 @@ los de la inicial.
 Ahora resumimos los elementos básicos de la inferencia bayesiana, que son
 relativamente simples:
 
-**Inferencia bayesiana.** Con la notación de arriba:
+::: callout-note
+# Inferencia bayesiana 
+
+Con la notación de arriba:
 - Como $X$ son los datos observados, llamamos a $P(X|\theta)$ la *verosimilitud*,
-proceso generador de datos o modelo de los datos.
+ o modelo de los datos.
 - El factor $P(\theta)$ le llamamos la distribución *inicial* o *previa*.
 - La distribución que usamos para hacer inferencia $P(\theta|X)$ es la
 distribución *final* o *posterior*
@@ -249,7 +252,7 @@ que también escribimos:
 $$P(\theta | X) \propto P(X | \theta) P(\theta)$$
 donde $\propto$ significa "proporcional a". No ponemos $P(X)$ pues como vimos
 arriba, es una constante de normalización.
-
+:::
 
 
 En estadística Bayesiana, las probablidades posteriores $P(\theta|X)$ dan toda
@@ -387,6 +390,93 @@ qbeta(0.025, shape1 = 22, shape2 = 14) |> round(2)
 qbeta(0.975, shape1 = 22, shape2 = 14) |> round(2)
 ```
 
+:::callout-note
+# Simulando de la posterior
+
+Para una gran parte de los modelos que se utilizan en la práctica, no es posible
+hacer cálculos analíticos para obtener la posterior. En estos casos tenemos que
+recurrir a simular de posterior bajo un método Monte Carlo, que usualmente es 
+del tipo MCMC (Markov Chain Monte Carlo).
+
+:::
+
+Estos algoritmos son relativamente sofisticados y es mejor usar
+software diseñado para hacerlo. En nuestros 
+siguientes ejemplos, usaremos [Stan](https://mc-stan.org/)
+
+
+## Ejemplo: estudio de Santa Clara
+
+Veamos cómo enfocar el estudio seroprevalencia de Santa Clara que vimos en la
+sección de máxima verosimilitud (@sec-santaclara) desde el punto de vista
+bayesiano [ver este reporte](http://www.stat.columbia.edu/~gelman/research/unpublished/specificity.pdf)
+
+Recordemos que teníamos 3300 individuos, y 50 de ellos fueron positivos
+con un kit de prueba que tenía las siguientes características:
+
+- Sensibilidad de 99.2% a 99.7% (intervalo de 95% de confianza) 
+- Especificidad de 76% a 88.4% (intervalo de 95% de confianza)
+
+Recordamos que tenemos que la probabilidad de observar un resultado positivo es
+
+$$ p\theta_{pos} + (1-p)(1-\theta_{neg}),$$
+Cuando tratamos este problema usando máxima verosimilitud, vimos cuál era 
+nuestra estimación de $p$ (seroprevalencia) bajo distintos valores de la especificidad
+consistentes con el intervalo reportado. Con el enfoque bayesiano podemos resolver este problema integrando la información en un solo modelo.
+
+
+Primero escribimos nuestro modelo en *Stan*:
+
+```{r}
+#| eval: false
+library(cmdstanr)
+mod_sc <- cmdstan_model("stan/santa-clara.stan")
+print(mod_sc)
+```
+
+```{r}
+cat(readLines("stan/santa-clara.stan"), sep = '\n')
+```
+
+```{r}
+#| eval: false
+n <- 50
+N <- 3300
+datos_lista <- list(N = 3300, n = 50,
+ kit_pos = 103, n_kit_pos = 122,
+ kit_neg = 399, n_kit_neg = 401)
+ajuste <- mod_sc$sample(data = datos_lista, refresh = 1000)
+sims <- ajuste$draws(c("p", "sens", "esp"), format = "df")
+resumen <- ajuste$summary(c("p"))
+write_rds(resumen, file = "datos/resumen-santa-clara.rds")
+write_rds(sims, file = "datos/sims-santa-clara.rds")
+```
+
+```{r}
+resumen <- read_rds("datos/resumen-santa-clara.rds")
+sims <- read_rds("datos/sims-santa-clara.rds")
+resumen |> select(variable, mean, q5, q95)
+```
+
+Y podemos graficar la posterior de la seroprevalencia:
+
+```{r, fig.width = 4, fig.height=3.5}
+ggplot(sims, aes(sample = p)) + 
+  geom_qq(distribution = stats::qunif) +
+  scale_x_continuous(breaks = seq(0, 1, 0.1))
+```
+
+Y vemos que los datos son consistentes con el dato reportado por los autores (alrededor
+de 1.2%), pero que no podemos excluir valores de prevalencia muy bajos (por abajo de 0.3% por ejemplo). Por otro lado, también son consistentes valores muy altos de seroprevalencia, 
+de manera que este estudio resultó ser poco informativo de la IFR del COVID.
+
+Podemos hacer diagnósticos adicionales acerca de la razón de esta variabilidad alta,
+si graficamos la relación entre especificidad de la prueba y estimación de prevalencia:
+
+```{r, fig.width = 5, fig.height=4}
+ggplot(sims, aes(x = esp, y = p)) + geom_point() +
+  xlab("Especificidad del kit") + ylab("Prevalencia")
+```
 
 
 
@@ -505,9 +595,8 @@ qplot(rgamma(2000, 5, 0.001), geom="histogram", bins = 20) +
   scale_x_continuous(breaks = seq(1000, 15000, by = 2000))
 ```
 
-Sin embargo, los cálculos no son tan simples en este caso, pues la posterior
-no tiene un forma reconocible. Tendremos que usar otras estrategias de simulación
-para ejemplos como este (Monte Carlo por medio de Cadenas de Markov, que veremos más adelante).
+Sin embargo, los cálculos no son tan simples en este caso, pero
+podríamos usar *Stan* como en los ejemplos anteriores.
 
 ## Probabilidad a priori {-}
 
@@ -906,44 +995,3 @@ ggplot(lineup_tbl, aes(x = x_rep)) +
 ```
 Y verificamos que en este caso el ajuste del modelo es apropiado.
 
-
-
-
-## Predicción {-}
-
-Cuando queremos hacer predicciones particulares acerca de datos
-que observemos en el futuro, también podemos usar la
-posterior predictiva. 
-
-- En el caso de los cantantes, lo usamos para replicar nuevas muestras
-y checar el desempeño del modelo.
-
-
-
-
-### Ejemplo: posterior predictiva de Pareto-Uniforme. {-}
-
- La posterior predictiva del modelo Pareto-Uniforme no tiene un nombre estándar, pero
- podemos aproximarla usando simulación. Usando los mismos datos del ejercicio de la lotería, haríamos:
-
-```{r}
-rpareto <- function(n, theta_0, alpha){
-  # usar el método de inverso de distribución acumulada
-  u <- runif(n, 0, 1)
-  theta_0 / (1 - u)^(1/alpha)
-}
-# Simulamos de la posterior de los parámetros
-lim_inf_post <- max(c(300, muestra_loteria$numero))
-k_posterior <- nrow(muestra_loteria) + 1.1
-sims_pareto_posterior <- tibble(
-  theta = rpareto(100000, lim_inf_post, k_posterior))
-# Simulamos una observación para cada una de las anteriores:
-sims_post_pred <- sims_pareto_posterior |>
-  mutate(x_pred = map_dbl(theta, ~ runif(1, 0, .x)))
-# Graficamos
-ggplot(sims_post_pred, aes(x = x_pred)) +
-  geom_histogram(binwidth = 50) +
-  geom_vline(xintercept = lim_inf_post, colour = "red")
-```
-
-Que es una mezcla de una uniforme con una Pareto.
