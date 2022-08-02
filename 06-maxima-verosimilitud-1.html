@@ -296,9 +296,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#ejemplo-proporción" id="toc-ejemplo-proporción" class="nav-link" data-scroll-target="#ejemplo-proporción">Ejemplo (proporción)</a></li>
   <li><a href="#aspectos-numéricos" id="toc-aspectos-numéricos" class="nav-link" data-scroll-target="#aspectos-numéricos">Aspectos numéricos</a></li>
-  <li><a href="#ejemplo-2" id="toc-ejemplo-2" class="nav-link" data-scroll-target="#ejemplo-2"> <span class="header-section-number">14.1.1</span> Ejemplo 2</a></li>
   </ul></li>
-  <li><a href="#bootstrap-paramétrico" id="toc-bootstrap-paramétrico" class="nav-link" data-scroll-target="#bootstrap-paramétrico"> <span class="header-section-number">14.2</span> Bootstrap paramétrico</a>
+  <li><a href="#sec-santaclara" id="toc-sec-santaclara" class="nav-link" data-scroll-target="#sec-santaclara"> <span class="header-section-number">14.2</span> Ejemplo 2</a></li>
+  <li><a href="#bootstrap-paramétrico" id="toc-bootstrap-paramétrico" class="nav-link" data-scroll-target="#bootstrap-paramétrico"> <span class="header-section-number">14.3</span> Bootstrap paramétrico</a>
   <ul class="collapse">
   <li><a href="#ejemplo" id="toc-ejemplo" class="nav-link" data-scroll-target="#ejemplo">Ejemplo</a></li>
   <li><a href="#incertidumbre-en-el-desempeño-del-kit" id="toc-incertidumbre-en-el-desempeño-del-kit" class="nav-link" data-scroll-target="#incertidumbre-en-el-desempeño-del-kit">Incertidumbre en el desempeño del kit</a></li>
@@ -475,15 +475,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Hay razónes teóricas y de interpretación por las que también es conveniente hacer esto.</li>
 </ul>
 </section>
-<section id="ejemplo-2" class="level3" data-number="14.1.1">
-<h3 data-number="14.1.1" class="anchored" data-anchor-id="ejemplo-2"><span class="header-section-number">14.1.1</span> Ejemplo 2</h3>
+</section>
+<section id="sec-santaclara" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="sec-santaclara"><span class="header-section-number">14.2</span> Ejemplo 2</h2>
 <p>En 2020 se hizo un estudio de seroprevalencia de COVID en Santa Clara, California.</p>
 <p>Se tomó una muestra de individuos (ver los detalles en <a href="https://www.medrxiv.org/content/10.1101/2020.04.14.20062463v2.full.pdf">el artículo original</a>). Para propósitos de este análisis supondremos que la muestra puede considerarse como aleatoria simple.</p>
 <p>Se obtuvieron 3,300 individuos, y 50 de ellos resultaron con prueba positiva (1.5%). Sin embargo, el kit de prueba que estaban utilizando tenía una especificidad de 99.5% (probabilidad de dar negativo para una persona que no está infectada) y una sensibilidad de 83%. Estas cantidades también fueron con estimadas con muestras <em>gold standard</em> no muy grandes, y reportan un intervalo de 99.2% a 99.7% para la primera cantidad y de 76% a 88.4% para la segunda. Por el momento usaremos las estimaciones puntuales.</p>
 <p>Construiremos una estimación de máxima verosimilitud para el % de personas <span class="math inline">\(\theta\)</span> que ha tenido COVID en Santa Clara al momento del estudio.</p>
 <p>El parámetro de interés principal <span class="math inline">\(p\)</span>, la proporción de personas seroprevalentes.</p>
 <p>La probabilidad de observar un resultado positivo es, por probabilidad total:</p>
-<p><span class="math display">\[ \theta_{pos} + (1-\theta_{neg})(1-p),\]</span></p>
+<p><span class="math display">\[ p\theta_{pos} + (1-p)(1-\theta_{neg}),\]</span></p>
 <p>es decir, podemos observar un verdadero positivo o un falso positivo. Escribimos la función de (log) verosimilitud:</p>
 <div class="cell">
 <details open="">
@@ -526,9 +527,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Como vemos, el resultado tiene un ajuste con respecto a la muestra debido a las características del kit de prueba (especialmente por los falsos positivos).</p>
 </section>
-</section>
-<section id="bootstrap-paramétrico" class="level2" data-number="14.2">
-<h2 data-number="14.2" class="anchored" data-anchor-id="bootstrap-paramétrico"><span class="header-section-number">14.2</span> Bootstrap paramétrico</h2>
+<section id="bootstrap-paramétrico" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="bootstrap-paramétrico"><span class="header-section-number">14.3</span> Bootstrap paramétrico</h2>
 <p>Las estimaciones de arriba son puntuales, y generalmente requerimos medidas de incertidumbre. Podemos usar una variación del bootstrap que supone que simula de nuestro modelo de probabilidad para entender cuánto puede variar nuestra estimación</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -564,7 +564,7 @@ Bootstrap paramétrico
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="fu">simular_muestra</span>(<span class="dv">3300</span>, <span class="fl">0.01</span>, <span class="fl">0.83</span>, <span class="fl">0.995</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 54</code></pre>
+<pre><code>[1] 47</code></pre>
 </div>
 </div>
 <p>Y ahora podemos escribir una iteración del bootstrap paramétrico:</p>
@@ -581,7 +581,7 @@ Bootstrap paramétrico
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">simular_boot</span>(est_mv, <span class="fl">0.83</span>, <span class="fl">0.995</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.01047203</code></pre>
+<pre><code>[1] 0.01489167</code></pre>
 </div>
 </div>
 <p>Repetimos un número grande de veces (de mil a 10 mil por ejemplo):</p>
@@ -605,7 +605,7 @@ Bootstrap paramétrico
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>   5%   95% 
-0.008 0.017 </code></pre>
+0.007 0.018 </code></pre>
 </div>
 </div>
 <p>Y este sería nuestro intervalo de confianza para la prevalencia bajo los supuestos que hicimos. Sin embargo, también tenemos que considerar la incertidumbre en las cantidades de sensibilidad y especificidad como veremos a continuación.</p>
