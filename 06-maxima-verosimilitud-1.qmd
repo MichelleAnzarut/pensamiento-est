@@ -23,7 +23,7 @@ la otra mitad produce galletas con 23 galletas de avena y 2 de chispas de chocol
 
 Tomamos una bolsa, y no sabemos qué tipo de bolsa es (parámetro desconocido). Extraemos al azar una de las galletas, y es de chispas de chocolate (observación).
 
-Por máxima verosimilitud, inferimos que la bolsa que estamos considerando tiene 5 galletas de avena. Esto es porque es más probable observar una galleta de chispas en las bolsas que contienen 5 galletas de avena que en las bolsas que contienen 23 galletas de avena. Podemos cuantificar la probabilidad que "acertemos" en nuestra inferencia.
+Por máxima verosimilitud, inferimos que la bolsa que estamos considerando tiene 5 galletas de avena. Esto es porque es más probable observar una galleta de chispas en las bolsas que contienen 5 galletas de avena que en las bolsas que contienen 23 galletas de avena. 
 
 ## El proceso de máxima verosimilitud
 
@@ -105,7 +105,7 @@ ggplot(dat_verosim, aes(x = x, y = prob)) + geom_line() +
 
 Nótese que esta gráfica:
 
-- Depende de los datos, que pensamos fijos.
+- La forma de esta función (verosimilitud) depende de los datos
 - Cuando cambiamos la $p$, la probabilidad de observar la muestra cambia. Nos interesa
 ver las regiones donde la probabilidad es relativamente alta.
 - El máximo está en 0.25.
@@ -114,7 +114,7 @@ ver las regiones donde la probabilidad es relativamente alta.
 
 Obsérvese que para hacer esto usamos dos partes del proceso generador de datos:
 
-- Un modelo teórico de cómo es la población con parámetros y 
+- Un modelo teórico con parámetros de cómo son las observaciones
 - Información de como se extrajo la muestra,
 
 y resolvimos el problema de estimación convirtiéndolo en uno de optimización.
@@ -180,6 +180,7 @@ Ahora notemos que
 
 - Maximizar la verosimilitud **es lo mismo** que maximizar la log-verosimilitud,  pues el logaritmo es una función creciente. Si $x_{max}$ es el máximo de $f$, tenemos que $f(x_{max})>f(x)$ para cualquier $x$, entonces tomando logaritmo,
 $$log(f(x_{max}))>log(f(x))$$ para cualquier $x$, pues el logaritmo respeta la desigualdad por ser creciente.
+
 - Usualmente usamos la log verosimilitud para encontrar estimador de máxima verosimilitud
 - Hay razónes teóricas y de interpretación por las que también es conveniente hacer esto.
 
@@ -196,7 +197,7 @@ Sin embargo,
 el kit de prueba que estaban utilizando tenía una especificidad de 99.5% (probabilidad de dar
 negativo para una persona que no está infectada) y una sensibilidad de 83%. Estas cantidades
 también fueron con estimadas con muestras *gold standard* no muy grandes, y reportan un intervalo de 99.2% a 99.7% para la primera
-cantidad y de 76% a 88.4%. Por el momento usaremos las estimaciones puntuales.
+cantidad y de 76% a 88.4% para la segunda. Por el momento usaremos las estimaciones puntuales.
 
 Construiremos una estimación de máxima verosimilitud para el % de personas $\theta$ que ha
 tenido COVID en Santa Clara al momento del estudio.

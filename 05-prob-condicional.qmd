@@ -15,7 +15,7 @@ las probabilidades que queremos calcular son *condicionadas* a cierto tipo de in
 complejos a partir de componentes simples.
 
 En particular, si nuestro modelo incluye partes del proceso generador de datos,
-nos interesará calcular probabilidades condicionales de eventos *condicionados* 
+nos interesará calcular probabilidades de eventos *condicionadas* 
 a que hemos observado ciertos datos.
 
 Muchos de los problemas de esta sección son de (@rossproba).
@@ -38,7 +38,7 @@ que la suma es 6?
 Solución: los resultados equiprobables que resultan en un tiro de suma 6
 son $F= \{ (5,1),(4,2),(3,3),(2,4),(1,5)\}$, que son 5 posibles resultados. En solamente
 2 de ellos tiramos un cinco. Como estos resultados son equiprobables, si $E$ es el
-evento "tirar al menos un 5",
+evento "tirar al menos un 5", entonces
 $$P(E|F) = 2/5$$
 Podemos formalizar de la siguiente manera: para calcular $P(E|F)$ contamos todos
 los resultados de $F$ donde también ocurre $E$ y dividimos entre las maneras en que
@@ -48,10 +48,12 @@ puede ocurrir $F$:
 $(5,1), (5,2), (5,6)$ y así sucesivamente. Sin embargo, solo en 2 de ellos la suma
 es 5.
 
-```{block2, type="comentario"}
-En un espacio de probabilidad, si $E$ y $F$ son eventos, entonces definimos
+::: callout-note
+# Probabilidad condicional
+
+En un espacio de probabilidad, si $E$ y $F$ son eventos, definimos
 $$P(E|F) = \frac{P(E\cap F)}{P(F)}.$$
-```
+:::
 
 Nótese que otra manera de ver esta definición es como sigue: una vez que sabemos 
 que ocurrió $F$, restringimos todo nuestro análisis a resultados dentro de $F$ (normalizamos con la probabilidad de $F$), y proseguimos
@@ -167,13 +169,15 @@ probs_y_x = 0.5^(1:6)
 sum(probs_y_x * probs_x)
 ```
 
-Checa usando simulación. 
+Podemos también checar este resultado usando simulación 
 
 ## Ejercicio: dados y monedas (simulación)
 
-Este es un experimento más interesante para simular:
+Esta es la función que simula la tirada de dado y después las tiradas de monedas del
+ejemplo anterior:
 
 ```{r}
+#| code-fold: show  
 simular_soles <- function(){
    dado <- sample(1:6, 1)
    soles <- sample(c("sol", "águila"), dado, replace = TRUE)
@@ -183,6 +187,7 @@ simular_soles <- function(){
 set.seed(82332)
 simular_soles()
 ```
+
 Si hacemos 10 mil simulaciones:
 
 ```{r}
@@ -195,9 +200,8 @@ La frecuencia relativa de cero soles es:
 ```{r}
 sum(sims==0) / length(sims)
 ```
-Calcula también la probabilidad de obtener 2 soles o más
-en este experimento (puedes usar la simulación).
 
+que coincide con nuestro resultado analítico anterior.
 
 
 ## Regla de Bayes 

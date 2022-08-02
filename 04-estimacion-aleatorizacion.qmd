@@ -117,7 +117,7 @@ alto <- n - bajo + 1
 ```
 Esto también es altamente probable. Sin embargo, la 
 probabilidad de la mediana poblacional esté entre 
-$[y_{7}, y_{14}]$ es al menos
+$[y_{(7)}, y_{(14)}]$ es al menos
 
 ```{r}
 #! code-fold: false

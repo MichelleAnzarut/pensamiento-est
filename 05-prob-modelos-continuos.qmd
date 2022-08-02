@@ -54,14 +54,12 @@ reglas básicas de probabilidad (axiomas) que presentamos anteriormente.
 - Este es el equivalente continuos para espacios equiprobables con un número 
 finito de resultados.
 
-```{block2, type="comentario"}
+::: callout-tip
 Supongamos que una variable aleatoria puede tomar valores en el intervalo
 $[L,U]$. La variable aleatoria es **uniforme** en $[L,U]$ cuando
 
 $$P(X \in [a,b]) = \frac{b-a}{L-U}$$
-    
-```
-
+:::
 
 
 
@@ -73,7 +71,7 @@ más probable que la flecha apunte hacia el piso en lugar de hacia el cielo.
 
 En este caso, si la dirección hacia arriba es 90 grados y hacia abajo es
 270 grados, quisiéramos por ejemplo que
-$$P(260 < X <280) < P(80 < X < 100)$$
+$$P(260 < X <280) > P(80 < X < 100)$$
 Y nótese que debe ser posible asignar probabilidades a cualquier sector
 de la ruleta con el nuevo modelo que propongamos. ¿Cómo podríamos modificar nuestra asignación de probabilidades?
 
@@ -185,7 +183,7 @@ $$P(1<X<2) = \int_{1}^{2} f(x)\,dx = \int_1^2 \frac{x}{4}\,dx =
 
 de modo que
 
-$$P(X<1) = 0.375 +0.500 = 0.875$$
+$$P(X>1) = 0.375 +0.500 = 0.875$$
 
 En general, podemos dar una fórmula para una densidad triangular en 
 el intervalo $[A,B]$ con mediana en $(A + B)/2$. ¿Cómo sería la fórmula?
@@ -196,13 +194,14 @@ el intervalo $[A,B]$ con mediana en $(A + B)/2$. ¿Cómo sería la fórmula?
 Antes vimos la definición de cuantiles para datos numéricos. Podemos definirlos
 también para variables aleatorias numéricas:
 
-```{block2, type="comentario"}
+::: callout-note
+# Cuantiles teóricos
+
 Sea $p\in (0,1)$. El cuantil-$p$ de la variable $X$ con función de
 densidad $f(x)$ es el valor $x(p)$ tal que
 
 $$\int_{-\infty}^{x(p)} f(x)\,dx = p$$
-    
-```
+:::
 
 Observación: nótese que usamos como límite inferior $-\infty$ para indicar que
 integramos $f$ sobre toda la densidad que esté a la izquierda de $x(p)$.
@@ -365,6 +364,7 @@ A una variable $Z$ que tiene esta densidad le llamamos una variable
 con **distribución normal estándar**. Comparemos cuantiles en nuestro ejemplo:
 
 ```{r, fig.width=4, fig.height=3}
+#| code-fold: show
 ggplot(tibble(resultado = sims_dados),
        aes(sample = resultado)) +
     geom_qq(distribution = stats::qnorm) +
@@ -520,14 +520,14 @@ la desviación estándar de la distribución normal.
 Una de las razones por las que el modelo normal es tan importante es
 el siguiente resultado:
 
-```{block2, type="comentario"}
-**Teorema central del límite**
+::: callout-note
+# Teorema central del límite
 
 Si $X_1,X_2,\ldots, X_n$ son variables aleatorias independientes
 con media $\mu$ y desviación estándar $\sigma$ con una densidad $f(x)$:
     
  - $S_n = X_1 + X_2 + \cdots X_n$ es aproximadamente normal cuando $n$ es suficientemente grande
-```
+:::
 
 - Muchas cantidades de interés en la estadística se pueden definir como
 sumas o promedios de un número grande de variables aleatorias
@@ -546,7 +546,7 @@ la media $\mu$ de la población con un intervalo.
 - Estimamos la media con 
 $$\bar{x} = \frac{1}{n}(x_1+\cdots + x_n) = \frac{1}{n}\sum_i x_i,$$
 
-- Por el teorema del límite central, \bar{x} es aproximadamente normal, y su
+- Por el teorema del límite central, $\bar{x}$ es aproximadamente normal, y su
 media es $\mu$. Esto implica que
 
 $$P(\mu - 2\sigma  \leq \bar{x} \leq\mu + 2\sigma)\approx 0.95$$
@@ -570,16 +570,6 @@ Notas:
 dependiendo del tamaño de muestra y la forma de la distribución teórica (poblacional). Existen métodos como el *bootstrap* donde podemos checar qué tan razonable es hacer
 esta aproximación. También se puede hacer simulación modelando la distribución $f(x)$.
 
-## Otras densidades comunes
-
-Como vimos arriba, consideraciones teóricas hacen razonable suponer
-que una variable aleatoria tiene cierta distribución: por ejemplo,
-si una variable aleatoria es suma de muchas perturbaciones independientes,
-la suma o promedio resultante puede modelarse como una 
-distribución normal.
-
-Otras consideraciones teóricas sugieren otro tipo formas
-útiles de densidades. 
 
 ## Máxima verosimilitud: modelos continuos
 
@@ -590,8 +580,8 @@ con medias distintas pero la misma dispersión.
 
 Nuestro modelo es entonces:
 
-- Para sopranos, $y~ N(\mu_s, \sigma)$,
-- Para tenores, $y ~ N(\mu_t, \sigma)$.
+- Para sopranos, $y \sim N(\mu_s, \sigma)$,
+- Para tenores, $y \sim N(\mu_t, \sigma)$.
 
 Si tomamos muestras aleatorias independientes de estos dos grupos, y denotaremos las
 estaturas registradas como: 
@@ -602,7 +592,7 @@ y la tesitura del cantante como
 $$s_1,s_2,\ldots, s_n$$
 donde $s_i=1$ indica soprano y $s_i=0$ indica tenor. Escribimos nuestra verosimilitud,
 que en este caso consiste en multipicar las funciones de densidad normal correspondientes. Por ejemplo, si tenemos $n=3$, $y_1 = 160, s_1=0$ y $y_2 = 150, y_3 = 162, s_2=1, s_3 = 1,$ y
-$f$ es la distribución normal estándar, podríamos escribir la verosimilitud como
+$f(x;\mu,\sigma)$ es la función de densidad normal, podríamos escribir la verosimilitud como
 
 $$L(\mu_1, \mu_2, \sigma; y) = f\left(160; \mu_t,\sigma\right)f\left(150;   \mu_s,\sigma\right)f\left(162; \mu_s, \sigma\right)$$
 En general, podemos escribir la log verosimilitud como (aunque con algo de trabajo
@@ -741,8 +731,26 @@ remuestreo_tbl |> pivot_longer(mu_s:sigma, names_to = "parametro", values_to = "
 ```
 
 
+## Resumen
 
+- En las secciones anteriores, definimos modelos de probabilidad para 
+datos observados (de tipo discreto y continuo).
 
+- Estos modelos dependen generalmente de parámetros desconocidos poblacionales
+(como probabilidad
+de ser seropositivo, o medias y dispersión de la población de cantantes). 
 
+- Las cantidades de interés ahora son esos parámetros del modelo de probabilidad, 
+y queremos hacer inferencia sobre ellos.
+
+- Introdujimos el método de máxima verosimilitud como una manera general de encontrar
+estimadores de esos parámetros dada una muestra, y vimos cómo construir intervalos
+de confianza usando el bootstrap paramétrico.
+
+- Mostramos un ejemplo simple de cómo checar los supuestos del modelo para saber
+si podemos confiar en la inferencia.
+
+- Nota: en lugar de utilizar el bootstrap paramétrico, es posible utilizar resultados
+asintóticos (como el teorema central del límite) para hacer inferencia.
 
 

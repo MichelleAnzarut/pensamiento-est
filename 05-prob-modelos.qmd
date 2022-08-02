@@ -51,7 +51,6 @@ Por ejemplo, si tiramos
 muchos volados con una moneda bien balanceada, al evento $E$ = "tiramos sol" le asignamos $P(E)=1/2$ según nuestro modelo. Entonces esperamos obtener alrededor de 1/2 de soles
 y 1/2 de águilas si tiramos una sucesión grande de volados. 
 
-```{block2, type="comentario"}
 **Probabilidades y frecuencias**
 
 Supongamos que repetimos una gran cantidad $n$ de veces un experimento, y que registramos
@@ -60,7 +59,6 @@ $k_n$ = cuántas veces ocurre un evento $A$. La probabilidad de que ocurra $A$ e
 $$\lim_{n\to\infty} \frac{k_n}{n} \to P(A), $$
 
 es decir, $P(A)$ el la frecuencia al largo plazo de ocurrencia de $A$.
-```
 
 Aunque podríamos hacer algunos experimentos físicos más reales, para este curso
 podemos hacer simulaciones de computadora del experimento que nos interesa. 
@@ -76,7 +74,7 @@ entonces definir
 $$P(E_i) = 1/6,$$
 
 para cada lado $i=1,2,3,4,5,6$. A partir de estos valores podemos calcular
-la probabilidad de cualquier evento, por ejemplo, $P(\textrm{tirar impar}) = =1/6 + 1/6 + 1/6 = 1/2$.
+la probabilidad de cualquier evento, por ejemplo, $P(\textrm{tirar impar}) = 1/6 + 1/6 + 1/6 = 1/2$.
 
 Podemos simular una tirada de dado como:
 
@@ -190,7 +188,7 @@ de dado independientes.
 ::: callout-note
 # Métodos Monte Carlo
 
-Los métodos montecarlo son métodos que utilizan simulación
+Los métodos Monte Carlo son métodos que utilizan simulación
 de un modelo probabilístico para calcular cantidades asociadas al modelo.
 
 :::
