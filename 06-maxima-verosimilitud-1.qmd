@@ -68,20 +68,20 @@ Según el proceso con el que se construyó la muestra, debemos dar una probabili
 los 2 errores en 8 registros. Supongamos que en realidad existe una proporción $p$
 de que un registro tenga un error. Entonces calculamos la probabilidad de observar la muestra dado p:
 
-$$P(X_1 = 0, X_2 = 1, X_3 = 0, X_4 = 0, X_5 =1, X_6 =0, X_7 =0, X_8 =0|p)$$
+$$P(X_1 = 0, X_2 = 1, X_3 = 0, X_4 = 0, X_5 =1, X_6 =0, X_7 =0, X_8 =0)$$
 
 que es igual a 
 
 $$ \begin{aligned}
-&P(X_1 = 0|p)P(X_2 = 1|p)P(X_3 = 0|p)P( X_4 = 0|p) \times \\ 
-&P(X_5 =1|p)P(X_6 =0|p)P(X_7 =0|p)P(X_8 =0|p)
+&P(X_1 = 0)P(X_2 = 1)P(X_3 = 0)P( X_4 = 0) \times \\ 
+&P(X_5 =1)P(X_6 =0)P(X_7 =0)P(X_8 =0)
 \end{aligned}$$
 
 pues la probabilidad de que cada observación sea 0 o 1 no depende de las observaciones restantes (la muestra se extrajo de manera independiente). 
 
 Nótese entonces que para cualquier $X_i$, 
 
-$$P(X_i=1|p) = p, P(X_i=0|p) = 1-p,$$ 
+$$P(X_i=1) = p, P(X_i=0) = 1-p,$$ 
 
 así que la cantidad de arriba es igual a
 
