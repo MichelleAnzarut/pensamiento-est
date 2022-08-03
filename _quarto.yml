@@ -32,10 +32,10 @@ book:
         - 05-prob-condicional.qmd
         - 06-maxima-verosimilitud-1.qmd
         - 05-prob-modelos-continuos.qmd
-#    - part: 06-inferencia-modelos.qmd
-#      chapters:
-#        - 06-intro-bayesiana-1.qmd
-#        - 06-intro-bayesiana-2.qmd
+    - part: 06-inferencia-modelos.qmd
+      chapters:
+        - 06-intro-bayesiana-1.qmd
+        - 06-intro-bayesiana-2.qmd
 bibliography: referencias.bib
 
 format:
