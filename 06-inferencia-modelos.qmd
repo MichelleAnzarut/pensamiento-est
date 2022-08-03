@@ -1,2 +1,11 @@
 # Inferencia con modelos bayesianos
 
+En la inferencia bayesiana se usa la probabilidad para modelar la incertidumbre y la variación.
+
+Hay algunas razones que hacen atractiva la inferencia Bayesiana:
+
+1. Permite ajustar los modelos a datos desordenados (Big data, datos desordenados, muestras no aleatorias, experimentos no aleatorizados, etc)
+
+2. Permite combinar información.
+
+3. Las inferencias se pueden mapear directamente a las decisiones utilizando las distribuciones de probabilidad.
