@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Pensamiento estadístico - Introducción a modelos probabilísticos</title>
+<title>Pensamiento estadístico - Inferencia con modelos bayesianos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,8 +25,8 @@ ul.task-list{list-style: none;}
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./05-prob-modelos.html" rel="next">
-<link href="./04-estimacion-remuestreo.html" rel="prev">
+<link href="./06-intro-bayesiana-1.html" rel="next">
+<link href="./05-prob-modelos-continuos.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -65,7 +65,7 @@ ul.task-list{list-style: none;}
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Introducción a modelos probabilísticos</h1>
+      <h1 class="quarto-secondary-nav-title">Inferencia con modelos bayesianos</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -190,7 +190,7 @@ ul.task-list{list-style: none;}
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./05-probabilidad.html" class="sidebar-item-text sidebar-link active">Introducción a modelos probabilísticos</a>
+            <a href="./05-probabilidad.html" class="sidebar-item-text sidebar-link">Introducción a modelos probabilísticos</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -220,7 +220,7 @@ ul.task-list{list-style: none;}
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./06-inferencia-modelos.html" class="sidebar-item-text sidebar-link">Inferencia con modelos bayesianos</a>
+            <a href="./06-inferencia-modelos.html" class="sidebar-item-text sidebar-link active">Inferencia con modelos bayesianos</a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -250,7 +250,7 @@ ul.task-list{list-style: none;}
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Introducción a modelos probabilísticos</h1>
+<h1 class="title d-none d-lg-block">Inferencia con modelos bayesianos</h1>
 </div>
 
 
@@ -264,9 +264,6 @@ ul.task-list{list-style: none;}
 
 </header>
 
-<p>La teoría de probabilidad es una rama de las matemáticas que se ocupa de la ocurrencia de un evento aleatorio. El objetivo es expresar con cantidades numéricas entre 0 y 1 la posibilidad de que suceda dicho evento.</p>
-<p>Hasta este punto del curso asumimos que el lector tiene un buen grado de familiaridad con la teoría básica de la probabilidad, pero dado que los usos de la probabilidad para inferencia son mucho más amplios, en este capítulo repasaremos brevemente los fundamentos de la teoría de probabilidad.</p>
-<p>También veremos una introducción al método de máxima verosimilitud, que es el primer enfoque para producir inferencias basadas en modelos probabilísticos.</p>
 
 
 
@@ -370,13 +367,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./04-estimacion-remuestreo.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Remuestreo: el bootstrap</span></span>
+      <a href="./05-prob-modelos-continuos.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Modelos probabilísticos para variables continuas</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./05-prob-modelos.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Básicos de probabilidad y simulación</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./06-intro-bayesiana-1.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Introducción a inferencia bayesiana</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

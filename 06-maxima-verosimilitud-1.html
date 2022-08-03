@@ -282,6 +282,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./06-inferencia-modelos.html" class="sidebar-item-text sidebar-link">Inferencia con modelos bayesianos</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-intro-bayesiana-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Introducción a inferencia bayesiana</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-intro-bayesiana-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Calibración bayesiana y Regularización</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -354,14 +374,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[x_1 = 0, x_2 = 1, x_3 = 0, x_4 = 0, x_5 =1, x_6 =0, x_7 =0, x_8 =0\]</span></p>
 <p>donde 1 indica un error menor. Encontramos dos errores menores. ¿Cómo estimamos el número de registros con errores leves en la base de datos?</p>
 <p>Ya sabemos una respuesta razonable para nuestro estimador puntual, que sería <span class="math inline">\(\hat{p}=2/8=0.25\)</span>. Veamos cómo se obtendría por máxima verosimilitud.</p>
-<p>Según el proceso con el que se construyó la muestra, debemos dar una probabilidad de observar los 2 errores en 8 registros. Supongamos que en realidad existe una proporción <span class="math inline">\(p\)</span> de que un registro tenga un error. Entonces calculamos</p>
-<p>Probabilidad de observar la muestra:</p>
-<p><span class="math display">\[P(X_1 = 0, X_2 = 1, X_3 = 0, X_4 = 0, X_5 =1, X_6 =0, X_7 =0, X_8 =0)\]</span></p>
-<p>es igual a</p>
-<p><span class="math display">\[P(X_1 = 0)P(X_2 = 1)P(X_3 = 0)P( X_4 = 0)P(X_5 =1)P(X_6 =0)P(X_7 =0)P(X_8 =0)\]</span></p>
+<p>Según el proceso con el que se construyó la muestra, debemos dar una probabilidad de observar los 2 errores en 8 registros. Supongamos que en realidad existe una proporción <span class="math inline">\(p\)</span> de que un registro tenga un error. Entonces calculamos la probabilidad de observar la muestra dado p:</p>
+<p><span class="math display">\[P(X_1 = 0, X_2 = 1, X_3 = 0, X_4 = 0, X_5 =1, X_6 =0, X_7 =0, X_8 =0|p)\]</span></p>
+<p>que es igual a</p>
+<p><span class="math display">\[ \begin{aligned}
+&amp;P(X_1 = 0|p)P(X_2 = 1|p)P(X_3 = 0|p)P( X_4 = 0|p) \times \\
+&amp;P(X_5 =1|p)P(X_6 =0|p)P(X_7 =0|p)P(X_8 =0|p)
+\end{aligned}\]</span></p>
 <p>pues la probabilidad de que cada observación sea 0 o 1 no depende de las observaciones restantes (la muestra se extrajo de manera independiente).</p>
-<p>Esta ultima cantidad tiene un parámetro que no conocemos: la proporcion <span class="math inline">\(p\)</span> de registros con errores. Así que lo denotamos como una cantidad desconocida <span class="math inline">\(p\)</span>. Nótese entonces que <span class="math inline">\(P(X_2=1) = p\)</span>, <span class="math inline">\(P(X_3=0) = 1-p\)</span> y así sucesivamente, así que la cantidad de arriba es igual a</p>
-<p><span class="math display">\[p(1-p)p(1-p)(1-p)p(1-p)(1-p)(1-p) \]</span></p>
+<p>Nótese entonces que para cualquier <span class="math inline">\(X_i\)</span>,</p>
+<p><span class="math display">\[P(X_i=1|p) = p, P(X_i=0|p) = 1-p,\]</span></p>
+<p>así que la cantidad de arriba es igual a</p>
+<p><span class="math display">\[(1-p)p(1-p)(1-p)p(1-p)(1-p)(1-p) \]</span></p>
 <p>que se simplifica a</p>
 <p><span class="math display">\[ L(p) = p^2(1-p)^6\]</span></p>
 <p>Ahora la idea es <strong>encontrar la p que maximiza la probabilidad de lo que observamos</strong>. En este caso se puede hacer con cálculo, pero vamos a ver una gráfica de esta función y cómo resolverla de manera numérica.</p>
@@ -467,12 +491,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Ahora notemos que</p>
 <ul>
-<li>Maximizar la verosimilitud <strong>es lo mismo</strong> que maximizar la log-verosimilitud, pues el logaritmo es una función creciente. Si <span class="math inline">\(x_{max}\)</span> es el máximo de <span class="math inline">\(f\)</span>, tenemos que <span class="math inline">\(f(x_{max})&gt;f(x)\)</span> para cualquier <span class="math inline">\(x\)</span>, entonces tomando logaritmo,</li>
-</ul>
-<p><span class="math display">\[log(f(x_{max}))&gt;log(f(x))\]</span> para cualquier <span class="math inline">\(x\)</span>, pues el logaritmo respeta la desigualdad por ser creciente.</p>
-<ul>
-<li>Usualmente usamos la log verosimilitud para encontrar estimador de máxima verosimilitud</li>
-<li>Hay razónes teóricas y de interpretación por las que también es conveniente hacer esto.</li>
+<li><p>Maximizar la verosimilitud <strong>es lo mismo</strong> que maximizar la log-verosimilitud, pues el logaritmo es una función creciente. Si <span class="math inline">\(x_{max}\)</span> es el máximo de <span class="math inline">\(f\)</span>, tenemos que <span class="math inline">\(f(x_{max})&gt;f(x)\)</span> para cualquier <span class="math inline">\(x\)</span>, entonces tomando logaritmo, <span class="math display">\[log(f(x_{max}))&gt;log(f(x))\]</span> para cualquier <span class="math inline">\(x\)</span>, pues el logaritmo respeta la desigualdad por ser creciente.</p></li>
+<li><p>Usualmente usamos la log verosimilitud para encontrar estimador de máxima verosimilitud</p></li>
+<li><p>Hay razónes teóricas y de interpretación por las que también es conveniente hacer esto.</p></li>
 </ul>
 </section>
 </section>
@@ -564,7 +585,7 @@ Bootstrap paramétrico
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="fu">simular_muestra</span>(<span class="dv">3300</span>, <span class="fl">0.01</span>, <span class="fl">0.83</span>, <span class="fl">0.995</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 47</code></pre>
+<pre><code>[1] 49</code></pre>
 </div>
 </div>
 <p>Y ahora podemos escribir una iteración del bootstrap paramétrico:</p>
@@ -581,7 +602,7 @@ Bootstrap paramétrico
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">simular_boot</span>(est_mv, <span class="fl">0.83</span>, <span class="fl">0.995</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.01489167</code></pre>
+<pre><code>[1] 0.01414515</code></pre>
 </div>
 </div>
 <p>Repetimos un número grande de veces (de mil a 10 mil por ejemplo):</p>

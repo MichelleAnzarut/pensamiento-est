@@ -88,6 +88,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./06-inferencia-modelos.html" rel="next">
 <link href="./06-maxima-verosimilitud-1.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -277,6 +278,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05-prob-modelos-continuos.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Modelos probabilísticos para variables continuas</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./06-inferencia-modelos.html" class="sidebar-item-text sidebar-link">Inferencia con modelos bayesianos</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-intro-bayesiana-1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Introducción a inferencia bayesiana</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-intro-bayesiana-2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Calibración bayesiana y Regularización</span></a>
   </div>
 </li>
       </ul>
@@ -561,7 +582,7 @@ Cuantiles teóricos
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     10%      50%      90% 
-1.050153 5.007772 8.999219 </code></pre>
+1.024274 5.157881 8.832252 </code></pre>
 </div>
 </div>
 <p>Por el ejercicio anterior sabemos cuáles son los cuantiles teóricos correspondientes a una uniforme en <span class="math inline">\([0,10]\)</span>. Podemos calcularlos también como sigue:</p>
@@ -635,7 +656,7 @@ Cuantiles teóricos
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">simular_bolsa</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.725</code></pre>
+<pre><code>[1] 3.025</code></pre>
 </div>
 </div>
 <p>Veamos cómo se ven los resultados si hacemos este experimento un número grande de veces:</p>
@@ -1182,6 +1203,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./06-inferencia-modelos.html" class="pagination-link">
+        <span class="nav-page-text">Inferencia con modelos bayesianos</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
