@@ -241,11 +241,13 @@ relativamente simples:
 # Inferencia bayesiana 
 
 Con la notación de arriba:
+
 - Como $X$ son los datos observados, llamamos a $P(X|\theta)$ la *verosimilitud*,
  o modelo de los datos.
 - El factor $P(\theta)$ le llamamos la distribución *inicial* o *previa*.
 - La distribución que usamos para hacer inferencia $P(\theta|X)$ es la
-distribución *final* o *posterior*
+distribución *final* o *posterior*.
+
 Hacemos inferencia usando la ecuación
 $$P(\theta | X) = \frac{P(X | \theta) P(\theta)}{P(X)}$$
 que también escribimos:
@@ -272,8 +274,8 @@ knitr::include_graphics('imagenes/perros.png')
 
 Regresamos ahora a nuestro problema de estimar una proporción $\theta$ de una
 población dada usando una muestra $X_1,X_2,\ldots, X_n$ de variables
-Bernoulli (\theta) extraídas de modo independiente.  Ya sabemos calcular la
-verosimilitud (el modelo de los datos):
+$\mathsf{Bernoulli}(\theta)$ extraídas de modo independiente.  Ya sabemos calcular la
+verosimilitud:
 
 $$P(X_1=x_1,X_2 =x_2,\ldots, X_n=x_n|\theta) = \theta^k(1-\theta)^{n-k},$$
 
@@ -294,9 +296,11 @@ De modo que nuestra información inicial es que la proporción puede tomar
 cualquier valor entre 0 y 1, pero es probable que tome un
 valor no tan lejano de 0.5. Por ejemplo, con probabilidad 0.95 creemos
 que $\theta$ está en el intervalo
+
 ```{r}
 quantile(sim_inicial$theta, c(0.025, 0.975)) |> round(2)
 ```
+
 Es difícil justificar en abstracto por qué escogeriamos una inicial con esta
 forma. *Aunque esto los detallaremos más adelante*, puedes pensar, por el
 momento, que alguien observó algunos casos de esta población, y quizá vio tres éxitos y tres fracasos. Esto sugeriría que es poco probable que la probablidad
@@ -304,7 +308,9 @@ $\theta$ sea muy cercana a 0 o muy cercana a 1.
 
 Ahora podemos construir nuestra posterior. Tenemos que
 
-$$P(\theta| X_1=x_1, \ldots, X_n=x_n) \propto P(X_1 = x_1,\ldots X_n=x_n | \theta)P(\theta) = \theta^{k+2}(1-\theta)^{n-k + 2}$$
+$\begin{align}P(\theta| X_1=x_1, \ldots, X_n=x_n) &\propto P(X_1 = x_1,\ldots X_n=x_n | \theta)P(\theta) \\
+&= \theta^{k+2}(1-\theta)^{n-k + 2}\end{align}$
+
 donde la constante de normalización no depende de $\theta$. Como $\theta$ es un
 parámetro continuo, la expresión de la derecha nos debe dar una densidad posterior.
 
@@ -486,7 +492,7 @@ Ahora regresamos al problema de estimación del máximo de una distribución uni
 En este caso, consideraremos un problema más concreto. Supongamos que hay una lotería
 (tipo tradicional)
 en México y no sabemos cuántos números hay. Obtendremos una muestra iid de $n$ números,
-ya haremos una aproximación continua, suponiendo que
+y haremos una aproximación continua, suponiendo que
 
 $$X_i \sim U[0,\theta]$$
 
@@ -564,6 +570,7 @@ ggplot(sims_theta) +
   xlim(0, 15000) + scale_y_sqrt() +
   geom_rug(data = muestra_loteria, aes(x = numero))
 ```
+
 Nótese que cortamos algunos valores de la inicial en la cola derecha: un defecto
 de esta distribución inicial, con una cola tan larga a la derecha, es que
 pone cierto peso en valores que son poco creíbles y la vuelve poco apropiada para
@@ -578,8 +585,10 @@ sims_theta |> group_by(dist) |>
   summarise(cuantiles = quantile(theta, f) |> round(2), f = f) |>
   pivot_wider(names_from = f, values_from = cuantiles)
 ```
+
 Estimamos entre 5.8 millones y 6.7 millones de boletos. El máximo en la muestra
 es de
+
 ```{r}
 max(muestra_loteria$numero)
 ```
@@ -849,6 +858,7 @@ usando la distribución predictiva posterior.
 
 Como vimos en los ejemplos, en general un análisis de datos bayesiano sigue los
 siguientes pasos:
+
 - Identificar los datos releventes a nuestra pregunta de investigación, el tipo
 de datos que vamos a describir, que variables queremos estimar.
 - Definir el modelo descriptivo para los datos. La forma matemática y los
@@ -879,11 +889,14 @@ Supongamos que tenemos la posterior $p(\theta | x)$. Podemos generar una nueva
 La distribución **predictiva posterior** genera nuevas observaciones a partir de
 la información observada. La denotamos como $p(\tilde{x}|x)$.
 Para simular de ella:
+
 - Muestreamos un valor $\tilde{\theta}$ de la posterior $p(\theta|x)$.
 - Simulamos del modelo de las observaciones $\tilde{x} \sim p(\tilde{x}|\tilde{\theta})$.
 - Repetimos el proceso hasta obtener una muestra grande.
 - Usamos este método para producir, por ejemplo, **intervalos de predicción** para nuevos datos.
-Si queremos una replicación de las observaciones de la predictiva posterior,
+
+Si queremos una replicación de las observaciones de la predictiva posterior:
+
 - Muestreamos un valor $\tilde{\theta}$ de la posterior $p(\theta|x)$.
 - Simulamos del modelo de las observaciones $\tilde{x}_1, \tilde{x}_2,\ldots, \tilde{x}_n \sim p(\tilde{x}|\tilde{\theta})$,
 done $n$ es el tamaño de muestra de la muestra original $x$.
