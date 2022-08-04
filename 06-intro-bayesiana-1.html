@@ -503,7 +503,13 @@ Inferencia bayesiana
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Con la notación de arriba: - Como <span class="math inline">\(X\)</span> son los datos observados, llamamos a <span class="math inline">\(P(X|\theta)\)</span> la <em>verosimilitud</em>, o modelo de los datos. - El factor <span class="math inline">\(P(\theta)\)</span> le llamamos la distribución <em>inicial</em> o <em>previa</em>. - La distribución que usamos para hacer inferencia <span class="math inline">\(P(\theta|X)\)</span> es la distribución <em>final</em> o <em>posterior</em> Hacemos inferencia usando la ecuación</p>
+<p>Con la notación de arriba:</p>
+<ul>
+<li>Como <span class="math inline">\(X\)</span> son los datos observados, llamamos a <span class="math inline">\(P(X|\theta)\)</span> la <em>verosimilitud</em>, o modelo de los datos.</li>
+<li>El factor <span class="math inline">\(P(\theta)\)</span> le llamamos la distribución <em>inicial</em> o <em>previa</em>.</li>
+<li>La distribución que usamos para hacer inferencia <span class="math inline">\(P(\theta|X)\)</span> es la distribución <em>final</em> o <em>posterior</em>.</li>
+</ul>
+<p>Hacemos inferencia usando la ecuación</p>
 <p><span class="math display">\[P(\theta | X) = \frac{P(X | \theta) P(\theta)}{P(X)}\]</span></p>
 <p>que también escribimos:</p>
 <p><span class="math display">\[P(\theta | X) \propto P(X | \theta) P(\theta)\]</span></p>
@@ -524,7 +530,7 @@ Inferencia bayesiana
 </section>
 <section id="ejemplo-estimando-una-proporción" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="ejemplo-estimando-una-proporción">Ejemplo: estimando una proporción</h2>
-<p>Regresamos ahora a nuestro problema de estimar una proporción <span class="math inline">\(\theta\)</span> de una población dada usando una muestra <span class="math inline">\(X_1,X_2,\ldots, X_n\)</span> de variables Bernoulli () extraídas de modo independiente. Ya sabemos calcular la verosimilitud (el modelo de los datos):</p>
+<p>Regresamos ahora a nuestro problema de estimar una proporción <span class="math inline">\(\theta\)</span> de una población dada usando una muestra <span class="math inline">\(X_1,X_2,\ldots, X_n\)</span> de variables <span class="math inline">\(\mathsf{Bernoulli}(\theta)\)</span> extraídas de modo independiente. Ya sabemos calcular la verosimilitud:</p>
 <p><span class="math display">\[P(X_1=x_1,X_2 =x_2,\ldots, X_n=x_n|\theta) = \theta^k(1-\theta)^{n-k},\]</span></p>
 <p>donde <span class="math inline">\(k = x_1 + x_2 +\cdots + x_k\)</span> es el número de éxitos que observamos.</p>
 <p>Ahora necesitamos una distribución inicial o previa <span class="math inline">\(P(\theta)\)</span>. Aunque esta distribución puede tener cualquier forma, supongamos que nuestro conocimiento actual podemos resumirlo con una distribución <span class="math inline">\(\mathsf{Beta}(3, 3)\)</span>:</p>
@@ -552,12 +558,12 @@ Inferencia bayesiana
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code> 2.5% 97.5% 
- 0.14  0.85 </code></pre>
+ 0.15  0.85 </code></pre>
 </div>
 </div>
 <p>Es difícil justificar en abstracto por qué escogeriamos una inicial con esta forma. <em>Aunque esto los detallaremos más adelante</em>, puedes pensar, por el momento, que alguien observó algunos casos de esta población, y quizá vio tres éxitos y tres fracasos. Esto sugeriría que es poco probable que la probablidad <span class="math inline">\(\theta\)</span> sea muy cercana a 0 o muy cercana a 1.</p>
 <p>Ahora podemos construir nuestra posterior. Tenemos que</p>
-<p><span class="math display">\[P(\theta| X_1=x_1, \ldots, X_n=x_n) \propto P(X_1 = x_1,\ldots X_n=x_n | \theta)P(\theta) = \theta^{k+2}(1-\theta)^{n-k + 2}\]</span></p>
+<p><span class="math inline">\(\begin{align}P(\theta| X_1=x_1, \ldots, X_n=x_n) &amp;\propto P(X_1 = x_1,\ldots X_n=x_n | \theta)P(\theta) \\ &amp;= \theta^{k+2}(1-\theta)^{n-k + 2}\end{align}\)</span></p>
 <p>donde la constante de normalización no depende de <span class="math inline">\(\theta\)</span>. Como <span class="math inline">\(\theta\)</span> es un parámetro continuo, la expresión de la derecha nos debe dar una densidad posterior.</p>
 <p>Supongamos entonces que hicimos la prueba con <span class="math inline">\(n = 30\)</span> (número de prueba) y observamos 19 éxitos. Tendríamos entonces</p>
 <p><span class="math display">\[P(\theta | S_n = 19) \propto \theta^{19 + 2} (1-\theta)^{30 - 19 +2} = \theta^{21}(1-\theta)^{13}\]</span></p>
@@ -593,8 +599,8 @@ Inferencia bayesiana
 <pre><code># A tibble: 2 × 2
   dist      theta_hat
   &lt;chr&gt;         &lt;dbl&gt;
-1 inicial       0.5  
-2 posterior     0.612</code></pre>
+1 inicial       0.503
+2 posterior     0.611</code></pre>
 </div>
 </div>
 <p>Nota que el estimador de máxima verosimilitud es <span class="math inline">\(\hat{p} = 19/30 = 0.63\)</span>, que es ligeramente diferente de la media posterior. ¿Por qué?</p>
@@ -612,7 +618,7 @@ Inferencia bayesiana
 # Groups:   dist [2]
   dist      `0.025` `0.975`
   &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;
-1 inicial      0.14    0.85
+1 inicial      0.15    0.85
 2 posterior    0.45    0.76</code></pre>
 </div>
 </div>
@@ -787,7 +793,7 @@ model {
 </section>
 <section id="ejemplo-observaciones-uniformes" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="ejemplo-observaciones-uniformes">Ejemplo: observaciones uniformes</h2>
-<p>Ahora regresamos al problema de estimación del máximo de una distribución uniforme. En este caso, consideraremos un problema más concreto. Supongamos que hay una lotería (tipo tradicional) en México y no sabemos cuántos números hay. Obtendremos una muestra iid de <span class="math inline">\(n\)</span> números, ya haremos una aproximación continua, suponiendo que</p>
+<p>Ahora regresamos al problema de estimación del máximo de una distribución uniforme. En este caso, consideraremos un problema más concreto. Supongamos que hay una lotería (tipo tradicional) en México y no sabemos cuántos números hay. Obtendremos una muestra iid de <span class="math inline">\(n\)</span> números, y haremos una aproximación continua, suponiendo que</p>
 <p><span class="math display">\[X_i \sim U[0,\theta]\]</span></p>
 <p>La verosimilitud es entonces</p>
 <p><span class="math display">\[P(X_1,\ldots, X_n|\theta) = \theta^{-n},\]</span></p>
@@ -1238,7 +1244,14 @@ generated quantities {
 </section>
 <section id="pasos-de-un-análisis-de-datos-bayesiano" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="pasos-de-un-análisis-de-datos-bayesiano">Pasos de un análisis de datos bayesiano</h2>
-<p>Como vimos en los ejemplos, en general un análisis de datos bayesiano sigue los siguientes pasos: - Identificar los datos releventes a nuestra pregunta de investigación, el tipo de datos que vamos a describir, que variables queremos estimar. - Definir el modelo descriptivo para los datos. La forma matemática y los parámetros deben ser apropiados para los objetivos del análisis. - Especificar la distribución inicial de los parámetros. Verificar que el modelo inicial produce datos consistentes con el conocimiento de dominio. - Utilizar inferencia bayesiana para reubicar la credibilidad a lo largo de los posibles valores de los parámetros. - Verificar que la distribución posterior replique los datos de manera razonable, de no ser el caso considerar otros modelos descriptivos para los datos.</p>
+<p>Como vimos en los ejemplos, en general un análisis de datos bayesiano sigue los siguientes pasos:</p>
+<ul>
+<li>Identificar los datos releventes a nuestra pregunta de investigación, el tipo de datos que vamos a describir, que variables queremos estimar.</li>
+<li>Definir el modelo descriptivo para los datos. La forma matemática y los parámetros deben ser apropiados para los objetivos del análisis.</li>
+<li>Especificar la distribución inicial de los parámetros. Verificar que el modelo inicial produce datos consistentes con el conocimiento de dominio.</li>
+<li>Utilizar inferencia bayesiana para reubicar la credibilidad a lo largo de los posibles valores de los parámetros.</li>
+<li>Verificar que la distribución posterior replique los datos de manera razonable, de no ser el caso considerar otros modelos descriptivos para los datos.</li>
+</ul>
 </section>
 <section id="verificación-predictiva-posterior" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="verificación-predictiva-posterior">Verificación predictiva posterior</h2>
@@ -1248,7 +1261,19 @@ generated quantities {
 <li>Confirmar que nuevas producidas simuladas con el modelo son similares a las que de hecho observamos. Esto nos permite confirmar la calidad del ajuste del modelo, y se llama <strong>verificación predictiva posterior</strong>.</li>
 </ul>
 <p>Supongamos que tenemos la posterior <span class="math inline">\(p(\theta | x)\)</span>. Podemos generar una nueva <em>replicación</em> de los datos como sigue:</p>
-<p>La distribución <strong>predictiva posterior</strong> genera nuevas observaciones a partir de la información observada. La denotamos como <span class="math inline">\(p(\tilde{x}|x)\)</span>. Para simular de ella: - Muestreamos un valor <span class="math inline">\(\tilde{\theta}\)</span> de la posterior <span class="math inline">\(p(\theta|x)\)</span>. - Simulamos del modelo de las observaciones <span class="math inline">\(\tilde{x} \sim p(\tilde{x}|\tilde{\theta})\)</span>. - Repetimos el proceso hasta obtener una muestra grande. - Usamos este método para producir, por ejemplo, <strong>intervalos de predicción</strong> para nuevos datos. Si queremos una replicación de las observaciones de la predictiva posterior, - Muestreamos un valor <span class="math inline">\(\tilde{\theta}\)</span> de la posterior <span class="math inline">\(p(\theta|x)\)</span>. - Simulamos del modelo de las observaciones <span class="math inline">\(\tilde{x}_1, \tilde{x}_2,\ldots, \tilde{x}_n \sim p(\tilde{x}|\tilde{\theta})\)</span>, done <span class="math inline">\(n\)</span> es el tamaño de muestra de la muestra original <span class="math inline">\(x\)</span>. - Usamos este método para producir conjuntos de datos simulados que comparamos con los observados para verificar nuestro modelo.</p>
+<p>La distribución <strong>predictiva posterior</strong> genera nuevas observaciones a partir de la información observada. La denotamos como <span class="math inline">\(p(\tilde{x}|x)\)</span>. Para simular de ella:</p>
+<ul>
+<li>Muestreamos un valor <span class="math inline">\(\tilde{\theta}\)</span> de la posterior <span class="math inline">\(p(\theta|x)\)</span>.</li>
+<li>Simulamos del modelo de las observaciones <span class="math inline">\(\tilde{x} \sim p(\tilde{x}|\tilde{\theta})\)</span>.</li>
+<li>Repetimos el proceso hasta obtener una muestra grande.</li>
+<li>Usamos este método para producir, por ejemplo, <strong>intervalos de predicción</strong> para nuevos datos.</li>
+</ul>
+<p>Si queremos una replicación de las observaciones de la predictiva posterior:</p>
+<ul>
+<li>Muestreamos un valor <span class="math inline">\(\tilde{\theta}\)</span> de la posterior <span class="math inline">\(p(\theta|x)\)</span>.</li>
+<li>Simulamos del modelo de las observaciones <span class="math inline">\(\tilde{x}_1, \tilde{x}_2,\ldots, \tilde{x}_n \sim p(\tilde{x}|\tilde{\theta})\)</span>, done <span class="math inline">\(n\)</span> es el tamaño de muestra de la muestra original <span class="math inline">\(x\)</span>.</li>
+<li>Usamos este método para producir conjuntos de datos simulados que comparamos con los observados para verificar nuestro modelo.</li>
+</ul>
 <section id="ejemplo-estaturas-de-tenores" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="ejemplo-estaturas-de-tenores">Ejemplo: estaturas de tenores</h3>
 <p>En este ejemplo, usaremos la posterior predictiva para checar nuestro modelo. Vamos a crear varias muestras, del mismo tamaño que la original, según nuestra predictiva posterior, y compararemos estas muestras con la observada.</p>
